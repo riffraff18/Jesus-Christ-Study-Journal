@@ -1,149 +1,35 @@
-<!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Jesus Christ Topical Guide Study</title>
-<link rel="manifest" href="manifest.json">
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Jesus Christ Topical Guide Study</title><link rel="manifest" href="manifest.json">
 <style>
-:root { --bg:#fbfaf7; --card:#fff; --ink:#222; --muted:#6b665d; --accent:#876b2f; --line:#ddd6ca; }
-* { box-sizing:border-box; }
-body { margin:0; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif; background:var(--bg); color:var(--ink); }
-header { padding:20px; background:linear-gradient(180deg,#fff,#f4efe5); border-bottom:1px solid var(--line); position:sticky; top:0; z-index:5; }
-h1 { margin:0 0 6px; font-size:22px; }
-.subtitle { color:var(--muted); font-size:14px; line-height:1.4; }
-.progressWrap { margin-top:12px; height:10px; background:#e6dece; border-radius:999px; overflow:hidden; }
-.progress { height:100%; width:0%; background:var(--accent); transition:.2s; }
-main { display:grid; grid-template-columns:330px 1fr; gap:16px; padding:16px; max-width:1200px; margin:0 auto; }
-.sidebar { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:12px; max-height:calc(100vh - 130px); overflow:auto; }
-.weekBtn { width:100%; text-align:left; border:1px solid var(--line); background:#fff; border-radius:10px; padding:10px; margin:6px 0; cursor:pointer; }
-.weekBtn.active { outline:2px solid var(--accent); }
-.weekBtn.done { background:#f3efe5; }
-.weekBtn b { display:block; }
-.weekBtn span { color:var(--muted); font-size:13px; }
-.content { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:18px; min-height:70vh; }
-.row { display:flex; gap:10px; align-items:center; flex-wrap:wrap; }
-.badge { padding:4px 8px; border-radius:999px; background:#f1eadb; color:#5e461b; font-size:12px; }
-label { display:block; font-weight:650; margin:16px 0 6px; }
-input[type=text], textarea { width:100%; border:1px solid var(--line); border-radius:10px; padding:10px; font:inherit; background:#fffdf9; }
-textarea { min-height:120px; resize:vertical; line-height:1.35; }
-.refs { display:grid; grid-template-columns:1fr 1fr; gap:8px 14px; margin-top:8px; }
-.refItem { display:grid; grid-template-columns:24px 1fr 30px; align-items:center; gap:5px; }
-.refItem input[type=text] { padding:7px; border-radius:8px; }
-.actions { display:flex; gap:8px; flex-wrap:wrap; margin-top:18px; }
-button.primary, button.secondary { border:0; border-radius:10px; padding:10px 12px; font-weight:650; cursor:pointer; }
-.primary { background:var(--accent); color:white; }
-.secondary { background:#eee7d9; color:#2c2518; }
-.footerNote { color:var(--muted); font-size:12px; margin-top:14px; }
-@media (max-width:850px) { main { grid-template-columns:1fr; } .sidebar { max-height:none; } .refs { grid-template-columns:1fr; } }
-@media print { header,.sidebar,.actions { display:none; } main { display:block; padding:0; } .content { border:0; } }
-</style>
-</head>
-<body>
-<header>
-  <h1>Jesus Christ Topical Guide Study</h1>
-  <div class="subtitle">78-week study journal. Your entries save locally in this browser.</div>
-  <div class="progressWrap"><div class="progress" id="progress"></div></div>
-  <div class="subtitle" id="progressText"></div>
-</header>
+body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;background:#fbfaf7;color:#222}
+header{padding:22px;background:linear-gradient(#fff,#f4efe5);border-bottom:1px solid #ddd6ca;position:sticky;top:0;z-index:2}
+h1{font-size:25px;margin:0 0 8px} .sub{color:#6b665d;font-size:15px;line-height:1.35}
+.bar{height:11px;background:#e6dece;border-radius:99px;overflow:hidden;margin-top:12px} #prog{height:100%;width:0;background:#876b2f}
+main{padding:12px;max-width:800px;margin:auto} .card{background:#fff;border:1px solid #ddd6ca;border-radius:18px;padding:14px}
+.week{width:100%;text-align:left;background:#fff;border:1px solid #ddd6ca;border-radius:14px;padding:14px;margin:10px 0;font-size:17px}
+.week b{display:block;color:#087ee8} .week span{color:#6b665d;font-weight:650} .activeWeek{outline:3px solid #876b2f}
+button{border:0;border-radius:12px;padding:11px 14px;font-weight:700;font-size:15px;margin:3px;background:#eee7d9}
+.primary{background:#876b2f;color:white} .view{display:none} .view.on{display:block}
+label{font-weight:750;display:block;margin-top:16px;margin-bottom:6px} textarea,input[type=text]{width:100%;border:1px solid #ddd6ca;border-radius:12px;padding:10px;font:inherit;background:#fffdf9}
+textarea{min-height:125px} .refs{display:grid;grid-template-columns:1fr 1fr;gap:8px 12px} .ref{display:grid;grid-template-columns:24px 1fr 28px;gap:5px;align-items:center}
+.top{display:flex;align-items:center;gap:8px} .spacer{flex:1} @media(max-width:650px){.refs{grid-template-columns:1fr}}
+</style></head><body>
+<header><h1>Jesus Christ Topical Guide Study</h1><div class="sub">78-week study journal. Your entries save locally in this browser.</div><div class="bar"><div id="prog"></div></div><div class="sub" id="stats"></div></header>
 <main>
-  <aside class="sidebar">
-    <div class="actions" style="margin-top:0">
-      <button class="secondary" onclick="exportData()">Export Backup</button>
-      <button class="secondary" onclick="document.getElementById('importFile').click()">Import</button>
-      <input id="importFile" type="file" accept="application/json" style="display:none" onchange="importData(event)">
-    </div>
-    <div id="weekList"></div>
-  </aside>
-  <section class="content" id="content"></section>
+<section id="list" class="view on"><div class="card"><button onclick="exportData()">Export Backup</button><button onclick="document.getElementById('imp').click()">Import</button><input id="imp" type="file" accept="application/json" style="display:none" onchange="importData(event)"><div id="weeks"></div></div></section>
+<section id="detail" class="view"><div class="card" id="content"></div></section>
 </main>
 <script>
-const weeks = [{"week": 1, "topic": "Jesus Christ (Main Heading)", "size": "L", "refs": 24}, {"week": 2, "topic": "Advocate + Anointed", "size": "S", "refs": 8}, {"week": 3, "topic": "Antemortal Existence", "size": "M", "refs": 14}, {"week": 4, "topic": "Appearances, Antemortal", "size": "L", "refs": 24}, {"week": 5, "topic": "Appearances, Postmortal", "size": "L", "refs": 24}, {"week": 6, "topic": "Ascension + Baptism", "size": "S", "refs": 8}, {"week": 7, "topic": "Atonement Through (Part 1)", "size": "L", "refs": 24}, {"week": 8, "topic": "Atonement Through (Part 2)", "size": "L", "refs": 24}, {"week": 9, "topic": "Atonement Through (Part 3)", "size": "L", "refs": 24}, {"week": 10, "topic": "Authority", "size": "L", "refs": 24}, {"week": 11, "topic": "Betrayal + Birth", "size": "M", "refs": 14}, {"week": 12, "topic": "Condescension", "size": "M", "refs": 14}, {"week": 13, "topic": "Creator (Part 1)", "size": "L", "refs": 24}, {"week": 14, "topic": "Creator (Part 2)", "size": "L", "refs": 24}, {"week": 15, "topic": "Crucifixion", "size": "L", "refs": 24}, {"week": 16, "topic": "Davidic Descent + Death", "size": "M", "refs": 14}, {"week": 17, "topic": "Divine Sonship (Part 1)", "size": "L", "refs": 24}, {"week": 18, "topic": "Divine Sonship (Part 2)", "size": "L", "refs": 24}, {"week": 19, "topic": "Exemplar + Family", "size": "S", "refs": 8}, {"week": 20, "topic": "Firstborn + Foreordained", "size": "S", "refs": 8}, {"week": 21, "topic": "Glory (Part 1)", "size": "L", "refs": 24}, {"week": 22, "topic": "Glory (Part 2)", "size": "L", "refs": 24}, {"week": 23, "topic": "Good Shepherd", "size": "M", "refs": 14}, {"week": 24, "topic": "Head of the Church", "size": "M", "refs": 14}, {"week": 25, "topic": "Jehovah (Part 1)", "size": "L", "refs": 24}, {"week": 26, "topic": "Jehovah (Part 2)", "size": "L", "refs": 24}, {"week": 27, "topic": "Judge (Part 1)", "size": "L", "refs": 24}, {"week": 28, "topic": "Judge (Part 2)", "size": "L", "refs": 24}, {"week": 29, "topic": "King", "size": "M", "refs": 14}, {"week": 30, "topic": "Lamb of God", "size": "M", "refs": 14}, {"week": 31, "topic": "Light of the World", "size": "M", "refs": 14}, {"week": 32, "topic": "Lord", "size": "L", "refs": 24}, {"week": 33, "topic": "Love of Christ", "size": "S", "refs": 8}, {"week": 34, "topic": "Mediator", "size": "S", "refs": 8}, {"week": 35, "topic": "Messiah (Part 1)", "size": "L", "refs": 24}, {"week": 36, "topic": "Messiah (Part 2)", "size": "L", "refs": 24}, {"week": 37, "topic": "Millennial Reign", "size": "M", "refs": 14}, {"week": 38, "topic": "Miracles (Part 1)", "size": "L", "refs": 24}, {"week": 39, "topic": "Miracles (Part 2)", "size": "L", "refs": 24}, {"week": 40, "topic": "Names of Christ", "size": "L", "refs": 24}, {"week": 41, "topic": "Obedience of Christ", "size": "S", "refs": 8}, {"week": 42, "topic": "Parables", "size": "M", "refs": 14}, {"week": 43, "topic": "Power of Christ", "size": "L", "refs": 24}, {"week": 44, "topic": "Priesthood of Christ", "size": "M", "refs": 14}, {"week": 45, "topic": "Prophecies About Christ", "size": "L", "refs": 24}, {"week": 46, "topic": "Protector", "size": "S", "refs": 8}, {"week": 47, "topic": "Redeemer (Part 1)", "size": "L", "refs": 24}, {"week": 48, "topic": "Redeemer (Part 2)", "size": "L", "refs": 24}, {"week": 49, "topic": "Resurrection (Part 1)", "size": "L", "refs": 24}, {"week": 50, "topic": "Resurrection (Part 2)", "size": "L", "refs": 24}, {"week": 51, "topic": "Resurrection and Life", "size": "M", "refs": 14}, {"week": 52, "topic": "Rock", "size": "S", "refs": 8}, {"week": 53, "topic": "Sacrifice", "size": "M", "refs": 14}, {"week": 54, "topic": "Savior (Part 1)", "size": "L", "refs": 24}, {"week": 55, "topic": "Savior (Part 2)", "size": "L", "refs": 24}, {"week": 56, "topic": "Second Coming (Part 1)", "size": "L", "refs": 24}, {"week": 57, "topic": "Second Coming (Part 2)", "size": "L", "refs": 24}, {"week": 58, "topic": "Shepherd", "size": "S", "refs": 8}, {"week": 59, "topic": "Son of God (Part 1)", "size": "L", "refs": 24}, {"week": 60, "topic": "Son of God (Part 2)", "size": "L", "refs": 24}, {"week": 61, "topic": "Teacher", "size": "M", "refs": 14}, {"week": 62, "topic": "Testimony of", "size": "M", "refs": 14}, {"week": 63, "topic": "Transfiguration", "size": "S", "refs": 8}, {"week": 64, "topic": "Types of Christ", "size": "M", "refs": 14}, {"week": 65, "topic": "Word", "size": "M", "refs": 14}, {"week": 66, "topic": "Works of Christ", "size": "L", "refs": 24}, {"week": 67, "topic": "Worship of Christ", "size": "S", "refs": 8}, {"week": 68, "topic": "Prince of Peace", "size": "S", "refs": 8}, {"week": 69, "topic": "Alpha and Omega", "size": "S", "refs": 8}, {"week": 70, "topic": "Bridegroom", "size": "S", "refs": 8}, {"week": 71, "topic": "Chief Cornerstone", "size": "S", "refs": 8}, {"week": 72, "topic": "Deliverance Through Christ", "size": "M", "refs": 14}, {"week": 73, "topic": "Grace of Christ", "size": "M", "refs": 14}, {"week": 74, "topic": "Mercy of Christ", "size": "M", "refs": 14}, {"week": 75, "topic": "Review: Atonement Themes", "size": "M", "refs": 14}, {"week": 76, "topic": "Review: Divine Roles & Titles", "size": "M", "refs": 14}, {"week": 77, "topic": "Review: Ministry & Mission", "size": "M", "refs": 14}, {"week": 78, "topic": "Review: Personal Testimony of Jesus Christ", "size": "L", "refs": 24}];
-let state = JSON.parse(localStorage.getItem('tgStudyState') || '{}');
-let current = Number(localStorage.getItem('tgStudyCurrent') || 1);
-function ensureWeek(n) {
-  if (!state[n]) {
-    const w = weeks[n-1];
-    state[n] = {done:false, refs:Array.from({length:w.refs},()=>({text:'',done:false})), learned:'', attribute:'', scripture:'', impressions:''};
-  }
-  return state[n];
-}
-function save() {
-  localStorage.setItem('tgStudyState', JSON.stringify(state));
-  localStorage.setItem('tgStudyCurrent', String(current));
-  renderList(); updateProgress();
-}
-function renderList() {
-  const el = document.getElementById('weekList'); el.innerHTML = '';
-  weeks.forEach(w => {
-    const data = ensureWeek(w.week);
-    const btn = document.createElement('button');
-    btn.className = 'weekBtn' + (w.week===current?' active':'') + (data.done?' done':'');
-    const completedRefs = data.refs.filter(r=>r.done).length;
-    btn.innerHTML = `<b>Week ${w.week}</b><span>${w.topic}</span><br><span>${completedRefs}/${w.refs} refs</span>`;
-    btn.onclick = () => { current=w.week; render(); save(); };
-    el.appendChild(btn);
-  });
-}
-function render() {
-  const w = weeks[current-1], d = ensureWeek(current), content = document.getElementById('content');
-  content.innerHTML = `
-    <div class="row">
-      <h2 style="margin:0">Week ${w.week}</h2>
-      <span class="badge">${w.size} topic</span>
-      <label style="margin:0 0 0 auto;font-weight:500"><input type="checkbox" id="done" ${d.done?'checked':''}> Complete</label>
-    </div>
-    <h3>Jesus Christ, ${w.topic}</h3>
-    <label>Scripture References Studied</label><div class="refs" id="refs"></div>
-    <label>What Did I Learn About Jesus Christ This Week?</label>
-    <textarea id="learned" placeholder="Write what this week taught you about the Savior...">${escapeHtml(d.learned)}</textarea>
-    <label>Attribute of Christ I Discovered</label>
-    <textarea id="attribute" style="min-height:70px" placeholder="Example: merciful, constant, advocate, healer...">${escapeHtml(d.attribute)}</textarea>
-    <label>Scripture That Impacted Me Most</label>
-    <textarea id="scripture" style="min-height:70px" placeholder="Write the reference and why it stood out...">${escapeHtml(d.scripture)}</textarea>
-    <label>Impressions / Revelations</label>
-    <textarea id="impressions" style="min-height:220px" placeholder="Record spiritual impressions, invitations, and personal revelation...">${escapeHtml(d.impressions)}</textarea>
-    <div class="actions">
-      <button class="primary" onclick="saveCurrent()">Save Week</button>
-      <button class="secondary" onclick="window.print()">Print This Week</button>
-      <button class="secondary" onclick="clearWeek()">Clear This Week</button>
-    </div>
-    <div class="footerNote">Saved locally on this device/browser. Use Export Backup occasionally.</div>`;
-  const refs = document.getElementById('refs');
-  d.refs.forEach((r,i)=> {
-    const div = document.createElement('div'); div.className='refItem';
-    div.innerHTML = `<span>${i+1}.</span><input type="text" value="${escapeAttr(r.text)}" placeholder="Reference"><input type="checkbox" ${r.done?'checked':''}>`;
-    div.querySelector('input[type=text]').oninput = e => { r.text=e.target.value; save(); };
-    div.querySelector('input[type=checkbox]').onchange = e => { r.done=e.target.checked; save(); };
-    refs.appendChild(div);
-  });
-  document.getElementById('done').onchange = e => { d.done=e.target.checked; save(); };
-  ['learned','attribute','scripture','impressions'].forEach(id => {
-    document.getElementById(id).oninput = e => { d[id]=e.target.value; save(); };
-  });
-  updateProgress();
-}
-function saveCurrent(){ save(); alert('Saved.'); }
-function clearWeek(){ if(!confirm('Clear this week?')) return; delete state[current]; ensureWeek(current); render(); save(); }
-function updateProgress(){
-  let doneWeeks=0, doneRefs=0, totalRefs=0;
-  weeks.forEach(w => { const d=ensureWeek(w.week); if(d.done) doneWeeks++; doneRefs += d.refs.filter(r=>r.done).length; totalRefs += d.refs.length; });
-  const pct = Math.round((doneWeeks/weeks.length)*100);
-  document.getElementById('progress').style.width = pct + '%';
-  document.getElementById('progressText').textContent = `${doneWeeks}/78 weeks complete • ${doneRefs}/${totalRefs} reference slots checked`;
-}
-function exportData(){
-  const blob = new Blob([JSON.stringify(state,null,2)], {type:'application/json'});
-  const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download='jesus-christ-study-backup.json'; a.click();
-}
-function importData(e){
-  const file=e.target.files[0]; if(!file) return;
-  const reader=new FileReader();
-  reader.onload=()=>{ try{ state=JSON.parse(reader.result); save(); render(); alert('Imported backup.'); } catch{ alert('Could not import that file.'); } };
-  reader.readAsText(file);
-}
-function escapeHtml(s=''){ return String(s).replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m])); }
-function escapeAttr(s=''){ return escapeHtml(s).replace(/"/g,'&quot;'); }
-if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(()=>{});
-renderList(); render();
-</script>
-</body></html>
+const weeks=[{"week": 1, "topic": "Jesus Christ (Main Heading)", "size": "L", "refs": 24}, {"week": 2, "topic": "Advocate + Anointed", "size": "S", "refs": 8}, {"week": 3, "topic": "Antemortal Existence", "size": "M", "refs": 14}, {"week": 4, "topic": "Appearances, Antemortal", "size": "L", "refs": 24}, {"week": 5, "topic": "Appearances, Postmortal", "size": "L", "refs": 24}, {"week": 6, "topic": "Ascension + Baptism", "size": "S", "refs": 8}, {"week": 7, "topic": "Atonement Through (Part 1)", "size": "L", "refs": 24}, {"week": 8, "topic": "Atonement Through (Part 2)", "size": "L", "refs": 24}, {"week": 9, "topic": "Atonement Through (Part 3)", "size": "L", "refs": 24}, {"week": 10, "topic": "Authority", "size": "L", "refs": 24}, {"week": 11, "topic": "Betrayal + Birth", "size": "M", "refs": 14}, {"week": 12, "topic": "Condescension", "size": "M", "refs": 14}, {"week": 13, "topic": "Creator (Part 1)", "size": "L", "refs": 24}, {"week": 14, "topic": "Creator (Part 2)", "size": "L", "refs": 24}, {"week": 15, "topic": "Crucifixion", "size": "L", "refs": 24}, {"week": 16, "topic": "Davidic Descent + Death", "size": "M", "refs": 14}, {"week": 17, "topic": "Divine Sonship (Part 1)", "size": "L", "refs": 24}, {"week": 18, "topic": "Divine Sonship (Part 2)", "size": "L", "refs": 24}, {"week": 19, "topic": "Exemplar + Family", "size": "S", "refs": 8}, {"week": 20, "topic": "Firstborn + Foreordained", "size": "S", "refs": 8}, {"week": 21, "topic": "Glory (Part 1)", "size": "L", "refs": 24}, {"week": 22, "topic": "Glory (Part 2)", "size": "L", "refs": 24}, {"week": 23, "topic": "Good Shepherd", "size": "M", "refs": 14}, {"week": 24, "topic": "Head of the Church", "size": "M", "refs": 14}, {"week": 25, "topic": "Jehovah (Part 1)", "size": "L", "refs": 24}, {"week": 26, "topic": "Jehovah (Part 2)", "size": "L", "refs": 24}, {"week": 27, "topic": "Judge (Part 1)", "size": "L", "refs": 24}, {"week": 28, "topic": "Judge (Part 2)", "size": "L", "refs": 24}, {"week": 29, "topic": "King", "size": "M", "refs": 14}, {"week": 30, "topic": "Lamb of God", "size": "M", "refs": 14}, {"week": 31, "topic": "Light of the World", "size": "M", "refs": 14}, {"week": 32, "topic": "Lord", "size": "L", "refs": 24}, {"week": 33, "topic": "Love of Christ", "size": "S", "refs": 8}, {"week": 34, "topic": "Mediator", "size": "S", "refs": 8}, {"week": 35, "topic": "Messiah (Part 1)", "size": "L", "refs": 24}, {"week": 36, "topic": "Messiah (Part 2)", "size": "L", "refs": 24}, {"week": 37, "topic": "Millennial Reign", "size": "M", "refs": 14}, {"week": 38, "topic": "Miracles (Part 1)", "size": "L", "refs": 24}, {"week": 39, "topic": "Miracles (Part 2)", "size": "L", "refs": 24}, {"week": 40, "topic": "Names of Christ", "size": "L", "refs": 24}, {"week": 41, "topic": "Obedience of Christ", "size": "S", "refs": 8}, {"week": 42, "topic": "Parables", "size": "M", "refs": 14}, {"week": 43, "topic": "Power of Christ", "size": "L", "refs": 24}, {"week": 44, "topic": "Priesthood of Christ", "size": "M", "refs": 14}, {"week": 45, "topic": "Prophecies About Christ", "size": "L", "refs": 24}, {"week": 46, "topic": "Protector", "size": "S", "refs": 8}, {"week": 47, "topic": "Redeemer (Part 1)", "size": "L", "refs": 24}, {"week": 48, "topic": "Redeemer (Part 2)", "size": "L", "refs": 24}, {"week": 49, "topic": "Resurrection (Part 1)", "size": "L", "refs": 24}, {"week": 50, "topic": "Resurrection (Part 2)", "size": "L", "refs": 24}, {"week": 51, "topic": "Resurrection and Life", "size": "M", "refs": 14}, {"week": 52, "topic": "Rock", "size": "S", "refs": 8}, {"week": 53, "topic": "Sacrifice", "size": "M", "refs": 14}, {"week": 54, "topic": "Savior (Part 1)", "size": "L", "refs": 24}, {"week": 55, "topic": "Savior (Part 2)", "size": "L", "refs": 24}, {"week": 56, "topic": "Second Coming (Part 1)", "size": "L", "refs": 24}, {"week": 57, "topic": "Second Coming (Part 2)", "size": "L", "refs": 24}, {"week": 58, "topic": "Shepherd", "size": "S", "refs": 8}, {"week": 59, "topic": "Son of God (Part 1)", "size": "L", "refs": 24}, {"week": 60, "topic": "Son of God (Part 2)", "size": "L", "refs": 24}, {"week": 61, "topic": "Teacher", "size": "M", "refs": 14}, {"week": 62, "topic": "Testimony of", "size": "M", "refs": 14}, {"week": 63, "topic": "Transfiguration", "size": "S", "refs": 8}, {"week": 64, "topic": "Types of Christ", "size": "M", "refs": 14}, {"week": 65, "topic": "Word", "size": "M", "refs": 14}, {"week": 66, "topic": "Works of Christ", "size": "L", "refs": 24}, {"week": 67, "topic": "Worship of Christ", "size": "S", "refs": 8}, {"week": 68, "topic": "Prince of Peace", "size": "S", "refs": 8}, {"week": 69, "topic": "Alpha and Omega", "size": "S", "refs": 8}, {"week": 70, "topic": "Bridegroom", "size": "S", "refs": 8}, {"week": 71, "topic": "Chief Cornerstone", "size": "S", "refs": 8}, {"week": 72, "topic": "Deliverance Through Christ", "size": "M", "refs": 14}, {"week": 73, "topic": "Grace of Christ", "size": "M", "refs": 14}, {"week": 74, "topic": "Mercy of Christ", "size": "M", "refs": 14}, {"week": 75, "topic": "Review: Atonement Themes", "size": "M", "refs": 14}, {"week": 76, "topic": "Review: Divine Roles & Titles", "size": "M", "refs": 14}, {"week": 77, "topic": "Review: Ministry & Mission", "size": "M", "refs": 14}, {"week": 78, "topic": "Review: Personal Testimony of Jesus Christ", "size": "L", "refs": 24}];let state=JSON.parse(localStorage.getItem('tgStudyState')||'{}');let current=Number(localStorage.getItem('tgStudyCurrent')||1);
+function data(n){if(!state[n]){let w=weeks[n-1];state[n]={done:false,refs:Array.from({length:w.refs},()=>({text:'',done:false})),learned:'',attribute:'',scripture:'',impressions:''}}return state[n]}
+function save(){localStorage.setItem('tgStudyState',JSON.stringify(state));localStorage.setItem('tgStudyCurrent',current);renderList();stats()}
+function showList(){document.getElementById('list').classList.add('on');document.getElementById('detail').classList.remove('on');scrollTo(0,0)}
+function openWeek(n){current=n;renderDetail();document.getElementById('list').classList.remove('on');document.getElementById('detail').classList.add('on');save();scrollTo(0,0)}
+function renderList(){let el=document.getElementById('weeks');el.innerHTML='';weeks.forEach(w=>{let d=data(w.week),c=d.refs.filter(r=>r.done).length,b=document.createElement('button');b.className='week '+(w.week===current?'activeWeek':'');b.innerHTML=`<b>Week ${w.week}</b><span>${w.topic}</span><br><span>${c}/${w.refs} refs</span>`;b.onclick=()=>openWeek(w.week);el.appendChild(b)})}
+function renderDetail(){let w=weeks[current-1],d=data(current),c=document.getElementById('content');c.innerHTML=`<div class="top"><button onclick="showList()">← Weeks</button><div class="spacer"></div><label style="margin:0;font-weight:500"><input id="done" type="checkbox" ${d.done?'checked':''}> Complete</label></div><h2>Week ${w.week}</h2><h3>Jesus Christ, ${w.topic}</h3><label>Scripture References Studied</label><div class="refs" id="refs"></div><label>What Did I Learn About Jesus Christ This Week?</label><textarea id="learned">${esc(d.learned)}</textarea><label>Attribute of Christ I Discovered</label><textarea id="attribute" style="min-height:80px">${esc(d.attribute)}</textarea><label>Scripture That Impacted Me Most</label><textarea id="scripture" style="min-height:80px">${esc(d.scripture)}</textarea><label>Impressions / Revelations</label><textarea id="impressions" style="min-height:260px">${esc(d.impressions)}</textarea><br><button class="primary" onclick="save();alert('Saved')">Save Week</button>`;let refs=document.getElementById('refs');d.refs.forEach((r,i)=>{let div=document.createElement('div');div.className='ref';div.innerHTML=`<span>${i+1}.</span><input type="text" value="${attr(r.text)}" placeholder="Reference"><input type="checkbox" ${r.done?'checked':''}>`;div.querySelector('input[type=text]').oninput=e=>{r.text=e.target.value;save()};div.querySelector('input[type=checkbox]').onchange=e=>{r.done=e.target.checked;save()};refs.appendChild(div)});document.getElementById('done').onchange=e=>{d.done=e.target.checked;save()};['learned','attribute','scripture','impressions'].forEach(id=>document.getElementById(id).oninput=e=>{d[id]=e.target.value;save()});stats()}
+function stats(){let dw=0,dr=0,tr=0;weeks.forEach(w=>{let d=data(w.week);if(d.done)dw++;dr+=d.refs.filter(r=>r.done).length;tr+=d.refs.length});document.getElementById('prog').style.width=Math.round(dw/78*100)+'%';document.getElementById('stats').textContent=`${dw}/78 weeks complete • ${dr}/${tr} reference slots checked`}
+function exportData(){let blob=new Blob([JSON.stringify(state,null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='jesus-christ-study-backup.json';a.click()}
+function importData(e){let f=e.target.files[0];if(!f)return;let r=new FileReader();r.onload=()=>{try{state=JSON.parse(r.result);save();renderDetail();alert('Imported')}catch{alert('Could not import')}};r.readAsText(f)}
+function esc(s=''){return String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}function attr(s=''){return esc(s).replace(/"/g,'&quot;')}
+if('serviceWorker'in navigator)navigator.serviceWorker.register('sw.js').catch(()=>{});renderList();renderDetail();stats();
+</script></body></html>

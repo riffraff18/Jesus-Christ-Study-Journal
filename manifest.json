@@ -1,0 +1,9 @@
+{
+  "name": "Jesus Christ Topical Guide Study",
+  "short_name": "Christ Study",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#fbfaf7",
+  "theme_color": "#876b2f",
+  "icons": []
+}

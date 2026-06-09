@@ -1,1 +1,1 @@
-self.addEventListener('install',e=>{e.waitUntil(caches.open('tg-study-phase1-v10').then(c=>c.addAll(['./','index.html','manifest.json'])))});self.addEventListener('fetch',e=>{e.respondWith(caches.match(e.request).then(r=>r||fetch(e.request)))});
+self.addEventListener('install',e=>{e.waitUntil(caches.open('tg-study-attributes-v12').then(c=>c.addAll(['./','index.html','manifest.json','icon-180.png','icon-192.png','icon-512.png'])))});self.addEventListener('fetch',e=>{e.respondWith(caches.match(e.request).then(r=>r||fetch(e.request)))});

@@ -1,0 +1,154 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Christlike Attribute Assessment</title>
+<style>
+body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;background:#fbfaf7;color:#222}
+header{padding:22px;background:linear-gradient(#fff,#f4efe5);border-bottom:1px solid #ddd6ca;position:sticky;top:0;z-index:2}
+h1{font-size:25px;margin:0 0 8px}.sub{color:#6b665d;font-size:15px;line-height:1.35}
+main{padding:12px;max-width:860px;margin:auto}.card{background:#fff;border:1px solid #ddd6ca;border-radius:18px;padding:14px;margin-bottom:12px}
+button{border:0;border-radius:12px;padding:11px 14px;font-weight:700;font-size:15px;margin:3px;background:#eee7d9}
+.primary{background:#876b2f;color:white}.scoreBtns{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap}.scoreBtns button{min-width:42px;padding:9px 10px}.scoreBtns button.sel{background:#876b2f;color:white}
+.item{border-bottom:1px solid #f0eadf;padding:11px 0}.muted{color:#6b665d;font-size:13px}
+label{font-weight:750;display:block;margin-top:16px;margin-bottom:6px}textarea,select{width:100%;border:1px solid #ddd6ca;border-radius:12px;padding:10px;font:inherit;background:#fffdf9}
+textarea{min-height:110px}.summary{border:1px solid #ddd6ca;border-radius:14px;padding:12px;margin:8px 0;background:#fffdf9}
+.resultRow{display:flex;justify-content:space-between;border-bottom:1px solid #eee;padding:6px 0;gap:12px}
+</style>
+</head>
+<body>
+<header>
+  <h1>Christlike Attribute Assessment</h1>
+  <div class="sub">Response key: 1 = never, 2 = sometimes, 3 = often, 4 = almost always, 5 = always.</div>
+</header>
+<main>
+  <div class="card">
+    <button onclick="location.href='index.html'">← Back to Study</button>
+    <button onclick="showHistory()">History</button>
+    <button onclick="printCurrent()">Print Current</button>
+  </div>
+  <div id="app"></div>
+</main>
+<script>
+const quiz = [{"name": "Faith", "items": [{"text": "I believe in Christ and accept Him as my Savior.", "ref": "2 Nephi 25:29"}, {"text": "I feel confident that God loves me.", "ref": "1 Nephi 11:17"}, {"text": "I trust the Savior enough to accept His will and do what He asks.", "ref": "1 Nephi 3:7"}, {"text": "I believe that through the Atonement of Jesus Christ and the power of the Holy Ghost, I can be forgiven of my sins and sanctified as I repent.", "ref": "Enos 1:2–8"}, {"text": "I have faith that God hears and answers my prayers.", "ref": "Mosiah 27:14"}, {"text": "I think about the Savior during the day and remember what He has done for me.", "ref": "Doctrine and Covenants 20:77, 79"}, {"text": "I have faith that God will bring about good things in my life and the lives of others as we devote ourselves to Him and His Son.", "ref": "Ether 12:12"}, {"text": "I know by the power of the Holy Ghost that the Book of Mormon is true.", "ref": "Moroni 10:3–5"}, {"text": "I have faith to accomplish what Christ wants me to do.", "ref": "Moroni 7:33"}]}, {"name": "Hope", "items": [{"text": "One of my greatest desires is to inherit eternal life in the celestial kingdom.", "ref": "Moroni 7:41"}, {"text": "I am confident that I will have a happy and successful mission.", "ref": "Doctrine and Covenants 31:3–5"}, {"text": "I feel peaceful and optimistic about the future.", "ref": "Doctrine and Covenants 59:23"}, {"text": "I believe that someday I will dwell with God and become like Him.", "ref": "Ether 12:4"}]}, {"name": "Charity and Love", "items": [{"text": "I feel a sincere desire for the eternal welfare and happiness of others.", "ref": "Mosiah 28:3"}, {"text": "When I pray, I ask for charity—the pure love of Christ.", "ref": "Moroni 7:47–48"}, {"text": "I try to understand others’ feelings and see their point of view.", "ref": "Jude 1:22"}, {"text": "I forgive others who have offended or wronged me.", "ref": "Ephesians 4:32"}, {"text": "I reach out in love to help those who are lonely, struggling, or discouraged.", "ref": "Mosiah 18:9"}, {"text": "When appropriate, I express my love and care for others by ministering to them through word and deed.", "ref": "Luke 7:12–15"}, {"text": "I look for opportunities to serve others.", "ref": "Mosiah 2:17"}, {"text": "I say positive things about others.", "ref": "Doctrine and Covenants 42:27"}, {"text": "I am kind and patient with others, even when they are hard to get along with.", "ref": "Moroni 7:45"}, {"text": "I find joy in others’ achievements.", "ref": "Alma 17:2–4"}]}, {"name": "Virtue", "items": [{"text": "I am clean and pure in heart.", "ref": "Psalm 24:3–4"}, {"text": "I desire to do good.", "ref": "Mosiah 5:2"}, {"text": "I focus on righteous, uplifting thoughts and put unwholesome thoughts out of my mind.", "ref": "Doctrine and Covenants 121:45"}, {"text": "I repent of my sins and strive to overcome my weaknesses.", "ref": "Doctrine and Covenants 49:26–28; Ether 12:27"}, {"text": "I feel the influence of the Holy Ghost in my life.", "ref": "Doctrine and Covenants 11:12–13"}]}, {"name": "Integrity", "items": [{"text": "I am true to God at all times.", "ref": "Mosiah 18:9"}, {"text": "I do not lower my standards or behavior so I can impress or be accepted by others.", "ref": "1 Nephi 8:24–28"}, {"text": "I am honest with God, myself, my leaders, and others.", "ref": "Doctrine and Covenants 51:9"}, {"text": "I am dependable.", "ref": "Alma 53:20"}]}, {"name": "Knowledge", "items": [{"text": "I feel confident in my understanding of gospel doctrine and principles.", "ref": "Alma 17:2–3"}, {"text": "I study the scriptures daily.", "ref": "2 Timothy 3:16–17"}, {"text": "I seek to understand the truth and find answers to my questions.", "ref": "Doctrine and Covenants 6:7"}, {"text": "I seek knowledge and guidance through the Spirit.", "ref": "1 Nephi 4:6"}, {"text": "I cherish the doctrine and principles of the gospel.", "ref": "2 Nephi 4:15"}]}, {"name": "Patience", "items": [{"text": "I wait patiently for the blessings and promises of the Lord to be fulfilled.", "ref": "2 Nephi 10:17"}, {"text": "I am able to wait for things without getting upset or frustrated.", "ref": "Romans 8:25"}, {"text": "I am patient with the challenges of being a missionary.", "ref": "Alma 17:11"}, {"text": "I am patient with others.", "ref": "Romans 15:1"}, {"text": "I am patient with myself and rely on the Lord as I work to overcome my weaknesses.", "ref": "Ether 12:27"}, {"text": "I face adversity with patience and faith.", "ref": "Alma 34:40–41"}]}, {"name": "Humility", "items": [{"text": "I am meek and lowly in heart.", "ref": "Matthew 11:29"}, {"text": "I rely on God for help.", "ref": "Alma 26:12"}, {"text": "I am grateful for the blessings I have received from God.", "ref": "Alma 7:23"}, {"text": "My prayers are earnest and sincere.", "ref": "Enos 1:4"}, {"text": "I appreciate direction from my leaders or teachers.", "ref": "2 Nephi 9:28–29"}, {"text": "I strive to be submissive to God’s will.", "ref": "Mosiah 24:15"}]}, {"name": "Diligence", "items": [{"text": "I work effectively, even when I’m not under close supervision.", "ref": "Doctrine and Covenants 58:26–27"}, {"text": "I focus my efforts on the most important things.", "ref": "Matthew 23:23"}, {"text": "I have a personal prayer at least twice a day.", "ref": "Alma 34:17–27"}, {"text": "I focus my thoughts on my calling as a missionary.", "ref": "Doctrine and Covenants 4:2, 5"}, {"text": "I set goals and plan regularly.", "ref": "Doctrine and Covenants 88:119"}, {"text": "I work hard until the job is completed.", "ref": "Doctrine and Covenants 10:4"}, {"text": "I find joy and satisfaction in my work.", "ref": "Alma 36:24–25"}]}, {"name": "Obedience", "items": [{"text": "When I pray, I ask for strength to resist temptation and to do what is right.", "ref": "3 Nephi 18:15"}, {"text": "I am worthy to have a temple recommend.", "ref": "Doctrine and Covenants 97:8"}, {"text": "I willingly obey the mission rules and follow the counsel of my leaders.", "ref": "Hebrews 13:17"}, {"text": "I strive to live in accordance with the laws and principles of the gospel.", "ref": "Doctrine and Covenants"}]}];
+let state = JSON.parse(localStorage.getItem('christlikeAttributeState') || '{"draft":{"answers":{},"focus":"","plan":""},"history":[]}');
+
+function save() {
+  localStorage.setItem('christlikeAttributeState', JSON.stringify(state));
+}
+
+function esc(s='') {
+  return String(s).replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+}
+
+function scoresFrom(draft) {
+  return quiz.map((cat, ci) => {
+    let total = 0, answered = 0;
+    cat.items.forEach((item, ii) => {
+      let v = Number(draft.answers[ci + '-' + ii] || 0);
+      if (v) { total += v; answered++; }
+    });
+    let max = cat.items.length * 5;
+    return {name: cat.name, total, max, answered, pct: Math.round(total / max * 100)};
+  });
+}
+
+function render() {
+  let d = state.draft;
+  let scores = scoresFrom(d);
+  let answered = scores.reduce((s,x)=>s+x.answered,0);
+  let totalQuestions = quiz.reduce((s,c)=>s+c.items.length,0);
+  let html = '<div class="card"><b>Progress:</b> ' + answered + '/' + totalQuestions + ' questions answered<br><span class="muted">Saved assessments: ' + state.history.length + '</span></div>';
+  quiz.forEach((cat, ci) => {
+    let s = scores[ci];
+    html += '<div class="card"><h2>' + esc(cat.name) + '</h2><div class="muted">Score: ' + s.total + '/' + s.max + ' (' + s.pct + '%)</div>';
+    cat.items.forEach((item, ii) => {
+      let key = ci + '-' + ii;
+      let val = Number(d.answers[key] || 0);
+      html += '<div class="item"><b>' + (ii+1) + '.</b> ' + esc(item.text) + ' <span class="muted">(' + esc(item.ref) + ')</span><div class="scoreBtns">';
+      for (let n=1; n<=5; n++) {
+        html += '<button class="' + (val === n ? 'sel' : '') + '" onclick="setScore(\'' + key + '\',' + n + ')">' + n + '</button>';
+      }
+      html += '</div></div>';
+    });
+    html += '</div>';
+  });
+  html += '<div class="card"><label>Which Christlike attribute will I focus on this week?</label><select onchange="state.draft.focus=this.value;save()"><option value="">Choose one</option>';
+  quiz.forEach(cat => html += '<option ' + (d.focus === cat.name ? 'selected' : '') + '>' + esc(cat.name) + '</option>');
+  html += '</select><label>What is one thing I will do this week to improve this attribute?</label><textarea oninput="state.draft.plan=this.value;save()">' + esc(d.plan || '') + '</textarea><br><button class="primary" onclick="saveAssessment()">Save This Assessment</button><button onclick="clearDraft()">Clear Draft</button></div>';
+  document.getElementById('app').innerHTML = html;
+}
+
+function setScore(key, value) {
+  state.draft.answers[key] = value;
+  save();
+  render();
+}
+
+function saveAssessment() {
+  let scores = scoresFrom(state.draft);
+  let answered = scores.reduce((s,x)=>s+x.answered,0);
+  if (!answered) { alert('Add at least one score first.'); return; }
+  state.history.push({
+    date: new Date().toLocaleDateString(),
+    timestamp: Date.now(),
+    answers: Object.assign({}, state.draft.answers),
+    focus: state.draft.focus || '',
+    plan: state.draft.plan || '',
+    scores
+  });
+  state.draft = {answers:{}, focus:'', plan:''};
+  save();
+  alert('Assessment saved.');
+  render();
+}
+
+function clearDraft() {
+  if (!confirm('Clear this unsaved assessment draft?')) return;
+  state.draft = {answers:{}, focus:'', plan:''};
+  save();
+  render();
+}
+
+function showHistory() {
+  let html = '<div class="card"><button onclick="render()">← Current Assessment</button><button onclick="printHistory()">Print History</button><h2>Assessment History</h2>';
+  if (!state.history.length) html += '<p class="muted">No saved assessments yet.</p>';
+  state.history.slice().reverse().forEach(h => {
+    let total = h.scores.reduce((s,x)=>s+x.total,0);
+    let max = h.scores.reduce((s,x)=>s+x.max,0);
+    html += '<div class="summary"><b>' + esc(h.date) + '</b><br>Overall: ' + Math.round(total/max*100) + '%<br>Focus: ' + esc(h.focus || '') + '<br><span class="muted">' + esc(h.plan || '') + '</span>';
+    h.scores.forEach(s => html += '<div class="resultRow"><span>' + esc(s.name) + '</span><span>' + s.total + '/' + s.max + ' (' + s.pct + '%)</span></div>');
+    html += '</div>';
+  });
+  html += '</div>';
+  document.getElementById('app').innerHTML = html;
+}
+
+function printAssessmentObj(title, obj) {
+  let scores = obj.scores || scoresFrom(obj);
+  let rows = scores.map(s => '<div><b>' + esc(s.name) + '</b>: ' + s.total + '/' + s.max + ' (' + s.pct + '%)</div>').join('');
+  let p = window.open('', '_blank');
+  p.document.write('<html><head><title>' + esc(title) + '</title><style>body{font-family:Georgia,serif;margin:36px;color:#222}div{line-height:1.5;margin-bottom:6px}@media print{button{display:none}}</style></head><body><button onclick="window.print()">Print / Save PDF</button><h1>' + esc(title) + '</h1><div>Date: ' + new Date().toLocaleDateString() + '</div>' + rows + '<h3>Focus Attribute</h3><p>' + esc(obj.focus || '') + '</p><h3>Plan</h3><p>' + esc(obj.plan || '') + '</p></body></html>');
+  p.document.close();
+}
+
+function printCurrent() {
+  printAssessmentObj('Current Christlike Attribute Assessment', state.draft);
+}
+
+function printHistory() {
+  let rows = state.history.map(h => {
+    let total = h.scores.reduce((s,x)=>s+x.total,0);
+    let max = h.scores.reduce((s,x)=>s+x.max,0);
+    return '<div><b>' + esc(h.date) + '</b> — Overall ' + Math.round(total/max*100) + '% — Focus: ' + esc(h.focus || '') + '</div>';
+  }).join('');
+  let p = window.open('', '_blank');
+  p.document.write('<html><head><title>Assessment History</title><style>body{font-family:Georgia,serif;margin:36px;color:#222}div{line-height:1.5;margin-bottom:8px}@media print{button{display:none}}</style></head><body><button onclick="window.print()">Print / Save PDF</button><h1>Christlike Attribute Assessment History</h1>' + (rows || '<p>No saved assessments yet.</p>') + '</body></html>');
+  p.document.close();
+}
+
+render();
+</script>
+</body>
+</html>

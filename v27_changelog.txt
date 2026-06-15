@@ -1,0 +1,1 @@
+Version 27 surgical fix: updates only Week 1 refs 93-96 visible text to Hebrews while preserving progress.

@@ -1,0 +1,1 @@
+Version 23: fixed manifest icons for new users and preserved Christus icon files. Also includes Hebrews corrections for Week 1 refs 93-96.

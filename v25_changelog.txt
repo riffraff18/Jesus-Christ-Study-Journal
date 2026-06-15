@@ -1,0 +1,12 @@
+Version 25 Hebrews Backup Migration
+
+- Corrects Week 1 refs 93-96 in embedded app data.
+- Also fixes those references inside imported/restored backup data.
+- Preserves checkboxes, favorites, notes, and reading progress.
+- Keeps icon manifest fix.
+
+Corrected refs:
+93 Hebrews 2:9
+94 Hebrews 4:14
+95 Hebrews 12:2
+96 Hebrews 13:8

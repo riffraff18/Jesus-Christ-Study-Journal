@@ -1,0 +1,8 @@
+Version 24 Hebrews Reference Fix
+
+Ref 93: Hebrews 2:9
+Ref 94: Hebrews 4:14
+Ref 95: Hebrews 12:2
+Ref 96: Hebrews 13:8
+
+Progress should be preserved because storage keys and reference order are unchanged.

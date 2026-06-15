@@ -1,0 +1,9 @@
+Version 26 Visible Hebrews Text Fix
+
+- Forces restored/imported backup display text to update for Week 1 refs 93-96.
+- Keeps existing checkmarks, favorites, notes, and links.
+- Corrected visible references:
+  93 Hebrews 2:9
+  94 Hebrews 4:14
+  95 Hebrews 12:2
+  96 Hebrews 13:8

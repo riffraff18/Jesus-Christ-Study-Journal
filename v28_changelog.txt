@@ -1,0 +1,10 @@
+Version 28 Favorite Journal Auto-Open
+
+- When you tap the star on a scripture, the app immediately opens a focused Favorite Scripture Journal entry.
+- The entry is pre-filled with week, topic, reference, and date.
+- You can write:
+  - Why is this a favorite?
+  - What did I learn about Jesus Christ?
+  - How can I apply this?
+- Save and return to the week.
+- Existing progress, favorites, notes, JTC readings, and assessments are preserved.

@@ -1,0 +1,10 @@
+Version 29 Reliability Update
+
+- Adds visible app version label.
+- Adds Reliability Center.
+- Adds backup timestamp tracking.
+- Adds progress snapshot.
+- Adds import preview before applying backup.
+- Adds backup reminder after progress milestones.
+- Adds data integrity checker and repair for Week 1 refs 93-96.
+- Preserves existing progress, favorites, notes, JTC readings, assessments, and app structure.

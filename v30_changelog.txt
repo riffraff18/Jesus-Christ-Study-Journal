@@ -1,0 +1,8 @@
+Version 30 Study Navigation Update
+
+- Adds Search References.
+- Search by scripture reference or weekly topic.
+- Adds Next Unchecked button.
+- Next Unchecked opens the first unfinished reference and highlights it.
+- Keeps V29b safe backup reminder and version label.
+- Does not alter storage structure or study data.

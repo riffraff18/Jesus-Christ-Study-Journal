@@ -40,7 +40,14 @@ label{font-weight:750;display:block;margin-top:16px;margin-bottom:6px}textarea{w
 .walkRef{border-bottom:1px solid #eee7d9;padding:10px 0}
 .walkRef a{font-weight:800;color:#1769d1;text-decoration:none}
 .walkMeta{color:#6b665d;font-size:14px}
-</style></head><body><header><h1>Jesus Christ Topical Guide Study</h1><div class="sub">Scripture Study Library with Character Studies and Walk With Christ pilot studies.</div><div class="bar"><div id="prog"></div></div><div class="sub" id="stats"></div><div class="versionPill" id="appVersionLabel">Version 38</div><div class="backupNote" id="backupNote"></div><div class="streakPill" id="streakLabel" onclick="showStreakDetails()">🔥 0 day streak</div><div class="reminderPill" id="reminderLabel" onclick="showReminderSettings()">⏰ Reminder off</div></header>
+
+.bomGrid{display:grid;grid-template-columns:1fr;gap:12px}
+.bomCard{border:1px solid #ddd6ca;border-radius:18px;padding:16px;background:#fff}
+.bomCard h3{margin:0 0 8px}
+.bomRef{border-bottom:1px solid #eee7d9;padding:10px 0}
+.bomRef a{font-weight:800;color:#1769d1;text-decoration:none}
+.bomMeta{color:#6b665d;font-size:14px}
+</style></head><body><header><h1>Jesus Christ Topical Guide Study</h1><div class="sub">Scripture Study Library with Character Studies, Walk With Christ, and Book of Mormon Discipleship pilot studies.</div><div class="bar"><div id="prog"></div></div><div class="sub" id="stats"></div><div class="versionPill" id="appVersionLabel">Version 39</div><div class="backupNote" id="backupNote"></div><div class="streakPill" id="streakLabel" onclick="showStreakDetails()">🔥 0 day streak</div><div class="reminderPill" id="reminderLabel" onclick="showReminderSettings()">⏰ Reminder off</div></header>
 <main><section id="list" class="view on"><div class="card"><button onclick="showStudyLibrary()">📚 Study Library</button><button onclick="exportData()">Export Backup</button><button onclick="document.getElementById('imp').click()">Import</button><a href="assessment.html" style="text-decoration:none"><button type="button">Christlike Attribute Assessment</button></a><button onclick="showReminderSettings()">Study Reminder</button><button onclick="showSearchPanel()">Search References</button><button onclick="jumpToNextUnchecked()">Next Unchecked</button><button onclick="showFavoritesJournal()">⭐ Favorites Journal</button><button onclick="printFavoritesJournal()">Print Favorites Journal</button><input id="imp" type="file" accept="application/json" style="display:none" onchange="importData(event)"><div id="weeks"></div></div></section><section id="detail" class="view"><div class="card" id="content"></div></section>
 <section id="studyLibrary" class="view">
   <div class="card">
@@ -74,6 +81,16 @@ label{font-weight:750;display:block;margin-top:16px;margin-bottom:6px}textarea{w
     <div id="walkDetail"></div>
   </div>
 </section>
+<section id="bookOfMormonDiscipleship" class="view">
+  <div class="card">
+    <div class="top"><button onclick="showStudyLibrary()">← Study Library</button></div>
+    <h2>Book of Mormon Discipleship Study</h2>
+    <p class="muted">A guided study focused on coming unto Christ through the Book of Mormon. This pilot introduces core discipleship themes and scripture references.</p>
+    <div id="bomList" class="bomGrid"></div>
+    <div id="bomDetail"></div>
+  </div>
+</section>
+
 
 
 <section id="reminderSettings" class="view"><div class="card"><div class="top"><button onclick="showList()">← Weeks</button></div><h2>Study Reminder</h2><div class="reminderBox"><p class="muted">This is an in-app reminder. It appears when you open the app after your reminder time. Phone push notifications can be added later if we convert to a full App Store app.</p><label>Reminder time</label><input id="reminderTimeInput" type="time"><br><button class="primary" onclick="saveReminderSettings()">Save Reminder</button><button onclick="turnOffReminder()">Turn Off</button></div><div id="reminderSettingsStatus" class="muted"></div></div></section><section id="searchPanel" class="view"><div class="card"><div class="top"><button onclick="showList()">← Weeks</button></div><h2>Search References</h2><div class="searchBox"><label>Search by reference or topic</label><input id="searchInput" placeholder="Example: Hebrews, charity, Luke 2" oninput="runSearch()"></div><div id="searchResults" class="muted">Type to search your study references.</div></div></section><section id="favoritesJournal" class="view"><div class="card"><div class="top"><button onclick="showList()">← Weeks</button><div class="spacer"></div><button onclick="printFavoritesJournal()">Print</button></div><h2>Favorite Scripture Journal</h2><div class="muted">Star scriptures as favorites, then record what they teach you about Jesus Christ.</div><div id="favoritesJournalList"></div></div></section></main>
@@ -105,7 +122,7 @@ function fixHebrewsBackupRefs(){
 fixHebrewsBackupRefs();
 function data(n){let w=weeks[n-1];if(!state[n])state[n]={done:false,refs:w.refs.map(x=>({text:x.text,url:x.url,done:false,fav:false,favWhy:'',favChrist:'',favImpression:''})),learned:'',attribute:'',scripture:'',impressions:''};if(w.refs.some(r=>r.text)&&(!state[n].refs||state[n].refs.length!==w.refs.length||state[n].refs.some((r,i)=>r.text!==w.refs[i].text||r.url!==w.refs[i].url))){let old=state[n].refs||[];state[n].refs=w.refs.map((x,i)=>({text:x.text,url:x.url,done:old[i]?.done||false,fav:old[i]?.fav||false,favWhy:old[i]?.favWhy||'',favChrist:old[i]?.favChrist||'',favImpression:old[i]?.favImpression||''}))}let j=jesusTheChristReadings[n]||[];if(!state[n].jtc||state[n].jtc.length!==j.length){let old=state[n].jtc||[];state[n].jtc=j.map((x,i)=>({title:x[0],url:x[1],done:old[i]?.done||false,date:old[i]?.date||''}))}return state[n]}
 function save(){localStorage.setItem('tgStudyState',JSON.stringify(state));localStorage.setItem('tgStudyCurrent',current);renderList();stats()}
-function hideAllViews(){document.getElementById('list').classList.remove('on');document.getElementById('detail').classList.remove('on');document.getElementById('favoritesJournal').classList.remove('on');let ww=document.getElementById('walkWithChrist');if(ww)ww.classList.remove('on');let cs=document.getElementById('characterStudies');if(cs)cs.classList.remove('on');let hub=document.getElementById('studyLibrary');if(hub)hub.classList.remove('on');let rs=document.getElementById('reminderSettings');if(rs)rs.classList.remove('on');let sp=document.getElementById('searchPanel');if(sp)sp.classList.remove('on')}
+function hideAllViews(){document.getElementById('list').classList.remove('on');document.getElementById('detail').classList.remove('on');document.getElementById('favoritesJournal').classList.remove('on');let bom=document.getElementById('bookOfMormonDiscipleship');if(bom)bom.classList.remove('on');let ww=document.getElementById('walkWithChrist');if(ww)ww.classList.remove('on');let cs=document.getElementById('characterStudies');if(cs)cs.classList.remove('on');let hub=document.getElementById('studyLibrary');if(hub)hub.classList.remove('on');let rs=document.getElementById('reminderSettings');if(rs)rs.classList.remove('on');let sp=document.getElementById('searchPanel');if(sp)sp.classList.remove('on')}
 function showList(){hideAllViews();document.getElementById('list').classList.add('on');scrollTo(0,0)}
 function openWeek(n){current=n;renderDetail();hideAllViews();document.getElementById('detail').classList.add('on');save();scrollTo(0,0)}
 
@@ -362,7 +379,7 @@ const STUDY_LIBRARY_PLANS=[
   {id:'jesus',icon:'📖',title:'Jesus Christ Topical Guide Study',status:'live',desc:'Your active 78-week guided study of Jesus Christ with scripture references, favorites, journal, JTC readings, assessment, search, streaks, and reminders.'},
   {id:'characters',icon:'👥',title:'Scripture Character Studies',status:'live',desc:'Pilot study: study specific people in scripture with their stories, references, attributes, and lessons.'},
   {id:'walk',icon:'✝️',title:'Walk With Christ',status:'live',desc:'Pilot study: a Bible-centered study path focused on the life, teachings, Atonement, Resurrection, and discipleship of Jesus Christ.'},
-  {id:'bom',icon:'📘',title:'Book of Mormon Discipleship Study',status:'soon',desc:'Coming soon: a guided study focused on coming unto Christ through the Book of Mormon.'},
+  {id:'bom',icon:'📘',title:'Book of Mormon Discipleship Study',status:'live',desc:'Pilot study: a guided study focused on coming unto Christ through the Book of Mormon.'},
   {id:'conference',icon:'🎤',title:'General Conference Study',status:'soon',desc:'Coming soon: study conference talks by topic, speaker, scripture references, and personal application.'}
 ];
 function showStudyLibrary(){
@@ -392,7 +409,7 @@ function renderStudyLibrary(){
   box.innerHTML=STUDY_LIBRARY_PLANS.map(p=>{
     let live=p.status==='live';
     let badge=live?'<span class="libraryBadge live">Available now</span>':'<span class="libraryBadge soon">Coming soon</span>';
-    let btn=p.id==='characters'?'<button class="primary" onclick="showCharacterStudies()">Open Character Studies</button>':(p.id==='walk'?'<button class="primary" onclick="showWalkWithChrist()">Open Walk With Christ</button>':(live?'<button class="primary" onclick="showList()">Continue Study</button>':'<button onclick="alert(&quot;This study plan is coming in a future version.&quot;)">Preview Future Plan</button>'));
+    let btn=p.id==='characters'?'<button class="primary" onclick="showCharacterStudies()">Open Character Studies</button>':(p.id==='walk'?'<button class="primary" onclick="showWalkWithChrist()">Open Walk With Christ</button>':(p.id==='bom'?'<button class="primary" onclick="showBookOfMormonDiscipleship()">Open Book of Mormon Study</button>':(live?'<button class="primary" onclick="showList()">Continue Study</button>':'<button onclick="alert(&quot;This study plan is coming in a future version.&quot;)">Preview Future Plan</button>')));
     return '<div class="libraryCard '+(live?'active':'')+'"><h3>'+p.icon+' '+esc(p.title)+'</h3>'+badge+'<p>'+esc(p.desc)+'</p>'+btn+'</div>';
   }).join('');
 }
@@ -523,6 +540,65 @@ function openWalkSection(id){
   let list=document.getElementById('walkList'),detail=document.getElementById('walkDetail');
   if(list)list.innerHTML='';
   detail.innerHTML=`<button onclick="renderWalkList()">← All Walk With Christ Topics</button><h2>${esc(s.title)}</h2><p>${esc(s.summary)}</p><div class="walkMeta">Focus: ${esc(s.focus)}</div><h3>Scripture References</h3>${s.refs.map((r,i)=>`<div class="walkRef">${i+1}. <a target="_blank" href="${attr(r[1])}">${esc(r[0])}</a></div>`).join('')}<h3>Journal Prompt</h3><p>What does this teach me about Jesus Christ and following Him?</p><textarea style="min-height:160px" placeholder="Write impressions here..."></textarea>`;
+  scrollTo(0,0);
+}
+
+
+const BOM_DISCIPLESHIP=[
+  {id:'come-unto-christ',title:'Come Unto Christ',summary:'Study the central invitation of the Book of Mormon: to come unto Jesus Christ and be perfected in Him.',focus:'Jesus Christ invites all people to come unto Him.',refs:[
+    ['Moroni 10:32-33','https://www.churchofjesuschrist.org/study/scriptures/bofm/moro/10?lang=eng&id=p32-p33#p32'],
+    ['3 Nephi 27:20','https://www.churchofjesuschrist.org/study/scriptures/bofm/3-ne/27?lang=eng&id=p20#p20'],
+    ['2 Nephi 26:33','https://www.churchofjesuschrist.org/study/scriptures/bofm/2-ne/26?lang=eng&id=p33#p33']
+  ]},
+  {id:'faith',title:'Faith in Jesus Christ',summary:'Study how faith in Christ leads to action, miracles, repentance, and spiritual power.',focus:'Faith in Christ moves us to act.',refs:[
+    ['Ether 12:6','https://www.churchofjesuschrist.org/study/scriptures/bofm/ether/12?lang=eng&id=p6#p6'],
+    ['Alma 32:21','https://www.churchofjesuschrist.org/study/scriptures/bofm/alma/32?lang=eng&id=p21#p21'],
+    ['Moroni 7:33','https://www.churchofjesuschrist.org/study/scriptures/bofm/moro/7?lang=eng&id=p33#p33']
+  ]},
+  {id:'repentance',title:'Repentance and Change',summary:'Study how Christ changes hearts and invites us to turn fully to Him.',focus:'Repentance is turning to Christ and being changed by Him.',refs:[
+    ['Mosiah 5:2','https://www.churchofjesuschrist.org/study/scriptures/bofm/mosiah/5?lang=eng&id=p2#p2'],
+    ['Alma 36:17-21','https://www.churchofjesuschrist.org/study/scriptures/bofm/alma/36?lang=eng&id=p17-p21#p17'],
+    ['Helaman 5:11','https://www.churchofjesuschrist.org/study/scriptures/bofm/hel/5?lang=eng&id=p11#p11']
+  ]},
+  {id:'covenants',title:'Covenants and Baptism',summary:'Study the covenant path and what it means to witness, serve, and follow Christ.',focus:'Disciples make and keep covenants with God.',refs:[
+    ['Mosiah 18:8-10','https://www.churchofjesuschrist.org/study/scriptures/bofm/mosiah/18?lang=eng&id=p8-p10#p8'],
+    ['2 Nephi 31:10-13','https://www.churchofjesuschrist.org/study/scriptures/bofm/2-ne/31?lang=eng&id=p10-p13#p10'],
+    ['3 Nephi 11:31-39','https://www.churchofjesuschrist.org/study/scriptures/bofm/3-ne/11?lang=eng&id=p31-p39#p31']
+  ]},
+  {id:'charity',title:'Charity and Pure Love',summary:'Study the pure love of Christ and how disciples seek, receive, and live that love.',focus:'Christlike disciples seek charity.',refs:[
+    ['Moroni 7:45-48','https://www.churchofjesuschrist.org/study/scriptures/bofm/moro/7?lang=eng&id=p45-p48#p45'],
+    ['Mosiah 2:17','https://www.churchofjesuschrist.org/study/scriptures/bofm/mosiah/2?lang=eng&id=p17#p17'],
+    ['Alma 7:23-24','https://www.churchofjesuschrist.org/study/scriptures/bofm/alma/7?lang=eng&id=p23-p24#p23']
+  ]},
+  {id:'endure',title:'Endure in Faith',summary:'Study how disciples continue in faith, hope, and obedience through trials.',focus:'Christ strengthens disciples to endure faithfully.',refs:[
+    ['2 Nephi 31:19-21','https://www.churchofjesuschrist.org/study/scriptures/bofm/2-ne/31?lang=eng&id=p19-p21#p19'],
+    ['Alma 34:40-41','https://www.churchofjesuschrist.org/study/scriptures/bofm/alma/34?lang=eng&id=p40-p41#p40'],
+    ['Ether 12:27','https://www.churchofjesuschrist.org/study/scriptures/bofm/ether/12?lang=eng&id=p27#p27']
+  ]},
+  {id:'witness',title:'Becoming a Witness of Christ',summary:'Study how disciples bear witness of Christ through testimony, service, and faithful living.',focus:'Disciples become witnesses of Jesus Christ.',refs:[
+    ['Mosiah 18:9','https://www.churchofjesuschrist.org/study/scriptures/bofm/mosiah/18?lang=eng&id=p9#p9'],
+    ['3 Nephi 18:24','https://www.churchofjesuschrist.org/study/scriptures/bofm/3-ne/18?lang=eng&id=p24#p24'],
+    ['Moroni 10:3-5','https://www.churchofjesuschrist.org/study/scriptures/bofm/moro/10?lang=eng&id=p3-p5#p3']
+  ]}
+];
+function showBookOfMormonDiscipleship(){
+  hideAllViews();
+  renderBomList();
+  document.getElementById('bookOfMormonDiscipleship').classList.add('on');
+  scrollTo(0,0);
+}
+function renderBomList(){
+  let list=document.getElementById('bomList'),detail=document.getElementById('bomDetail');
+  if(!list)return;
+  if(detail)detail.innerHTML='';
+  list.innerHTML=BOM_DISCIPLESHIP.map(s=>`<div class="bomCard"><h3>${esc(s.title)}</h3><p>${esc(s.summary)}</p><div class="bomMeta">Focus: ${esc(s.focus)}</div><button onclick="openBomSection('${s.id}')">Open Study</button></div>`).join('');
+}
+function openBomSection(id){
+  let s=BOM_DISCIPLESHIP.find(x=>x.id===id);
+  if(!s)return;
+  let list=document.getElementById('bomList'),detail=document.getElementById('bomDetail');
+  if(list)list.innerHTML='';
+  detail.innerHTML=`<button onclick="renderBomList()">← All Book of Mormon Topics</button><h2>${esc(s.title)}</h2><p>${esc(s.summary)}</p><div class="bomMeta">Focus: ${esc(s.focus)}</div><h3>Scripture References</h3>${s.refs.map((r,i)=>`<div class="bomRef">${i+1}. <a target="_blank" href="${attr(r[1])}">${esc(r[0])}</a></div>`).join('')}<h3>Journal Prompt</h3><p>How does this passage invite me to become a better disciple of Jesus Christ?</p><textarea style="min-height:160px" placeholder="Write impressions here..."></textarea>`;
   scrollTo(0,0);
 }
 

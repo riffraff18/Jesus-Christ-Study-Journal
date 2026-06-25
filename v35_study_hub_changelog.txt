@@ -1,0 +1,9 @@
+Version 35 Study Hub
+
+- Built from stable V34d.
+- Adds Scripture Study Hub section.
+- Keeps Jesus Christ Topical Guide Study active.
+- Adds progress summary in the hub.
+- Adds future study cards for Character Studies, Walk With Christ, Book of Mormon, and Conference Study.
+- Future study cards are preview-only.
+- Keeps existing storage, progress, search, reminders, streaks, favorites, backups, and assessment.

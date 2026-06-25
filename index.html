@@ -23,7 +23,7 @@ label{font-weight:750;display:block;margin-top:16px;margin-bottom:6px}textarea{w
 .hubBadge{display:inline-block;border-radius:999px;padding:4px 10px;font-size:12px;font-weight:800;margin:8px 0}
 .hubBadge.live{background:#e7f5e7;color:#26753a}
 .hubBadge.soon{background:#f5eee1;color:#6b665d}
-</style></head><body><header><h1>Jesus Christ Topical Guide Study</h1><div class="sub">Scripture Study Hub with the Jesus Christ Topical Guide Study active and future guided studies prepared.</div><div class="bar"><div id="prog"></div></div><div class="sub" id="stats"></div><div class="versionPill" id="appVersionLabel">Version 35</div><div class="backupNote" id="backupNote"></div><div class="streakPill" id="streakLabel" onclick="showStreakDetails()">🔥 0 day streak</div><div class="reminderPill" id="reminderLabel" onclick="showReminderSettings()">⏰ Reminder off</div></header>
+</style></head><body><header><h1>Jesus Christ Topical Guide Study</h1><div class="sub">Scripture Study Hub with the Jesus Christ Topical Guide Study active and future guided studies prepared.</div><div class="bar"><div id="prog"></div></div><div class="sub" id="stats"></div><div class="versionPill" id="appVersionLabel">Version 35b</div><div class="backupNote" id="backupNote"></div><div class="streakPill" id="streakLabel" onclick="showStreakDetails()">🔥 0 day streak</div><div class="reminderPill" id="reminderLabel" onclick="showReminderSettings()">⏰ Reminder off</div></header>
 <main><section id="list" class="view on"><div class="card"><button onclick="showStudyHub()">📚 Study Hub</button><button onclick="exportData()">Export Backup</button><button onclick="document.getElementById('imp').click()">Import</button><a href="assessment.html" style="text-decoration:none"><button type="button">Christlike Attribute Assessment</button></a><button onclick="showReminderSettings()">Study Reminder</button><button onclick="showSearchPanel()">Search References</button><button onclick="jumpToNextUnchecked()">Next Unchecked</button><button onclick="showFavoritesJournal()">⭐ Favorites Journal</button><button onclick="printFavoritesJournal()">Print Favorites Journal</button><input id="imp" type="file" accept="application/json" style="display:none" onchange="importData(event)"><div id="weeks"></div></div></section><section id="detail" class="view"><div class="card" id="content"></div></section>
 <section id="studyHub" class="view">
   <div class="card">
@@ -355,7 +355,7 @@ function renderStudyHub(){
   box.innerHTML=HUB_PLANS.map(p=>{
     let live=p.status==='live';
     let badge=live?'<span class="hubBadge live">Available now</span>':'<span class="hubBadge soon">Coming soon</span>';
-    let btn=live?'<button class="primary" onclick="showList()">Continue Study</button>':'<button onclick="alert(\\'This study plan is coming in a future version.\\')">Preview Future Plan</button>';
+    let btn=live?'<button class="primary" onclick="showList()">Continue Study</button>':'<button onclick="alert(&quot;This study plan is coming in a future version.&quot;)">Preview Future Plan</button>';
     return '<div class="hubCard '+(live?'active':'')+'"><h3>'+p.icon+' '+esc(p.title)+'</h3>'+badge+'<p>'+esc(p.desc)+'</p>'+btn+'</div>';
   }).join('');
 }

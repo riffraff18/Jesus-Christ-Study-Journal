@@ -1,0 +1,5 @@
+Version 35b
+
+- Fixes JavaScript quote error in V35 that caused buttons to stop working.
+- Keeps Study Hub.
+- Built from V35 with only the syntax repair and cache/version bump.

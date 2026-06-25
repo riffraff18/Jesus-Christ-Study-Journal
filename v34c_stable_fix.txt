@@ -1,0 +1,1 @@
+V34c rebuilt from stable V32. Inline JS only. Adds Study Library safely.

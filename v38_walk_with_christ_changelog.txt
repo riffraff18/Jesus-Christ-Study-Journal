@@ -1,0 +1,8 @@
+Version 38 Walk With Christ Pilot
+
+- Built from stable V37.
+- Adds Walk With Christ pilot study.
+- Bible-centered and welcoming to non-LDS Christians.
+- Starter topics include Birth, Baptism, Calling Disciples, Sermon on the Mount, Miracles, Parables, Last Supper, Gethsemane, Crucifixion, and Resurrection.
+- Keeps Character Studies and Jesus Christ Topical Guide study.
+- Does not change existing progress data.

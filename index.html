@@ -33,7 +33,14 @@ label{font-weight:750;display:block;margin-top:16px;margin-bottom:6px}textarea{w
 .characterRef{border-bottom:1px solid #eee7d9;padding:10px 0}
 .characterRef a{font-weight:800;color:#1769d1;text-decoration:none}
 .characterMeta{color:#6b665d;font-size:14px}
-</style></head><body><header><h1>Jesus Christ Topical Guide Study</h1><div class="sub">Scripture Study Library with pilot Scripture Character Studies.</div><div class="bar"><div id="prog"></div></div><div class="sub" id="stats"></div><div class="versionPill" id="appVersionLabel">Version 37</div><div class="backupNote" id="backupNote"></div><div class="streakPill" id="streakLabel" onclick="showStreakDetails()">🔥 0 day streak</div><div class="reminderPill" id="reminderLabel" onclick="showReminderSettings()">⏰ Reminder off</div></header>
+
+.walkGrid{display:grid;grid-template-columns:1fr;gap:12px}
+.walkCard{border:1px solid #ddd6ca;border-radius:18px;padding:16px;background:#fff}
+.walkCard h3{margin:0 0 8px}
+.walkRef{border-bottom:1px solid #eee7d9;padding:10px 0}
+.walkRef a{font-weight:800;color:#1769d1;text-decoration:none}
+.walkMeta{color:#6b665d;font-size:14px}
+</style></head><body><header><h1>Jesus Christ Topical Guide Study</h1><div class="sub">Scripture Study Library with Character Studies and Walk With Christ pilot studies.</div><div class="bar"><div id="prog"></div></div><div class="sub" id="stats"></div><div class="versionPill" id="appVersionLabel">Version 38</div><div class="backupNote" id="backupNote"></div><div class="streakPill" id="streakLabel" onclick="showStreakDetails()">🔥 0 day streak</div><div class="reminderPill" id="reminderLabel" onclick="showReminderSettings()">⏰ Reminder off</div></header>
 <main><section id="list" class="view on"><div class="card"><button onclick="showStudyLibrary()">📚 Study Library</button><button onclick="exportData()">Export Backup</button><button onclick="document.getElementById('imp').click()">Import</button><a href="assessment.html" style="text-decoration:none"><button type="button">Christlike Attribute Assessment</button></a><button onclick="showReminderSettings()">Study Reminder</button><button onclick="showSearchPanel()">Search References</button><button onclick="jumpToNextUnchecked()">Next Unchecked</button><button onclick="showFavoritesJournal()">⭐ Favorites Journal</button><button onclick="printFavoritesJournal()">Print Favorites Journal</button><input id="imp" type="file" accept="application/json" style="display:none" onchange="importData(event)"><div id="weeks"></div></div></section><section id="detail" class="view"><div class="card" id="content"></div></section>
 <section id="studyLibrary" class="view">
   <div class="card">
@@ -58,6 +65,16 @@ label{font-weight:750;display:block;margin-top:16px;margin-bottom:6px}textarea{w
     <div id="characterDetail"></div>
   </div>
 </section>
+<section id="walkWithChrist" class="view">
+  <div class="card">
+    <div class="top"><button onclick="showStudyLibrary()">← Study Library</button></div>
+    <h2>Walk With Christ</h2>
+    <p class="muted">A Bible-centered guided study of the Savior's life, teachings, miracles, Atonement, and Resurrection. This pilot is designed to be welcoming to all Christians.</p>
+    <div id="walkList" class="walkGrid"></div>
+    <div id="walkDetail"></div>
+  </div>
+</section>
+
 
 <section id="reminderSettings" class="view"><div class="card"><div class="top"><button onclick="showList()">← Weeks</button></div><h2>Study Reminder</h2><div class="reminderBox"><p class="muted">This is an in-app reminder. It appears when you open the app after your reminder time. Phone push notifications can be added later if we convert to a full App Store app.</p><label>Reminder time</label><input id="reminderTimeInput" type="time"><br><button class="primary" onclick="saveReminderSettings()">Save Reminder</button><button onclick="turnOffReminder()">Turn Off</button></div><div id="reminderSettingsStatus" class="muted"></div></div></section><section id="searchPanel" class="view"><div class="card"><div class="top"><button onclick="showList()">← Weeks</button></div><h2>Search References</h2><div class="searchBox"><label>Search by reference or topic</label><input id="searchInput" placeholder="Example: Hebrews, charity, Luke 2" oninput="runSearch()"></div><div id="searchResults" class="muted">Type to search your study references.</div></div></section><section id="favoritesJournal" class="view"><div class="card"><div class="top"><button onclick="showList()">← Weeks</button><div class="spacer"></div><button onclick="printFavoritesJournal()">Print</button></div><h2>Favorite Scripture Journal</h2><div class="muted">Star scriptures as favorites, then record what they teach you about Jesus Christ.</div><div id="favoritesJournalList"></div></div></section></main>
 <script>
@@ -88,7 +105,7 @@ function fixHebrewsBackupRefs(){
 fixHebrewsBackupRefs();
 function data(n){let w=weeks[n-1];if(!state[n])state[n]={done:false,refs:w.refs.map(x=>({text:x.text,url:x.url,done:false,fav:false,favWhy:'',favChrist:'',favImpression:''})),learned:'',attribute:'',scripture:'',impressions:''};if(w.refs.some(r=>r.text)&&(!state[n].refs||state[n].refs.length!==w.refs.length||state[n].refs.some((r,i)=>r.text!==w.refs[i].text||r.url!==w.refs[i].url))){let old=state[n].refs||[];state[n].refs=w.refs.map((x,i)=>({text:x.text,url:x.url,done:old[i]?.done||false,fav:old[i]?.fav||false,favWhy:old[i]?.favWhy||'',favChrist:old[i]?.favChrist||'',favImpression:old[i]?.favImpression||''}))}let j=jesusTheChristReadings[n]||[];if(!state[n].jtc||state[n].jtc.length!==j.length){let old=state[n].jtc||[];state[n].jtc=j.map((x,i)=>({title:x[0],url:x[1],done:old[i]?.done||false,date:old[i]?.date||''}))}return state[n]}
 function save(){localStorage.setItem('tgStudyState',JSON.stringify(state));localStorage.setItem('tgStudyCurrent',current);renderList();stats()}
-function hideAllViews(){document.getElementById('list').classList.remove('on');document.getElementById('detail').classList.remove('on');document.getElementById('favoritesJournal').classList.remove('on');let cs=document.getElementById('characterStudies');if(cs)cs.classList.remove('on');let hub=document.getElementById('studyLibrary');if(hub)hub.classList.remove('on');let rs=document.getElementById('reminderSettings');if(rs)rs.classList.remove('on');let sp=document.getElementById('searchPanel');if(sp)sp.classList.remove('on')}
+function hideAllViews(){document.getElementById('list').classList.remove('on');document.getElementById('detail').classList.remove('on');document.getElementById('favoritesJournal').classList.remove('on');let ww=document.getElementById('walkWithChrist');if(ww)ww.classList.remove('on');let cs=document.getElementById('characterStudies');if(cs)cs.classList.remove('on');let hub=document.getElementById('studyLibrary');if(hub)hub.classList.remove('on');let rs=document.getElementById('reminderSettings');if(rs)rs.classList.remove('on');let sp=document.getElementById('searchPanel');if(sp)sp.classList.remove('on')}
 function showList(){hideAllViews();document.getElementById('list').classList.add('on');scrollTo(0,0)}
 function openWeek(n){current=n;renderDetail();hideAllViews();document.getElementById('detail').classList.add('on');save();scrollTo(0,0)}
 
@@ -344,7 +361,7 @@ function checkStudyReminder(){
 const STUDY_LIBRARY_PLANS=[
   {id:'jesus',icon:'📖',title:'Jesus Christ Topical Guide Study',status:'live',desc:'Your active 78-week guided study of Jesus Christ with scripture references, favorites, journal, JTC readings, assessment, search, streaks, and reminders.'},
   {id:'characters',icon:'👥',title:'Scripture Character Studies',status:'live',desc:'Pilot study: study specific people in scripture with their stories, references, attributes, and lessons.'},
-  {id:'walk',icon:'✝️',title:'Walk With Christ',status:'soon',desc:'Coming soon: a Bible-centered study path focused on the life, teachings, Atonement, Resurrection, and discipleship of Jesus Christ.'},
+  {id:'walk',icon:'✝️',title:'Walk With Christ',status:'live',desc:'Pilot study: a Bible-centered study path focused on the life, teachings, Atonement, Resurrection, and discipleship of Jesus Christ.'},
   {id:'bom',icon:'📘',title:'Book of Mormon Discipleship Study',status:'soon',desc:'Coming soon: a guided study focused on coming unto Christ through the Book of Mormon.'},
   {id:'conference',icon:'🎤',title:'General Conference Study',status:'soon',desc:'Coming soon: study conference talks by topic, speaker, scripture references, and personal application.'}
 ];
@@ -375,7 +392,7 @@ function renderStudyLibrary(){
   box.innerHTML=STUDY_LIBRARY_PLANS.map(p=>{
     let live=p.status==='live';
     let badge=live?'<span class="libraryBadge live">Available now</span>':'<span class="libraryBadge soon">Coming soon</span>';
-    let btn=p.id==='characters'?'<button class="primary" onclick="showCharacterStudies()">Open Character Studies</button>':(live?'<button class="primary" onclick="showList()">Continue Study</button>':'<button onclick="alert(&quot;This study plan is coming in a future version.&quot;)">Preview Future Plan</button>');
+    let btn=p.id==='characters'?'<button class="primary" onclick="showCharacterStudies()">Open Character Studies</button>':(p.id==='walk'?'<button class="primary" onclick="showWalkWithChrist()">Open Walk With Christ</button>':(live?'<button class="primary" onclick="showList()">Continue Study</button>':'<button onclick="alert(&quot;This study plan is coming in a future version.&quot;)">Preview Future Plan</button>'));
     return '<div class="libraryCard '+(live?'active':'')+'"><h3>'+p.icon+' '+esc(p.title)+'</h3>'+badge+'<p>'+esc(p.desc)+'</p>'+btn+'</div>';
   }).join('');
 }
@@ -432,6 +449,80 @@ function openCharacterStudy(id){
   let list=document.getElementById('characterList'),detail=document.getElementById('characterDetail');
   if(list)list.innerHTML='';
   detail.innerHTML=`<button onclick="renderCharacterList()">← All Characters</button><h2>${esc(c.name)}</h2><div class="characterMeta">${esc(c.group)}</div><p>${esc(c.summary)}</p><h3>Christlike Attributes</h3><p>${esc(c.attributes.join(', '))}</p><h3>Scripture References</h3>${c.refs.map((r,i)=>`<div class="characterRef">${i+1}. <a target="_blank" href="${attr(r[1])}">${esc(r[0])}</a></div>`).join('')}<h3>Journal Prompt</h3><p>What does ${esc(c.name)} teach me about following Jesus Christ?</p><textarea style="min-height:160px" placeholder="Write impressions here..."></textarea>`;
+  scrollTo(0,0);
+}
+
+
+const WALK_WITH_CHRIST=[
+  {id:'birth',title:'Birth of Jesus Christ',summary:'Study the coming of the Savior into the world and the witnesses surrounding His birth.',focus:'Christ came humbly as the promised Savior.',refs:[
+    ['Luke 1:26-38','https://www.churchofjesuschrist.org/study/scriptures/nt/luke/1?lang=eng&id=p26-p38#p26'],
+    ['Luke 2:1-20','https://www.churchofjesuschrist.org/study/scriptures/nt/luke/2?lang=eng&id=p1-p20#p1'],
+    ['Matthew 1:18-25','https://www.churchofjesuschrist.org/study/scriptures/nt/matt/1?lang=eng&id=p18-p25#p18']
+  ]},
+  {id:'baptism',title:'Baptism of Jesus Christ',summary:'Study Jesus submitting to baptism and the witness of the Father and the Holy Ghost.',focus:'Christ shows obedience and begins His public ministry.',refs:[
+    ['Matthew 3:13-17','https://www.churchofjesuschrist.org/study/scriptures/nt/matt/3?lang=eng&id=p13-p17#p13'],
+    ['Mark 1:9-11','https://www.churchofjesuschrist.org/study/scriptures/nt/mark/1?lang=eng&id=p9-p11#p9'],
+    ['Luke 3:21-22','https://www.churchofjesuschrist.org/study/scriptures/nt/luke/3?lang=eng&id=p21-p22#p21']
+  ]},
+  {id:'disciples',title:'Calling Disciples',summary:'Study how Jesus called ordinary people to follow Him and become fishers of men.',focus:'Christ invites disciples to leave, follow, and become.',refs:[
+    ['Matthew 4:18-22','https://www.churchofjesuschrist.org/study/scriptures/nt/matt/4?lang=eng&id=p18-p22#p18'],
+    ['Luke 5:1-11','https://www.churchofjesuschrist.org/study/scriptures/nt/luke/5?lang=eng&id=p1-p11#p1'],
+    ['John 1:35-51','https://www.churchofjesuschrist.org/study/scriptures/nt/john/1?lang=eng&id=p35-p51#p35']
+  ]},
+  {id:'sermon',title:'Sermon on the Mount',summary:'Study the Savior’s teachings on discipleship, the heart, prayer, and living as children of God.',focus:'Christ teaches the higher law of the kingdom.',refs:[
+    ['Matthew 5:1-16','https://www.churchofjesuschrist.org/study/scriptures/nt/matt/5?lang=eng&id=p1-p16#p1'],
+    ['Matthew 6:9-13','https://www.churchofjesuschrist.org/study/scriptures/nt/matt/6?lang=eng&id=p9-p13#p9'],
+    ['Matthew 7:24-29','https://www.churchofjesuschrist.org/study/scriptures/nt/matt/7?lang=eng&id=p24-p29#p24']
+  ]},
+  {id:'miracles',title:'Miracles of Christ',summary:'Study miracles that reveal the Savior’s compassion, authority, and power to heal.',focus:'Christ has power over sickness, nature, sin, and death.',refs:[
+    ['Mark 4:35-41','https://www.churchofjesuschrist.org/study/scriptures/nt/mark/4?lang=eng&id=p35-p41#p35'],
+    ['Mark 5:21-43','https://www.churchofjesuschrist.org/study/scriptures/nt/mark/5?lang=eng&id=p21-p43#p21'],
+    ['John 11:1-44','https://www.churchofjesuschrist.org/study/scriptures/nt/john/11?lang=eng&id=p1-p44#p1']
+  ]},
+  {id:'parables',title:'Parables of Christ',summary:'Study the Savior’s stories that reveal truths about mercy, repentance, and the kingdom of God.',focus:'Christ teaches eternal truth through simple stories.',refs:[
+    ['Luke 10:25-37','https://www.churchofjesuschrist.org/study/scriptures/nt/luke/10?lang=eng&id=p25-p37#p25'],
+    ['Luke 15:11-32','https://www.churchofjesuschrist.org/study/scriptures/nt/luke/15?lang=eng&id=p11-p32#p11'],
+    ['Matthew 13:3-23','https://www.churchofjesuschrist.org/study/scriptures/nt/matt/13?lang=eng&id=p3-p23#p3']
+  ]},
+  {id:'last-supper',title:'Last Supper',summary:'Study Jesus’s final evening with His disciples and His teachings on love, service, and remembrance.',focus:'Christ teaches covenant love and remembrance.',refs:[
+    ['John 13:1-17','https://www.churchofjesuschrist.org/study/scriptures/nt/john/13?lang=eng&id=p1-p17#p1'],
+    ['John 14:1-6','https://www.churchofjesuschrist.org/study/scriptures/nt/john/14?lang=eng&id=p1-p6#p1'],
+    ['Luke 22:14-20','https://www.churchofjesuschrist.org/study/scriptures/nt/luke/22?lang=eng&id=p14-p20#p14']
+  ]},
+  {id:'gethsemane',title:'Gethsemane',summary:'Study the Savior’s suffering, submission, and love as He began the infinite Atonement.',focus:'Christ submits perfectly to the Father.',refs:[
+    ['Matthew 26:36-46','https://www.churchofjesuschrist.org/study/scriptures/nt/matt/26?lang=eng&id=p36-p46#p36'],
+    ['Luke 22:39-46','https://www.churchofjesuschrist.org/study/scriptures/nt/luke/22?lang=eng&id=p39-p46#p39'],
+    ['Mark 14:32-42','https://www.churchofjesuschrist.org/study/scriptures/nt/mark/14?lang=eng&id=p32-p42#p32']
+  ]},
+  {id:'crucifixion',title:'Crucifixion',summary:'Study the Savior’s sacrifice on the cross and His love even in suffering.',focus:'Christ gives His life for the world.',refs:[
+    ['Luke 23:33-46','https://www.churchofjesuschrist.org/study/scriptures/nt/luke/23?lang=eng&id=p33-p46#p33'],
+    ['John 19:25-30','https://www.churchofjesuschrist.org/study/scriptures/nt/john/19?lang=eng&id=p25-p30#p25'],
+    ['Matthew 27:45-54','https://www.churchofjesuschrist.org/study/scriptures/nt/matt/27?lang=eng&id=p45-p54#p45']
+  ]},
+  {id:'resurrection',title:'Resurrection',summary:'Study the empty tomb, the risen Lord, and the hope His Resurrection gives to all people.',focus:'Christ lives, and because He lives, we will live again.',refs:[
+    ['Matthew 28:1-10','https://www.churchofjesuschrist.org/study/scriptures/nt/matt/28?lang=eng&id=p1-p10#p1'],
+    ['Luke 24:13-35','https://www.churchofjesuschrist.org/study/scriptures/nt/luke/24?lang=eng&id=p13-p35#p13'],
+    ['John 20:11-18','https://www.churchofjesuschrist.org/study/scriptures/nt/john/20?lang=eng&id=p11-p18#p11']
+  ]}
+];
+function showWalkWithChrist(){
+  hideAllViews();
+  renderWalkList();
+  document.getElementById('walkWithChrist').classList.add('on');
+  scrollTo(0,0);
+}
+function renderWalkList(){
+  let list=document.getElementById('walkList'),detail=document.getElementById('walkDetail');
+  if(!list)return;
+  if(detail)detail.innerHTML='';
+  list.innerHTML=WALK_WITH_CHRIST.map(s=>`<div class="walkCard"><h3>${esc(s.title)}</h3><p>${esc(s.summary)}</p><div class="walkMeta">Focus: ${esc(s.focus)}</div><button onclick="openWalkSection('${s.id}')">Open Study</button></div>`).join('');
+}
+function openWalkSection(id){
+  let s=WALK_WITH_CHRIST.find(x=>x.id===id);
+  if(!s)return;
+  let list=document.getElementById('walkList'),detail=document.getElementById('walkDetail');
+  if(list)list.innerHTML='';
+  detail.innerHTML=`<button onclick="renderWalkList()">← All Walk With Christ Topics</button><h2>${esc(s.title)}</h2><p>${esc(s.summary)}</p><div class="walkMeta">Focus: ${esc(s.focus)}</div><h3>Scripture References</h3>${s.refs.map((r,i)=>`<div class="walkRef">${i+1}. <a target="_blank" href="${attr(r[1])}">${esc(r[0])}</a></div>`).join('')}<h3>Journal Prompt</h3><p>What does this teach me about Jesus Christ and following Him?</p><textarea style="min-height:160px" placeholder="Write impressions here..."></textarea>`;
   scrollTo(0,0);
 }
 

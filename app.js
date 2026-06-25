@@ -36,7 +36,7 @@ function fixHebrewsBackupRefs(){
 fixHebrewsBackupRefs();
 function data(n){let w=weeks[n-1];if(!state[n])state[n]={done:false,refs:w.refs.map(x=>({text:x.text,url:x.url,done:false,fav:false,favWhy:'',favChrist:'',favImpression:''})),learned:'',attribute:'',scripture:'',impressions:''};if(w.refs.some(r=>r.text)&&(!state[n].refs||state[n].refs.length!==w.refs.length||state[n].refs.some((r,i)=>r.text!==w.refs[i].text||r.url!==w.refs[i].url))){let old=state[n].refs||[];state[n].refs=w.refs.map((x,i)=>({text:x.text,url:x.url,done:old[i]?.done||false,fav:old[i]?.fav||false,favWhy:old[i]?.favWhy||'',favChrist:old[i]?.favChrist||'',favImpression:old[i]?.favImpression||''}))}let j=jesusTheChristReadings[n]||[];if(!state[n].jtc||state[n].jtc.length!==j.length){let old=state[n].jtc||[];state[n].jtc=j.map((x,i)=>({title:x[0],url:x[1],done:old[i]?.done||false,date:old[i]?.date||''}))}return state[n]}
 function save(){localStorage.setItem('tgStudyState',JSON.stringify(state));localStorage.setItem('tgStudyCurrent',current);renderList();stats()}
-function hideAllViews(){document.getElementById('list').classList.remove('on');document.getElementById('detail').classList.remove('on');document.getElementById('favoritesJournal').classList.remove('on');let rs=document.getElementById('reminderSettings');if(rs)rs.classList.remove('on');let sp=document.getElementById('searchPanel');if(sp)sp.classList.remove('on')}
+function hideAllViews(){document.getElementById('list').classList.remove('on');document.getElementById('detail').classList.remove('on');document.getElementById('favoritesJournal').classList.remove('on');let sl=document.getElementById('studyLibrary');if(sl)sl.classList.remove('on');let rs=document.getElementById('reminderSettings');if(rs)rs.classList.remove('on');let sp=document.getElementById('searchPanel');if(sp)sp.classList.remove('on')}
 function showList(){hideAllViews();document.getElementById('list').classList.add('on');scrollTo(0,0)}
 function openWeek(n){current=n;renderDetail();hideAllViews();document.getElementById('detail').classList.add('on');save();scrollTo(0,0)}
 
@@ -286,6 +286,34 @@ function checkStudyReminder(){
       setTimeout(()=>{alert('Study reminder: Take a few minutes to study Jesus Christ today.');},800);
     }
   }catch(e){}
+}
+
+
+const STUDY_LIBRARY=[
+  {id:'jesus-topical-guide',title:'Jesus Christ Topical Guide Study',icon:'📖',status:'live',desc:'The active 78-week study of Jesus Christ using official Topical Guide references, repeated wherever they appear by topic.',details:'Includes progress tracking, favorites, journal entries, Jesus the Christ readings, Christlike Attribute Assessment, search, streaks, reminders, and backups.'},
+  {id:'scripture-character-studies',title:'Scripture Character Studies',icon:'👥',status:'soon',desc:'Study specific people in the scriptures and the stories, references, attributes, and lessons connected to their lives.',details:'Planned examples: Adam, Eve, Abraham, Moses, Ruth, Mary, Peter, Paul, Nephi, Abinadi, Alma, Mormon, and Moroni.'},
+  {id:'walk-with-christ',title:'Walk With Christ',icon:'✝️',status:'soon',desc:'A Bible-centered study path designed to be welcoming to all Christians.',details:'Planned topics: birth, ministry, miracles, parables, teachings, Atonement, Resurrection, discipleship, and Second Coming.'},
+  {id:'book-of-mormon-discipleship',title:'Book of Mormon Discipleship Study',icon:'📘',status:'soon',desc:'A guided study focused on coming unto Christ through the Book of Mormon.',details:'Planned topics: faith, repentance, covenants, charity, conversion, discipleship, and enduring to the end.'},
+  {id:'general-conference-study',title:'General Conference Study',icon:'🎤',status:'soon',desc:'Study conference talks by topic, speaker, scripture references, and personal application.',details:'Future support could include favorite talks, notes, action items, and topical study collections.'}
+];
+function activeStudyPlan(){return localStorage.getItem('tgStudyActivePlan')||'jesus-topical-guide'}
+function setActiveStudyPlan(id){
+  if(id!=='jesus-topical-guide'){alert('This study plan is coming in a future version. The Jesus Christ Topical Guide Study remains active for now.');return}
+  localStorage.setItem('tgStudyActivePlan',id);renderStudyLibrary();alert('Jesus Christ Topical Guide Study is active.')
+}
+function showStudyLibrary(){
+  hideAllViews();renderStudyLibrary();document.getElementById('studyLibrary').classList.add('on');scrollTo(0,0)
+}
+function renderStudyLibrary(){
+  let box=document.getElementById('studyLibraryContent');if(!box)return;
+  let active=activeStudyPlan();
+  box.innerHTML=STUDY_LIBRARY.map(plan=>{
+    let isActive=plan.id===active;
+    let cls='libraryCard '+(isActive?'active':'');
+    let badge=plan.status==='live'?'<span class="libraryBadge live">Available now</span>':'<span class="libraryBadge soon">Coming soon</span>';
+    let button=plan.status==='live'?'<button class="primary" onclick="setActiveStudyPlan(\\''+plan.id+'\\');showList()">Continue Study</button>':'<button onclick="setActiveStudyPlan(\\''+plan.id+'\\')">Preview Future Plan</button>';
+    return '<div class="'+cls+'"><h3>'+plan.icon+' '+esc(plan.title)+'</h3>'+badge+'<p>'+esc(plan.desc)+'</p><p class="muted">'+esc(plan.details)+'</p><div class="libraryActions">'+button+'</div></div>';
+  }).join('');
 }
 
 function stats(){let dw=0,dr=0,tr=0,fv=0,jd=0,jt=0;weeks.forEach(w=>{let d=data(w.week);if(d.done)dw++;dr+=d.refs.filter(r=>r.done).length;fv+=d.refs.filter(r=>r.fav).length;tr+=d.refs.length;jd+=(d.jtc||[]).filter(x=>x.done).length;jt+=(d.jtc||[]).length});document.getElementById('prog').style.width=Math.round(dw/78*100)+'%';document.getElementById('stats').textContent=`${dw}/78 weeks complete • ${dr}/${tr} references checked • ⭐ ${fv} favorites • 📖 ${jd}/${jt} JTC readings`}

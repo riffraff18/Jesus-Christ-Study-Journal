@@ -1,0 +1,11 @@
+Version 34 Study Library Foundation
+
+- Adds Scripture Study Library section.
+- Keeps Jesus Christ Topical Guide Study as the active available plan.
+- Adds future study plan cards:
+  - Scripture Character Studies
+  - Walk With Christ
+  - Book of Mormon Discipleship Study
+  - General Conference Study
+- Does not change existing progress data, reference data, favorites, notes, streaks, reminders, search, or backups.
+- Establishes the long-term platform structure for future guided studies.

@@ -1,0 +1,21 @@
+Version 33 Foundation Refactor
+
+Purpose:
+- Create a safer foundation before building Study Library, Character Studies, and future modules.
+
+Changes:
+- Extracted the large inline JavaScript from index.html into app.js.
+- index.html now loads app.js?v=33.
+- sw.js updated to cache app.js.
+- No intentional changes to reference data, progress data, localStorage keys, favorites, streaks, reminders, search, or assessments.
+
+Testing:
+1. Open with ?v=33.
+2. Confirm week list loads.
+3. Confirm progress count is preserved.
+4. Confirm Week 1 refs 93-96 remain Hebrews.
+5. Confirm Favorites Journal opens.
+6. Confirm Search, Streaks, and Reminder labels still appear.
+
+Next Architectural Step:
+- Split app.js into smaller feature files later.

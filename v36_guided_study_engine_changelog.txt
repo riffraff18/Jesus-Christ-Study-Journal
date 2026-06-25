@@ -1,0 +1,10 @@
+Version 36 Guided Study Engine Foundation
+
+- Built from stable V35b.
+- Renames Study Hub to Study Library.
+- Adds Guided Study Engine foundation object for future study plans.
+- Adds engine info support.
+- Keeps Jesus Christ Topical Guide Study as the only active plan.
+- Future study cards remain preview-only.
+- No progress/storage changes.
+- Keeps search, reminders, streaks, favorites, backup/import, and assessment.

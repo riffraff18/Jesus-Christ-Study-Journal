@@ -1,0 +1,8 @@
+Version 37 Scripture Character Studies Pilot
+
+- Built from stable V36.
+- Adds Scripture Character Studies pilot.
+- Adds initial character list with starter references:
+  Adam, Eve, Moses, Ruth, Mary, Peter, Paul, Nephi, Abinadi, Alma the Younger, Mormon, Moroni.
+- Character Studies can be opened from Study Library.
+- Keeps Jesus Christ Topical Guide study and all current progress.

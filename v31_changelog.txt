@@ -1,0 +1,9 @@
+Version 31 Study Streaks
+
+- Adds current study streak.
+- Adds longest streak.
+- Adds last study date.
+- Updates streak when a reference is checked, a scripture is favorited, or a JTC reading is completed.
+- Streak display can be tapped for details.
+- Keeps V30 search and Next Unchecked.
+- Does not alter reference data.

@@ -61,8 +61,15 @@ label{font-weight:750;display:block;margin-top:16px;margin-bottom:6px}textarea{w
 
 .conferenceBrowseBox{border:1px solid #ddd6ca;border-radius:16px;padding:14px;margin:12px 0;background:#fffdf9}
 .conferenceBrowseBox button{margin-top:8px}
-</style></head><body><header><h1>Jesus Christ Topical Guide Study</h1><div class="sub">Scripture Study Library with reliable official General Conference topic browsing.</div><div class="bar"><div id="prog"></div></div><div class="sub" id="stats"></div><div class="versionPill" id="appVersionLabel">Version 41b Stability</div><div class="backupNote" id="backupNote"></div><div class="streakPill" id="streakLabel" onclick="showStreakDetails()">🔥 0 day streak</div><div class="reminderPill" id="reminderLabel" onclick="showReminderSettings()">⏰ Reminder off</div></header>
-<main><section id="list" class="view on"><div class="card"><button onclick="showStudyLibrary()">📚 Study Library</button><button onclick="exportData()">Export Backup</button><button onclick="document.getElementById('imp').click()">Import</button><a href="assessment.html" style="text-decoration:none"><button type="button">Christlike Attribute Assessment</button></a><button onclick="showReminderSettings()">Study Reminder</button><button onclick="showSearchPanel()">Search References</button><button onclick="jumpToNextUnchecked()">Next Unchecked</button><button onclick="showFavoritesJournal()">⭐ Favorites Journal</button><button onclick="printFavoritesJournal()">Print Favorites Journal</button><input id="imp" type="file" accept="application/json" style="display:none" onchange="importData(event)"><div id="weeks"></div></div></section><section id="detail" class="view"><div class="card" id="content"></div></section>
+
+.dashboardHero{border:1px solid #ddd6ca;border-radius:20px;padding:16px;margin:12px 0;background:#fffdf9}
+.dashboardGrid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px 0}
+.dashboardStat{border:1px solid #eee7d9;border-radius:16px;padding:12px;background:#fff}
+.dashboardStat b{display:block;font-size:20px;margin-bottom:4px}
+.dashboardActions{display:grid;grid-template-columns:1fr;gap:8px;margin-top:12px}
+.dashboardSection{border:1px solid #ddd6ca;border-radius:16px;padding:14px;margin:12px 0;background:#fff}
+</style></head><body><header><h1>Jesus Christ Topical Guide Study</h1><div class="sub">Scripture Study Platform with dashboard overview and study library.</div><div class="bar"><div id="prog"></div></div><div class="sub" id="stats"></div><div class="versionPill" id="appVersionLabel">Version 42</div><div class="backupNote" id="backupNote"></div><div class="streakPill" id="streakLabel" onclick="showStreakDetails()">🔥 0 day streak</div><div class="reminderPill" id="reminderLabel" onclick="showReminderSettings()">⏰ Reminder off</div></header>
+<main><section id="list" class="view on"><div class="card"><button onclick="showDashboard()">📊 Dashboard</button><button onclick="showStudyLibrary()">📚 Study Library</button><button onclick="exportData()">Export Backup</button><button onclick="document.getElementById('imp').click()">Import</button><a href="assessment.html" style="text-decoration:none"><button type="button">Christlike Attribute Assessment</button></a><button onclick="showReminderSettings()">Study Reminder</button><button onclick="showSearchPanel()">Search References</button><button onclick="jumpToNextUnchecked()">Next Unchecked</button><button onclick="showFavoritesJournal()">⭐ Favorites Journal</button><button onclick="printFavoritesJournal()">Print Favorites Journal</button><input id="imp" type="file" accept="application/json" style="display:none" onchange="importData(event)"><div id="weeks"></div></div></section><section id="detail" class="view"><div class="card" id="content"></div></section>
 <section id="studyLibrary" class="view">
   <div class="card">
     <div class="top"><button onclick="showList()">← Current Study</button></div>
@@ -77,6 +84,26 @@ label{font-weight:750;display:block;margin-top:16px;margin-bottom:6px}textarea{w
     <div id="libraryPlans" class="libraryGrid"></div>
   </div>
 </section>
+<section id="studyDashboard" class="view">
+  <div class="card">
+    <div class="top"><button onclick="showList()">← Current Study</button></div>
+    <h2>Study Dashboard</h2>
+    <div class="dashboardHero">
+      <h3>Your Scripture Study at a Glance</h3>
+      <p class="muted">A simple overview of your progress, favorites, streaks, and study tools.</p>
+      <div id="dashboardStats" class="dashboardGrid"></div>
+      <div class="dashboardActions">
+        <button class="primary" onclick="showList()">Continue Jesus Christ Study</button>
+        <button onclick="showStudyLibrary()">Open Study Library</button>
+        <button onclick="showFavoritesJournal()">Open Favorites Journal</button>
+        <button onclick="showSearchPanel()">Search References</button>
+        <button onclick="exportData()">Export Backup</button>
+      </div>
+    </div>
+    <div id="dashboardDetails"></div>
+  </div>
+</section>
+
 <section id="characterStudies" class="view">
   <div class="card">
     <div class="top"><button onclick="showStudyLibrary()">← Study Library</button></div>
@@ -146,7 +173,7 @@ function fixHebrewsBackupRefs(){
 fixHebrewsBackupRefs();
 function data(n){let w=weeks[n-1];if(!state[n])state[n]={done:false,refs:w.refs.map(x=>({text:x.text,url:x.url,done:false,fav:false,favWhy:'',favChrist:'',favImpression:''})),learned:'',attribute:'',scripture:'',impressions:''};if(w.refs.some(r=>r.text)&&(!state[n].refs||state[n].refs.length!==w.refs.length||state[n].refs.some((r,i)=>r.text!==w.refs[i].text||r.url!==w.refs[i].url))){let old=state[n].refs||[];state[n].refs=w.refs.map((x,i)=>({text:x.text,url:x.url,done:old[i]?.done||false,fav:old[i]?.fav||false,favWhy:old[i]?.favWhy||'',favChrist:old[i]?.favChrist||'',favImpression:old[i]?.favImpression||''}))}let j=jesusTheChristReadings[n]||[];if(!state[n].jtc||state[n].jtc.length!==j.length){let old=state[n].jtc||[];state[n].jtc=j.map((x,i)=>({title:x[0],url:x[1],done:old[i]?.done||false,date:old[i]?.date||''}))}return state[n]}
 function save(){localStorage.setItem('tgStudyState',JSON.stringify(state));localStorage.setItem('tgStudyCurrent',current);renderList();stats()}
-function hideAllViews(){document.getElementById('list').classList.remove('on');document.getElementById('detail').classList.remove('on');document.getElementById('favoritesJournal').classList.remove('on');let conf=document.getElementById('generalConferenceStudy');if(conf)conf.classList.remove('on');let bom=document.getElementById('bookOfMormonDiscipleship');if(bom)bom.classList.remove('on');let ww=document.getElementById('walkWithChrist');if(ww)ww.classList.remove('on');let cs=document.getElementById('characterStudies');if(cs)cs.classList.remove('on');let hub=document.getElementById('studyLibrary');if(hub)hub.classList.remove('on');let rs=document.getElementById('reminderSettings');if(rs)rs.classList.remove('on');let sp=document.getElementById('searchPanel');if(sp)sp.classList.remove('on')}
+function hideAllViews(){document.getElementById('list').classList.remove('on');document.getElementById('detail').classList.remove('on');document.getElementById('favoritesJournal').classList.remove('on');let dash=document.getElementById('studyDashboard');if(dash)dash.classList.remove('on');let conf=document.getElementById('generalConferenceStudy');if(conf)conf.classList.remove('on');let bom=document.getElementById('bookOfMormonDiscipleship');if(bom)bom.classList.remove('on');let ww=document.getElementById('walkWithChrist');if(ww)ww.classList.remove('on');let cs=document.getElementById('characterStudies');if(cs)cs.classList.remove('on');let hub=document.getElementById('studyLibrary');if(hub)hub.classList.remove('on');let rs=document.getElementById('reminderSettings');if(rs)rs.classList.remove('on');let sp=document.getElementById('searchPanel');if(sp)sp.classList.remove('on')}
 function showList(){hideAllViews();document.getElementById('list').classList.add('on');scrollTo(0,0)}
 function openWeek(n){current=n;renderDetail();hideAllViews();document.getElementById('detail').classList.add('on');save();scrollTo(0,0)}
 
@@ -656,6 +683,51 @@ function openConferenceSection(id){
   if(list)list.innerHTML='';
   detail.innerHTML=`<button onclick="renderConferenceList()">← All Conference Topics</button><h2>${esc(s.title)}</h2><span class="officialBadge">Official Gospel Library Topic</span><p>${esc(s.summary)}</p><div class="confMeta">Focus: ${esc(s.focus)}</div><div class="topicLinkBox"><a target="_blank" href="${attr(s.topicUrl||'#')}">Open ${esc(s.title)} Topic in Gospel Library</a><p class="muted">This opens the official General Conference topic page so the talk list stays current.</p></div><h3>How to Use This Study</h3><div class="confRef">1. Choose a General Conference talk related to this topic.</div><div class="confRef">2. Write the speaker, title, and scripture references that stood out.</div><div class="confRef">3. Record the invitation or action you feel prompted to take.</div><h3>Journal Prompts</h3>${s.prompts.map((p,i)=>`<div class="confRef">${i+1}. ${esc(p)}</div>`).join('')}<textarea style="min-height:180px" placeholder="Write impressions, talk title, speaker, scriptures, and action items here..."></textarea>`;
   scrollTo(0,0);
+}
+
+
+function dashboardSummary(){
+  let refs=0,checked=0,favs=0,jtc=0,jtcDone=0,weeksDone=0,startedWeeks=0;
+  try{
+    weeks.forEach(w=>{
+      let d=data(w.week);
+      let refCount=(d.refs||[]).length;
+      let doneCount=(d.refs||[]).filter(r=>r&&r.done).length;
+      refs+=refCount;checked+=doneCount;
+      if(doneCount>0)startedWeeks++;
+      if(d.done)weeksDone++;
+      favs+=(d.refs||[]).filter(r=>r&&r.fav).length;
+      jtc+=(d.jtc||[]).length;
+      jtcDone+=(d.jtc||[]).filter(x=>x&&x.done).length;
+    });
+  }catch(e){}
+  let streak=(state._streak&&state._streak.current)||0;
+  let best=(state._streak&&state._streak.longest)||0;
+  return {refs,checked,favs,jtc,jtcDone,weeksDone,startedWeeks,streak,best};
+}
+function showDashboard(){
+  hideAllViews();
+  renderDashboard();
+  document.getElementById('studyDashboard').classList.add('on');
+  scrollTo(0,0);
+}
+function renderDashboard(){
+  let s=dashboardSummary();
+  let stats=document.getElementById('dashboardStats');
+  if(stats){
+    stats.innerHTML=[
+      '<div class="dashboardStat"><b>'+s.checked+'/'+s.refs+'</b><span>References studied</span></div>',
+      '<div class="dashboardStat"><b>⭐ '+s.favs+'</b><span>Favorite scriptures</span></div>',
+      '<div class="dashboardStat"><b>'+s.jtcDone+'/'+s.jtc+'</b><span>Jesus the Christ readings</span></div>',
+      '<div class="dashboardStat"><b>🔥 '+s.streak+'</b><span>Day streak</span></div>'
+    ].join('');
+  }
+  let details=document.getElementById('dashboardDetails');
+  if(details){
+    let pct=s.refs?Math.round((s.checked/s.refs)*100):0;
+    let jtcPct=s.jtc?Math.round((s.jtcDone/s.jtc)*100):0;
+    details.innerHTML='<div class="dashboardSection"><h3>Progress</h3><p>Main study progress: <b>'+pct+'%</b></p><p>Weeks started: '+s.startedWeeks+'/78</p><p>Weeks marked complete: '+s.weeksDone+'/78</p><p>Jesus the Christ progress: <b>'+jtcPct+'%</b></p></div><div class="dashboardSection"><h3>Study Library</h3><p>Available studies: Jesus Christ Topical Guide, Character Studies, Walk With Christ, Book of Mormon Discipleship, General Conference Study.</p><p class="muted">More study plans will be added in Phase 2 of the roadmap.</p></div><div class="dashboardSection"><h3>Backup Reminder</h3><p class="muted">Before major updates, export a backup so your progress and journal entries stay safe.</p><button onclick="exportData()">Export Backup Now</button></div>';
+  }
 }
 
 function stats(){let dw=0,dr=0,tr=0,fv=0,jd=0,jt=0;weeks.forEach(w=>{let d=data(w.week);if(d.done)dw++;dr+=d.refs.filter(r=>r.done).length;fv+=d.refs.filter(r=>r.fav).length;tr+=d.refs.length;jd+=(d.jtc||[]).filter(x=>x.done).length;jt+=(d.jtc||[]).length});document.getElementById('prog').style.width=Math.round(dw/78*100)+'%';document.getElementById('stats').textContent=`${dw}/78 weeks complete • ${dr}/${tr} references checked • ⭐ ${fv} favorites • 📖 ${jd}/${jt} JTC readings`}

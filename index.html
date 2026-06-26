@@ -77,8 +77,16 @@ label{font-weight:750;display:block;margin-top:16px;margin-bottom:6px}textarea{w
 .notesMeta{color:#6b665d;font-size:13px;margin:4px 0}
 .notesBody{white-space:pre-wrap;margin-top:8px}
 .notesActions{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
-</style></head><body><header><h1>Jesus Christ Topical Guide Study</h1><div class="sub">Scripture Study Platform with unified Study Notes.</div><div class="bar"><div id="prog"></div></div><div class="sub" id="stats"></div><div class="versionPill" id="appVersionLabel">Version 43</div><div class="backupNote" id="backupNote"></div><div class="streakPill" id="streakLabel" onclick="showStreakDetails()">🔥 0 day streak</div><div class="reminderPill" id="reminderLabel" onclick="showReminderSettings()">⏰ Reminder off</div></header>
-<main><section id="list" class="view on"><div class="card"><button onclick="showDashboard()">📊 Dashboard</button><button onclick="showStudyNotes()">📝 Study Notes</button><button onclick="showStudyLibrary()">📚 Study Library</button><button onclick="exportData()">Export Backup</button><button onclick="document.getElementById('imp').click()">Import</button><a href="assessment.html" style="text-decoration:none"><button type="button">Christlike Attribute Assessment</button></a><button onclick="showReminderSettings()">Study Reminder</button><button onclick="showSearchPanel()">Search References</button><button onclick="jumpToNextUnchecked()">Next Unchecked</button><button onclick="showFavoritesJournal()">⭐ Favorites Journal</button><button onclick="printFavoritesJournal()">Print Favorites Journal</button><input id="imp" type="file" accept="application/json" style="display:none" onchange="importData(event)"><div id="weeks"></div></div></section><section id="detail" class="view"><div class="card" id="content"></div></section>
+
+.universalSearchBox{border:1px solid #ddd6ca;border-radius:16px;padding:12px;margin:12px 0;background:#fffdf9}
+.universalSearchBox input,.universalSearchBox select{width:100%;box-sizing:border-box;border:1px solid #ddd6ca;border-radius:12px;padding:10px;font:inherit;margin:6px 0}
+.universalResult{border:1px solid #eee7d9;border-radius:14px;padding:12px;margin:10px 0;background:#fff}
+.universalResult h3{margin:0 0 6px}
+.resultType{display:inline-block;background:#eee7d9;border-radius:999px;padding:3px 8px;font-size:12px;font-weight:800;margin-bottom:6px}
+.resultMeta{color:#6b665d;font-size:13px;margin:4px 0}
+.resultSnippet{white-space:pre-wrap;margin-top:6px}
+</style></head><body><header><h1>Jesus Christ Topical Guide Study</h1><div class="sub">Scripture Study Platform with Universal Search.</div><div class="bar"><div id="prog"></div></div><div class="sub" id="stats"></div><div class="versionPill" id="appVersionLabel">Version 44</div><div class="backupNote" id="backupNote"></div><div class="streakPill" id="streakLabel" onclick="showStreakDetails()">🔥 0 day streak</div><div class="reminderPill" id="reminderLabel" onclick="showReminderSettings()">⏰ Reminder off</div></header>
+<main><section id="list" class="view on"><div class="card"><button onclick="showDashboard()">📊 Dashboard</button><button onclick="showStudyNotes()">📝 Study Notes</button><button onclick="showUniversalSearch()">🔎 Universal Search</button><button onclick="showStudyLibrary()">📚 Study Library</button><button onclick="exportData()">Export Backup</button><button onclick="document.getElementById('imp').click()">Import</button><a href="assessment.html" style="text-decoration:none"><button type="button">Christlike Attribute Assessment</button></a><button onclick="showReminderSettings()">Study Reminder</button><button onclick="showSearchPanel()">Search References</button><button onclick="showUniversalSearch()">Open Universal Search</button><button onclick="jumpToNextUnchecked()">Next Unchecked</button><button onclick="showFavoritesJournal()">⭐ Favorites Journal</button><button onclick="printFavoritesJournal()">Print Favorites Journal</button><input id="imp" type="file" accept="application/json" style="display:none" onchange="importData(event)"><div id="weeks"></div></div></section><section id="detail" class="view"><div class="card" id="content"></div></section>
 <section id="studyLibrary" class="view">
   <div class="card">
     <div class="top"><button onclick="showList()">← Current Study</button></div>
@@ -134,6 +142,28 @@ label{font-weight:750;display:block;margin-top:16px;margin-bottom:6px}textarea{w
     <div id="notesList"></div>
   </div>
 </section>
+<section id="universalSearch" class="view">
+  <div class="card">
+    <div class="top"><button onclick="showList()">← Current Study</button></div>
+    <h2>Universal Search</h2>
+    <p class="muted">Search across references, favorites, notes, and all guided study plans.</p>
+    <div class="universalSearchBox">
+      <input id="universalSearchInput" placeholder="Search scripture, topic, study, note, or keyword..." oninput="runUniversalSearch()">
+      <select id="universalSearchFilter" onchange="runUniversalSearch()">
+        <option value="all">All content</option>
+        <option value="references">Jesus Christ references</option>
+        <option value="favorites">Favorites</option>
+        <option value="notes">Study Notes</option>
+        <option value="characters">Character Studies</option>
+        <option value="walk">Walk With Christ</option>
+        <option value="bom">Book of Mormon Discipleship</option>
+        <option value="conference">General Conference</option>
+      </select>
+    </div>
+    <div id="universalSearchResults" class="muted">Type to search the whole study platform.</div>
+  </div>
+</section>
+
 
 
 <section id="characterStudies" class="view">
@@ -205,7 +235,7 @@ function fixHebrewsBackupRefs(){
 fixHebrewsBackupRefs();
 function data(n){let w=weeks[n-1];if(!state[n])state[n]={done:false,refs:w.refs.map(x=>({text:x.text,url:x.url,done:false,fav:false,favWhy:'',favChrist:'',favImpression:''})),learned:'',attribute:'',scripture:'',impressions:''};if(w.refs.some(r=>r.text)&&(!state[n].refs||state[n].refs.length!==w.refs.length||state[n].refs.some((r,i)=>r.text!==w.refs[i].text||r.url!==w.refs[i].url))){let old=state[n].refs||[];state[n].refs=w.refs.map((x,i)=>({text:x.text,url:x.url,done:old[i]?.done||false,fav:old[i]?.fav||false,favWhy:old[i]?.favWhy||'',favChrist:old[i]?.favChrist||'',favImpression:old[i]?.favImpression||''}))}let j=jesusTheChristReadings[n]||[];if(!state[n].jtc||state[n].jtc.length!==j.length){let old=state[n].jtc||[];state[n].jtc=j.map((x,i)=>({title:x[0],url:x[1],done:old[i]?.done||false,date:old[i]?.date||''}))}return state[n]}
 function save(){localStorage.setItem('tgStudyState',JSON.stringify(state));localStorage.setItem('tgStudyCurrent',current);renderList();stats()}
-function hideAllViews(){document.getElementById('list').classList.remove('on');document.getElementById('detail').classList.remove('on');document.getElementById('favoritesJournal').classList.remove('on');let notes=document.getElementById('studyNotes');if(notes)notes.classList.remove('on');let dash=document.getElementById('studyDashboard');if(dash)dash.classList.remove('on');let conf=document.getElementById('generalConferenceStudy');if(conf)conf.classList.remove('on');let bom=document.getElementById('bookOfMormonDiscipleship');if(bom)bom.classList.remove('on');let ww=document.getElementById('walkWithChrist');if(ww)ww.classList.remove('on');let cs=document.getElementById('characterStudies');if(cs)cs.classList.remove('on');let hub=document.getElementById('studyLibrary');if(hub)hub.classList.remove('on');let rs=document.getElementById('reminderSettings');if(rs)rs.classList.remove('on');let sp=document.getElementById('searchPanel');if(sp)sp.classList.remove('on')}
+function hideAllViews(){document.getElementById('list').classList.remove('on');document.getElementById('detail').classList.remove('on');document.getElementById('favoritesJournal').classList.remove('on');let uni=document.getElementById('universalSearch');if(uni)uni.classList.remove('on');let notes=document.getElementById('studyNotes');if(notes)notes.classList.remove('on');let dash=document.getElementById('studyDashboard');if(dash)dash.classList.remove('on');let conf=document.getElementById('generalConferenceStudy');if(conf)conf.classList.remove('on');let bom=document.getElementById('bookOfMormonDiscipleship');if(bom)bom.classList.remove('on');let ww=document.getElementById('walkWithChrist');if(ww)ww.classList.remove('on');let cs=document.getElementById('characterStudies');if(cs)cs.classList.remove('on');let hub=document.getElementById('studyLibrary');if(hub)hub.classList.remove('on');let rs=document.getElementById('reminderSettings');if(rs)rs.classList.remove('on');let sp=document.getElementById('searchPanel');if(sp)sp.classList.remove('on')}
 function showList(){hideAllViews();document.getElementById('list').classList.add('on');scrollTo(0,0)}
 function openWeek(n){current=n;renderDetail();hideAllViews();document.getElementById('detail').classList.add('on');save();scrollTo(0,0)}
 
@@ -852,6 +882,87 @@ function renderStudyNotes(){
   let notes=filteredStudyNotes();
   if(!notes.length){list.innerHTML='<div class="notesCard"><p class="muted">No notes yet. Tap New Note to start.</p></div>';return;}
   list.innerHTML=notes.map(n=>`<div class="notesCard ${n.pinned?'pinned':''}"><h3>${n.pinned?'📌 ':''}${esc(n.title||'Untitled Note')}</h3><div class="notesMeta">${esc(n.study||'Personal Study')}${n.ref?' • '+esc(n.ref):''}</div><div class="notesMeta">Updated: ${esc(n.updated||n.created||'')}</div><div class="notesBody">${esc(n.body||'')}</div><div class="notesActions"><button onclick="togglePinNote('${n.id}')">${n.pinned?'Unpin':'Pin'}</button><button onclick="editStudyNote('${n.id}')">Edit</button><button onclick="deleteStudyNote('${n.id}')">Delete</button></div></div>`).join('');
+}
+
+
+function showUniversalSearch(){
+  hideAllViews();
+  document.getElementById('universalSearch').classList.add('on');
+  runUniversalSearch();
+  scrollTo(0,0);
+  setTimeout(()=>{let i=document.getElementById('universalSearchInput');if(i)i.focus()},150);
+}
+function addUniversalResult(results,type,title,meta,snippet,actionHtml,haystack){
+  results.push({type,title,meta,snippet,actionHtml,haystack:(haystack||'').toLowerCase()});
+}
+function universalSearchData(){
+  let results=[];
+  try{
+    weeks.forEach(w=>{
+      let d=data(w.week);
+      (d.refs||[]).forEach((r,i)=>{
+        let meta='Week '+w.week+' — '+w.topic;
+        let snippet=(r.done?'✅ ':'☐ ')+(r.fav?'⭐ ':'')+(r.text||'');
+        addUniversalResult(results,'references',r.text||'Reference',meta,snippet,'<button onclick="openWeek('+w.week+')">Open Week</button>',meta+' '+snippet);
+        if(r.fav){
+          let body=[r.favVerse,r.favImpression,r.favWhy,r.favChrist].filter(Boolean).join(' ');
+          addUniversalResult(results,'favorites','⭐ '+(r.text||'Favorite'),meta,body||'Favorite scripture','<button onclick="openWeek('+w.week+')">Open Week</button><button onclick="showFavoritesJournal()">Favorites Journal</button>',meta+' '+r.text+' '+body);
+        }
+      });
+    });
+  }catch(e){}
+  try{
+    ensureStudyNotes();
+    (state._notes||[]).forEach(n=>{
+      let meta=(n.study||'Personal Study')+(n.ref?' • '+n.ref:'');
+      addUniversalResult(results,'notes',(n.pinned?'📌 ':'')+(n.title||'Untitled Note'),meta,n.body||'', '<button onclick="showStudyNotes()">Open Study Notes</button>', meta+' '+(n.title||'')+' '+(n.body||''));
+    });
+  }catch(e){}
+  try{
+    if(typeof CHARACTER_STUDIES!=='undefined'){
+      CHARACTER_STUDIES.forEach(c=>{
+        let text=(c.summary||'')+' '+(c.attributes||[]).join(' ')+' '+(c.refs||[]).map(r=>r[0]).join(' ');
+        addUniversalResult(results,'characters',c.name,'Character Studies • '+c.group,text,'<button onclick="showCharacterStudies()">Open Character Studies</button>','character studies '+c.name+' '+c.group+' '+text);
+      });
+    }
+  }catch(e){}
+  try{
+    if(typeof WALK_WITH_CHRIST!=='undefined'){
+      WALK_WITH_CHRIST.forEach(s=>{
+        let text=(s.summary||'')+' '+(s.focus||'')+' '+(s.refs||[]).map(r=>r[0]).join(' ');
+        addUniversalResult(results,'walk',s.title,'Walk With Christ',text,'<button onclick="showWalkWithChrist()">Open Walk With Christ</button>','walk with christ '+s.title+' '+text);
+      });
+    }
+  }catch(e){}
+  try{
+    if(typeof BOM_DISCIPLESHIP!=='undefined'){
+      BOM_DISCIPLESHIP.forEach(s=>{
+        let text=(s.summary||'')+' '+(s.focus||'')+' '+(s.refs||[]).map(r=>r[0]).join(' ');
+        addUniversalResult(results,'bom',s.title,'Book of Mormon Discipleship',text,'<button onclick="showBookOfMormonDiscipleship()">Open Book of Mormon Study</button>','book of mormon discipleship '+s.title+' '+text);
+      });
+    }
+  }catch(e){}
+  try{
+    if(typeof GENERAL_CONFERENCE_STUDY!=='undefined'){
+      GENERAL_CONFERENCE_STUDY.forEach(s=>{
+        let text=(s.summary||'')+' '+(s.focus||'')+' '+(s.prompts||[]).join(' ');
+        addUniversalResult(results,'conference',s.title,'General Conference Study',text,'<button onclick="showGeneralConferenceStudy()">Open Conference Study</button>','general conference '+s.title+' '+text);
+      });
+    }
+  }catch(e){}
+  return results;
+}
+function runUniversalSearch(){
+  let box=document.getElementById('universalSearchResults');
+  if(!box)return;
+  let q=(document.getElementById('universalSearchInput')?.value||'').toLowerCase().trim();
+  let filter=document.getElementById('universalSearchFilter')?.value||'all';
+  if(!q){box.innerHTML='Type to search the whole study platform.';return;}
+  let results=universalSearchData();
+  if(filter!=='all')results=results.filter(r=>r.type===filter);
+  results=results.filter(r=>r.haystack.includes(q));
+  if(!results.length){box.innerHTML='No matches found.';return;}
+  box.innerHTML=results.slice(0,120).map(r=>'<div class="universalResult"><span class="resultType">'+esc(r.type)+'</span><h3>'+esc(r.title)+'</h3><div class="resultMeta">'+esc(r.meta||'')+'</div><div class="resultSnippet">'+esc((r.snippet||'').slice(0,450))+'</div><div class="notesActions">'+(r.actionHtml||'')+'</div></div>').join('');
 }
 
 function stats(){let dw=0,dr=0,tr=0,fv=0,jd=0,jt=0;weeks.forEach(w=>{let d=data(w.week);if(d.done)dw++;dr+=d.refs.filter(r=>r.done).length;fv+=d.refs.filter(r=>r.fav).length;tr+=d.refs.length;jd+=(d.jtc||[]).filter(x=>x.done).length;jt+=(d.jtc||[]).length});document.getElementById('prog').style.width=Math.round(dw/78*100)+'%';document.getElementById('stats').textContent=`${dw}/78 weeks complete • ${dr}/${tr} references checked • ⭐ ${fv} favorites • 📖 ${jd}/${jt} JTC readings`}

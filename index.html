@@ -85,8 +85,12 @@ label{font-weight:750;display:block;margin-top:16px;margin-bottom:6px}textarea{w
 .resultType{display:inline-block;background:#eee7d9;border-radius:999px;padding:3px 8px;font-size:12px;font-weight:800;margin-bottom:6px}
 .resultMeta{color:#6b665d;font-size:13px;margin:4px 0}
 .resultSnippet{white-space:pre-wrap;margin-top:6px}
-</style></head><body><header><h1>Jesus Christ Topical Guide Study</h1><div class="sub">Scripture Study Platform with Universal Search.</div><div class="bar"><div id="prog"></div></div><div class="sub" id="stats"></div><div class="versionPill" id="appVersionLabel">Version 44</div><div class="backupNote" id="backupNote"></div><div class="streakPill" id="streakLabel" onclick="showStreakDetails()">🔥 0 day streak</div><div class="reminderPill" id="reminderLabel" onclick="showReminderSettings()">⏰ Reminder off</div></header>
-<main><section id="list" class="view on"><div class="card"><button onclick="showDashboard()">📊 Dashboard</button><button onclick="showStudyNotes()">📝 Study Notes</button><button onclick="showUniversalSearch()">🔎 Universal Search</button><button onclick="showStudyLibrary()">📚 Study Library</button><button onclick="exportData()">Export Backup</button><button onclick="document.getElementById('imp').click()">Import</button><a href="assessment.html" style="text-decoration:none"><button type="button">Christlike Attribute Assessment</button></a><button onclick="showReminderSettings()">Study Reminder</button><button onclick="showSearchPanel()">Search References</button><button onclick="showUniversalSearch()">Open Universal Search</button><button onclick="jumpToNextUnchecked()">Next Unchecked</button><button onclick="showFavoritesJournal()">⭐ Favorites Journal</button><button onclick="printFavoritesJournal()">Print Favorites Journal</button><input id="imp" type="file" accept="application/json" style="display:none" onchange="importData(event)"><div id="weeks"></div></div></section><section id="detail" class="view"><div class="card" id="content"></div></section>
+
+.continueCard{border:2px solid #876b2f;border-radius:18px;padding:14px;margin:12px 0;background:#fffdf9}
+.continueCard h3{margin:0 0 8px}
+.continueMeta{color:#6b665d;font-size:14px;margin:6px 0}
+</style></head><body><header><h1>Jesus Christ Topical Guide Study</h1><div class="sub">Scripture Study Platform with Continue Studying.</div><div class="bar"><div id="prog"></div></div><div class="sub" id="stats"></div><div class="versionPill" id="appVersionLabel">Version 45</div><div class="backupNote" id="backupNote"></div><div class="streakPill" id="streakLabel" onclick="showStreakDetails()">🔥 0 day streak</div><div class="reminderPill" id="reminderLabel" onclick="showReminderSettings()">⏰ Reminder off</div></header>
+<main><section id="list" class="view on"><div class="card"><button class="primary" onclick="continueStudying()">▶ Continue Studying</button><button onclick="showDashboard()">📊 Dashboard</button><button onclick="showStudyNotes()">📝 Study Notes</button><button onclick="showUniversalSearch()">🔎 Universal Search</button><button onclick="showStudyLibrary()">📚 Study Library</button><button onclick="exportData()">Export Backup</button><button onclick="document.getElementById('imp').click()">Import</button><a href="assessment.html" style="text-decoration:none"><button type="button">Christlike Attribute Assessment</button></a><button onclick="showReminderSettings()">Study Reminder</button><button onclick="showSearchPanel()">Search References</button><button onclick="showUniversalSearch()">Open Universal Search</button><button onclick="jumpToNextUnchecked()">Next Unchecked</button><button onclick="showFavoritesJournal()">⭐ Favorites Journal</button><button onclick="printFavoritesJournal()">Print Favorites Journal</button><input id="imp" type="file" accept="application/json" style="display:none" onchange="importData(event)"><div id="weeks"></div></div></section><section id="detail" class="view"><div class="card" id="content"></div></section>
 <section id="studyLibrary" class="view">
   <div class="card">
     <div class="top"><button onclick="showList()">← Current Study</button></div>
@@ -108,7 +112,7 @@ label{font-weight:750;display:block;margin-top:16px;margin-bottom:6px}textarea{w
     <div class="dashboardHero">
       <h3>Your Scripture Study at a Glance</h3>
       <p class="muted">A simple overview of your progress, favorites, streaks, and study tools.</p>
-      <div id="dashboardStats" class="dashboardGrid"></div>
+      <div id="continueCardBox"></div><div id="dashboardStats" class="dashboardGrid"></div>
       <div class="dashboardActions">
         <button class="primary" onclick="showList()">Continue Jesus Christ Study</button>
         <button onclick="showStudyLibrary()">Open Study Library</button>
@@ -773,7 +777,7 @@ function showDashboard(){
   document.getElementById('studyDashboard').classList.add('on');
   scrollTo(0,0);
 }
-function renderDashboard(){
+function renderDashboard(){renderContinueCard();
   let s=dashboardSummary();
   let stats=document.getElementById('dashboardStats');
   if(stats){
@@ -965,11 +969,43 @@ function runUniversalSearch(){
   box.innerHTML=results.slice(0,120).map(r=>'<div class="universalResult"><span class="resultType">'+esc(r.type)+'</span><h3>'+esc(r.title)+'</h3><div class="resultMeta">'+esc(r.meta||'')+'</div><div class="resultSnippet">'+esc((r.snippet||'').slice(0,450))+'</div><div class="notesActions">'+(r.actionHtml||'')+'</div></div>').join('');
 }
 
+
+function ensureContinueState(){
+  if(!state._continue)state._continue={type:'week',week:current,label:'Jesus Christ Topical Guide',updated:new Date().toLocaleString()};
+}
+function rememberContinue(type,label,extra={}){
+  try{
+    if(!state._continue)state._continue={};
+    state._continue={type,label,week:extra.week||current,id:extra.id||'',updated:new Date().toLocaleString()};
+    save();
+  }catch(e){}
+}
+function continueStudying(){
+  ensureContinueState();
+  let c=state._continue||{};
+  if(c.type==='character' && typeof showCharacterStudies==='function'){showCharacterStudies();return;}
+  if(c.type==='walk' && typeof showWalkWithChrist==='function'){showWalkWithChrist();return;}
+  if(c.type==='bom' && typeof showBookOfMormonDiscipleship==='function'){showBookOfMormonDiscipleship();return;}
+  if(c.type==='conference' && typeof showGeneralConferenceStudy==='function'){showGeneralConferenceStudy();return;}
+  if(c.type==='notes' && typeof showStudyNotes==='function'){showStudyNotes();return;}
+  if(c.type==='search' && typeof showUniversalSearch==='function'){showUniversalSearch();return;}
+  openWeek(Number(c.week||current||1));
+}
+function renderContinueCard(){
+  let box=document.getElementById('continueCardBox');
+  if(!box)return;
+  ensureContinueState();
+  let c=state._continue||{};
+  let label=c.label||'Jesus Christ Topical Guide';
+  let meta=c.type==='week'?'Week '+(c.week||current):'Last opened: '+label;
+  box.innerHTML='<div class="continueCard"><h3>▶ Continue Studying</h3><div class="continueMeta">'+esc(label)+' • '+esc(meta)+'</div><div class="continueMeta">Last activity: '+esc(c.updated||'')+'</div><button class="primary" onclick="continueStudying()">Continue</button></div>';
+}
+
 function stats(){let dw=0,dr=0,tr=0,fv=0,jd=0,jt=0;weeks.forEach(w=>{let d=data(w.week);if(d.done)dw++;dr+=d.refs.filter(r=>r.done).length;fv+=d.refs.filter(r=>r.fav).length;tr+=d.refs.length;jd+=(d.jtc||[]).filter(x=>x.done).length;jt+=(d.jtc||[]).length});document.getElementById('prog').style.width=Math.round(dw/78*100)+'%';document.getElementById('stats').textContent=`${dw}/78 weeks complete • ${dr}/${tr} references checked • ⭐ ${fv} favorites • 📖 ${jd}/${jt} JTC readings`}
 function exportData(){let blob=new Blob([JSON.stringify(state,null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='jesus-christ-study-backup.json';a.click()}
 function importData(e){let f=e.target.files[0];if(!f)return;let r=new FileReader();r.onload=()=>{try{state=JSON.parse(r.result);fixHebrewsBackupRefs();forceHebrewsVisibleText();forceWeek1HebrewsRefs();save();renderDetail();alert('Imported and Hebrews references fixed')}catch{alert('Could not import')}};r.readAsText(f)}
 function esc(s=''){return String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}function attr(s=''){return esc(s).replace(/"/g,'&quot;')}
-if('serviceWorker'in navigator)navigator.serviceWorker.register('sw.js').catch(()=>{});renderList();renderDetail();stats();updateBackupNote();updateStreakLabel();updateReminderLabel();maybeBackupReminderSafe();checkStudyReminder();
+if('serviceWorker'in navigator)navigator.serviceWorker.register('sw.js').catch(()=>{});ensureContinueState();renderList();renderDetail();stats();updateBackupNote();updateStreakLabel();updateReminderLabel();maybeBackupReminderSafe();checkStudyReminder();
 
 
 /* V41b Stability Fix: use one reliable official General Conference Topics link */
@@ -992,5 +1028,29 @@ function openConferenceSection(id){
   detail.innerHTML=`<button onclick="renderConferenceList()">← All Conference Topics</button><h2>${esc(s.title)}</h2><div class="conferenceBrowseBox"><h3>Official General Conference Topics</h3><p class="muted">Use the official Gospel Library topic list to find the latest talks related to this subject.</p><button class="primary" onclick="openOfficialConferenceTopics()">📖 Browse Official General Conference Topics</button></div><p>${esc(s.summary)}</p><div class="confMeta">Focus: ${esc(s.focus)}</div><h3>How to Use This Study</h3><div class="confRef">1. Open the official General Conference Topics page.</div><div class="confRef">2. Choose this topic, or a closely related topic, from the Gospel Library list.</div><div class="confRef">3. Record the speaker, title, scriptures, invitation, and impressions here.</div><h3>Journal Prompts</h3>${s.prompts.map((p,i)=>`<div class="confRef">${i+1}. ${esc(p)}</div>`).join('')}<textarea style="min-height:180px" placeholder="Write impressions, talk title, speaker, scriptures, and action items here..."></textarea>`;
   scrollTo(0,0);
 }
+
+
+
+/* V45 Continue Studying wrappers */
+(function(){
+  try{
+    const oldOpenWeek=window.openWeek;
+    if(typeof oldOpenWeek==='function'){
+      window.openWeek=function(n){rememberContinue('week','Jesus Christ Topical Guide',{week:n});return oldOpenWeek(n);}
+    }
+    const wrap=(name,type,label)=>{
+      const old=window[name];
+      if(typeof old==='function'){
+        window[name]=function(){rememberContinue(type,label,{});return old.apply(this,arguments);}
+      }
+    };
+    wrap('showCharacterStudies','character','Scripture Character Studies');
+    wrap('showWalkWithChrist','walk','Walk With Christ');
+    wrap('showBookOfMormonDiscipleship','bom','Book of Mormon Discipleship');
+    wrap('showGeneralConferenceStudy','conference','General Conference Study');
+    wrap('showStudyNotes','notes','Study Notes');
+    wrap('showUniversalSearch','search','Universal Search');
+  }catch(e){}
+})();
 
 </script></body></html>

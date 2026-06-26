@@ -89,8 +89,22 @@ label{font-weight:750;display:block;margin-top:16px;margin-bottom:6px}textarea{w
 .continueCard{border:2px solid #876b2f;border-radius:18px;padding:14px;margin:12px 0;background:#fffdf9}
 .continueCard h3{margin:0 0 8px}
 .continueMeta{color:#6b665d;font-size:14px;margin:6px 0}
-</style></head><body><header><h1>Jesus Christ Topical Guide Study</h1><div class="sub">Scripture Study Platform with Continue Studying.</div><div class="bar"><div id="prog"></div></div><div class="sub" id="stats"></div><div class="versionPill" id="appVersionLabel">Version 45</div><div class="backupNote" id="backupNote"></div><div class="streakPill" id="streakLabel" onclick="showStreakDetails()">🔥 0 day streak</div><div class="reminderPill" id="reminderLabel" onclick="showReminderSettings()">⏰ Reminder off</div></header>
-<main><section id="list" class="view on"><div class="card"><button class="primary" onclick="continueStudying()">▶ Continue Studying</button><button onclick="showDashboard()">📊 Dashboard</button><button onclick="showStudyNotes()">📝 Study Notes</button><button onclick="showUniversalSearch()">🔎 Universal Search</button><button onclick="showStudyLibrary()">📚 Study Library</button><button onclick="exportData()">Export Backup</button><button onclick="document.getElementById('imp').click()">Import</button><a href="assessment.html" style="text-decoration:none"><button type="button">Christlike Attribute Assessment</button></a><button onclick="showReminderSettings()">Study Reminder</button><button onclick="showSearchPanel()">Search References</button><button onclick="showUniversalSearch()">Open Universal Search</button><button onclick="jumpToNextUnchecked()">Next Unchecked</button><button onclick="showFavoritesJournal()">⭐ Favorites Journal</button><button onclick="printFavoritesJournal()">Print Favorites Journal</button><input id="imp" type="file" accept="application/json" style="display:none" onchange="importData(event)"><div id="weeks"></div></div></section><section id="detail" class="view"><div class="card" id="content"></div></section>
+
+.prayerToolbar{border:1px solid #ddd6ca;border-radius:16px;padding:12px;margin:12px 0;background:#fffdf9}
+.prayerToolbar input,.prayerToolbar select,.prayerEditor textarea,.prayerEditor input,.prayerEditor select{width:100%;box-sizing:border-box;border:1px solid #ddd6ca;border-radius:12px;padding:10px;font:inherit;margin:6px 0}
+.prayerEditor{border:1px solid #ddd6ca;border-radius:16px;padding:12px;margin:12px 0;background:#fffdf9}
+.prayerCard{border:1px solid #ddd6ca;border-radius:16px;padding:14px;margin:12px 0;background:#fff}
+.prayerCard.answered{border:3px solid #26753a}
+.prayerCard.waiting{border:3px solid #a15c00}
+.prayerMeta{color:#6b665d;font-size:13px;margin:4px 0}
+.prayerBody{white-space:pre-wrap;margin-top:8px}
+.prayerActions{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.prayerBadge{display:inline-block;border-radius:999px;padding:4px 9px;font-size:12px;font-weight:800;margin:4px 0}
+.prayerBadge.ongoing{background:#eee7d9;color:#6b665d}
+.prayerBadge.waiting{background:#fff7d6;color:#6b5200}
+.prayerBadge.answered{background:#e7f5e7;color:#26753a}
+</style></head><body><header><h1>Jesus Christ Topical Guide Study</h1><div class="sub">Scripture Study Platform with Prayer Journal.</div><div class="bar"><div id="prog"></div></div><div class="sub" id="stats"></div><div class="versionPill" id="appVersionLabel">Version 46</div><div class="backupNote" id="backupNote"></div><div class="streakPill" id="streakLabel" onclick="showStreakDetails()">🔥 0 day streak</div><div class="reminderPill" id="reminderLabel" onclick="showReminderSettings()">⏰ Reminder off</div></header>
+<main><section id="list" class="view on"><div class="card"><button class="primary" onclick="continueStudying()">▶ Continue Studying</button><button onclick="showDashboard()">📊 Dashboard</button><button onclick="showStudyNotes()">📝 Study Notes</button><button onclick="showPrayerJournal()">🙏 Prayer Journal</button><button onclick="showUniversalSearch()">🔎 Universal Search</button><button onclick="showStudyLibrary()">📚 Study Library</button><button onclick="exportData()">Export Backup</button><button onclick="document.getElementById('imp').click()">Import</button><a href="assessment.html" style="text-decoration:none"><button type="button">Christlike Attribute Assessment</button></a><button onclick="showReminderSettings()">Study Reminder</button><button onclick="showSearchPanel()">Search References</button><button onclick="showUniversalSearch()">Open Universal Search</button><button onclick="jumpToNextUnchecked()">Next Unchecked</button><button onclick="showFavoritesJournal()">⭐ Favorites Journal</button><button onclick="printFavoritesJournal()">Print Favorites Journal</button><input id="imp" type="file" accept="application/json" style="display:none" onchange="importData(event)"><div id="weeks"></div></div></section><section id="detail" class="view"><div class="card" id="content"></div></section>
 <section id="studyLibrary" class="view">
   <div class="card">
     <div class="top"><button onclick="showList()">← Current Study</button></div>
@@ -116,7 +130,7 @@ label{font-weight:750;display:block;margin-top:16px;margin-bottom:6px}textarea{w
       <div class="dashboardActions">
         <button class="primary" onclick="showList()">Continue Jesus Christ Study</button>
         <button onclick="showStudyLibrary()">Open Study Library</button>
-        <button onclick="showFavoritesJournal()">Open Favorites Journal</button><button onclick="showStudyNotes()">Open Study Notes</button>
+        <button onclick="showFavoritesJournal()">Open Favorites Journal</button><button onclick="showStudyNotes()">Open Study Notes</button><button onclick="showPrayerJournal()">Open Prayer Journal</button>
         <button onclick="showSearchPanel()">Search References</button>
         <button onclick="exportData()">Export Backup</button>
       </div>
@@ -146,6 +160,38 @@ label{font-weight:750;display:block;margin-top:16px;margin-bottom:6px}textarea{w
     <div id="notesList"></div>
   </div>
 </section>
+<section id="prayerJournal" class="view">
+  <div class="card">
+    <div class="top"><button onclick="showList()">← Current Study</button></div>
+    <h2>Prayer Journal</h2>
+    <p class="muted">Record prayers, gratitude, needs, and answers from the Lord.</p>
+    <div class="prayerToolbar">
+      <button class="primary" onclick="newPrayerEntry()">New Prayer Entry</button>
+      <input id="prayerSearch" placeholder="Search prayers..." oninput="renderPrayerJournal()">
+      <select id="prayerStatusFilter" onchange="renderPrayerJournal()">
+        <option value="all">All statuses</option>
+        <option value="Ongoing">Ongoing</option>
+        <option value="Waiting">Waiting</option>
+        <option value="Answered">Answered</option>
+      </select>
+      <select id="prayerCategoryFilter" onchange="renderPrayerJournal()">
+        <option value="all">All categories</option>
+        <option>Personal</option>
+        <option>Family</option>
+        <option>Marriage</option>
+        <option>Work</option>
+        <option>Health</option>
+        <option>Repentance</option>
+        <option>Gratitude</option>
+        <option>Guidance</option>
+        <option>Other</option>
+      </select>
+    </div>
+    <div id="prayerEditor"></div>
+    <div id="prayerList"></div>
+  </div>
+</section>
+
 <section id="universalSearch" class="view">
   <div class="card">
     <div class="top"><button onclick="showList()">← Current Study</button></div>
@@ -239,7 +285,7 @@ function fixHebrewsBackupRefs(){
 fixHebrewsBackupRefs();
 function data(n){let w=weeks[n-1];if(!state[n])state[n]={done:false,refs:w.refs.map(x=>({text:x.text,url:x.url,done:false,fav:false,favWhy:'',favChrist:'',favImpression:''})),learned:'',attribute:'',scripture:'',impressions:''};if(w.refs.some(r=>r.text)&&(!state[n].refs||state[n].refs.length!==w.refs.length||state[n].refs.some((r,i)=>r.text!==w.refs[i].text||r.url!==w.refs[i].url))){let old=state[n].refs||[];state[n].refs=w.refs.map((x,i)=>({text:x.text,url:x.url,done:old[i]?.done||false,fav:old[i]?.fav||false,favWhy:old[i]?.favWhy||'',favChrist:old[i]?.favChrist||'',favImpression:old[i]?.favImpression||''}))}let j=jesusTheChristReadings[n]||[];if(!state[n].jtc||state[n].jtc.length!==j.length){let old=state[n].jtc||[];state[n].jtc=j.map((x,i)=>({title:x[0],url:x[1],done:old[i]?.done||false,date:old[i]?.date||''}))}return state[n]}
 function save(){localStorage.setItem('tgStudyState',JSON.stringify(state));localStorage.setItem('tgStudyCurrent',current);renderList();stats()}
-function hideAllViews(){document.getElementById('list').classList.remove('on');document.getElementById('detail').classList.remove('on');document.getElementById('favoritesJournal').classList.remove('on');let uni=document.getElementById('universalSearch');if(uni)uni.classList.remove('on');let notes=document.getElementById('studyNotes');if(notes)notes.classList.remove('on');let dash=document.getElementById('studyDashboard');if(dash)dash.classList.remove('on');let conf=document.getElementById('generalConferenceStudy');if(conf)conf.classList.remove('on');let bom=document.getElementById('bookOfMormonDiscipleship');if(bom)bom.classList.remove('on');let ww=document.getElementById('walkWithChrist');if(ww)ww.classList.remove('on');let cs=document.getElementById('characterStudies');if(cs)cs.classList.remove('on');let hub=document.getElementById('studyLibrary');if(hub)hub.classList.remove('on');let rs=document.getElementById('reminderSettings');if(rs)rs.classList.remove('on');let sp=document.getElementById('searchPanel');if(sp)sp.classList.remove('on')}
+function hideAllViews(){document.getElementById('list').classList.remove('on');document.getElementById('detail').classList.remove('on');document.getElementById('favoritesJournal').classList.remove('on');let prayer=document.getElementById('prayerJournal');if(prayer)prayer.classList.remove('on');let uni=document.getElementById('universalSearch');if(uni)uni.classList.remove('on');let notes=document.getElementById('studyNotes');if(notes)notes.classList.remove('on');let dash=document.getElementById('studyDashboard');if(dash)dash.classList.remove('on');let conf=document.getElementById('generalConferenceStudy');if(conf)conf.classList.remove('on');let bom=document.getElementById('bookOfMormonDiscipleship');if(bom)bom.classList.remove('on');let ww=document.getElementById('walkWithChrist');if(ww)ww.classList.remove('on');let cs=document.getElementById('characterStudies');if(cs)cs.classList.remove('on');let hub=document.getElementById('studyLibrary');if(hub)hub.classList.remove('on');let rs=document.getElementById('reminderSettings');if(rs)rs.classList.remove('on');let sp=document.getElementById('searchPanel');if(sp)sp.classList.remove('on')}
 function showList(){hideAllViews();document.getElementById('list').classList.add('on');scrollTo(0,0)}
 function openWeek(n){current=n;renderDetail();hideAllViews();document.getElementById('detail').classList.add('on');save();scrollTo(0,0)}
 
@@ -954,6 +1000,16 @@ function universalSearchData(){
       });
     }
   }catch(e){}
+
+  try{
+    ensurePrayerJournal();
+    (state._prayers||[]).forEach(p=>{
+      let meta='Prayer Journal • '+(p.category||'Personal')+' • '+(p.status||'Ongoing');
+      let text=(p.body||'')+' '+(p.gratitude||'')+' '+(p.answer||'');
+      addUniversalResult(results,'notes','🙏 '+(p.title||'Prayer Entry'),meta,text,'<button onclick="showPrayerJournal()">Open Prayer Journal</button>',meta+' '+(p.title||'')+' '+text);
+    });
+  }catch(e){}
+
   return results;
 }
 function runUniversalSearch(){
@@ -988,6 +1044,7 @@ function continueStudying(){
   if(c.type==='bom' && typeof showBookOfMormonDiscipleship==='function'){showBookOfMormonDiscipleship();return;}
   if(c.type==='conference' && typeof showGeneralConferenceStudy==='function'){showGeneralConferenceStudy();return;}
   if(c.type==='notes' && typeof showStudyNotes==='function'){showStudyNotes();return;}
+  if(c.type==='prayer' && typeof showPrayerJournal==='function'){showPrayerJournal();return;}
   if(c.type==='search' && typeof showUniversalSearch==='function'){showUniversalSearch();return;}
   openWeek(Number(c.week||current||1));
 }
@@ -999,6 +1056,108 @@ function renderContinueCard(){
   let label=c.label||'Jesus Christ Topical Guide';
   let meta=c.type==='week'?'Week '+(c.week||current):'Last opened: '+label;
   box.innerHTML='<div class="continueCard"><h3>▶ Continue Studying</h3><div class="continueMeta">'+esc(label)+' • '+esc(meta)+'</div><div class="continueMeta">Last activity: '+esc(c.updated||'')+'</div><button class="primary" onclick="continueStudying()">Continue</button></div>';
+}
+
+
+function ensurePrayerJournal(){
+  if(!state._prayers)state._prayers=[];
+}
+function prayerId(){
+  return 'prayer-'+Date.now()+'-'+Math.random().toString(36).slice(2,8);
+}
+function prayerOptionsHtml(selected,kind){
+  const opts=kind==='status'?['Ongoing','Waiting','Answered']:['Personal','Family','Marriage','Work','Health','Repentance','Gratitude','Guidance','Other'];
+  return opts.map(o=>`<option ${o===selected?'selected':''}>${esc(o)}</option>`).join('');
+}
+function showPrayerJournal(){
+  hideAllViews();
+  ensurePrayerJournal();
+  document.getElementById('prayerJournal').classList.add('on');
+  renderPrayerJournal();
+  scrollTo(0,0);
+}
+function newPrayerEntry(){
+  ensurePrayerJournal();
+  document.getElementById('prayerEditor').innerHTML=`<div class="prayerEditor"><h3>New Prayer Entry</h3><label>Title</label><input id="prayerTitle" placeholder="What are you praying about?"><label>Category</label><select id="prayerCategory">${prayerOptionsHtml('Personal','category')}</select><label>Status</label><select id="prayerStatus">${prayerOptionsHtml('Ongoing','status')}</select><label>Prayer / Need</label><textarea id="prayerBody" style="min-height:150px" placeholder="Record the desire, concern, person, question, or blessing you are praying for..."></textarea><label>Gratitude</label><textarea id="prayerGratitude" style="min-height:90px" placeholder="What are you thankful for today?"></textarea><label>Answer / Impression</label><textarea id="prayerAnswer" style="min-height:110px" placeholder="Record answers, impressions, timing, scriptures, or tender mercies..."></textarea><button class="primary" onclick="savePrayerEntry()">Save Prayer</button><button onclick="cancelPrayerEntry()">Cancel</button></div>`;
+  setTimeout(()=>{let t=document.getElementById('prayerTitle');if(t)t.focus()},100);
+}
+function cancelPrayerEntry(){
+  document.getElementById('prayerEditor').innerHTML='';
+}
+function savePrayerEntry(){
+  ensurePrayerJournal();
+  let title=(document.getElementById('prayerTitle')?.value||'Prayer Entry').trim()||'Prayer Entry';
+  let category=document.getElementById('prayerCategory')?.value||'Personal';
+  let status=document.getElementById('prayerStatus')?.value||'Ongoing';
+  let body=(document.getElementById('prayerBody')?.value||'').trim();
+  let gratitude=(document.getElementById('prayerGratitude')?.value||'').trim();
+  let answer=(document.getElementById('prayerAnswer')?.value||'').trim();
+  if(!body && !gratitude && !answer){alert('Add a prayer, gratitude, or answer before saving.');return;}
+  state._prayers.unshift({id:prayerId(),title,category,status,body,gratitude,answer,created:new Date().toLocaleString(),updated:new Date().toLocaleString()});
+  save();
+  document.getElementById('prayerEditor').innerHTML='';
+  renderPrayerJournal();
+}
+function editPrayerEntry(id){
+  ensurePrayerJournal();
+  let p=state._prayers.find(x=>x.id===id);
+  if(!p)return;
+  document.getElementById('prayerEditor').innerHTML=`<div class="prayerEditor"><h3>Edit Prayer Entry</h3><label>Title</label><input id="prayerTitle" value="${attr(p.title||'')}"><label>Category</label><select id="prayerCategory">${prayerOptionsHtml(p.category||'Personal','category')}</select><label>Status</label><select id="prayerStatus">${prayerOptionsHtml(p.status||'Ongoing','status')}</select><label>Prayer / Need</label><textarea id="prayerBody" style="min-height:150px">${esc(p.body||'')}</textarea><label>Gratitude</label><textarea id="prayerGratitude" style="min-height:90px">${esc(p.gratitude||'')}</textarea><label>Answer / Impression</label><textarea id="prayerAnswer" style="min-height:110px">${esc(p.answer||'')}</textarea><button class="primary" onclick="updatePrayerEntry('${id}')">Update Prayer</button><button onclick="cancelPrayerEntry()">Cancel</button></div>`;
+  scrollTo(0,0);
+}
+function updatePrayerEntry(id){
+  let p=state._prayers.find(x=>x.id===id);
+  if(!p)return;
+  p.title=(document.getElementById('prayerTitle')?.value||'Prayer Entry').trim()||'Prayer Entry';
+  p.category=document.getElementById('prayerCategory')?.value||'Personal';
+  p.status=document.getElementById('prayerStatus')?.value||'Ongoing';
+  p.body=(document.getElementById('prayerBody')?.value||'').trim();
+  p.gratitude=(document.getElementById('prayerGratitude')?.value||'').trim();
+  p.answer=(document.getElementById('prayerAnswer')?.value||'').trim();
+  p.updated=new Date().toLocaleString();
+  save();
+  document.getElementById('prayerEditor').innerHTML='';
+  renderPrayerJournal();
+}
+function markPrayerAnswered(id){
+  let p=state._prayers.find(x=>x.id===id);
+  if(!p)return;
+  p.status='Answered';
+  p.updated=new Date().toLocaleString();
+  save();
+  renderPrayerJournal();
+}
+function deletePrayerEntry(id){
+  ensurePrayerJournal();
+  if(!confirm('Delete this prayer entry?'))return;
+  state._prayers=state._prayers.filter(x=>x.id!==id);
+  save();
+  renderPrayerJournal();
+}
+function filteredPrayers(){
+  ensurePrayerJournal();
+  let q=(document.getElementById('prayerSearch')?.value||'').toLowerCase().trim();
+  let status=document.getElementById('prayerStatusFilter')?.value||'all';
+  let cat=document.getElementById('prayerCategoryFilter')?.value||'all';
+  let prayers=[...state._prayers];
+  if(status!=='all')prayers=prayers.filter(p=>(p.status||'Ongoing')===status);
+  if(cat!=='all')prayers=prayers.filter(p=>(p.category||'Personal')===cat);
+  if(q)prayers=prayers.filter(p=>((p.title||'')+' '+(p.category||'')+' '+(p.status||'')+' '+(p.body||'')+' '+(p.gratitude||'')+' '+(p.answer||'')).toLowerCase().includes(q));
+  prayers.sort((a,b)=>String(b.updated||b.created||'').localeCompare(String(a.updated||a.created||'')));
+  return prayers;
+}
+function renderPrayerJournal(){
+  ensurePrayerJournal();
+  let list=document.getElementById('prayerList');
+  if(!list)return;
+  let prayers=filteredPrayers();
+  if(!prayers.length){list.innerHTML='<div class="prayerCard"><p class="muted">No prayer entries yet. Tap New Prayer Entry to start.</p></div>';return;}
+  list.innerHTML=prayers.map(p=>{
+    let st=p.status||'Ongoing';
+    let cls=st==='Answered'?'answered':(st==='Waiting'?'waiting':'');
+    let badge=st.toLowerCase();
+    return `<div class="prayerCard ${cls}"><h3>${esc(p.title||'Prayer Entry')}</h3><span class="prayerBadge ${badge}">${esc(st)}</span><div class="prayerMeta">${esc(p.category||'Personal')} • Updated: ${esc(p.updated||p.created||'')}</div>${p.body?'<h4>Prayer / Need</h4><div class="prayerBody">'+esc(p.body)+'</div>':''}${p.gratitude?'<h4>Gratitude</h4><div class="prayerBody">'+esc(p.gratitude)+'</div>':''}${p.answer?'<h4>Answer / Impression</h4><div class="prayerBody">'+esc(p.answer)+'</div>':''}<div class="prayerActions"><button onclick="editPrayerEntry('${p.id}')">Edit</button><button onclick="markPrayerAnswered('${p.id}')">Mark Answered</button><button onclick="deletePrayerEntry('${p.id}')">Delete</button></div></div>`;
+  }).join('');
 }
 
 function stats(){let dw=0,dr=0,tr=0,fv=0,jd=0,jt=0;weeks.forEach(w=>{let d=data(w.week);if(d.done)dw++;dr+=d.refs.filter(r=>r.done).length;fv+=d.refs.filter(r=>r.fav).length;tr+=d.refs.length;jd+=(d.jtc||[]).filter(x=>x.done).length;jt+=(d.jtc||[]).length});document.getElementById('prog').style.width=Math.round(dw/78*100)+'%';document.getElementById('stats').textContent=`${dw}/78 weeks complete • ${dr}/${tr} references checked • ⭐ ${fv} favorites • 📖 ${jd}/${jt} JTC readings`}
@@ -1049,6 +1208,7 @@ function openConferenceSection(id){
     wrap('showBookOfMormonDiscipleship','bom','Book of Mormon Discipleship');
     wrap('showGeneralConferenceStudy','conference','General Conference Study');
     wrap('showStudyNotes','notes','Study Notes');
+    wrap('showPrayerJournal','prayer','Prayer Journal');
     wrap('showUniversalSearch','search','Universal Search');
   }catch(e){}
 })();

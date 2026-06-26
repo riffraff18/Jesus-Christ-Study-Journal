@@ -1,0 +1,33 @@
+Version 100 Vision — Scripture Study Platform
+
+Mission:
+Build a long-term scripture study platform that helps people come unto Jesus Christ through guided study, official resources, journaling, personal revelation, and spiritual growth insights.
+
+Locked Roadmap:
+Phase 1 — Foundation V41–V50:
+V41 General Conference Topic Integration
+V42 Study Dashboard
+V43 Study Notes
+V44 Universal Search
+V45 Continue Studying
+V46 Prayer Journal
+V47 Revelation Journal
+V48 Spiritual Milestones
+V49 Goals & Action Plans
+V50 Insights Dashboard
+
+Phase 2 — Study Library Expansion V51–V70:
+Old Testament, New Testament, Book of Mormon, Doctrine & Covenants, Pearl of Great Price, expanded Character Studies, expanded Walk With Christ, expanded General Conference, Bible Dictionary, Guide to the Scriptures, Come Follow Me.
+
+Phase 3 — Premium Experience V71–V100:
+Smart recommendations, cross-study connections, advanced journaling, spiritual growth insights, beautiful dashboards, enhanced export/backup, performance, and polish.
+
+Architecture:
+Study Library
+Personal Study
+Insights
+Search
+Settings
+
+Core Rule:
+Every feature must deepen scripture study, help users come unto Christ, strengthen the long-term platform, or remain valuable five years from now.

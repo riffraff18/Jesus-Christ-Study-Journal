@@ -54,7 +54,11 @@ label{font-weight:750;display:block;margin-top:16px;margin-bottom:6px}textarea{w
 .confRef{border-bottom:1px solid #eee7d9;padding:10px 0}
 .confRef a{font-weight:800;color:#1769d1;text-decoration:none}
 .confMeta{color:#6b665d;font-size:14px}
-</style></head><body><header><h1>Jesus Christ Topical Guide Study</h1><div class="sub">Scripture Study Library with Character Studies, Walk With Christ, Book of Mormon Discipleship, and General Conference pilot studies.</div><div class="bar"><div id="prog"></div></div><div class="sub" id="stats"></div><div class="versionPill" id="appVersionLabel">Version 40</div><div class="backupNote" id="backupNote"></div><div class="streakPill" id="streakLabel" onclick="showStreakDetails()">🔥 0 day streak</div><div class="reminderPill" id="reminderLabel" onclick="showReminderSettings()">⏰ Reminder off</div></header>
+
+.officialBadge{display:inline-block;background:#e7f0ff;color:#174f8a;border:1px solid #b7d7ff;border-radius:999px;padding:4px 10px;font-size:12px;font-weight:800;margin:8px 0}
+.topicLinkBox{border:1px solid #ddd6ca;border-radius:14px;padding:12px;margin:12px 0;background:#fffdf9}
+.topicLinkBox a{font-weight:800;color:#1769d1;text-decoration:none}
+</style></head><body><header><h1>Jesus Christ Topical Guide Study</h1><div class="sub">Scripture Study Library with official General Conference topic links.</div><div class="bar"><div id="prog"></div></div><div class="sub" id="stats"></div><div class="versionPill" id="appVersionLabel">Version 41</div><div class="backupNote" id="backupNote"></div><div class="streakPill" id="streakLabel" onclick="showStreakDetails()">🔥 0 day streak</div><div class="reminderPill" id="reminderLabel" onclick="showReminderSettings()">⏰ Reminder off</div></header>
 <main><section id="list" class="view on"><div class="card"><button onclick="showStudyLibrary()">📚 Study Library</button><button onclick="exportData()">Export Backup</button><button onclick="document.getElementById('imp').click()">Import</button><a href="assessment.html" style="text-decoration:none"><button type="button">Christlike Attribute Assessment</button></a><button onclick="showReminderSettings()">Study Reminder</button><button onclick="showSearchPanel()">Search References</button><button onclick="jumpToNextUnchecked()">Next Unchecked</button><button onclick="showFavoritesJournal()">⭐ Favorites Journal</button><button onclick="printFavoritesJournal()">Print Favorites Journal</button><input id="imp" type="file" accept="application/json" style="display:none" onchange="importData(event)"><div id="weeks"></div></div></section><section id="detail" class="view"><div class="card" id="content"></div></section>
 <section id="studyLibrary" class="view">
   <div class="card">
@@ -567,27 +571,27 @@ const BOM_DISCIPLESHIP=[
     ['3 Nephi 27:20','https://www.churchofjesuschrist.org/study/scriptures/bofm/3-ne/27?lang=eng&id=p20#p20'],
     ['2 Nephi 26:33','https://www.churchofjesuschrist.org/study/scriptures/bofm/2-ne/26?lang=eng&id=p33#p33']
   ]},
-  {id:'faith',title:'Faith in Jesus Christ',summary:'Study how faith in Christ leads to action, miracles, repentance, and spiritual power.',focus:'Faith in Christ moves us to act.',refs:[
+  {id:'faith',topicUrl:'https://www.churchofjesuschrist.org/study/general-conference/topics/faith?lang=eng',title:'Faith in Jesus Christ',summary:'Study how faith in Christ leads to action, miracles, repentance, and spiritual power.',focus:'Faith in Christ moves us to act.',refs:[
     ['Ether 12:6','https://www.churchofjesuschrist.org/study/scriptures/bofm/ether/12?lang=eng&id=p6#p6'],
     ['Alma 32:21','https://www.churchofjesuschrist.org/study/scriptures/bofm/alma/32?lang=eng&id=p21#p21'],
     ['Moroni 7:33','https://www.churchofjesuschrist.org/study/scriptures/bofm/moro/7?lang=eng&id=p33#p33']
   ]},
-  {id:'repentance',title:'Repentance and Change',summary:'Study how Christ changes hearts and invites us to turn fully to Him.',focus:'Repentance is turning to Christ and being changed by Him.',refs:[
+  {id:'repentance',topicUrl:'https://www.churchofjesuschrist.org/study/general-conference/topics/repentance?lang=eng',title:'Repentance and Change',summary:'Study how Christ changes hearts and invites us to turn fully to Him.',focus:'Repentance is turning to Christ and being changed by Him.',refs:[
     ['Mosiah 5:2','https://www.churchofjesuschrist.org/study/scriptures/bofm/mosiah/5?lang=eng&id=p2#p2'],
     ['Alma 36:17-21','https://www.churchofjesuschrist.org/study/scriptures/bofm/alma/36?lang=eng&id=p17-p21#p17'],
     ['Helaman 5:11','https://www.churchofjesuschrist.org/study/scriptures/bofm/hel/5?lang=eng&id=p11#p11']
   ]},
-  {id:'covenants',title:'Covenants and Baptism',summary:'Study the covenant path and what it means to witness, serve, and follow Christ.',focus:'Disciples make and keep covenants with God.',refs:[
+  {id:'covenants',topicUrl:'https://www.churchofjesuschrist.org/study/general-conference/topics/covenants?lang=eng',title:'Covenants and Baptism',summary:'Study the covenant path and what it means to witness, serve, and follow Christ.',focus:'Disciples make and keep covenants with God.',refs:[
     ['Mosiah 18:8-10','https://www.churchofjesuschrist.org/study/scriptures/bofm/mosiah/18?lang=eng&id=p8-p10#p8'],
     ['2 Nephi 31:10-13','https://www.churchofjesuschrist.org/study/scriptures/bofm/2-ne/31?lang=eng&id=p10-p13#p10'],
     ['3 Nephi 11:31-39','https://www.churchofjesuschrist.org/study/scriptures/bofm/3-ne/11?lang=eng&id=p31-p39#p31']
   ]},
-  {id:'charity',title:'Charity and Pure Love',summary:'Study the pure love of Christ and how disciples seek, receive, and live that love.',focus:'Christlike disciples seek charity.',refs:[
+  {id:'charity',topicUrl:'https://www.churchofjesuschrist.org/study/general-conference/topics/charity?lang=eng',title:'Charity and Pure Love',summary:'Study the pure love of Christ and how disciples seek, receive, and live that love.',focus:'Christlike disciples seek charity.',refs:[
     ['Moroni 7:45-48','https://www.churchofjesuschrist.org/study/scriptures/bofm/moro/7?lang=eng&id=p45-p48#p45'],
     ['Mosiah 2:17','https://www.churchofjesuschrist.org/study/scriptures/bofm/mosiah/2?lang=eng&id=p17#p17'],
     ['Alma 7:23-24','https://www.churchofjesuschrist.org/study/scriptures/bofm/alma/7?lang=eng&id=p23-p24#p23']
   ]},
-  {id:'endure',title:'Endure in Faith',summary:'Study how disciples continue in faith, hope, and obedience through trials.',focus:'Christ strengthens disciples to endure faithfully.',refs:[
+  {id:'endure',topicUrl:'https://www.churchofjesuschrist.org/study/general-conference/topics/adversity?lang=eng',title:'Endure in Faith',summary:'Study how disciples continue in faith, hope, and obedience through trials.',focus:'Christ strengthens disciples to endure faithfully.',refs:[
     ['2 Nephi 31:19-21','https://www.churchofjesuschrist.org/study/scriptures/bofm/2-ne/31?lang=eng&id=p19-p21#p19'],
     ['Alma 34:40-41','https://www.churchofjesuschrist.org/study/scriptures/bofm/alma/34?lang=eng&id=p40-p41#p40'],
     ['Ether 12:27','https://www.churchofjesuschrist.org/study/scriptures/bofm/ether/12?lang=eng&id=p27#p27']
@@ -621,12 +625,12 @@ function openBomSection(id){
 
 
 const GENERAL_CONFERENCE_STUDY=[
-{id:'jesus-christ',title:'Jesus Christ',summary:'Study conference messages by looking for what they teach about the Savior, His Atonement, and His power to change us.',focus:'What does this message teach me about Jesus Christ?',prompts:['What title, role, or attribute of Christ is emphasized?','What invitation is given to come closer to Him?','What scripture supports this message?']},
+{id:'jesus-christ',topicUrl:'https://www.churchofjesuschrist.org/study/general-conference/topics/jesus-christ?lang=eng',title:'Jesus Christ',summary:'Study conference messages by looking for what they teach about the Savior, His Atonement, and His power to change us.',focus:'What does this message teach me about Jesus Christ?',prompts:['What title, role, or attribute of Christ is emphasized?','What invitation is given to come closer to Him?','What scripture supports this message?']},
 {id:'faith',title:'Faith and Trust in God',summary:'Study how prophets and apostles teach faith, trust, courage, and reliance on the Lord.',focus:'How can I trust God more fully?',prompts:['What fear or uncertainty does this message help me face?','What act of faith am I invited to take?','How have I seen the Lord support me before?']},
 {id:'repentance',title:'Repentance and Change',summary:'Study repentance as hope, healing, humility, and turning toward Jesus Christ.',focus:'What change is the Lord inviting me to make?',prompts:['What does this message teach about mercy?','What small step of repentance can I take today?','How does Christ make change possible?']},
 {id:'covenants',title:'Covenants and Discipleship',summary:'Study the covenant path and what it means to follow Jesus Christ with commitment.',focus:'How do covenants bind me to Christ?',prompts:['What covenant blessing is taught?','What covenant responsibility is emphasized?','How can I better remember my promises?']},
-{id:'temple',title:'Temple and Worship',summary:'Study teachings about temple worship, ordinances, holiness, and gathering Israel.',focus:'How does temple worship point me to Christ?',prompts:['What does this message teach about holiness?','How can I prepare for or value temple worship more?','What blessing of temple covenants stands out?']},
-{id:'family',title:'Family and Home-Centered Faith',summary:'Study counsel about family, parenting, marriage, home worship, and teaching the gospel.',focus:'How can my home become more centered on Christ?',prompts:['What counsel applies to my family right now?','What small home-centered habit could we strengthen?','How can I lead with more love and humility?']},
+{id:'temple',topicUrl:'https://www.churchofjesuschrist.org/study/general-conference/topics/temples?lang=eng',title:'Temple and Worship',summary:'Study teachings about temple worship, ordinances, holiness, and gathering Israel.',focus:'How does temple worship point me to Christ?',prompts:['What does this message teach about holiness?','How can I prepare for or value temple worship more?','What blessing of temple covenants stands out?']},
+{id:'family',topicUrl:'https://www.churchofjesuschrist.org/study/general-conference/topics/family?lang=eng',title:'Family and Home-Centered Faith',summary:'Study counsel about family, parenting, marriage, home worship, and teaching the gospel.',focus:'How can my home become more centered on Christ?',prompts:['What counsel applies to my family right now?','What small home-centered habit could we strengthen?','How can I lead with more love and humility?']},
 {id:'charity',title:'Charity, Ministering, and Service',summary:'Study how disciples love, lift, forgive, minister, and serve as Jesus Christ would.',focus:'Who can I love or serve more like Christ?',prompts:['Who came to mind as I studied?','What kind of service is being taught?','How can I be less judgmental and more compassionate?']},
 {id:'endure',title:'Trials, Hope, and Enduring Well',summary:'Study messages about suffering, hope, patience, spiritual resilience, and divine help.',focus:'How can I face trials with Christ?',prompts:['What truth gives me hope?','What promise can I hold onto?','How can I endure without hardening my heart?']}
 ];
@@ -640,14 +644,14 @@ function renderConferenceList(){
   let list=document.getElementById('confList'),detail=document.getElementById('confDetail');
   if(!list)return;
   if(detail)detail.innerHTML='';
-  list.innerHTML=GENERAL_CONFERENCE_STUDY.map(s=>`<div class="confCard"><h3>${esc(s.title)}</h3><p>${esc(s.summary)}</p><div class="confMeta">Focus: ${esc(s.focus)}</div><button onclick="openConferenceSection('${s.id}')">Open Study</button></div>`).join('');
+  list.innerHTML=GENERAL_CONFERENCE_STUDY.map(s=>`<div class="confCard"><h3>${esc(s.title)}</h3><span class="officialBadge">Gospel Library Topic</span><p>${esc(s.summary)}</p><div class="confMeta">Focus: ${esc(s.focus)}</div><button onclick="openConferenceSection('${s.id}')">Open Study</button> <button onclick="window.open('${attr(s.topicUrl||'#')}','_blank')">Open Gospel Library</button></div>`).join('');
 }
 function openConferenceSection(id){
   let s=GENERAL_CONFERENCE_STUDY.find(x=>x.id===id);
   if(!s)return;
   let list=document.getElementById('confList'),detail=document.getElementById('confDetail');
   if(list)list.innerHTML='';
-  detail.innerHTML=`<button onclick="renderConferenceList()">← All Conference Topics</button><h2>${esc(s.title)}</h2><p>${esc(s.summary)}</p><div class="confMeta">Focus: ${esc(s.focus)}</div><h3>How to Use This Study</h3><div class="confRef">1. Choose a General Conference talk related to this topic.</div><div class="confRef">2. Write the speaker, title, and scripture references that stood out.</div><div class="confRef">3. Record the invitation or action you feel prompted to take.</div><h3>Journal Prompts</h3>${s.prompts.map((p,i)=>`<div class="confRef">${i+1}. ${esc(p)}</div>`).join('')}<textarea style="min-height:180px" placeholder="Write impressions, talk title, speaker, scriptures, and action items here..."></textarea>`;
+  detail.innerHTML=`<button onclick="renderConferenceList()">← All Conference Topics</button><h2>${esc(s.title)}</h2><span class="officialBadge">Official Gospel Library Topic</span><p>${esc(s.summary)}</p><div class="confMeta">Focus: ${esc(s.focus)}</div><div class="topicLinkBox"><a target="_blank" href="${attr(s.topicUrl||'#')}">Open ${esc(s.title)} Topic in Gospel Library</a><p class="muted">This opens the official General Conference topic page so the talk list stays current.</p></div><h3>How to Use This Study</h3><div class="confRef">1. Choose a General Conference talk related to this topic.</div><div class="confRef">2. Write the speaker, title, and scripture references that stood out.</div><div class="confRef">3. Record the invitation or action you feel prompted to take.</div><h3>Journal Prompts</h3>${s.prompts.map((p,i)=>`<div class="confRef">${i+1}. ${esc(p)}</div>`).join('')}<textarea style="min-height:180px" placeholder="Write impressions, talk title, speaker, scriptures, and action items here..."></textarea>`;
   scrollTo(0,0);
 }
 

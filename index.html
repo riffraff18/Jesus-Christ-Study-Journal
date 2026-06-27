@@ -113,8 +113,19 @@ label{font-weight:750;display:block;margin-top:16px;margin-bottom:6px}textarea{w
 .revelationActions{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
 .revelationBadge{display:inline-block;border-radius:999px;padding:4px 9px;font-size:12px;font-weight:800;margin:4px 0}
 .revelationBadge.received{background:#eee7d9;color:#6b665d}.revelationBadge.acting{background:#e7f0ff;color:#174f8a}.revelationBadge.completed{background:#e7f5e7;color:#26753a}
-</style></head><body><header><h1>Jesus Christ Topical Guide Study</h1><div class="sub">Scripture Study Platform with Revelation Journal.</div><div class="bar"><div id="prog"></div></div><div class="sub" id="stats"></div><div class="versionPill" id="appVersionLabel">Version 47</div><div class="backupNote" id="backupNote"></div><div class="streakPill" id="streakLabel" onclick="showStreakDetails()">🔥 0 day streak</div><div class="reminderPill" id="reminderLabel" onclick="showReminderSettings()">⏰ Reminder off</div></header>
-<main><section id="list" class="view on"><div class="card"><button class="primary" onclick="continueStudying()">▶ Continue Studying</button><button onclick="showDashboard()">📊 Dashboard</button><button onclick="showStudyNotes()">📝 Study Notes</button><button onclick="showPrayerJournal()">🙏 Prayer Journal</button><button onclick="showRevelationJournal()">💡 Revelation Journal</button><button onclick="showUniversalSearch()">🔎 Universal Search</button><button onclick="showStudyLibrary()">📚 Study Library</button><button onclick="exportData()">Export Backup</button><button onclick="document.getElementById('imp').click()">Import</button><a href="assessment.html" style="text-decoration:none"><button type="button">Christlike Attribute Assessment</button></a><button onclick="showReminderSettings()">Study Reminder</button><button onclick="showSearchPanel()">Search References</button><button onclick="showUniversalSearch()">Open Universal Search</button><button onclick="jumpToNextUnchecked()">Next Unchecked</button><button onclick="showFavoritesJournal()">⭐ Favorites Journal</button><button onclick="printFavoritesJournal()">Print Favorites Journal</button><input id="imp" type="file" accept="application/json" style="display:none" onchange="importData(event)"><div id="weeks"></div></div></section><section id="detail" class="view"><div class="card" id="content"></div></section>
+
+.milestoneToolbar{border:1px solid #ddd6ca;border-radius:16px;padding:12px;margin:12px 0;background:#fffdf9}
+.milestoneToolbar input,.milestoneToolbar select,.milestoneEditor textarea,.milestoneEditor input,.milestoneEditor select{width:100%;box-sizing:border-box;border:1px solid #ddd6ca;border-radius:12px;padding:10px;font:inherit;margin:6px 0}
+.milestoneEditor{border:1px solid #ddd6ca;border-radius:16px;padding:12px;margin:12px 0;background:#fffdf9}
+.milestoneTimeline{border-left:4px solid #ddd6ca;margin-left:10px;padding-left:14px}
+.milestoneCard{border:1px solid #ddd6ca;border-radius:16px;padding:14px;margin:12px 0;background:#fff;position:relative}
+.milestoneCard:before{content:'';position:absolute;left:-25px;top:20px;width:14px;height:14px;background:#876b2f;border-radius:50%;border:3px solid #fff}
+.milestoneMeta{color:#6b665d;font-size:13px;margin:4px 0}
+.milestoneBody{white-space:pre-wrap;margin-top:8px}
+.milestoneActions{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.milestoneBadge{display:inline-block;background:#eee7d9;color:#6b665d;border-radius:999px;padding:4px 9px;font-size:12px;font-weight:800;margin:4px 0}
+</style></head><body><header><h1>Jesus Christ Topical Guide Study</h1><div class="sub">Scripture Study Platform with Spiritual Milestones.</div><div class="bar"><div id="prog"></div></div><div class="sub" id="stats"></div><div class="versionPill" id="appVersionLabel">Version 48</div><div class="backupNote" id="backupNote"></div><div class="streakPill" id="streakLabel" onclick="showStreakDetails()">🔥 0 day streak</div><div class="reminderPill" id="reminderLabel" onclick="showReminderSettings()">⏰ Reminder off</div></header>
+<main><section id="list" class="view on"><div class="card"><button class="primary" onclick="continueStudying()">▶ Continue Studying</button><button onclick="showDashboard()">📊 Dashboard</button><button onclick="showStudyNotes()">📝 Study Notes</button><button onclick="showPrayerJournal()">🙏 Prayer Journal</button><button onclick="showRevelationJournal()">💡 Revelation Journal</button><button onclick="showSpiritualMilestones()">🏔️ Spiritual Milestones</button><button onclick="showUniversalSearch()">🔎 Universal Search</button><button onclick="showStudyLibrary()">📚 Study Library</button><button onclick="exportData()">Export Backup</button><button onclick="document.getElementById('imp').click()">Import</button><a href="assessment.html" style="text-decoration:none"><button type="button">Christlike Attribute Assessment</button></a><button onclick="showReminderSettings()">Study Reminder</button><button onclick="showSearchPanel()">Search References</button><button onclick="showUniversalSearch()">Open Universal Search</button><button onclick="jumpToNextUnchecked()">Next Unchecked</button><button onclick="showFavoritesJournal()">⭐ Favorites Journal</button><button onclick="printFavoritesJournal()">Print Favorites Journal</button><input id="imp" type="file" accept="application/json" style="display:none" onchange="importData(event)"><div id="weeks"></div></div></section><section id="detail" class="view"><div class="card" id="content"></div></section>
 <section id="studyLibrary" class="view">
   <div class="card">
     <div class="top"><button onclick="showList()">← Current Study</button></div>
@@ -140,7 +151,7 @@ label{font-weight:750;display:block;margin-top:16px;margin-bottom:6px}textarea{w
       <div class="dashboardActions">
         <button class="primary" onclick="showList()">Continue Jesus Christ Study</button>
         <button onclick="showStudyLibrary()">Open Study Library</button>
-        <button onclick="showFavoritesJournal()">Open Favorites Journal</button><button onclick="showStudyNotes()">Open Study Notes</button><button onclick="showPrayerJournal()">Open Prayer Journal</button><button onclick="showRevelationJournal()">Open Revelation Journal</button>
+        <button onclick="showFavoritesJournal()">Open Favorites Journal</button><button onclick="showStudyNotes()">Open Study Notes</button><button onclick="showPrayerJournal()">Open Prayer Journal</button><button onclick="showRevelationJournal()">Open Revelation Journal</button><button onclick="showSpiritualMilestones()">Open Spiritual Milestones</button>
         <button onclick="showSearchPanel()">Search References</button>
         <button onclick="exportData()">Export Backup</button>
       </div>
@@ -200,7 +211,7 @@ label{font-weight:750;display:block;margin-top:16px;margin-bottom:6px}textarea{w
     <div id="prayerEditor"></div>
     <div id="prayerList"></div>
   </div>
-</section><section id="revelationJournal" class="view"><div class="card"><div class="top"><button onclick="showList()">← Current Study</button></div><h2>Revelation Journal</h2><p class="muted">Record spiritual impressions, promptings, scriptures, temple insights, dreams, and action items.</p><div class="revelationToolbar"><button class="primary" onclick="newRevelationEntry()">New Revelation Entry</button><input id="revelationSearch" placeholder="Search revelations..." oninput="renderRevelationJournal()"><select id="revelationTypeFilter" onchange="renderRevelationJournal()"><option value="all">All types</option><option>Impression</option><option>Prompting</option><option>Scripture Insight</option><option>Temple Insight</option><option>Dream</option><option>Answer to Prayer</option><option>Other</option></select><select id="revelationStatusFilter" onchange="renderRevelationJournal()"><option value="all">All statuses</option><option>Received</option><option>Acting</option><option>Completed</option></select></div><div id="revelationEditor"></div><div id="revelationList"></div></div></section>
+</section><section id="revelationJournal" class="view"><div class="card"><div class="top"><button onclick="showList()">← Current Study</button></div><h2>Revelation Journal</h2><p class="muted">Record spiritual impressions, promptings, scriptures, temple insights, dreams, and action items.</p><div class="revelationToolbar"><button class="primary" onclick="newRevelationEntry()">New Revelation Entry</button><input id="revelationSearch" placeholder="Search revelations..." oninput="renderRevelationJournal()"><select id="revelationTypeFilter" onchange="renderRevelationJournal()"><option value="all">All types</option><option>Impression</option><option>Prompting</option><option>Scripture Insight</option><option>Temple Insight</option><option>Dream</option><option>Answer to Prayer</option><option>Other</option></select><select id="revelationStatusFilter" onchange="renderRevelationJournal()"><option value="all">All statuses</option><option>Received</option><option>Acting</option><option>Completed</option></select></div><div id="revelationEditor"></div><div id="revelationList"></div></div></section><section id="spiritualMilestones" class="view"><div class="card"><div class="top"><button onclick="showList()">← Current Study</button></div><h2>Spiritual Milestones</h2><p class="muted">Build a personal spiritual history by recording important gospel moments, answers, ordinances, miracles, and lessons learned.</p><div class="milestoneToolbar"><button class="primary" onclick="newMilestoneEntry()">New Milestone</button><input id="milestoneSearch" placeholder="Search milestones..." oninput="renderMilestones()"><select id="milestoneTypeFilter" onchange="renderMilestones()"><option value="all">All types</option><option>Baptism</option><option>Priesthood</option><option>Temple</option><option>Mission</option><option>Answer to Prayer</option><option>Miracle</option><option>Scripture Insight</option><option>Family</option><option>Calling</option><option>Repentance</option><option>Testimony</option><option>Other</option></select></div><div id="milestoneEditor"></div><div id="milestoneList" class="milestoneTimeline"></div></div></section>
 
 <section id="universalSearch" class="view">
   <div class="card">
@@ -295,7 +306,7 @@ function fixHebrewsBackupRefs(){
 fixHebrewsBackupRefs();
 function data(n){let w=weeks[n-1];if(!state[n])state[n]={done:false,refs:w.refs.map(x=>({text:x.text,url:x.url,done:false,fav:false,favWhy:'',favChrist:'',favImpression:''})),learned:'',attribute:'',scripture:'',impressions:''};if(w.refs.some(r=>r.text)&&(!state[n].refs||state[n].refs.length!==w.refs.length||state[n].refs.some((r,i)=>r.text!==w.refs[i].text||r.url!==w.refs[i].url))){let old=state[n].refs||[];state[n].refs=w.refs.map((x,i)=>({text:x.text,url:x.url,done:old[i]?.done||false,fav:old[i]?.fav||false,favWhy:old[i]?.favWhy||'',favChrist:old[i]?.favChrist||'',favImpression:old[i]?.favImpression||''}))}let j=jesusTheChristReadings[n]||[];if(!state[n].jtc||state[n].jtc.length!==j.length){let old=state[n].jtc||[];state[n].jtc=j.map((x,i)=>({title:x[0],url:x[1],done:old[i]?.done||false,date:old[i]?.date||''}))}return state[n]}
 function save(){localStorage.setItem('tgStudyState',JSON.stringify(state));localStorage.setItem('tgStudyCurrent',current);renderList();stats()}
-function hideAllViews(){document.getElementById('list').classList.remove('on');document.getElementById('detail').classList.remove('on');document.getElementById('favoritesJournal').classList.remove('on');let rev=document.getElementById('revelationJournal');if(rev)rev.classList.remove('on');let prayer=document.getElementById('prayerJournal');if(prayer)prayer.classList.remove('on');let uni=document.getElementById('universalSearch');if(uni)uni.classList.remove('on');let notes=document.getElementById('studyNotes');if(notes)notes.classList.remove('on');let dash=document.getElementById('studyDashboard');if(dash)dash.classList.remove('on');let conf=document.getElementById('generalConferenceStudy');if(conf)conf.classList.remove('on');let bom=document.getElementById('bookOfMormonDiscipleship');if(bom)bom.classList.remove('on');let ww=document.getElementById('walkWithChrist');if(ww)ww.classList.remove('on');let cs=document.getElementById('characterStudies');if(cs)cs.classList.remove('on');let hub=document.getElementById('studyLibrary');if(hub)hub.classList.remove('on');let rs=document.getElementById('reminderSettings');if(rs)rs.classList.remove('on');let sp=document.getElementById('searchPanel');if(sp)sp.classList.remove('on')}
+function hideAllViews(){document.getElementById('list').classList.remove('on');document.getElementById('detail').classList.remove('on');document.getElementById('favoritesJournal').classList.remove('on');let mile=document.getElementById('spiritualMilestones');if(mile)mile.classList.remove('on');let rev=document.getElementById('revelationJournal');if(rev)rev.classList.remove('on');let prayer=document.getElementById('prayerJournal');if(prayer)prayer.classList.remove('on');let uni=document.getElementById('universalSearch');if(uni)uni.classList.remove('on');let notes=document.getElementById('studyNotes');if(notes)notes.classList.remove('on');let dash=document.getElementById('studyDashboard');if(dash)dash.classList.remove('on');let conf=document.getElementById('generalConferenceStudy');if(conf)conf.classList.remove('on');let bom=document.getElementById('bookOfMormonDiscipleship');if(bom)bom.classList.remove('on');let ww=document.getElementById('walkWithChrist');if(ww)ww.classList.remove('on');let cs=document.getElementById('characterStudies');if(cs)cs.classList.remove('on');let hub=document.getElementById('studyLibrary');if(hub)hub.classList.remove('on');let rs=document.getElementById('reminderSettings');if(rs)rs.classList.remove('on');let sp=document.getElementById('searchPanel');if(sp)sp.classList.remove('on')}
 function showList(){hideAllViews();document.getElementById('list').classList.add('on');scrollTo(0,0)}
 function openWeek(n){current=n;renderDetail();hideAllViews();document.getElementById('detail').classList.add('on');save();scrollTo(0,0)}
 
@@ -1029,6 +1040,15 @@ function universalSearchData(){
     });
   }catch(e){}
 
+  try{
+    ensureSpiritualMilestones();
+    (state._milestones||[]).forEach(m=>{
+      let meta='Spiritual Milestones • '+(m.type||'Other')+' • '+(m.date||'');
+      let text=(m.people||'')+' '+(m.scriptures||'')+' '+(m.description||'')+' '+(m.lesson||'');
+      addUniversalResult(results,'notes','🏔️ '+(m.title||'Spiritual Milestone'),meta,text,'<button onclick="showSpiritualMilestones()">Open Spiritual Milestones</button>',meta+' '+(m.title||'')+' '+text);
+    });
+  }catch(e){}
+
   return results;
 }
 function runUniversalSearch(){
@@ -1065,6 +1085,7 @@ function continueStudying(){
   if(c.type==='notes' && typeof showStudyNotes==='function'){showStudyNotes();return;}
   if(c.type==='prayer' && typeof showPrayerJournal==='function'){showPrayerJournal();return;}
   if(c.type==='revelation' && typeof showRevelationJournal==='function'){showRevelationJournal();return;}
+  if(c.type==='milestones' && typeof showSpiritualMilestones==='function'){showSpiritualMilestones();return;}
   if(c.type==='search' && typeof showUniversalSearch==='function'){showUniversalSearch();return;}
   openWeek(Number(c.week||current||1));
 }
@@ -1235,6 +1256,72 @@ function renderRevelationJournal(){
  return `<div class="revelationCard ${cls}"><h3>${esc(r.title||'Revelation Entry')}</h3><span class="revelationBadge ${badge}">${esc(st)}</span><div class="revelationMeta">${esc(r.type||'Impression')}${r.source?' • '+esc(r.source):''} • Updated: ${esc(r.updated||r.created||'')}</div>${r.body?'<h4>Impression / Revelation</h4><div class="revelationBody">'+esc(r.body)+'</div>':''}${r.action?'<h4>Action Item</h4><div class="revelationBody">'+esc(r.action)+'</div>':''}${r.outcome?'<h4>Follow-up / Outcome</h4><div class="revelationBody">'+esc(r.outcome)+'</div>':''}<div class="revelationActions"><button onclick="editRevelationEntry('${r.id}')">Edit</button><button onclick="markRevelationCompleted('${r.id}')">Mark Completed</button><button onclick="deleteRevelationEntry('${r.id}')">Delete</button></div></div>`}).join('');
 }
 
+
+function ensureSpiritualMilestones(){if(!state._milestones)state._milestones=[]}
+function milestoneId(){return 'milestone-'+Date.now()+'-'+Math.random().toString(36).slice(2,8)}
+function milestoneOptionsHtml(selected){
+ const opts=['Baptism','Priesthood','Temple','Mission','Answer to Prayer','Miracle','Scripture Insight','Family','Calling','Repentance','Testimony','Other'];
+ return opts.map(o=>`<option ${o===selected?'selected':''}>${esc(o)}</option>`).join('');
+}
+function showSpiritualMilestones(){
+ hideAllViews();ensureSpiritualMilestones();document.getElementById('spiritualMilestones').classList.add('on');renderMilestones();scrollTo(0,0)
+}
+function newMilestoneEntry(){
+ ensureSpiritualMilestones();
+ let today=new Date().toISOString().slice(0,10);
+ document.getElementById('milestoneEditor').innerHTML=`<div class="milestoneEditor"><h3>New Spiritual Milestone</h3><label>Title</label><input id="milestoneTitle" placeholder="Example: Answered prayer, temple impression, baptism day"><label>Date</label><input id="milestoneDate" type="date" value="${today}"><label>Type</label><select id="milestoneType">${milestoneOptionsHtml('Testimony')}</select><label>People Involved</label><input id="milestonePeople" placeholder="Family, friend, leader, missionary, etc."><label>Scriptures / Sources</label><input id="milestoneScriptures" placeholder="Example: Ether 12:27, sacrament meeting, temple"><label>Description</label><textarea id="milestoneDescription" style="min-height:140px" placeholder="What happened? Why was it spiritually important?"></textarea><label>Testimony / Lesson Learned</label><textarea id="milestoneLesson" style="min-height:120px" placeholder="What did this teach you about Jesus Christ, Heavenly Father, or the gospel?"></textarea><button class="primary" onclick="saveMilestoneEntry()">Save Milestone</button><button onclick="cancelMilestoneEntry()">Cancel</button></div>`;
+}
+function cancelMilestoneEntry(){document.getElementById('milestoneEditor').innerHTML=''}
+function saveMilestoneEntry(){
+ ensureSpiritualMilestones();
+ let title=(document.getElementById('milestoneTitle')?.value||'Spiritual Milestone').trim()||'Spiritual Milestone';
+ let date=document.getElementById('milestoneDate')?.value||new Date().toISOString().slice(0,10);
+ let type=document.getElementById('milestoneType')?.value||'Testimony';
+ let people=(document.getElementById('milestonePeople')?.value||'').trim();
+ let scriptures=(document.getElementById('milestoneScriptures')?.value||'').trim();
+ let description=(document.getElementById('milestoneDescription')?.value||'').trim();
+ let lesson=(document.getElementById('milestoneLesson')?.value||'').trim();
+ if(!description&&!lesson&&!scriptures){alert('Add a description, lesson, or scripture before saving.');return;}
+ state._milestones.unshift({id:milestoneId(),title,date,type,people,scriptures,description,lesson,created:new Date().toLocaleString(),updated:new Date().toLocaleString()});
+ save();document.getElementById('milestoneEditor').innerHTML='';renderMilestones();
+}
+function editMilestoneEntry(id){
+ ensureSpiritualMilestones();let m=state._milestones.find(x=>x.id===id);if(!m)return;
+ document.getElementById('milestoneEditor').innerHTML=`<div class="milestoneEditor"><h3>Edit Spiritual Milestone</h3><label>Title</label><input id="milestoneTitle" value="${attr(m.title||'')}"><label>Date</label><input id="milestoneDate" type="date" value="${attr(m.date||'')}"><label>Type</label><select id="milestoneType">${milestoneOptionsHtml(m.type||'Testimony')}</select><label>People Involved</label><input id="milestonePeople" value="${attr(m.people||'')}"><label>Scriptures / Sources</label><input id="milestoneScriptures" value="${attr(m.scriptures||'')}"><label>Description</label><textarea id="milestoneDescription" style="min-height:140px">${esc(m.description||'')}</textarea><label>Testimony / Lesson Learned</label><textarea id="milestoneLesson" style="min-height:120px">${esc(m.lesson||'')}</textarea><button class="primary" onclick="updateMilestoneEntry('${id}')">Update Milestone</button><button onclick="cancelMilestoneEntry()">Cancel</button></div>`;
+ scrollTo(0,0);
+}
+function updateMilestoneEntry(id){
+ let m=state._milestones.find(x=>x.id===id);if(!m)return;
+ m.title=(document.getElementById('milestoneTitle')?.value||'Spiritual Milestone').trim()||'Spiritual Milestone';
+ m.date=document.getElementById('milestoneDate')?.value||m.date||new Date().toISOString().slice(0,10);
+ m.type=document.getElementById('milestoneType')?.value||'Testimony';
+ m.people=(document.getElementById('milestonePeople')?.value||'').trim();
+ m.scriptures=(document.getElementById('milestoneScriptures')?.value||'').trim();
+ m.description=(document.getElementById('milestoneDescription')?.value||'').trim();
+ m.lesson=(document.getElementById('milestoneLesson')?.value||'').trim();
+ m.updated=new Date().toLocaleString();save();document.getElementById('milestoneEditor').innerHTML='';renderMilestones();
+}
+function deleteMilestoneEntry(id){
+ ensureSpiritualMilestones();if(!confirm('Delete this milestone?'))return;
+ state._milestones=state._milestones.filter(x=>x.id!==id);save();renderMilestones();
+}
+function filteredMilestones(){
+ ensureSpiritualMilestones();
+ let q=(document.getElementById('milestoneSearch')?.value||'').toLowerCase().trim();
+ let type=document.getElementById('milestoneTypeFilter')?.value||'all';
+ let items=[...state._milestones];
+ if(type!=='all')items=items.filter(m=>(m.type||'Other')===type);
+ if(q)items=items.filter(m=>((m.title||'')+' '+(m.type||'')+' '+(m.date||'')+' '+(m.people||'')+' '+(m.scriptures||'')+' '+(m.description||'')+' '+(m.lesson||'')).toLowerCase().includes(q));
+ items.sort((a,b)=>String(b.date||'').localeCompare(String(a.date||'')) || String(b.updated||b.created||'').localeCompare(String(a.updated||a.created||'')));
+ return items;
+}
+function renderMilestones(){
+ ensureSpiritualMilestones();let list=document.getElementById('milestoneList');if(!list)return;
+ let items=filteredMilestones();
+ if(!items.length){list.innerHTML='<div class="milestoneCard"><p class="muted">No spiritual milestones yet. Tap New Milestone to start your spiritual timeline.</p></div>';return;}
+ list.innerHTML=items.map(m=>`<div class="milestoneCard"><h3>${esc(m.title||'Spiritual Milestone')}</h3><span class="milestoneBadge">${esc(m.type||'Other')}</span><div class="milestoneMeta">${esc(m.date||'No date')}${m.people?' • '+esc(m.people):''}</div>${m.scriptures?'<div class="milestoneMeta">Scriptures / Sources: '+esc(m.scriptures)+'</div>':''}${m.description?'<h4>Description</h4><div class="milestoneBody">'+esc(m.description)+'</div>':''}${m.lesson?'<h4>Testimony / Lesson Learned</h4><div class="milestoneBody">'+esc(m.lesson)+'</div>':''}<div class="milestoneActions"><button onclick="editMilestoneEntry('${m.id}')">Edit</button><button onclick="deleteMilestoneEntry('${m.id}')">Delete</button></div></div>`).join('');
+}
+
 function stats(){let dw=0,dr=0,tr=0,fv=0,jd=0,jt=0;weeks.forEach(w=>{let d=data(w.week);if(d.done)dw++;dr+=d.refs.filter(r=>r.done).length;fv+=d.refs.filter(r=>r.fav).length;tr+=d.refs.length;jd+=(d.jtc||[]).filter(x=>x.done).length;jt+=(d.jtc||[]).length});document.getElementById('prog').style.width=Math.round(dw/78*100)+'%';document.getElementById('stats').textContent=`${dw}/78 weeks complete • ${dr}/${tr} references checked • ⭐ ${fv} favorites • 📖 ${jd}/${jt} JTC readings`}
 function exportData(){let blob=new Blob([JSON.stringify(state,null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='jesus-christ-study-backup.json';a.click()}
 function importData(e){let f=e.target.files[0];if(!f)return;let r=new FileReader();r.onload=()=>{try{state=JSON.parse(r.result);fixHebrewsBackupRefs();forceHebrewsVisibleText();forceWeek1HebrewsRefs();save();renderDetail();alert('Imported and Hebrews references fixed')}catch{alert('Could not import')}};r.readAsText(f)}
@@ -1285,6 +1372,7 @@ function openConferenceSection(id){
     wrap('showStudyNotes','notes','Study Notes');
     wrap('showPrayerJournal','prayer','Prayer Journal');
     wrap('showRevelationJournal','revelation','Revelation Journal');
+    wrap('showSpiritualMilestones','milestones','Spiritual Milestones');
     wrap('showUniversalSearch','search','Universal Search');
   }catch(e){}
 })();

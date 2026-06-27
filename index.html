@@ -211,7 +211,28 @@ label{font-weight:750;display:block;margin-top:16px;margin-bottom:6px}textarea{w
 .v57LibraryCard.main{border:2px solid #876b2f;background:#fffdf9}
 .v57LibraryCard b{display:block;font-size:17px;margin-bottom:5px}
 .v57LibraryCard span{color:#6b665d;font-size:13px}
-</style></head><body><header><h1>Jesus Christ Topical Guide Study</h1><div class="sub">Scripture Study Platform Phase 2 App Home Polish.</div><div class="bar"><div id="prog"></div></div><div class="sub" id="stats"></div><div class="versionPill" id="appVersionLabel">Version 57</div><div class="backupNote" id="backupNote"></div><div class="streakPill" id="streakLabel" onclick="showStreakDetails()">🔥 0 day streak</div><div class="reminderPill" id="reminderLabel" onclick="showReminderSettings()">⏰ Reminder off</div></header>
+
+.v58GrowthCard{border:1px solid #ddd6ca;border-radius:20px;padding:15px;margin:12px 0;background:#fff}
+.v58GrowthCard h3{margin:0 0 8px}
+.v58GrowthGrid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
+.v58GrowthItem{border:1px solid #eee7d9;border-radius:14px;padding:10px;background:#fffdf9}
+.v58GrowthItem b{display:block;font-size:18px}
+.v58NextStep{border:2px solid #876b2f;border-radius:22px;padding:16px;margin:12px 0;background:#fffdf9}
+.v58NextStep h3{margin:0 0 8px}
+.v58ToolRow{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:10px 0}
+.v58ToolRow button{border-radius:16px;padding:12px;text-align:left}
+
+.v59Journey{border:2px solid #876b2f;border-radius:24px;padding:16px;margin:14px 0;background:#fffdf9}
+.v59Journey h3{margin:0 0 8px}
+.v59Path{display:grid;grid-template-columns:1fr;gap:10px;margin-top:10px}
+.v59PathItem{border:1px solid #ddd6ca;border-radius:18px;padding:13px;background:#fff}
+.v59PathItem b{display:block;margin-bottom:4px}
+.v59Small{font-size:13px;color:#6b665d}
+.v59SectionHeader{display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #ddd6ca;margin-top:18px;padding-bottom:7px}
+.v59SectionHeader span{font-size:12px;font-weight:800;color:#876b2f}
+.v59ProgressRow{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
+.v59ProgressPill{border:1px solid #eee7d9;border-radius:999px;padding:8px 10px;background:#fff;text-align:center}
+</style></head><body><header><h1>Jesus Christ Topical Guide Study</h1><div class="sub">Scripture Study Platform Phase 2 App Home Polish.</div><div class="bar"><div id="prog"></div></div><div class="sub" id="stats"></div><div class="versionPill" id="appVersionLabel">Version 59</div><div class="backupNote" id="backupNote"></div><div class="streakPill" id="streakLabel" onclick="showStreakDetails()">🔥 0 day streak</div><div class="reminderPill" id="reminderLabel" onclick="showReminderSettings()">⏰ Reminder off</div></header>
 <main>
 <section id="v56Dashboard" class="view">
   <div class="card">
@@ -226,9 +247,9 @@ label{font-weight:750;display:block;margin-top:16px;margin-bottom:6px}textarea{w
         <button onclick="showUniversalSearch()">Search</button>
       </div>
     </div>
-    <div id="v57FocusStrip"></div><div id="v56Stats" class="v56Grid"></div>
+    <div id="v58NextStep"></div><div id="v57FocusStrip"></div><div id="v59JourneyOverview"></div><div id="v58GrowthSummary"></div><div id="v56Stats" class="v56Grid"></div>
     <div class="v56Section">
-      <h3>📚 Study Library</h3>
+      <div class="v59SectionHeader"><h3>📚 Study Library</h3><span>Guided Studies</span></div>
       <div class="v57LibraryCard main"><b>📖 Jesus Christ Topical Guide</b><p class="muted">Your main 78-week study of Jesus Christ.</p><div class="v56Actions"><button onclick="showList()">Open</button><button onclick="continueStudying()">Continue</button></div></div>
       <div class="v56Grid">
         <button class="v57LibraryCard" onclick="showCharacterStudies()"><b>👥 Characters</b><span>People in scripture</span></button>
@@ -238,7 +259,7 @@ label{font-weight:750;display:block;margin-top:16px;margin-bottom:6px}textarea{w
       </div>
     </div>
     <div class="v56Section">
-      <h3>🧭 Personal Study</h3>
+      <div class="v59SectionHeader"><h3>🧭 Personal Study</h3><span>Journals & Growth</span></div>
       <div class="v56Grid">
         <button class="v56Tile" onclick="showFavoritesJournal()"><b>⭐ Favorites</b><span>Favorite scriptures</span></button>
         <button class="v56Tile" onclick="showStudyNotes()"><b>📝 Notes</b><span>Study insights</span></button>
@@ -249,7 +270,7 @@ label{font-weight:750;display:block;margin-top:16px;margin-bottom:6px}textarea{w
       </div>
     </div>
     <div class="v56Section">
-      <h3>📊 Tools</h3>
+      <div class="v59SectionHeader"><h3>📊 Tools</h3><span>Search & Insights</span></div>
       <div class="v56Grid">
         <button class="v56Tile" onclick="showInsightsDashboard()"><b>📈 Insights</b><span>Growth dashboard</span></button>
         <button class="v56Tile" onclick="showDashboard()"><b>📊 Dashboard</b><span>Progress overview</span></button>
@@ -1664,6 +1685,8 @@ function renderPhaseStudyHub(){
 
 
 
+
+
 function showV56Dashboard(){
  hideAllViews();
  renderV56Dashboard();
@@ -1678,18 +1701,28 @@ function renderV56Dashboard(){
  }catch(e){}
  let pct=refs?Math.round(checked/refs*100):0;
  let streak=(state._streak&&state._streak.current)||0;
- let notes=(state._notes||[]).length, prayers=(state._prayers||[]).length, revs=(state._revelations||[]).length, milestones=(state._milestones||[]).length;
+ let notes=(state._notes||[]).length, prayers=(state._prayers||[]).length, answered=(state._prayers||[]).filter(p=>(p.status||'')==='Answered').length;
+ let revs=(state._revelations||[]).length, revDone=(state._revelations||[]).filter(r=>(r.status||'')==='Completed').length;
+ let milestones=(state._milestones||[]).length;
  let goals=(state._goals||[]).length, doneGoals=(state._goals||[]).filter(g=>(g.status||'')==='Completed').length;
  let openGoals=goals-doneGoals;
  let hero=document.getElementById('v56HeroText');
  if(hero)hero.innerHTML=esc(currentTopic)+' • '+checked+' of '+refs+' references studied';
  let bar=document.getElementById('v56ProgressBar');
  if(bar)bar.style.width=pct+'%';
+ let journey=document.getElementById('v59JourneyOverview');
+ if(journey)journey.innerHTML='<div class="v59Journey"><div class="phaseHubMiniLabel">Journey Overview</div><h3>Your discipleship path</h3><p class="muted">Study leads to prayer. Prayer invites revelation. Revelation becomes action. Action creates spiritual milestones.</p><div class="v59Path"><div class="v59PathItem"><b>1. Study</b><span class="v59Small">'+checked+' scriptures studied • '+pct+'% complete</span></div><div class="v59PathItem"><b>2. Record</b><span class="v59Small">'+notes+' notes • '+revs+' revelation entries</span></div><div class="v59PathItem"><b>3. Act</b><span class="v59Small">'+doneGoals+'/'+goals+' goals complete • '+milestones+' milestones</span></div></div></div>';
+ let next=document.getElementById('v58NextStep');
+ if(next)next.innerHTML='<div class="v58NextStep"><div class="phaseHubMiniLabel">Next Step</div><h3>Choose one faithful action</h3><p class="muted">Study, pray, record revelation, or act on a goal. Small consistent steps build discipleship.</p><div class="v58ToolRow"><button class="primary" onclick="continueStudying()">▶ Study Now</button><button onclick="showPrayerJournal()">🙏 Pray</button><button onclick="showRevelationJournal()">💡 Record</button><button onclick="showGoalsActionPlan()">🎯 Act</button></div></div>';
  let focus=document.getElementById('v57FocusStrip');
- if(focus)focus.innerHTML='<div class="v57FocusStrip"><div class="phaseHubMiniLabel">Daily Focus</div><h3>What is the next best step?</h3><p class="muted">Choose one small act of discipleship today.</p><div class="v56Actions"><button class="primary" onclick="continueStudying()">Study</button><button onclick="showPrayerJournal()">Pray</button><button onclick="showGoalsActionPlan()">Act</button></div><div class="v57MiniGrid"><div class="v57MiniStat"><b>'+notes+'</b><span>Notes</span></div><div class="v57MiniStat"><b>'+revs+'</b><span>Revelations</span></div><div class="v57MiniStat"><b>'+openGoals+'</b><span>Open Goals</span></div></div></div>';
+ if(focus)focus.innerHTML='<div class="v57FocusStrip"><div class="phaseHubMiniLabel">Daily Focus</div><h3>Come unto Christ today</h3><p class="muted">Your home base for scripture study, personal revelation, and spiritual action.</p><div class="v57MiniGrid"><div class="v57MiniStat"><b>'+notes+'</b><span>Notes</span></div><div class="v57MiniStat"><b>'+revs+'</b><span>Revelations</span></div><div class="v57MiniStat"><b>'+openGoals+'</b><span>Open Goals</span></div></div></div>';
+ let growth=document.getElementById('v58GrowthSummary');
+ if(growth)growth.innerHTML='<div class="v58GrowthCard"><h3>Personal Growth Summary</h3><p class="muted">A snapshot of your spiritual record.</p><div class="v59ProgressRow"><div class="v59ProgressPill">'+answered+'/'+prayers+' prayers answered</div><div class="v59ProgressPill">'+revDone+'/'+revs+' revelations acted on</div><div class="v59ProgressPill">'+milestones+' milestones</div><div class="v59ProgressPill">'+doneGoals+'/'+goals+' goals</div></div></div>';
  let stats=document.getElementById('v56Stats');
  if(stats)stats.innerHTML='<div class="v56Tile"><b>'+pct+'%</b><span>Main study complete</span></div><div class="v56Tile"><b>🔥 '+streak+'</b><span>Day streak</span></div><div class="v56Tile"><b>⭐ '+favs+'</b><span>Favorite scriptures</span></div><div class="v56Tile"><b>'+notes+'</b><span>Study notes</span></div><div class="v56Tile"><b>'+prayers+'</b><span>Prayer entries</span></div><div class="v56Tile"><b>'+revs+'</b><span>Revelation entries</span></div><div class="v56Tile"><b>'+milestones+'</b><span>Milestones</span></div><div class="v56Tile"><b>'+doneGoals+'/'+goals+'</b><span>Goals complete</span></div>';
 }
+
+
 
 
 function stats(){let dw=0,dr=0,tr=0,fv=0,jd=0,jt=0;weeks.forEach(w=>{let d=data(w.week);if(d.done)dw++;dr+=d.refs.filter(r=>r.done).length;fv+=d.refs.filter(r=>r.fav).length;tr+=d.refs.length;jd+=(d.jtc||[]).filter(x=>x.done).length;jt+=(d.jtc||[]).length});document.getElementById('prog').style.width=Math.round(dw/78*100)+'%';document.getElementById('stats').textContent=`${dw}/78 weeks complete • ${dr}/${tr} references checked • ⭐ ${fv} favorites • 📖 ${jd}/${jt} JTC readings`}

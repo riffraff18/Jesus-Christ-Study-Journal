@@ -288,7 +288,14 @@ label{font-weight:750;display:block;margin-top:16px;margin-bottom:6px}textarea{w
 .readingModeActions{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
 .readingNoteBox textarea{width:100%;box-sizing:border-box;border:1px solid #ddd6ca;border-radius:14px;padding:12px;font:inherit;min-height:130px}
 .readingModeToggle{border:1px solid #ddd6ca;border-radius:18px;padding:12px;margin:10px 0;background:#fff}
-</style></head><body><header><h1>Jesus Christ Topical Guide Study</h1><div class="sub">Scripture Study Platform Phase 2 App Home Polish.</div><div class="bar"><div id="prog"></div></div><div class="sub" id="stats"></div><div class="versionPill" id="appVersionLabel">Version 62</div><div class="backupNote" id="backupNote"></div><div class="streakPill" id="streakLabel" onclick="showStreakDetails()">🔥 0 day streak</div><div class="reminderPill" id="reminderLabel" onclick="showReminderSettings()">⏰ Reminder off</div></header>
+
+.crossRefGrid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px 0}
+.crossRefCard{border:1px solid #ddd6ca;border-radius:18px;padding:13px;background:#fff;text-align:left}
+.crossRefCard b{display:block;margin-bottom:4px}
+.crossRefCard span{font-size:13px;color:#6b665d}
+.relatedResourceBox{border:2px solid #876b2f;border-radius:22px;padding:16px;margin:14px 0;background:#fffdf9}
+.relatedResourceBox h3{margin:0 0 8px}
+</style></head><body><header><h1>Jesus Christ Topical Guide Study</h1><div class="sub">Scripture Study Platform Phase 2 App Home Polish.</div><div class="bar"><div id="prog"></div></div><div class="sub" id="stats"></div><div class="versionPill" id="appVersionLabel">Version 63</div><div class="backupNote" id="backupNote"></div><div class="streakPill" id="streakLabel" onclick="showStreakDetails()">🔥 0 day streak</div><div class="reminderPill" id="reminderLabel" onclick="showReminderSettings()">⏰ Reminder off</div></header>
 <main>
 <section id="v60StudyHome" class="view">
   <div class="card v60Home">
@@ -1893,6 +1900,7 @@ function renderV60StudyHome(){
 
 
 
+
 function currentReadingInfo(){
  let w=null,d=null,next=null;
  try{w=weeks[current-1]||weeks[0];d=data(w.week);next=(d.refs||[]).find(r=>!r.done)||(d.refs||[])[0]||null;}catch(e){}
@@ -1916,11 +1924,11 @@ function saveReadingImpression(){
 }
 function markReadingDone(){
  let info=currentReadingInfo();
- if(info.ref){info.ref.done=true;save();renderImmersiveReadingMode();stats&&stats();}
+ if(info.ref){info.ref.done=true;save();renderImmersiveReadingMode();if(typeof stats==='function')stats();}
 }
 function favReadingRef(){
  let info=currentReadingInfo();
- if(info.ref){info.ref.fav=!info.ref.fav;save();renderImmersiveReadingMode();stats&&stats();}
+ if(info.ref){info.ref.fav=!info.ref.fav;save();renderImmersiveReadingMode();if(typeof stats==='function')stats();}
 }
 function renderImmersiveReadingMode(){
  let info=currentReadingInfo();
@@ -1931,8 +1939,9 @@ function renderImmersiveReadingMode(){
  let topic=info.week.topic||'Jesus Christ Study';
  let done=info.ref.done?'✅ Studied':'Not studied yet';
  let fav=info.ref.fav?'⭐ Favorited':'☆ Favorite';
- box.innerHTML=`<div class="readingModeCard"><div class="readingModeRef">Week ${info.week.week} • ${esc(topic)}</div><h2>${esc(ref)}</h2><p class="readingModeText">Open this reference in the Gospel Library or scriptures, then return here to record what the Spirit teaches you.</p><div class="readingModeActions"><button class="primary" onclick="markReadingDone()">${done}</button><button onclick="favReadingRef()">${fav}</button><button onclick="openRef('${attr(ref)}')">Open Scripture</button></div></div><div class="readingFlow"><div class="readingFlowCard"><b>1. Read</b><span class="muted">Read slowly and look for what this teaches about Jesus Christ.</span></div><div class="readingFlowCard"><b>2. Reflect</b><span class="muted">Ask: What does this reveal about His character, mission, grace, or invitation?</span></div><div class="readingFlowCard"><b>3. Record</b><span class="muted">Write the impression before it fades.</span></div><div class="readingFlowCard"><b>4. Act</b><span class="muted">Choose one small faithful action.</span></div></div><div class="readingNoteBox"><h3>Impression / Revelation</h3><textarea id="readingImpression" placeholder="Write what you feel, learn, or want to act on..."></textarea><div class="readingModeActions"><button class="primary" onclick="saveReadingImpression()">Save to Study Notes</button><button onclick="showPrayerJournal()">Open Prayer Journal</button><button onclick="showGoalsActionPlan()">Create Action Goal</button></div></div>`;
+ box.innerHTML=`<div class="readingModeCard"><div class="readingModeRef">Week ${info.week.week} • ${esc(topic)}</div><h2>${esc(ref)}</h2><p class="readingModeText">Open this reference in the Gospel Library or scriptures, then return here to record what the Spirit teaches you.</p><div class="readingModeActions"><button class="primary" onclick="markReadingDone()">${done}</button><button onclick="favReadingRef()">${fav}</button><button onclick="openRef('${attr(ref)}')">Open Scripture</button></div></div><div class="relatedResourceBox"><h3>Related Study Resources</h3><p class="muted">Connect this scripture to the rest of your study platform.</p><div class="crossRefGrid"><button class="crossRefCard" onclick="showFavoritesJournal()"><b>⭐ Favorites</b><span>Review favorite scriptures</span></button><button class="crossRefCard" onclick="showStudyNotes()"><b>📝 Notes</b><span>Find connected impressions</span></button><button class="crossRefCard" onclick="showPrayerJournal()"><b>🙏 Prayer</b><span>Turn study into prayer</span></button><button class="crossRefCard" onclick="showRevelationJournal()"><b>💡 Revelation</b><span>Record promptings</span></button><button class="crossRefCard" onclick="showGoalsActionPlan()"><b>🎯 Action</b><span>Create a goal</span></button><button class="crossRefCard" onclick="showUniversalSearch()"><b>🔎 Search</b><span>Search related topics</span></button></div></div><div class="readingFlow"><div class="readingFlowCard"><b>1. Read</b><span class="muted">Read slowly and look for what this teaches about Jesus Christ.</span></div><div class="readingFlowCard"><b>2. Reflect</b><span class="muted">Ask: What does this reveal about His character, mission, grace, or invitation?</span></div><div class="readingFlowCard"><b>3. Record</b><span class="muted">Write the impression before it fades.</span></div><div class="readingFlowCard"><b>4. Act</b><span class="muted">Choose one small faithful action.</span></div></div><div class="readingNoteBox"><h3>Impression / Revelation</h3><textarea id="readingImpression" placeholder="Write what you feel, learn, or want to act on..."></textarea><div class="readingModeActions"><button class="primary" onclick="saveReadingImpression()">Save to Study Notes</button><button onclick="showPrayerJournal()">Open Prayer Journal</button><button onclick="showGoalsActionPlan()">Create Action Goal</button></div></div>`;
 }
+
 
 function stats(){let dw=0,dr=0,tr=0,fv=0,jd=0,jt=0;weeks.forEach(w=>{let d=data(w.week);if(d.done)dw++;dr+=d.refs.filter(r=>r.done).length;fv+=d.refs.filter(r=>r.fav).length;tr+=d.refs.length;jd+=(d.jtc||[]).filter(x=>x.done).length;jt+=(d.jtc||[]).length});document.getElementById('prog').style.width=Math.round(dw/78*100)+'%';document.getElementById('stats').textContent=`${dw}/78 weeks complete • ${dr}/${tr} references checked • ⭐ ${fv} favorites • 📖 ${jd}/${jt} JTC readings`}
 function exportData(){let blob=new Blob([JSON.stringify(state,null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='jesus-christ-study-backup.json';a.click()}

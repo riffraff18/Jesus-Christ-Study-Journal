@@ -124,8 +124,22 @@ label{font-weight:750;display:block;margin-top:16px;margin-bottom:6px}textarea{w
 .milestoneBody{white-space:pre-wrap;margin-top:8px}
 .milestoneActions{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
 .milestoneBadge{display:inline-block;background:#eee7d9;color:#6b665d;border-radius:999px;padding:4px 9px;font-size:12px;font-weight:800;margin:4px 0}
-</style></head><body><header><h1>Jesus Christ Topical Guide Study</h1><div class="sub">Scripture Study Platform with Spiritual Milestones.</div><div class="bar"><div id="prog"></div></div><div class="sub" id="stats"></div><div class="versionPill" id="appVersionLabel">Version 48</div><div class="backupNote" id="backupNote"></div><div class="streakPill" id="streakLabel" onclick="showStreakDetails()">🔥 0 day streak</div><div class="reminderPill" id="reminderLabel" onclick="showReminderSettings()">⏰ Reminder off</div></header>
-<main><section id="list" class="view on"><div class="card"><button class="primary" onclick="continueStudying()">▶ Continue Studying</button><button onclick="showDashboard()">📊 Dashboard</button><button onclick="showStudyNotes()">📝 Study Notes</button><button onclick="showPrayerJournal()">🙏 Prayer Journal</button><button onclick="showRevelationJournal()">💡 Revelation Journal</button><button onclick="showSpiritualMilestones()">🏔️ Spiritual Milestones</button><button onclick="showUniversalSearch()">🔎 Universal Search</button><button onclick="showStudyLibrary()">📚 Study Library</button><button onclick="exportData()">Export Backup</button><button onclick="document.getElementById('imp').click()">Import</button><a href="assessment.html" style="text-decoration:none"><button type="button">Christlike Attribute Assessment</button></a><button onclick="showReminderSettings()">Study Reminder</button><button onclick="showSearchPanel()">Search References</button><button onclick="showUniversalSearch()">Open Universal Search</button><button onclick="jumpToNextUnchecked()">Next Unchecked</button><button onclick="showFavoritesJournal()">⭐ Favorites Journal</button><button onclick="printFavoritesJournal()">Print Favorites Journal</button><input id="imp" type="file" accept="application/json" style="display:none" onchange="importData(event)"><div id="weeks"></div></div></section><section id="detail" class="view"><div class="card" id="content"></div></section>
+
+.goalToolbar{border:1px solid #ddd6ca;border-radius:16px;padding:12px;margin:12px 0;background:#fffdf9}
+.goalToolbar input,.goalToolbar select,.goalEditor textarea,.goalEditor input,.goalEditor select{width:100%;box-sizing:border-box;border:1px solid #ddd6ca;border-radius:12px;padding:10px;font:inherit;margin:6px 0}
+.goalEditor{border:1px solid #ddd6ca;border-radius:16px;padding:12px;margin:12px 0;background:#fffdf9}
+.goalCard{border:1px solid #ddd6ca;border-radius:16px;padding:14px;margin:12px 0;background:#fff}
+.goalCard.completed{border:3px solid #26753a}
+.goalMeta{color:#6b665d;font-size:13px;margin:4px 0}
+.goalBody{white-space:pre-wrap;margin-top:8px}
+.goalActions{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.goalBadge{display:inline-block;border-radius:999px;padding:4px 9px;font-size:12px;font-weight:800;margin:4px 0}
+.goalBadge.notstarted{background:#eee7d9;color:#6b665d}
+.goalBadge.inprogress{background:#e7f0ff;color:#174f8a}
+.goalBadge.completed{background:#e7f5e7;color:#26753a}
+.goalSteps label{display:block;margin:7px 0}
+</style></head><body><header><h1>Jesus Christ Topical Guide Study</h1><div class="sub">Scripture Study Platform with Goals & Action Plans.</div><div class="bar"><div id="prog"></div></div><div class="sub" id="stats"></div><div class="versionPill" id="appVersionLabel">Version 49</div><div class="backupNote" id="backupNote"></div><div class="streakPill" id="streakLabel" onclick="showStreakDetails()">🔥 0 day streak</div><div class="reminderPill" id="reminderLabel" onclick="showReminderSettings()">⏰ Reminder off</div></header>
+<main><section id="list" class="view on"><div class="card"><button class="primary" onclick="continueStudying()">▶ Continue Studying</button><button onclick="showDashboard()">📊 Dashboard</button><button onclick="showStudyNotes()">📝 Study Notes</button><button onclick="showPrayerJournal()">🙏 Prayer Journal</button><button onclick="showRevelationJournal()">💡 Revelation Journal</button><button onclick="showSpiritualMilestones()">🏔️ Spiritual Milestones</button><button onclick="showGoalsActionPlan()">🎯 Goals & Action Plan</button><button onclick="showUniversalSearch()">🔎 Universal Search</button><button onclick="showStudyLibrary()">📚 Study Library</button><button onclick="exportData()">Export Backup</button><button onclick="document.getElementById('imp').click()">Import</button><a href="assessment.html" style="text-decoration:none"><button type="button">Christlike Attribute Assessment</button></a><button onclick="showReminderSettings()">Study Reminder</button><button onclick="showSearchPanel()">Search References</button><button onclick="showUniversalSearch()">Open Universal Search</button><button onclick="jumpToNextUnchecked()">Next Unchecked</button><button onclick="showFavoritesJournal()">⭐ Favorites Journal</button><button onclick="printFavoritesJournal()">Print Favorites Journal</button><input id="imp" type="file" accept="application/json" style="display:none" onchange="importData(event)"><div id="weeks"></div></div></section><section id="detail" class="view"><div class="card" id="content"></div></section>
 <section id="studyLibrary" class="view">
   <div class="card">
     <div class="top"><button onclick="showList()">← Current Study</button></div>
@@ -151,7 +165,7 @@ label{font-weight:750;display:block;margin-top:16px;margin-bottom:6px}textarea{w
       <div class="dashboardActions">
         <button class="primary" onclick="showList()">Continue Jesus Christ Study</button>
         <button onclick="showStudyLibrary()">Open Study Library</button>
-        <button onclick="showFavoritesJournal()">Open Favorites Journal</button><button onclick="showStudyNotes()">Open Study Notes</button><button onclick="showPrayerJournal()">Open Prayer Journal</button><button onclick="showRevelationJournal()">Open Revelation Journal</button><button onclick="showSpiritualMilestones()">Open Spiritual Milestones</button>
+        <button onclick="showFavoritesJournal()">Open Favorites Journal</button><button onclick="showStudyNotes()">Open Study Notes</button><button onclick="showPrayerJournal()">Open Prayer Journal</button><button onclick="showRevelationJournal()">Open Revelation Journal</button><button onclick="showSpiritualMilestones()">Open Spiritual Milestones</button><button onclick="showGoalsActionPlan()">Open Goals</button>
         <button onclick="showSearchPanel()">Search References</button>
         <button onclick="exportData()">Export Backup</button>
       </div>
@@ -211,7 +225,7 @@ label{font-weight:750;display:block;margin-top:16px;margin-bottom:6px}textarea{w
     <div id="prayerEditor"></div>
     <div id="prayerList"></div>
   </div>
-</section><section id="revelationJournal" class="view"><div class="card"><div class="top"><button onclick="showList()">← Current Study</button></div><h2>Revelation Journal</h2><p class="muted">Record spiritual impressions, promptings, scriptures, temple insights, dreams, and action items.</p><div class="revelationToolbar"><button class="primary" onclick="newRevelationEntry()">New Revelation Entry</button><input id="revelationSearch" placeholder="Search revelations..." oninput="renderRevelationJournal()"><select id="revelationTypeFilter" onchange="renderRevelationJournal()"><option value="all">All types</option><option>Impression</option><option>Prompting</option><option>Scripture Insight</option><option>Temple Insight</option><option>Dream</option><option>Answer to Prayer</option><option>Other</option></select><select id="revelationStatusFilter" onchange="renderRevelationJournal()"><option value="all">All statuses</option><option>Received</option><option>Acting</option><option>Completed</option></select></div><div id="revelationEditor"></div><div id="revelationList"></div></div></section><section id="spiritualMilestones" class="view"><div class="card"><div class="top"><button onclick="showList()">← Current Study</button></div><h2>Spiritual Milestones</h2><p class="muted">Build a personal spiritual history by recording important gospel moments, answers, ordinances, miracles, and lessons learned.</p><div class="milestoneToolbar"><button class="primary" onclick="newMilestoneEntry()">New Milestone</button><input id="milestoneSearch" placeholder="Search milestones..." oninput="renderMilestones()"><select id="milestoneTypeFilter" onchange="renderMilestones()"><option value="all">All types</option><option>Baptism</option><option>Priesthood</option><option>Temple</option><option>Mission</option><option>Answer to Prayer</option><option>Miracle</option><option>Scripture Insight</option><option>Family</option><option>Calling</option><option>Repentance</option><option>Testimony</option><option>Other</option></select></div><div id="milestoneEditor"></div><div id="milestoneList" class="milestoneTimeline"></div></div></section>
+</section><section id="revelationJournal" class="view"><div class="card"><div class="top"><button onclick="showList()">← Current Study</button></div><h2>Revelation Journal</h2><p class="muted">Record spiritual impressions, promptings, scriptures, temple insights, dreams, and action items.</p><div class="revelationToolbar"><button class="primary" onclick="newRevelationEntry()">New Revelation Entry</button><input id="revelationSearch" placeholder="Search revelations..." oninput="renderRevelationJournal()"><select id="revelationTypeFilter" onchange="renderRevelationJournal()"><option value="all">All types</option><option>Impression</option><option>Prompting</option><option>Scripture Insight</option><option>Temple Insight</option><option>Dream</option><option>Answer to Prayer</option><option>Other</option></select><select id="revelationStatusFilter" onchange="renderRevelationJournal()"><option value="all">All statuses</option><option>Received</option><option>Acting</option><option>Completed</option></select></div><div id="revelationEditor"></div><div id="revelationList"></div></div></section><section id="spiritualMilestones" class="view"><div class="card"><div class="top"><button onclick="showList()">← Current Study</button></div><h2>Spiritual Milestones</h2><p class="muted">Build a personal spiritual history by recording important gospel moments, answers, ordinances, miracles, and lessons learned.</p><div class="milestoneToolbar"><button class="primary" onclick="newMilestoneEntry()">New Milestone</button><input id="milestoneSearch" placeholder="Search milestones..." oninput="renderMilestones()"><select id="milestoneTypeFilter" onchange="renderMilestones()"><option value="all">All types</option><option>Baptism</option><option>Priesthood</option><option>Temple</option><option>Mission</option><option>Answer to Prayer</option><option>Miracle</option><option>Scripture Insight</option><option>Family</option><option>Calling</option><option>Repentance</option><option>Testimony</option><option>Other</option></select></div><div id="milestoneEditor"></div><div id="milestoneList" class="milestoneTimeline"></div></div></section><section id="goalsActionPlan" class="view"><div class="card"><div class="top"><button onclick="showList()">← Current Study</button></div><h2>Goals & Action Plan</h2><p class="muted">Turn spiritual impressions into specific goals, action steps, and follow-through.</p><div class="goalToolbar"><button class="primary" onclick="newGoalEntry()">New Goal</button><input id="goalSearch" placeholder="Search goals..." oninput="renderGoalsActionPlan()"><select id="goalStatusFilter" onchange="renderGoalsActionPlan()"><option value="all">All statuses</option><option>Not Started</option><option>In Progress</option><option>Completed</option></select><select id="goalTypeFilter" onchange="renderGoalsActionPlan()"><option value="all">All types</option><option>Daily</option><option>Weekly</option><option>Monthly</option><option>Long-Term</option><option>Scripture Study</option><option>Prayer</option><option>Family</option><option>Temple</option><option>Service</option><option>Repentance</option><option>Other</option></select></div><div id="goalEditor"></div><div id="goalList"></div></div></section>
 
 <section id="universalSearch" class="view">
   <div class="card">
@@ -306,7 +320,7 @@ function fixHebrewsBackupRefs(){
 fixHebrewsBackupRefs();
 function data(n){let w=weeks[n-1];if(!state[n])state[n]={done:false,refs:w.refs.map(x=>({text:x.text,url:x.url,done:false,fav:false,favWhy:'',favChrist:'',favImpression:''})),learned:'',attribute:'',scripture:'',impressions:''};if(w.refs.some(r=>r.text)&&(!state[n].refs||state[n].refs.length!==w.refs.length||state[n].refs.some((r,i)=>r.text!==w.refs[i].text||r.url!==w.refs[i].url))){let old=state[n].refs||[];state[n].refs=w.refs.map((x,i)=>({text:x.text,url:x.url,done:old[i]?.done||false,fav:old[i]?.fav||false,favWhy:old[i]?.favWhy||'',favChrist:old[i]?.favChrist||'',favImpression:old[i]?.favImpression||''}))}let j=jesusTheChristReadings[n]||[];if(!state[n].jtc||state[n].jtc.length!==j.length){let old=state[n].jtc||[];state[n].jtc=j.map((x,i)=>({title:x[0],url:x[1],done:old[i]?.done||false,date:old[i]?.date||''}))}return state[n]}
 function save(){localStorage.setItem('tgStudyState',JSON.stringify(state));localStorage.setItem('tgStudyCurrent',current);renderList();stats()}
-function hideAllViews(){document.getElementById('list').classList.remove('on');document.getElementById('detail').classList.remove('on');document.getElementById('favoritesJournal').classList.remove('on');let mile=document.getElementById('spiritualMilestones');if(mile)mile.classList.remove('on');let rev=document.getElementById('revelationJournal');if(rev)rev.classList.remove('on');let prayer=document.getElementById('prayerJournal');if(prayer)prayer.classList.remove('on');let uni=document.getElementById('universalSearch');if(uni)uni.classList.remove('on');let notes=document.getElementById('studyNotes');if(notes)notes.classList.remove('on');let dash=document.getElementById('studyDashboard');if(dash)dash.classList.remove('on');let conf=document.getElementById('generalConferenceStudy');if(conf)conf.classList.remove('on');let bom=document.getElementById('bookOfMormonDiscipleship');if(bom)bom.classList.remove('on');let ww=document.getElementById('walkWithChrist');if(ww)ww.classList.remove('on');let cs=document.getElementById('characterStudies');if(cs)cs.classList.remove('on');let hub=document.getElementById('studyLibrary');if(hub)hub.classList.remove('on');let rs=document.getElementById('reminderSettings');if(rs)rs.classList.remove('on');let sp=document.getElementById('searchPanel');if(sp)sp.classList.remove('on')}
+function hideAllViews(){document.getElementById('list').classList.remove('on');document.getElementById('detail').classList.remove('on');document.getElementById('favoritesJournal').classList.remove('on');let goal=document.getElementById('goalsActionPlan');if(goal)goal.classList.remove('on');let mile=document.getElementById('spiritualMilestones');if(mile)mile.classList.remove('on');let rev=document.getElementById('revelationJournal');if(rev)rev.classList.remove('on');let prayer=document.getElementById('prayerJournal');if(prayer)prayer.classList.remove('on');let uni=document.getElementById('universalSearch');if(uni)uni.classList.remove('on');let notes=document.getElementById('studyNotes');if(notes)notes.classList.remove('on');let dash=document.getElementById('studyDashboard');if(dash)dash.classList.remove('on');let conf=document.getElementById('generalConferenceStudy');if(conf)conf.classList.remove('on');let bom=document.getElementById('bookOfMormonDiscipleship');if(bom)bom.classList.remove('on');let ww=document.getElementById('walkWithChrist');if(ww)ww.classList.remove('on');let cs=document.getElementById('characterStudies');if(cs)cs.classList.remove('on');let hub=document.getElementById('studyLibrary');if(hub)hub.classList.remove('on');let rs=document.getElementById('reminderSettings');if(rs)rs.classList.remove('on');let sp=document.getElementById('searchPanel');if(sp)sp.classList.remove('on')}
 function showList(){hideAllViews();document.getElementById('list').classList.add('on');scrollTo(0,0)}
 function openWeek(n){current=n;renderDetail();hideAllViews();document.getElementById('detail').classList.add('on');save();scrollTo(0,0)}
 
@@ -1049,6 +1063,15 @@ function universalSearchData(){
     });
   }catch(e){}
 
+  try{
+    ensureGoalsActionPlan();
+    (state._goals||[]).forEach(g=>{
+      let meta='Goals & Action Plan • '+(g.type||'Other')+' • '+(g.status||'Not Started');
+      let text=(g.connected||'')+' '+(g.why||'')+' '+(g.reflection||'')+' '+(g.steps||[]).map(s=>s.text).join(' ');
+      addUniversalResult(results,'notes','🎯 '+(g.title||'Spiritual Goal'),meta,text,'<button onclick="showGoalsActionPlan()">Open Goals</button>',meta+' '+(g.title||'')+' '+text);
+    });
+  }catch(e){}
+
   return results;
 }
 function runUniversalSearch(){
@@ -1086,6 +1109,7 @@ function continueStudying(){
   if(c.type==='prayer' && typeof showPrayerJournal==='function'){showPrayerJournal();return;}
   if(c.type==='revelation' && typeof showRevelationJournal==='function'){showRevelationJournal();return;}
   if(c.type==='milestones' && typeof showSpiritualMilestones==='function'){showSpiritualMilestones();return;}
+  if(c.type==='goals' && typeof showGoalsActionPlan==='function'){showGoalsActionPlan();return;}
   if(c.type==='search' && typeof showUniversalSearch==='function'){showUniversalSearch();return;}
   openWeek(Number(c.week||current||1));
 }
@@ -1322,6 +1346,101 @@ function renderMilestones(){
  list.innerHTML=items.map(m=>`<div class="milestoneCard"><h3>${esc(m.title||'Spiritual Milestone')}</h3><span class="milestoneBadge">${esc(m.type||'Other')}</span><div class="milestoneMeta">${esc(m.date||'No date')}${m.people?' • '+esc(m.people):''}</div>${m.scriptures?'<div class="milestoneMeta">Scriptures / Sources: '+esc(m.scriptures)+'</div>':''}${m.description?'<h4>Description</h4><div class="milestoneBody">'+esc(m.description)+'</div>':''}${m.lesson?'<h4>Testimony / Lesson Learned</h4><div class="milestoneBody">'+esc(m.lesson)+'</div>':''}<div class="milestoneActions"><button onclick="editMilestoneEntry('${m.id}')">Edit</button><button onclick="deleteMilestoneEntry('${m.id}')">Delete</button></div></div>`).join('');
 }
 
+
+function ensureGoalsActionPlan(){if(!state._goals)state._goals=[]}
+function goalId(){return 'goal-'+Date.now()+'-'+Math.random().toString(36).slice(2,8)}
+function goalOptionsHtml(selected,kind){
+ const opts=kind==='status'?['Not Started','In Progress','Completed']:['Daily','Weekly','Monthly','Long-Term','Scripture Study','Prayer','Family','Temple','Service','Repentance','Other'];
+ return opts.map(o=>`<option ${o===selected?'selected':''}>${esc(o)}</option>`).join('');
+}
+function showGoalsActionPlan(){
+ hideAllViews();ensureGoalsActionPlan();document.getElementById('goalsActionPlan').classList.add('on');renderGoalsActionPlan();scrollTo(0,0)
+}
+function parseGoalSteps(text){
+ return text.split('\n').map(x=>x.trim()).filter(Boolean).map(x=>({text:x,done:false}));
+}
+function newGoalEntry(){
+ ensureGoalsActionPlan();
+ let today=new Date().toISOString().slice(0,10);
+ document.getElementById('goalEditor').innerHTML=`<div class="goalEditor"><h3>New Goal</h3><label>Goal Title</label><input id="goalTitle" placeholder="Example: Study faith every morning"><label>Type</label><select id="goalType">${goalOptionsHtml('Scripture Study','type')}</select><label>Status</label><select id="goalStatus">${goalOptionsHtml('Not Started','status')}</select><label>Due Date</label><input id="goalDue" type="date" value="${today}"><label>Connected To</label><input id="goalConnected" placeholder="Example: Prayer Journal, Alma 32, temple impression"><label>Why This Matters</label><textarea id="goalWhy" style="min-height:100px" placeholder="Why is this goal spiritually important?"></textarea><label>Action Steps — one per line</label><textarea id="goalSteps" style="min-height:130px" placeholder="Read 10 minutes daily\\nPray before studying\\nRecord one impression"></textarea><label>Reflection / Outcome</label><textarea id="goalReflection" style="min-height:100px" placeholder="What are you learning as you work on this?"></textarea><button class="primary" onclick="saveGoalEntry()">Save Goal</button><button onclick="cancelGoalEntry()">Cancel</button></div>`;
+}
+function cancelGoalEntry(){document.getElementById('goalEditor').innerHTML=''}
+function saveGoalEntry(){
+ ensureGoalsActionPlan();
+ let title=(document.getElementById('goalTitle')?.value||'Spiritual Goal').trim()||'Spiritual Goal';
+ let type=document.getElementById('goalType')?.value||'Other';
+ let status=document.getElementById('goalStatus')?.value||'Not Started';
+ let due=document.getElementById('goalDue')?.value||'';
+ let connected=(document.getElementById('goalConnected')?.value||'').trim();
+ let why=(document.getElementById('goalWhy')?.value||'').trim();
+ let steps=parseGoalSteps(document.getElementById('goalSteps')?.value||'');
+ let reflection=(document.getElementById('goalReflection')?.value||'').trim();
+ if(!why&&!steps.length&&!connected){alert('Add a purpose, connection, or action step before saving.');return;}
+ state._goals.unshift({id:goalId(),title,type,status,due,connected,why,steps,reflection,created:new Date().toLocaleString(),updated:new Date().toLocaleString()});
+ save();document.getElementById('goalEditor').innerHTML='';renderGoalsActionPlan();
+}
+function editGoalEntry(id){
+ ensureGoalsActionPlan();let g=state._goals.find(x=>x.id===id);if(!g)return;
+ let stepsText=(g.steps||[]).map(s=>s.text||'').join('\n');
+ document.getElementById('goalEditor').innerHTML=`<div class="goalEditor"><h3>Edit Goal</h3><label>Goal Title</label><input id="goalTitle" value="${attr(g.title||'')}"><label>Type</label><select id="goalType">${goalOptionsHtml(g.type||'Other','type')}</select><label>Status</label><select id="goalStatus">${goalOptionsHtml(g.status||'Not Started','status')}</select><label>Due Date</label><input id="goalDue" type="date" value="${attr(g.due||'')}"><label>Connected To</label><input id="goalConnected" value="${attr(g.connected||'')}"><label>Why This Matters</label><textarea id="goalWhy" style="min-height:100px">${esc(g.why||'')}</textarea><label>Action Steps — one per line</label><textarea id="goalSteps" style="min-height:130px">${esc(stepsText)}</textarea><label>Reflection / Outcome</label><textarea id="goalReflection" style="min-height:100px">${esc(g.reflection||'')}</textarea><button class="primary" onclick="updateGoalEntry('${id}')">Update Goal</button><button onclick="cancelGoalEntry()">Cancel</button></div>`;
+ scrollTo(0,0);
+}
+function updateGoalEntry(id){
+ let g=state._goals.find(x=>x.id===id);if(!g)return;
+ let oldSteps=g.steps||[];
+ let newSteps=parseGoalSteps(document.getElementById('goalSteps')?.value||'').map(ns=>{
+   let old=oldSteps.find(os=>os.text===ns.text);
+   return {text:ns.text,done:old?!!old.done:false};
+ });
+ g.title=(document.getElementById('goalTitle')?.value||'Spiritual Goal').trim()||'Spiritual Goal';
+ g.type=document.getElementById('goalType')?.value||'Other';
+ g.status=document.getElementById('goalStatus')?.value||'Not Started';
+ g.due=document.getElementById('goalDue')?.value||'';
+ g.connected=(document.getElementById('goalConnected')?.value||'').trim();
+ g.why=(document.getElementById('goalWhy')?.value||'').trim();
+ g.steps=newSteps;
+ g.reflection=(document.getElementById('goalReflection')?.value||'').trim();
+ g.updated=new Date().toLocaleString();save();document.getElementById('goalEditor').innerHTML='';renderGoalsActionPlan();
+}
+function toggleGoalStep(id,idx){
+ let g=state._goals.find(x=>x.id===id);if(!g||!g.steps||!g.steps[idx])return;
+ g.steps[idx].done=!g.steps[idx].done;
+ let total=g.steps.length, done=g.steps.filter(s=>s.done).length;
+ if(total&&done===total)g.status='Completed'; else if(done>0)g.status='In Progress';
+ g.updated=new Date().toLocaleString();save();renderGoalsActionPlan();
+}
+function markGoalCompleted(id){
+ let g=state._goals.find(x=>x.id===id);if(!g)return;
+ g.status='Completed';(g.steps||[]).forEach(s=>s.done=true);g.updated=new Date().toLocaleString();save();renderGoalsActionPlan();
+}
+function deleteGoalEntry(id){
+ ensureGoalsActionPlan();if(!confirm('Delete this goal?'))return;
+ state._goals=state._goals.filter(x=>x.id!==id);save();renderGoalsActionPlan();
+}
+function filteredGoals(){
+ ensureGoalsActionPlan();
+ let q=(document.getElementById('goalSearch')?.value||'').toLowerCase().trim();
+ let status=document.getElementById('goalStatusFilter')?.value||'all';
+ let type=document.getElementById('goalTypeFilter')?.value||'all';
+ let items=[...state._goals];
+ if(status!=='all')items=items.filter(g=>(g.status||'Not Started')===status);
+ if(type!=='all')items=items.filter(g=>(g.type||'Other')===type);
+ if(q)items=items.filter(g=>((g.title||'')+' '+(g.type||'')+' '+(g.status||'')+' '+(g.due||'')+' '+(g.connected||'')+' '+(g.why||'')+' '+(g.reflection||'')+' '+(g.steps||[]).map(s=>s.text).join(' ')).toLowerCase().includes(q));
+ items.sort((a,b)=>(a.status==='Completed')-(b.status==='Completed') || String(a.due||'9999').localeCompare(String(b.due||'9999')) || String(b.updated||b.created||'').localeCompare(String(a.updated||a.created||'')));
+ return items;
+}
+function renderGoalsActionPlan(){
+ ensureGoalsActionPlan();let list=document.getElementById('goalList');if(!list)return;
+ let items=filteredGoals();
+ if(!items.length){list.innerHTML='<div class="goalCard"><p class="muted">No goals yet. Tap New Goal to create an action plan.</p></div>';return;}
+ list.innerHTML=items.map(g=>{
+   let st=g.status||'Not Started';let cls=st==='Completed'?'completed':'';let badge=st.replace(/\s/g,'').toLowerCase();
+   let total=(g.steps||[]).length, done=(g.steps||[]).filter(s=>s.done).length;
+   let steps=(g.steps||[]).map((s,i)=>`<label><input type="checkbox" ${s.done?'checked':''} onchange="toggleGoalStep('${g.id}',${i})"> ${esc(s.text||'')}</label>`).join('');
+   return `<div class="goalCard ${cls}"><h3>${esc(g.title||'Spiritual Goal')}</h3><span class="goalBadge ${badge}">${esc(st)}</span><div class="goalMeta">${esc(g.type||'Other')}${g.due?' • Due: '+esc(g.due):''}${g.connected?' • '+esc(g.connected):''}</div>${g.why?'<h4>Why This Matters</h4><div class="goalBody">'+esc(g.why)+'</div>':''}<h4>Action Steps ${total?'('+done+'/'+total+')':''}</h4><div class="goalSteps">${steps||'<p class="muted">No action steps.</p>'}</div>${g.reflection?'<h4>Reflection / Outcome</h4><div class="goalBody">'+esc(g.reflection)+'</div>':''}<div class="goalActions"><button onclick="editGoalEntry('${g.id}')">Edit</button><button onclick="markGoalCompleted('${g.id}')">Mark Completed</button><button onclick="deleteGoalEntry('${g.id}')">Delete</button></div></div>`;
+ }).join('');
+}
+
 function stats(){let dw=0,dr=0,tr=0,fv=0,jd=0,jt=0;weeks.forEach(w=>{let d=data(w.week);if(d.done)dw++;dr+=d.refs.filter(r=>r.done).length;fv+=d.refs.filter(r=>r.fav).length;tr+=d.refs.length;jd+=(d.jtc||[]).filter(x=>x.done).length;jt+=(d.jtc||[]).length});document.getElementById('prog').style.width=Math.round(dw/78*100)+'%';document.getElementById('stats').textContent=`${dw}/78 weeks complete • ${dr}/${tr} references checked • ⭐ ${fv} favorites • 📖 ${jd}/${jt} JTC readings`}
 function exportData(){let blob=new Blob([JSON.stringify(state,null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='jesus-christ-study-backup.json';a.click()}
 function importData(e){let f=e.target.files[0];if(!f)return;let r=new FileReader();r.onload=()=>{try{state=JSON.parse(r.result);fixHebrewsBackupRefs();forceHebrewsVisibleText();forceWeek1HebrewsRefs();save();renderDetail();alert('Imported and Hebrews references fixed')}catch{alert('Could not import')}};r.readAsText(f)}
@@ -1373,6 +1492,7 @@ function openConferenceSection(id){
     wrap('showPrayerJournal','prayer','Prayer Journal');
     wrap('showRevelationJournal','revelation','Revelation Journal');
     wrap('showSpiritualMilestones','milestones','Spiritual Milestones');
+    wrap('showGoalsActionPlan','goals','Goals & Action Plan');
     wrap('showUniversalSearch','search','Universal Search');
   }catch(e){}
 })();

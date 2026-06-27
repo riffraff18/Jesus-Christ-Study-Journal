@@ -263,7 +263,21 @@ label{font-weight:750;display:block;margin-top:16px;margin-bottom:6px}textarea{w
 .v60ToolCard b{display:block;margin-bottom:4px}
 .v60MiniLabel{font-size:12px;font-weight:900;color:#876b2f;text-transform:uppercase;letter-spacing:.04em}
 .v60Divider{height:1px;background:#ddd6ca;margin:18px 0}
-</style></head><body><header><h1>Jesus Christ Topical Guide Study</h1><div class="sub">Scripture Study Platform Phase 2 App Home Polish.</div><div class="bar"><div id="prog"></div></div><div class="sub" id="stats"></div><div class="versionPill" id="appVersionLabel">Version 60</div><div class="backupNote" id="backupNote"></div><div class="streakPill" id="streakLabel" onclick="showStreakDetails()">🔥 0 day streak</div><div class="reminderPill" id="reminderLabel" onclick="showReminderSettings()">⏰ Reminder off</div></header>
+
+.v61Focus{border:2px solid #876b2f;border-radius:24px;padding:16px;margin:14px 0;background:#fffdf9;box-shadow:0 3px 14px rgba(0,0,0,.06)}
+.v61Focus h3{margin:0 0 7px}
+.v61Focus p{color:#6b665d;margin:6px 0}
+.v61ActionGrid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:12px}
+.v61ActionGrid button{border-radius:16px;padding:12px;text-align:left}
+.v61PolishCard{border:1px solid #ddd6ca;border-radius:22px;padding:15px;margin:12px 0;background:#fff}
+.v61PolishCard h3{margin:0 0 8px}
+.v61ProgressLine{height:8px;background:#eee7d9;border-radius:999px;overflow:hidden;margin:8px 0}
+.v61ProgressLine div{height:100%;background:#876b2f;border-radius:999px}
+.v61SoftLabel{font-size:12px;font-weight:900;color:#876b2f;text-transform:uppercase;letter-spacing:.04em}
+.v61Subtle{color:#6b665d;font-size:13px}
+.v60BigCard,.v60ToolCard,.v60Stat,.v60PathCard{transition:transform .15s ease,box-shadow .15s ease}
+.v60BigCard:active,.v60ToolCard:active,.v60Stat:active,.v60PathCard:active{transform:scale(.98)}
+</style></head><body><header><h1>Jesus Christ Topical Guide Study</h1><div class="sub">Scripture Study Platform Phase 2 App Home Polish.</div><div class="bar"><div id="prog"></div></div><div class="sub" id="stats"></div><div class="versionPill" id="appVersionLabel">Version 61</div><div class="backupNote" id="backupNote"></div><div class="streakPill" id="streakLabel" onclick="showStreakDetails()">🔥 0 day streak</div><div class="reminderPill" id="reminderLabel" onclick="showReminderSettings()">⏰ Reminder off</div></header>
 <main>
 <section id="v60StudyHome" class="view">
   <div class="card v60Home">
@@ -281,7 +295,7 @@ label{font-weight:750;display:block;margin-top:16px;margin-bottom:6px}textarea{w
 
     <div id="v60Stats" class="v60Stats"></div>
 
-    <div id="v60Invitation"></div>
+    <div id="v61TodayFocus"></div><div id="v60Invitation"></div>
     <div id="v60Journey"></div>
 
     <div class="v60Section">
@@ -307,7 +321,7 @@ label{font-weight:750;display:block;margin-top:16px;margin-bottom:6px}textarea{w
       </div>
     </div>
 
-    <div class="v60Section">
+    <div id="v61QualityCard"></div><div class="v60Section">
       <div class="v60SectionHead"><h3>📊 Tools</h3><span>Insights</span></div>
       <div class="v60CardGrid">
         <button class="v60BigCard" onclick="showInsightsDashboard()"><b>📈 Insights Dashboard</b><span>See patterns in your spiritual growth.</span></button>
@@ -1811,11 +1825,22 @@ function renderV56Dashboard(){
 
 
 
+
 function showV60StudyHome(){
  hideAllViews();
  renderV60StudyHome();
  document.getElementById('v60StudyHome').classList.add('on');
  scrollTo(0,0);
+}
+function v61InvitationText(){
+ const list=[
+  {title:'Study with real intent',body:'Open your current study and look for one truth about Jesus Christ.'},
+  {title:'Pray and listen',body:'Take one minute to ask Heavenly Father what He wants you to notice today.'},
+  {title:'Record the impression',body:'Write down even a small prompting before it fades.'},
+  {title:'Act on one thing',body:'Choose one simple action that turns inspiration into discipleship.'}
+ ];
+ let i=(new Date().getDate())%list.length;
+ return list[i];
 }
 function renderV60StudyHome(){
  let refs=0,checked=0,favs=0,currentTopic='Jesus Christ Topical Guide';
@@ -1837,11 +1862,17 @@ function renderV60StudyHome(){
  if(bar)bar.style.width=pct+'%';
  let stats=document.getElementById('v60Stats');
  if(stats)stats.innerHTML='<div class="v60Stat"><b>'+pct+'%</b><span>Main study</span></div><div class="v60Stat"><b>🔥 '+streak+'</b><span>Day streak</span></div><div class="v60Stat"><b>⭐ '+favs+'</b><span>Favorites</span></div><div class="v60Stat"><b>'+notes+'</b><span>Notes</span></div><div class="v60Stat"><b>'+answered+'/'+prayers+'</b><span>Prayers answered</span></div><div class="v60Stat"><b>'+revDone+'/'+revs+'</b><span>Revelations acted on</span></div><div class="v60Stat"><b>'+milestones+'</b><span>Milestones</span></div><div class="v60Stat"><b>'+doneGoals+'/'+goals+'</b><span>Goals</span></div>';
+ let v61=document.getElementById('v61TodayFocus');
+ let inv=v61InvitationText();
+ if(v61)v61.innerHTML='<div class="v61Focus"><div class="v61SoftLabel">Today’s Focus</div><h3>'+esc(inv.title)+'</h3><p>'+esc(inv.body)+'</p><div class="v61ActionGrid"><button class="primary" onclick="continueStudying()">▶ Study</button><button onclick="showPrayerJournal()">🙏 Pray</button><button onclick="showRevelationJournal()">💡 Record</button><button onclick="showGoalsActionPlan()">🎯 Act</button></div></div>';
  let invite=document.getElementById('v60Invitation');
- if(invite)invite.innerHTML='<div class="v60Invite"><div class="v60MiniLabel">Today’s Invitation</div><h3>Choose one faithful action</h3><p>Study, pray, record revelation, or act on a goal. Small consistent steps build discipleship.</p><div class="v60HeroActions"><button class="primary" onclick="continueStudying()">Study</button><button onclick="showPrayerJournal()">Pray</button><button onclick="showRevelationJournal()">Record</button><button onclick="showGoalsActionPlan()">Act</button></div></div>';
+ if(invite)invite.innerHTML='';
  let journey=document.getElementById('v60Journey');
- if(journey)journey.innerHTML='<div class="v60Section"><div class="v60SectionHead"><h3>🛤️ Journey Overview</h3><span>Study → Record → Act</span></div><div class="v60Path"><div class="v60PathCard"><b>1. Study</b><span>'+checked+' scriptures studied • '+pct+'% complete</span></div><div class="v60PathCard"><b>2. Record</b><span>'+notes+' notes • '+prayers+' prayers • '+revs+' revelation entries</span></div><div class="v60PathCard"><b>3. Act</b><span>'+openGoals+' open goals • '+milestones+' milestones recorded</span></div></div></div>';
+ if(journey)journey.innerHTML='<div class="v60Section"><div class="v60SectionHead"><h3>🛤️ Journey Overview</h3><span>Study → Record → Act</span></div><div class="v60Path"><div class="v60PathCard"><b>1. Study</b><span>'+checked+' scriptures studied • '+pct+'% complete</span><div class="v61ProgressLine"><div style="width:'+pct+'%"></div></div></div><div class="v60PathCard"><b>2. Record</b><span>'+notes+' notes • '+prayers+' prayers • '+revs+' revelation entries</span></div><div class="v60PathCard"><b>3. Act</b><span>'+openGoals+' open goals • '+milestones+' milestones recorded</span></div></div></div>';
+ let quality=document.getElementById('v61QualityCard');
+ if(quality)quality.innerHTML='<div class="v61PolishCard"><div class="v61SoftLabel">V61 Quality Release</div><h3>Study Home refined</h3><p class="v61Subtle">This version improves the home experience with a clearer daily focus, smoother card feel, and stronger progress hierarchy while keeping your data unchanged.</p></div>';
 }
+
 
 function stats(){let dw=0,dr=0,tr=0,fv=0,jd=0,jt=0;weeks.forEach(w=>{let d=data(w.week);if(d.done)dw++;dr+=d.refs.filter(r=>r.done).length;fv+=d.refs.filter(r=>r.fav).length;tr+=d.refs.length;jd+=(d.jtc||[]).filter(x=>x.done).length;jt+=(d.jtc||[]).length});document.getElementById('prog').style.width=Math.round(dw/78*100)+'%';document.getElementById('stats').textContent=`${dw}/78 weeks complete • ${dr}/${tr} references checked • ⭐ ${fv} favorites • 📖 ${jd}/${jt} JTC readings`}
 function exportData(){let blob=new Blob([JSON.stringify(state,null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='jesus-christ-study-backup.json';a.click()}

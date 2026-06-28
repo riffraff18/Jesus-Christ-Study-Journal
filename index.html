@@ -546,7 +546,48 @@ body.v79-ui2 #v78DefaultHomeReplacement{display:none!important}
 .v83TopTools{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
 .v83TopTools button{border-radius:18px;padding:13px;text-align:left}
 .v83MockupBadge{display:inline-block;background:#0e2a3f;color:white;border-radius:999px;padding:5px 11px;font-size:12px;font-weight:900;margin-bottom:8px}
-</style></head><body><header><h1>Walk with Christ</h1><div class="sub">Walk with Christ • Study Library Redesign.</div><div class="bar"><div id="prog"></div></div><div class="sub" id="stats"></div><div class="versionPill" id="appVersionLabel">Version 83</div><div class="backupNote" id="backupNote"></div><div class="streakPill" id="streakLabel" onclick="showStreakDetails()">🔥 0 day streak</div><div class="reminderPill" id="reminderLabel" onclick="showReminderSettings()">⏰ Reminder off</div></header>
+
+.v84MockupShell{min-height:100vh;padding:18px 14px 34px;background:#fbfaf7}
+.v84Header{display:flex;align-items:center;justify-content:space-between;margin:8px 0 18px}
+.v84Brand{display:flex;align-items:center;gap:10px}
+.v84Logo{width:48px;height:48px;border-radius:50%;background:#0b2a42;color:white;display:flex;align-items:center;justify-content:center;font-size:23px;font-weight:900;box-shadow:0 5px 18px rgba(0,0,0,.14)}
+.v84Brand h1{font-size:24px;line-height:1.05;margin:0;color:#091427}
+.v84Brand p{margin:3px 0 0;color:#5e6470;font-size:14px}
+.v84Version{background:#eef1f5;border-radius:999px;padding:7px 12px;font-size:12px;font-weight:900;color:#4b5563}
+.v84TitleRow{margin:12px 0 16px}
+.v84TitleRow h2{font-size:34px;line-height:1.05;margin:0;color:#091427}
+.v84TitleRow p{font-size:16px;color:#5e6470;margin:8px 0 0}
+.v84TopActions{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:12px 0 18px}
+.v84TopActions button{border-radius:18px;padding:10px 6px;font-size:12px}
+.v84StatsCards{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:14px 0 22px}
+.v84StatsCard{background:#fff;border:1px solid #e5e7eb;border-radius:22px;padding:14px;box-shadow:0 6px 22px rgba(15,23,42,.06)}
+.v84StatsCard b{display:block;font-size:24px;color:#091427;margin-bottom:4px}
+.v84StatsCard span{font-size:12px;color:#5e6470}
+.v84StatsIcon{width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;font-size:22px;margin-bottom:8px}
+.v84IconBlue{background:#2563eb}.v84IconGreen{background:#059669}.v84IconPurple{background:#7c3aed}.v84IconOrange{background:#ea580c}
+.v84StudySection{margin-top:22px}
+.v84StudySection h3{margin:0 0 12px;font-size:20px;color:#091427}
+.v84PathList{display:grid;grid-template-columns:1fr;gap:12px}
+.v84Path{display:grid;grid-template-columns:68px 1fr 34px;align-items:center;gap:12px;background:#fff;border:1px solid #e5e7eb;border-radius:24px;padding:14px;box-shadow:0 6px 22px rgba(15,23,42,.055);text-align:left}
+.v84PathIcon{width:64px;height:64px;border-radius:18px;display:flex;align-items:center;justify-content:center;color:white;font-size:30px}
+.v84PathText b{display:block;font-size:18px;color:#091427;margin-bottom:4px}
+.v84PathText span{display:block;font-size:13px;color:#5e6470;line-height:1.35}
+.v84Chevron{width:34px;height:34px;border-radius:50%;background:#f3f4f6;color:#091427;display:flex;align-items:center;justify-content:center;font-weight:900}
+.v84PathProgress{display:grid;grid-template-columns:1fr auto;gap:8px;align-items:center;margin-top:9px}
+.v84ProgressLine{height:8px;background:#e5e7eb;border-radius:999px;overflow:hidden}
+.v84ProgressLine div{height:100%;background:#139b9a;border-radius:999px}
+.v84ProgressNum{font-size:12px;color:#091427;font-weight:900}
+.v84FeaturedPath{grid-template-columns:112px 1fr 38px;border:2px solid #d6a333;background:#fffdf9;padding:0;overflow:hidden}
+.v84FeaturedArt{height:100%;min-height:140px;background:linear-gradient(135deg,#c8942d,#e4c56b);display:flex;align-items:center;justify-content:center;color:white;font-size:48px;position:relative}
+.v84FeaturedText{padding:16px 0}
+.v84TopStudyBadge{display:inline-block;background:#fff2d5;color:#9a6b12;border-radius:999px;padding:4px 9px;font-size:11px;font-weight:900;margin-bottom:7px}
+.v84BottomNav{position:sticky;bottom:12px;z-index:20;display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-top:18px;background:rgba(255,255,255,.94);backdrop-filter:blur(12px);border:1px solid #e5e7eb;border-radius:24px;padding:9px;box-shadow:0 8px 24px rgba(15,23,42,.12)}
+.v84BottomNav button{border-radius:16px;padding:9px 4px;font-size:12px}
+@media(min-width:900px){
+  .v84MockupShell{max-width:1100px;margin:0 auto}
+  .v84StatsCards{grid-template-columns:repeat(4,1fr)}
+}
+</style></head><body><header><h1>Walk with Christ</h1><div class="sub">Walk with Christ • Mockup Study Library.</div><div class="bar"><div id="prog"></div></div><div class="sub" id="stats"></div><div class="versionPill" id="appVersionLabel">Version 84</div><div class="backupNote" id="backupNote"></div><div class="streakPill" id="streakLabel" onclick="showStreakDetails()">🔥 0 day streak</div><div class="reminderPill" id="reminderLabel" onclick="showReminderSettings()">⏰ Reminder off</div></header>
 <main>
 <section id="v79UI2Home" class="view">
   <div class="v79AppShell">
@@ -558,7 +599,7 @@ body.v79-ui2 #v78DefaultHomeReplacement{display:none!important}
           <p>Study. Reflect. Apply.</p>
         </div>
       </div>
-      <div class="v79Pill">V83</div>
+      <div class="v79Pill">V84</div>
     </div>
 
     <div class="v79Hero">
@@ -965,15 +1006,15 @@ body.v79-ui2 #v78DefaultHomeReplacement{display:none!important}
           <p>Study. Reflect. Apply.</p>
         </div>
       </div>
-      <div class="v79Pill">V83</div>
+      <div class="v79Pill">V84</div>
     </div>
     <div class="v82AboutPanel">
       <span class="v82VersionBadge">About / Version</span>
       <h2>Walk with Christ</h2>
       <p>A daily discipleship companion for studying Jesus Christ, recording spiritual impressions, and turning revelation into action.</p>
       <div class="v82InfoGrid">
-        <div class="v82Info"><b>V83</b><span>Version</span></div>
-        <div class="v82Info"><b>83</b><span>Build</span></div>
+        <div class="v82Info"><b>V84</b><span>Version</span></div>
+        <div class="v82Info"><b>84</b><span>Build</span></div>
         <div class="v82Info"><b>UI 2.0</b><span>Interface</span></div>
         <div class="v82Info"><b>2026-06-28</b><span>Build date</span></div>
       </div>
@@ -988,6 +1029,48 @@ body.v79-ui2 #v78DefaultHomeReplacement{display:none!important}
       </div>
       <button class="primary" onclick="showV79UI2Home()">Return to Home</button>
       <button onclick="exportData()">Export Backup</button>
+    </div>
+  </div>
+</section>
+
+<section id="v84StudyLibraryMockup" class="view">
+  <div class="v84MockupShell">
+    <div class="v84Header">
+      <div class="v84Brand">
+        <div class="v84Logo">☧</div>
+        <div>
+          <h1>Walk with Christ</h1>
+          <p>Study. Reflect. Apply.</p>
+        </div>
+      </div>
+      <div class="v84Version">V84</div>
+    </div>
+
+    <div class="v84TopActions">
+      <button class="primary" onclick="showV84StudyLibrary()">Library</button>
+      <button onclick="showUniversalSearch()">Search</button>
+      <button onclick="showStudyNotes()">Journal</button>
+      <button onclick="showGoalsActionPlan()">Goals</button>
+    </div>
+
+    <div class="v84TitleRow">
+      <h2>Study Library</h2>
+      <p>Explore and study the scriptures and teachings of the gospel.</p>
+    </div>
+
+    <div id="v84StatsCards" class="v84StatsCards"></div>
+
+    <div class="v84StudySection">
+      <h3>Your Study Paths</h3>
+      <div id="v84StudyPaths" class="v84PathList"></div>
+    </div>
+
+    <div class="v84BottomNav">
+      <button class="primary" onclick="showV84StudyLibrary()">Library</button>
+      <button onclick="continueStudying()">Study</button>
+      <button onclick="showStudyNotes()">Journal</button>
+      <button onclick="showGoalsActionPlan()">Goals</button>
+      <button onclick="showV82AboutVersion()">More</button>
     </div>
   </div>
 </section>
@@ -1020,7 +1103,7 @@ function fixHebrewsBackupRefs(){
 fixHebrewsBackupRefs();
 function data(n){let w=weeks[n-1];if(!state[n])state[n]={done:false,refs:w.refs.map(x=>({text:x.text,url:x.url,done:false,fav:false,favWhy:'',favChrist:'',favImpression:''})),learned:'',attribute:'',scripture:'',impressions:''};if(w.refs.some(r=>r.text)&&(!state[n].refs||state[n].refs.length!==w.refs.length||state[n].refs.some((r,i)=>r.text!==w.refs[i].text||r.url!==w.refs[i].url))){let old=state[n].refs||[];state[n].refs=w.refs.map((x,i)=>({text:x.text,url:x.url,done:old[i]?.done||false,fav:old[i]?.fav||false,favWhy:old[i]?.favWhy||'',favChrist:old[i]?.favChrist||'',favImpression:old[i]?.favImpression||''}))}let j=jesusTheChristReadings[n]||[];if(!state[n].jtc||state[n].jtc.length!==j.length){let old=state[n].jtc||[];state[n].jtc=j.map((x,i)=>({title:x[0],url:x[1],done:old[i]?.done||false,date:old[i]?.date||''}))}return state[n]}
 function save(){localStorage.setItem('tgStudyState',JSON.stringify(state));localStorage.setItem('tgStudyCurrent',current);renderList();stats()}
-function hideAllViews(){document.getElementById('list').classList.remove('on');document.getElementById('detail').classList.remove('on');document.getElementById('favoritesJournal').classList.remove('on');let about82=document.getElementById('v82AboutVersion');if(about82)about82.classList.remove('on');let v79=document.getElementById('v79UI2Home');if(v79)v79.classList.remove('on');let v74=document.getElementById('v74RedesignedHome');if(v74)v74.classList.remove('on');let nt=document.getElementById('newTestamentPreview');if(nt)nt.classList.remove('on');let ot=document.getElementById('oldTestamentPreview');if(ot)ot.classList.remove('on');let libprep=document.getElementById('phase3StudyLibraryPrep');if(libprep)libprep.classList.remove('on');let v70=document.getElementById('v70CleanupMilestone');if(v70)v70.classList.remove('on');let stable=document.getElementById('stabilityReviewCenter');if(stable)stable.classList.remove('on');let flow=document.getElementById('userFlowReview');if(flow)flow.classList.remove('on');let release=document.getElementById('releaseNotesCenter');if(release)release.classList.remove('on');let cleanup=document.getElementById('betaCleanupCenter');if(cleanup)cleanup.classList.remove('on');let beta=document.getElementById('betaPrepCenter');if(beta)beta.classList.remove('on');let ga=document.getElementById('growthAnalytics');if(ga)ga.classList.remove('on');let read=document.getElementById('immersiveReadingMode');if(read)read.classList.remove('on');let v60=document.getElementById('v60StudyHome');if(v60)v60.classList.remove('on');let v56=document.getElementById('v56Dashboard');if(v56)v56.classList.remove('on');let ph=document.getElementById('phaseStudyHub');if(ph)ph.classList.remove('on');let refine=document.getElementById('refinementCenter');if(refine)refine.classList.remove('on');let insights=document.getElementById('insightsDashboard');if(insights)insights.classList.remove('on');let goal=document.getElementById('goalsActionPlan');if(goal)goal.classList.remove('on');let mile=document.getElementById('spiritualMilestones');if(mile)mile.classList.remove('on');let rev=document.getElementById('revelationJournal');if(rev)rev.classList.remove('on');let prayer=document.getElementById('prayerJournal');if(prayer)prayer.classList.remove('on');let uni=document.getElementById('universalSearch');if(uni)uni.classList.remove('on');let notes=document.getElementById('studyNotes');if(notes)notes.classList.remove('on');let dash=document.getElementById('studyDashboard');if(dash)dash.classList.remove('on');let conf=document.getElementById('generalConferenceStudy');if(conf)conf.classList.remove('on');let bom=document.getElementById('bookOfMormonDiscipleship');if(bom)bom.classList.remove('on');let ww=document.getElementById('walkWithChrist');if(ww)ww.classList.remove('on');let cs=document.getElementById('characterStudies');if(cs)cs.classList.remove('on');let hub=document.getElementById('studyLibrary');if(hub)hub.classList.remove('on');let rs=document.getElementById('reminderSettings');if(rs)rs.classList.remove('on');let sp=document.getElementById('searchPanel');if(sp)sp.classList.remove('on')}
+function hideAllViews(){document.getElementById('list').classList.remove('on');document.getElementById('detail').classList.remove('on');document.getElementById('favoritesJournal').classList.remove('on');let v84=document.getElementById('v84StudyLibraryMockup');if(v84)v84.classList.remove('on');let about82=document.getElementById('v82AboutVersion');if(about82)about82.classList.remove('on');let v79=document.getElementById('v79UI2Home');if(v79)v79.classList.remove('on');let v74=document.getElementById('v74RedesignedHome');if(v74)v74.classList.remove('on');let nt=document.getElementById('newTestamentPreview');if(nt)nt.classList.remove('on');let ot=document.getElementById('oldTestamentPreview');if(ot)ot.classList.remove('on');let libprep=document.getElementById('phase3StudyLibraryPrep');if(libprep)libprep.classList.remove('on');let v70=document.getElementById('v70CleanupMilestone');if(v70)v70.classList.remove('on');let stable=document.getElementById('stabilityReviewCenter');if(stable)stable.classList.remove('on');let flow=document.getElementById('userFlowReview');if(flow)flow.classList.remove('on');let release=document.getElementById('releaseNotesCenter');if(release)release.classList.remove('on');let cleanup=document.getElementById('betaCleanupCenter');if(cleanup)cleanup.classList.remove('on');let beta=document.getElementById('betaPrepCenter');if(beta)beta.classList.remove('on');let ga=document.getElementById('growthAnalytics');if(ga)ga.classList.remove('on');let read=document.getElementById('immersiveReadingMode');if(read)read.classList.remove('on');let v60=document.getElementById('v60StudyHome');if(v60)v60.classList.remove('on');let v56=document.getElementById('v56Dashboard');if(v56)v56.classList.remove('on');let ph=document.getElementById('phaseStudyHub');if(ph)ph.classList.remove('on');let refine=document.getElementById('refinementCenter');if(refine)refine.classList.remove('on');let insights=document.getElementById('insightsDashboard');if(insights)insights.classList.remove('on');let goal=document.getElementById('goalsActionPlan');if(goal)goal.classList.remove('on');let mile=document.getElementById('spiritualMilestones');if(mile)mile.classList.remove('on');let rev=document.getElementById('revelationJournal');if(rev)rev.classList.remove('on');let prayer=document.getElementById('prayerJournal');if(prayer)prayer.classList.remove('on');let uni=document.getElementById('universalSearch');if(uni)uni.classList.remove('on');let notes=document.getElementById('studyNotes');if(notes)notes.classList.remove('on');let dash=document.getElementById('studyDashboard');if(dash)dash.classList.remove('on');let conf=document.getElementById('generalConferenceStudy');if(conf)conf.classList.remove('on');let bom=document.getElementById('bookOfMormonDiscipleship');if(bom)bom.classList.remove('on');let ww=document.getElementById('walkWithChrist');if(ww)ww.classList.remove('on');let cs=document.getElementById('characterStudies');if(cs)cs.classList.remove('on');let hub=document.getElementById('studyLibrary');if(hub)hub.classList.remove('on');let rs=document.getElementById('reminderSettings');if(rs)rs.classList.remove('on');let sp=document.getElementById('searchPanel');if(sp)sp.classList.remove('on')}
 function showList(){hideAllViews();document.getElementById('list').classList.add('on');scrollTo(0,0)}
 function openWeek(n){current=n;renderDetail();hideAllViews();document.getElementById('detail').classList.add('on');save();scrollTo(0,0)}
 
@@ -1841,7 +1924,7 @@ function universalSearchData(){
   }catch(e){}
 
   try{
-    addUniversalResult(results,'notes','📖 Jesus Christ 78-Week Study','Featured Study','Complete 78-week Topical Guide study centered on Jesus Christ with progress, favorites, and week list.','<button onclick="showV79UI2Home()">Open Featured Study</button>','jesus christ 78 week study featured topical guide savior atonement resurrection week list');
+    addUniversalResult(results,'notes','📖 Jesus Christ 78-Week Study','Featured Study','Complete 78-week Topical Guide study centered on Jesus Christ with progress, favorites, and week list.','<button onclick="showV84StudyLibrary()">Open Featured Study</button>','jesus christ 78 week study featured topical guide savior atonement resurrection week list');
   }catch(e){}
 
   try{
@@ -1853,7 +1936,11 @@ function universalSearchData(){
   }catch(e){}
 
   try{
-    addUniversalResult(results,'notes','📚 Mockup Study Library','Navigation','Polished Study Library dashboard inspired by the mockup with Jesus Christ, Old Testament, New Testament, Character Studies, General Conference, and Walk With Christ.','<button onclick="showV79UI2Home()">Open Study Library</button>','mockup study library dashboard jesus christ old testament new testament character studies general conference');
+    addUniversalResult(results,'notes','📚 Mockup Study Library','Navigation','Polished Study Library dashboard inspired by the mockup with Jesus Christ, Old Testament, New Testament, Character Studies, General Conference, and Walk With Christ.','<button onclick="showV84StudyLibrary()">Open Study Library</button>','mockup study library dashboard jesus christ old testament new testament character studies general conference');
+  }catch(e){}
+
+  try{
+    addUniversalResult(results,'notes','📚 V84 Mockup Study Library','Navigation','Study Library page matching the target mockup with Jesus Christ 78-week top path and scripture study paths.','<button onclick="showV84StudyLibrary()">Open V84 Library</button>','v84 mockup study library top study path jesus christ 78 week old testament new testament');
   }catch(e){}
 
   return results;
@@ -2625,6 +2712,36 @@ function renderV79UI2Home(){
 
 
 function showV82AboutVersion(){document.body.classList.add('v79-ui2');hideAllViews();document.getElementById('v82AboutVersion').classList.add('on');scrollTo(0,0);}
+
+function showV84StudyLibrary(){
+ document.body.classList.add('v79-ui2');
+ hideAllViews();
+ renderV84StudyLibrary();
+ document.getElementById('v84StudyLibraryMockup').classList.add('on');
+ scrollTo(0,0);
+}
+function renderV84StudyLibrary(){
+ let refs=0,checked=0,favs=0,currentTopic='Jesus Christ Study';
+ try{
+  weeks.forEach(w=>{let d=data(w.week);refs+=(d.refs||[]).length;checked+=(d.refs||[]).filter(r=>r&&r.done).length;favs+=(d.refs||[]).filter(r=>r&&r.fav).length;});
+  if(weeks[current-1])currentTopic='Week '+current+' of 78';
+ }catch(e){}
+ let pct=refs?Math.round(checked/refs*100):0;
+ let streak=(state._streak&&state._streak.current)||0;
+ let notes=(state._notes||[]).length;
+ let prayers=(state._prayers||[]).length;
+ let goals=(state._goals||[]).length;
+
+ let stats=document.getElementById('v84StatsCards');
+ if(stats)stats.innerHTML='<div class="v84StatsCard"><div class="v84StatsIcon v84IconBlue">📖</div><b>78</b><span>Featured weeks</span></div><div class="v84StatsCard"><div class="v84StatsIcon v84IconGreen">✅</div><b>'+checked+'</b><span>References studied</span></div><div class="v84StatsCard"><div class="v84StatsIcon v84IconPurple">⭐</div><b>'+favs+'</b><span>Favorites saved</span></div><div class="v84StatsCard"><div class="v84StatsIcon v84IconOrange">🔥</div><b>'+streak+'</b><span>Day streak</span></div>';
+
+ let paths=document.getElementById('v84StudyPaths');
+ if(paths)paths.innerHTML='<button class="v84Path v84FeaturedPath" onclick="showList()"><div class="v84FeaturedArt">☧</div><div class="v84PathText v84FeaturedText"><span class="v84TopStudyBadge">TOP STUDY PATH</span><b>Jesus Christ 78-Week Study</b><span>The complete study of the Topical Guide centered on the Savior — His names, mission, grace, and more.</span><div class="v84PathProgress"><div class="v84ProgressLine"><div style="width:'+pct+'%"></div></div><span class="v84ProgressNum">'+pct+'%</span></div><span class="v84StudyMeta">'+currentTopic+' • '+checked+' of '+refs+' references studied</span></div><div class="v84Chevron">›</div></button>'+v84Path('Old Testament','Study the scriptures and teachings from the Old Testament.','📜','showOldTestamentPreview()',32,'85 of 265 topics','v83StudyIcon teal')+v84Path('New Testament','Study the life and teachings of Jesus Christ and the early Church.','✝️','showNewTestamentPreview()',28,'64 of 229 topics','v83StudyIcon blue')+v84Path('Book of Mormon','Study the words of the prophets in the Book of Mormon.','📘','showBookOfMormonDiscipleship()',41,'73 of 178 topics','v83StudyIcon gold')+v84Path('Doctrine & Covenants','Study the revelations given to modern prophets.','🖋️','showStudyLibraryExpansionPrep()',26,'28 of 107 topics','v83StudyIcon green')+v84Path('General Conference','Study inspired messages from modern-day prophets and apostles.','🎤','showGeneralConferenceStudy()',18,'14 of 78 topics','v83StudyIcon red')+v84Path('Scripture Characters','Learn from the lives and lessons of people in the scriptures.','👤','showCharacterStudies()',22,'11 of 50 topics','v83StudyIcon purple')+v84Path('Come, Follow Me','Study weekly lessons and connect them to personal application.','🗓️','showStudyLibraryExpansionPrep()',35,'18 of 52 topics','v83StudyIcon teal');
+}
+function v84Path(title,desc,icon,onclick,pct,meta,cls){
+ return '<button class="v84Path" onclick="'+onclick+'"><div class="v84PathIcon '+(cls||'')+'">'+icon+'</div><div class="v84PathText"><b>'+title+'</b><span>'+desc+'</span><div class="v84PathProgress"><div class="v84ProgressLine"><div style="width:'+pct+'%"></div></div><span class="v84ProgressNum">'+pct+'%</span></div><span class="v84StudyMeta">'+meta+'</span></div><div class="v84Chevron">›</div></button>';
+}
+
 function stats(){let dw=0,dr=0,tr=0,fv=0,jd=0,jt=0;weeks.forEach(w=>{let d=data(w.week);if(d.done)dw++;dr+=d.refs.filter(r=>r.done).length;fv+=d.refs.filter(r=>r.fav).length;tr+=d.refs.length;jd+=(d.jtc||[]).filter(x=>x.done).length;jt+=(d.jtc||[]).length});document.getElementById('prog').style.width=Math.round(dw/78*100)+'%';document.getElementById('stats').textContent=`${dw}/78 weeks complete • ${dr}/${tr} references checked • ⭐ ${fv} favorites • 📖 ${jd}/${jt} JTC readings`}
 function exportData(){let blob=new Blob([JSON.stringify(state,null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='jesus-christ-study-backup.json';a.click()}
 function importData(e){let f=e.target.files[0];if(!f)return;let r=new FileReader();r.onload=()=>{try{state=JSON.parse(r.result);fixHebrewsBackupRefs();forceHebrewsVisibleText();forceWeek1HebrewsRefs();save();renderDetail();alert('Imported and Hebrews references fixed')}catch{alert('Could not import')}};r.readAsText(f)}
@@ -2683,5 +2800,5 @@ function openConferenceSection(id){
 })();
 
 
-setTimeout(showV79UI2Home, 250);
+setTimeout(showV84StudyLibrary, 250);
 </script></body></html>

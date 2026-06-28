@@ -502,7 +502,21 @@ body.v79-ui2 #v78DefaultHomeReplacement{display:none!important}
 .v80FeaturedActions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
 .v80FeaturedActions button{border-radius:18px;padding:14px;text-align:left}
 .v80StudyBadge{display:inline-block;background:#876b2f;color:white;border-radius:999px;padding:5px 11px;font-size:12px;font-weight:900;margin-bottom:8px}
-</style></head><body><header><h1>Jesus Christ Topical Guide Study</h1><div class="sub">Scripture Study Platform UI 2.0 Featured Study.</div><div class="bar"><div id="prog"></div></div><div class="sub" id="stats"></div><div class="versionPill" id="appVersionLabel">Version 80</div><div class="backupNote" id="backupNote"></div><div class="streakPill" id="streakLabel" onclick="showStreakDetails()">🔥 0 day streak</div><div class="reminderPill" id="reminderLabel" onclick="showReminderSettings()">⏰ Reminder off</div></header>
+
+.v81JournalHub{border:2px solid #876b2f;border-radius:30px;padding:18px;margin:14px 0;background:linear-gradient(135deg,#fffdf9,#ffffff);box-shadow:0 8px 26px rgba(0,0,0,.08)}
+.v81JournalHub h2{font-size:26px;margin:0 0 8px;color:#222}
+.v81JournalHub p{color:#6b665d;margin:7px 0}
+.v81JournalGrid{display:grid;grid-template-columns:1fr 1fr;gap:11px;margin:14px 0}
+.v81JournalCard{background:#fff;border:1px solid #ddd6ca;border-radius:24px;padding:16px;text-align:left;box-shadow:0 3px 14px rgba(0,0,0,.05);min-height:88px}
+.v81JournalCard b{display:block;font-size:18px;margin-bottom:5px;color:#222}
+.v81JournalCard span{font-size:13px;color:#6b665d}
+.v81JournalCard.main{grid-column:1/-1;border:2px solid #876b2f;background:#fffdf9}
+.v81MiniStats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin:12px 0}
+.v81MiniStats div{border:1px solid #eee7d9;border-radius:18px;padding:10px;background:#fff;text-align:center}
+.v81MiniStats b{display:block;font-size:18px;color:#222}
+.v81MiniStats span{font-size:12px;color:#6b665d}
+.v81Badge{display:inline-block;background:#876b2f;color:white;border-radius:999px;padding:5px 11px;font-size:12px;font-weight:900;margin-bottom:8px}
+</style></head><body><header><h1>Jesus Christ Topical Guide Study</h1><div class="sub">Scripture Study Platform UI 2.0 Personal Study Hub.</div><div class="bar"><div id="prog"></div></div><div class="sub" id="stats"></div><div class="versionPill" id="appVersionLabel">Version 81</div><div class="backupNote" id="backupNote"></div><div class="streakPill" id="streakLabel" onclick="showStreakDetails()">🔥 0 day streak</div><div class="reminderPill" id="reminderLabel" onclick="showReminderSettings()">⏰ Reminder off</div></header>
 <main>
 <section id="v79UI2Home" class="view">
   <div class="v79AppShell">
@@ -528,7 +542,7 @@ body.v79-ui2 #v78DefaultHomeReplacement{display:none!important}
       </div>
     </div>
 
-    <div id="v80FeaturedStudy"></div><div id="v79Stats" class="v79Stats"></div>
+    <div id="v80FeaturedStudy"></div><div id="v79Stats" class="v79Stats"></div><div id="v81JournalHub"></div>
     <div id="v79Today"></div>
 
     <div class="v79Section">
@@ -1763,6 +1777,10 @@ function universalSearchData(){
     addUniversalResult(results,'notes','📖 Jesus Christ 78-Week Study','Featured Study','Complete 78-week Topical Guide study centered on Jesus Christ with progress, favorites, and week list.','<button onclick="showV79UI2Home()">Open Featured Study</button>','jesus christ 78 week study featured topical guide savior atonement resurrection week list');
   }catch(e){}
 
+  try{
+    addUniversalResult(results,'notes','📝 Personal Study Hub','Navigation','Study Notes, Prayer, Revelation, Favorites, Milestones, and Goals in the redesigned UI 2.0 home.','<button onclick="showV79UI2Home()">Open Personal Study Hub</button>','personal study hub journal notes prayer revelation favorites milestones goals');
+  }catch(e){}
+
   return results;
 }
 function runUniversalSearch(){
@@ -2484,6 +2502,7 @@ function v78LaunchHome(){
 
 
 
+
 function showV79UI2Home(){
  document.body.classList.add('v79-ui2');
  hideAllViews();
@@ -2501,7 +2520,8 @@ function renderV79UI2Home(){
  let streak=(state._streak&&state._streak.current)||0;
  let notes=(state._notes||[]).length;
  let prayers=(state._prayers||[]).length, answered=(state._prayers||[]).filter(p=>(p.status||'')==='Answered').length;
- let revs=(state._revelations||[]).length;
+ let revs=(state._revelations||[]).length, revDone=(state._revelations||[]).filter(r=>(r.status||'')==='Completed').length;
+ let milestones=(state._milestones||[]).length;
  let goals=(state._goals||[]).length, doneGoals=(state._goals||[]).filter(g=>(g.status||'')==='Completed').length;
 
  let hero=document.getElementById('v79HeroText');
@@ -2515,9 +2535,13 @@ function renderV79UI2Home(){
  let stats=document.getElementById('v79Stats');
  if(stats)stats.innerHTML='<div class="v79Stat"><b>'+pct+'%</b><span>Study</span></div><div class="v79Stat"><b>🔥 '+streak+'</b><span>Streak</span></div><div class="v79Stat"><b>⭐ '+favs+'</b><span>Favorites</span></div><div class="v79Stat"><b>'+notes+'</b><span>Notes</span></div><div class="v79Stat"><b>'+answered+'/'+prayers+'</b><span>Prayers</span></div><div class="v79Stat"><b>'+doneGoals+'/'+goals+'</b><span>Goals</span></div>';
 
+ let journal=document.getElementById('v81JournalHub');
+ if(journal)journal.innerHTML='<div class="v81JournalHub"><span class="v81Badge">Personal Study Hub</span><h2>Record what the Spirit teaches</h2><p>Your journals are now grouped into one cleaner personal study experience.</p><div class="v81MiniStats"><div><b>'+notes+'</b><span>Notes</span></div><div><b>'+prayers+'</b><span>Prayers</span></div><div><b>'+revs+'</b><span>Revelations</span></div></div><div class="v81JournalGrid"><button class="v81JournalCard main" onclick="showStudyNotes()"><b>📝 Study Notes</b><span>Capture doctrine, impressions, and scripture insights.</span></button><button class="v81JournalCard" onclick="showPrayerJournal()"><b>🙏 Prayer</b><span>'+answered+'/'+prayers+' prayers marked answered.</span></button><button class="v81JournalCard" onclick="showRevelationJournal()"><b>💡 Revelation</b><span>'+revDone+'/'+revs+' promptings acted on.</span></button><button class="v81JournalCard" onclick="showFavoritesJournal()"><b>⭐ Favorites</b><span>'+favs+' favorite scriptures.</span></button><button class="v81JournalCard" onclick="showSpiritualMilestones()"><b>🏔️ Milestones</b><span>'+milestones+' spiritual records.</span></button><button class="v81JournalCard" onclick="showGoalsActionPlan()"><b>🎯 Goals</b><span>'+doneGoals+'/'+goals+' goals complete.</span></button></div></div>';
+
  let today=document.getElementById('v79Today');
  if(today)today.innerHTML='<div class="v79Today"><span class="v74Chip">Today’s invitation</span><h3>Choose one faithful step</h3><p class="muted">Study, pray, record revelation, or act on a goal.</p><div class="v79TodayRow"><button class="primary" onclick="continueStudying()"><b>Study</b><br><span>Continue your current reference</span></button><button onclick="showRevelationJournal()"><b>Record</b><br><span>'+revs+' revelation entries saved</span></button><button onclick="showGoalsActionPlan()"><b>Act</b><br><span>Review and complete spiritual goals</span></button></div></div>';
 }
+
 
 
 function stats(){let dw=0,dr=0,tr=0,fv=0,jd=0,jt=0;weeks.forEach(w=>{let d=data(w.week);if(d.done)dw++;dr+=d.refs.filter(r=>r.done).length;fv+=d.refs.filter(r=>r.fav).length;tr+=d.refs.length;jd+=(d.jtc||[]).filter(x=>x.done).length;jt+=(d.jtc||[]).length});document.getElementById('prog').style.width=Math.round(dw/78*100)+'%';document.getElementById('stats').textContent=`${dw}/78 weeks complete • ${dr}/${tr} references checked • ⭐ ${fv} favorites • 📖 ${jd}/${jt} JTC readings`}

@@ -380,8 +380,96 @@ label{font-weight:750;display:block;margin-top:16px;margin-bottom:6px}textarea{w
 .v73Grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px 0}
 .v73Grid button{border-radius:16px;padding:12px;text-align:left}
 .v73Badge{display:inline-block;background:#e7f0ff;color:#174f8a;border-radius:999px;padding:4px 10px;font-size:12px;font-weight:900;margin:4px 0}
-</style></head><body><header><h1>Jesus Christ Topical Guide Study</h1><div class="sub">Scripture Study Platform Phase 2 App Home Polish.</div><div class="bar"><div id="prog"></div></div><div class="sub" id="stats"></div><div class="versionPill" id="appVersionLabel">Version 73</div><div class="backupNote" id="backupNote"></div><div class="streakPill" id="streakLabel" onclick="showStreakDetails()">🔥 0 day streak</div><div class="reminderPill" id="reminderLabel" onclick="showReminderSettings()">⏰ Reminder off</div></header>
+
+.v74Shell{padding:0}
+.v74Hero{border-radius:30px;padding:22px;margin:14px 0;background:linear-gradient(135deg,#fffdf9,#f5efe3);border:1px solid #d8c8a8;box-shadow:0 8px 24px rgba(0,0,0,.08)}
+.v74Hero h1{font-size:32px;line-height:1.05;margin:0 0 8px;color:#2f2a22}
+.v74Hero p{color:#6b665d;margin:7px 0}
+.v74HeroTop{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.v74Chip{display:inline-block;background:#fff;border:1px solid #ddd6ca;border-radius:999px;padding:5px 10px;font-size:12px;font-weight:900;color:#876b2f}
+.v74HeroActions{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:14px}
+.v74HeroActions button{border-radius:18px;padding:13px}
+.v74Progress{height:14px;background:#e7ddca;border-radius:999px;overflow:hidden;margin:14px 0}
+.v74Progress div{height:100%;background:#876b2f;border-radius:999px}
+.v74StatsRow{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin:12px 0}
+.v74Stat{border:1px solid #ddd6ca;border-radius:18px;padding:11px;background:#fff;text-align:center;box-shadow:0 2px 10px rgba(0,0,0,.04)}
+.v74Stat b{display:block;font-size:19px;color:#2f2a22}
+.v74Stat span{font-size:12px;color:#6b665d}
+.v74Section{margin-top:22px}
+.v74SectionHead{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+.v74SectionHead h3{margin:0;font-size:20px}
+.v74SectionHead span{font-size:12px;font-weight:900;color:#876b2f}
+.v74CardGrid{display:grid;grid-template-columns:1fr 1fr;gap:11px}
+.v74Card{border:1px solid #ddd6ca;border-radius:24px;padding:16px;background:#fff;box-shadow:0 3px 14px rgba(0,0,0,.055);text-align:left;min-height:86px}
+.v74Card.main{grid-column:1/-1;background:#fffdf9;border:2px solid #876b2f}
+.v74Card b{display:block;font-size:18px;margin-bottom:6px;color:#2f2a22}
+.v74Card span{font-size:13px;color:#6b665d}
+.v74Today{border:1px solid #ddd6ca;border-radius:24px;padding:16px;margin:14px 0;background:#fff}
+.v74Today h3{margin:0 0 8px}
+.v74Path{display:grid;grid-template-columns:1fr;gap:10px;margin-top:10px}
+.v74PathItem{border:1px solid #eee7d9;border-radius:18px;padding:13px;background:#fffdf9}
+.v74BottomSpace{height:12px}
+.v74Card:active,.v74HeroActions button:active{transform:scale(.985)}
+</style></head><body><header><h1>Jesus Christ Topical Guide Study</h1><div class="sub">Scripture Study Platform Phase 2 App Home Polish.</div><div class="bar"><div id="prog"></div></div><div class="sub" id="stats"></div><div class="versionPill" id="appVersionLabel">Version 74</div><div class="backupNote" id="backupNote"></div><div class="streakPill" id="streakLabel" onclick="showStreakDetails()">🔥 0 day streak</div><div class="reminderPill" id="reminderLabel" onclick="showReminderSettings()">⏰ Reminder off</div></header>
 <main>
+<section id="v74RedesignedHome" class="view">
+  <div class="card v74Shell">
+    <div class="v74Hero">
+      <div class="v74HeroTop">
+        <span class="v74Chip">V74 New Design</span>
+        <span class="v74Chip">Study Home</span>
+      </div>
+      <h1>Walk with Christ today</h1>
+      <p id="v74HeroText">Resume your journey of scripture study, revelation, and faithful action.</p>
+      <div class="v74Progress"><div id="v74ProgressBar" style="width:0%"></div></div>
+      <div class="v74HeroActions">
+        <button class="primary" onclick="continueStudying()">▶ Continue</button>
+        <button onclick="showImmersiveReadingMode()">📖 Reading</button>
+        <button onclick="showUniversalSearch()">🔎 Search</button>
+        <button onclick="showGrowthAnalytics()">📊 Insights</button>
+      </div>
+    </div>
+
+    <div id="v74Stats" class="v74StatsRow"></div>
+    <div id="v74Today"></div>
+
+    <div class="v74Section">
+      <div class="v74SectionHead"><h3>📚 Study Library</h3><span>Guided Studies</span></div>
+      <div class="v74CardGrid">
+        <button class="v74Card main" onclick="showList()"><b>📖 Jesus Christ Study</b><span>Continue the main 78-week study centered on the Savior.</span></button>
+        <button class="v74Card" onclick="showOldTestamentPreview()"><b>📜 Old Testament</b><span>Creation, covenants, prophets, and Christ.</span></button>
+        <button class="v74Card" onclick="showNewTestamentPreview()"><b>📖 New Testament</b><span>The life, teachings, and Atonement of Christ.</span></button>
+        <button class="v74Card" onclick="showCharacterStudies()"><b>👥 Characters</b><span>Study disciples, prophets, and witnesses.</span></button>
+        <button class="v74Card" onclick="showWalkWithChrist()"><b>✝️ Walk With Christ</b><span>Follow the Savior’s life and ministry.</span></button>
+        <button class="v74Card" onclick="showGeneralConferenceStudy()"><b>🎤 Conference</b><span>Study modern prophetic teachings.</span></button>
+      </div>
+    </div>
+
+    <div class="v74Section">
+      <div class="v74SectionHead"><h3>🧭 Personal Study</h3><span>Record & Act</span></div>
+      <div class="v74CardGrid">
+        <button class="v74Card" onclick="showFavoritesJournal()"><b>⭐ Favorites</b><span>Favorite scriptures and impressions.</span></button>
+        <button class="v74Card" onclick="showStudyNotes()"><b>📝 Notes</b><span>Your unified study notes.</span></button>
+        <button class="v74Card" onclick="showPrayerJournal()"><b>🙏 Prayer</b><span>Prayers, gratitude, and answers.</span></button>
+        <button class="v74Card" onclick="showRevelationJournal()"><b>💡 Revelation</b><span>Promptings and spiritual impressions.</span></button>
+        <button class="v74Card" onclick="showSpiritualMilestones()"><b>🏔️ Milestones</b><span>Your spiritual history.</span></button>
+        <button class="v74Card" onclick="showGoalsActionPlan()"><b>🎯 Goals</b><span>Turn inspiration into action.</span></button>
+      </div>
+    </div>
+
+    <div class="v74Section">
+      <div class="v74SectionHead"><h3>🛠️ Tools</h3><span>Beta</span></div>
+      <div class="v74CardGrid">
+        <button class="v74Card" onclick="showGrowthAnalytics()"><b>📊 Analytics</b><span>Visual spiritual growth progress.</span></button>
+        <button class="v74Card" onclick="showReleaseNotesCenter()"><b>🗒️ Release Notes</b><span>Testing plan and future features.</span></button>
+        <button class="v74Card" onclick="showStabilityReviewCenter()"><b>🛡️ Stability</b><span>Final beta testing checklist.</span></button>
+        <button class="v74Card" onclick="exportData()"><b>💾 Backup</b><span>Export your progress and journals.</span></button>
+      </div>
+    </div>
+    <div class="v74BottomSpace"></div>
+  </div>
+</section>
+
 <section id="v60StudyHome" class="view">
   <div class="card v60Home">
     <div class="v60Hero">
@@ -480,7 +568,7 @@ label{font-weight:750;display:block;margin-top:16px;margin-bottom:6px}textarea{w
     </div>
   </div>
 </section>
-<div style='margin:12px;padding:18px;border:2px solid #876b2f;border-radius:20px;background:#fffdf9'><h2>Study Hub Transformation (V55)</h2><p>Phase 2 continues with a more app-like home experience, emphasizing Resume Your Journey, Study Library, Personal Study, and quick access tools.</p></div><section id="phaseStudyHub" class="view"><div class="card"><h2>Scripture Study Hub</h2><div class="phaseHubHero"><h2>Welcome Back</h2><p class="muted">Continue your study, record spiritual impressions, and grow closer to Jesus Christ.</p><div id="todayFocusCard"></div><div id="hubLaunchPanel"></div><div id="currentStudyCard"></div><div id="phaseHubStats" class="phaseHubStatGrid"></div><button class="primary" onclick="showV60StudyHome()">🏠 New Study Home</button><button class="primary" onclick="showV56Dashboard()">🏠 Study Home</button><button class="primary" onclick="showPhaseStudyHub()">🏠 Study Hub</button><button class="primary" onclick="continueStudying()">▶ Continue Studying</button><button onclick="showDashboard()">Open Dashboard</button><div class="phaseHubNav"><button onclick="showUniversalSearch()">🔎 Search</button><button onclick="showInsightsDashboard()">📈 Insights</button><button onclick="showPrayerJournal()">🙏 Prayer</button><button onclick="showGoalsActionPlan()">🎯 Goals</button></div></div><div id="homeSummaryCards" class="homeSummaryGrid"></div><h3 class="phaseHubSectionTitle">Study Library</h3><div class="phaseHubGrid"><div class="phaseHubCard featured"><div class="phaseHubMiniLabel">Current Main Study</div><h3>📖 Jesus Christ Topical Guide</h3><p>Your main 78-week study of Jesus Christ.</p><button onclick="showList()">Open Study</button></div><div class="phaseHubCard"><h3>👥 Character Studies</h3><p>Study people in scripture and what they teach about discipleship.</p><button onclick="showCharacterStudies()">Open</button></div><div class="phaseHubCard"><h3>✝️ Walk With Christ</h3><p>A Bible-centered study of the Savior’s life and ministry.</p><button onclick="showWalkWithChrist()">Open</button></div><div class="phaseHubCard"><h3>📘 Book of Mormon Discipleship</h3><p>Come unto Christ through Book of Mormon themes.</p><button onclick="showBookOfMormonDiscipleship()">Open</button></div><div class="phaseHubCard"><h3>🎤 General Conference</h3><p>Study talks by topic, invitation, and application.</p><button onclick="showGeneralConferenceStudy()">Open</button></div></div><h3 class="phaseHubSectionTitle">Personal Study</h3><div class="phaseHubGrid"><div class="phaseHubCard"><h3>⭐ Favorites Journal</h3><p>Review favorite scriptures and impressions.</p><button onclick="showFavoritesJournal()">Open</button></div><div class="phaseHubCard"><h3>📝 Study Notes</h3><p>Unified notes across every study.</p><button onclick="showStudyNotes()">Open</button></div><div class="phaseHubCard"><h3>🙏 Prayer Journal</h3><p>Record prayers, gratitude, and answers.</p><button onclick="showPrayerJournal()">Open</button></div><div class="phaseHubCard"><h3>💡 Revelation Journal</h3><p>Track promptings, insights, and action items.</p><button onclick="showRevelationJournal()">Open</button></div><div class="phaseHubCard"><h3>🏔️ Spiritual Milestones</h3><p>Build your spiritual timeline.</p><button onclick="showSpiritualMilestones()">Open</button></div><div class="phaseHubCard"><h3>🎯 Goals & Action Plan</h3><p>Turn inspiration into action.</p><button onclick="showGoalsActionPlan()">Open</button></div></div><h3 class="phaseHubSectionTitle">Tools</h3><div class="phaseHubGrid"><div class="phaseHubCard"><h3>📈 Insights</h3><p>See progress and personal spiritual records.</p><button onclick="showInsightsDashboard()">Open</button></div><div class="phaseHubCard"><h3>🔎 Universal Search</h3><p>Search across the whole platform.</p><button onclick="showUniversalSearch()">Open</button></div><div class="phaseHubCard"><h3>✅ Refinement Center</h3><p>Phase 1 foundation checklist and status.</p><button onclick="showRefinementCenter()">Open</button></div></div></div></section><section id="list" class="view on"><div class="card"><button class="primary" onclick="continueStudying()">▶ Continue Studying</button><button onclick="showDashboard()">📊 Dashboard</button><button onclick="showInsightsDashboard()">📈 Insights</button><button onclick="showRefinementCenter()">✅ Refinement</button><button onclick="showStudyNotes()">📝 Study Notes</button><button onclick="showPrayerJournal()">🙏 Prayer Journal</button><button onclick="showRevelationJournal()">💡 Revelation Journal</button><button onclick="showSpiritualMilestones()">🏔️ Spiritual Milestones</button><button onclick="showGoalsActionPlan()">🎯 Goals & Action Plan</button><button onclick="showUniversalSearch()">🔎 Universal Search</button><button onclick="showStudyLibrary()">📚 Study Library</button><button onclick="exportData()">Export Backup</button><button onclick="document.getElementById('imp').click()">Import</button><a href="assessment.html" style="text-decoration:none"><button type="button">Christlike Attribute Assessment</button></a><button onclick="showReminderSettings()">Study Reminder</button><button onclick="showSearchPanel()">Search References</button><button onclick="showUniversalSearch()">Open Universal Search</button><button onclick="jumpToNextUnchecked()">Next Unchecked</button><button onclick="showFavoritesJournal()">⭐ Favorites Journal</button><button onclick="printFavoritesJournal()">Print Favorites Journal</button><input id="imp" type="file" accept="application/json" style="display:none" onchange="importData(event)"><div id="weeks"></div></div></section><section id="detail" class="view"><div class="card" id="content"></div></section>
+<div style='margin:12px;padding:18px;border:2px solid #876b2f;border-radius:20px;background:#fffdf9'><h2>Study Hub Transformation (V55)</h2><p>Phase 2 continues with a more app-like home experience, emphasizing Resume Your Journey, Study Library, Personal Study, and quick access tools.</p></div><section id="phaseStudyHub" class="view"><div class="card"><h2>Scripture Study Hub</h2><div class="phaseHubHero"><h2>Welcome Back</h2><p class="muted">Continue your study, record spiritual impressions, and grow closer to Jesus Christ.</p><div id="todayFocusCard"></div><div id="hubLaunchPanel"></div><div id="currentStudyCard"></div><div id="phaseHubStats" class="phaseHubStatGrid"></div><button class="primary" onclick="showV74RedesignedHome()">✨ New Design Home</button><button class="primary" onclick="showV60StudyHome()">🏠 New Study Home</button><button class="primary" onclick="showV56Dashboard()">🏠 Study Home</button><button class="primary" onclick="showPhaseStudyHub()">🏠 Study Hub</button><button class="primary" onclick="continueStudying()">▶ Continue Studying</button><button onclick="showDashboard()">Open Dashboard</button><div class="phaseHubNav"><button onclick="showUniversalSearch()">🔎 Search</button><button onclick="showInsightsDashboard()">📈 Insights</button><button onclick="showPrayerJournal()">🙏 Prayer</button><button onclick="showGoalsActionPlan()">🎯 Goals</button></div></div><div id="homeSummaryCards" class="homeSummaryGrid"></div><h3 class="phaseHubSectionTitle">Study Library</h3><div class="phaseHubGrid"><div class="phaseHubCard featured"><div class="phaseHubMiniLabel">Current Main Study</div><h3>📖 Jesus Christ Topical Guide</h3><p>Your main 78-week study of Jesus Christ.</p><button onclick="showList()">Open Study</button></div><div class="phaseHubCard"><h3>👥 Character Studies</h3><p>Study people in scripture and what they teach about discipleship.</p><button onclick="showCharacterStudies()">Open</button></div><div class="phaseHubCard"><h3>✝️ Walk With Christ</h3><p>A Bible-centered study of the Savior’s life and ministry.</p><button onclick="showWalkWithChrist()">Open</button></div><div class="phaseHubCard"><h3>📘 Book of Mormon Discipleship</h3><p>Come unto Christ through Book of Mormon themes.</p><button onclick="showBookOfMormonDiscipleship()">Open</button></div><div class="phaseHubCard"><h3>🎤 General Conference</h3><p>Study talks by topic, invitation, and application.</p><button onclick="showGeneralConferenceStudy()">Open</button></div></div><h3 class="phaseHubSectionTitle">Personal Study</h3><div class="phaseHubGrid"><div class="phaseHubCard"><h3>⭐ Favorites Journal</h3><p>Review favorite scriptures and impressions.</p><button onclick="showFavoritesJournal()">Open</button></div><div class="phaseHubCard"><h3>📝 Study Notes</h3><p>Unified notes across every study.</p><button onclick="showStudyNotes()">Open</button></div><div class="phaseHubCard"><h3>🙏 Prayer Journal</h3><p>Record prayers, gratitude, and answers.</p><button onclick="showPrayerJournal()">Open</button></div><div class="phaseHubCard"><h3>💡 Revelation Journal</h3><p>Track promptings, insights, and action items.</p><button onclick="showRevelationJournal()">Open</button></div><div class="phaseHubCard"><h3>🏔️ Spiritual Milestones</h3><p>Build your spiritual timeline.</p><button onclick="showSpiritualMilestones()">Open</button></div><div class="phaseHubCard"><h3>🎯 Goals & Action Plan</h3><p>Turn inspiration into action.</p><button onclick="showGoalsActionPlan()">Open</button></div></div><h3 class="phaseHubSectionTitle">Tools</h3><div class="phaseHubGrid"><div class="phaseHubCard"><h3>📈 Insights</h3><p>See progress and personal spiritual records.</p><button onclick="showInsightsDashboard()">Open</button></div><div class="phaseHubCard"><h3>🔎 Universal Search</h3><p>Search across the whole platform.</p><button onclick="showUniversalSearch()">Open</button></div><div class="phaseHubCard"><h3>✅ Refinement Center</h3><p>Phase 1 foundation checklist and status.</p><button onclick="showRefinementCenter()">Open</button></div></div></div></section><section id="list" class="view on"><div class="card"><button class="primary" onclick="continueStudying()">▶ Continue Studying</button><button onclick="showDashboard()">📊 Dashboard</button><button onclick="showInsightsDashboard()">📈 Insights</button><button onclick="showRefinementCenter()">✅ Refinement</button><button onclick="showStudyNotes()">📝 Study Notes</button><button onclick="showPrayerJournal()">🙏 Prayer Journal</button><button onclick="showRevelationJournal()">💡 Revelation Journal</button><button onclick="showSpiritualMilestones()">🏔️ Spiritual Milestones</button><button onclick="showGoalsActionPlan()">🎯 Goals & Action Plan</button><button onclick="showUniversalSearch()">🔎 Universal Search</button><button onclick="showStudyLibrary()">📚 Study Library</button><button onclick="exportData()">Export Backup</button><button onclick="document.getElementById('imp').click()">Import</button><a href="assessment.html" style="text-decoration:none"><button type="button">Christlike Attribute Assessment</button></a><button onclick="showReminderSettings()">Study Reminder</button><button onclick="showSearchPanel()">Search References</button><button onclick="showUniversalSearch()">Open Universal Search</button><button onclick="jumpToNextUnchecked()">Next Unchecked</button><button onclick="showFavoritesJournal()">⭐ Favorites Journal</button><button onclick="printFavoritesJournal()">Print Favorites Journal</button><input id="imp" type="file" accept="application/json" style="display:none" onchange="importData(event)"><div id="weeks"></div></div></section><section id="detail" class="view"><div class="card" id="content"></div></section>
 <section id="studyLibrary" class="view">
   <div class="card">
     <div class="top"><button onclick="showList()">← Current Study</button></div>
@@ -677,7 +765,7 @@ function fixHebrewsBackupRefs(){
 fixHebrewsBackupRefs();
 function data(n){let w=weeks[n-1];if(!state[n])state[n]={done:false,refs:w.refs.map(x=>({text:x.text,url:x.url,done:false,fav:false,favWhy:'',favChrist:'',favImpression:''})),learned:'',attribute:'',scripture:'',impressions:''};if(w.refs.some(r=>r.text)&&(!state[n].refs||state[n].refs.length!==w.refs.length||state[n].refs.some((r,i)=>r.text!==w.refs[i].text||r.url!==w.refs[i].url))){let old=state[n].refs||[];state[n].refs=w.refs.map((x,i)=>({text:x.text,url:x.url,done:old[i]?.done||false,fav:old[i]?.fav||false,favWhy:old[i]?.favWhy||'',favChrist:old[i]?.favChrist||'',favImpression:old[i]?.favImpression||''}))}let j=jesusTheChristReadings[n]||[];if(!state[n].jtc||state[n].jtc.length!==j.length){let old=state[n].jtc||[];state[n].jtc=j.map((x,i)=>({title:x[0],url:x[1],done:old[i]?.done||false,date:old[i]?.date||''}))}return state[n]}
 function save(){localStorage.setItem('tgStudyState',JSON.stringify(state));localStorage.setItem('tgStudyCurrent',current);renderList();stats()}
-function hideAllViews(){document.getElementById('list').classList.remove('on');document.getElementById('detail').classList.remove('on');document.getElementById('favoritesJournal').classList.remove('on');let nt=document.getElementById('newTestamentPreview');if(nt)nt.classList.remove('on');let ot=document.getElementById('oldTestamentPreview');if(ot)ot.classList.remove('on');let libprep=document.getElementById('phase3StudyLibraryPrep');if(libprep)libprep.classList.remove('on');let v70=document.getElementById('v70CleanupMilestone');if(v70)v70.classList.remove('on');let stable=document.getElementById('stabilityReviewCenter');if(stable)stable.classList.remove('on');let flow=document.getElementById('userFlowReview');if(flow)flow.classList.remove('on');let release=document.getElementById('releaseNotesCenter');if(release)release.classList.remove('on');let cleanup=document.getElementById('betaCleanupCenter');if(cleanup)cleanup.classList.remove('on');let beta=document.getElementById('betaPrepCenter');if(beta)beta.classList.remove('on');let ga=document.getElementById('growthAnalytics');if(ga)ga.classList.remove('on');let read=document.getElementById('immersiveReadingMode');if(read)read.classList.remove('on');let v60=document.getElementById('v60StudyHome');if(v60)v60.classList.remove('on');let v56=document.getElementById('v56Dashboard');if(v56)v56.classList.remove('on');let ph=document.getElementById('phaseStudyHub');if(ph)ph.classList.remove('on');let refine=document.getElementById('refinementCenter');if(refine)refine.classList.remove('on');let insights=document.getElementById('insightsDashboard');if(insights)insights.classList.remove('on');let goal=document.getElementById('goalsActionPlan');if(goal)goal.classList.remove('on');let mile=document.getElementById('spiritualMilestones');if(mile)mile.classList.remove('on');let rev=document.getElementById('revelationJournal');if(rev)rev.classList.remove('on');let prayer=document.getElementById('prayerJournal');if(prayer)prayer.classList.remove('on');let uni=document.getElementById('universalSearch');if(uni)uni.classList.remove('on');let notes=document.getElementById('studyNotes');if(notes)notes.classList.remove('on');let dash=document.getElementById('studyDashboard');if(dash)dash.classList.remove('on');let conf=document.getElementById('generalConferenceStudy');if(conf)conf.classList.remove('on');let bom=document.getElementById('bookOfMormonDiscipleship');if(bom)bom.classList.remove('on');let ww=document.getElementById('walkWithChrist');if(ww)ww.classList.remove('on');let cs=document.getElementById('characterStudies');if(cs)cs.classList.remove('on');let hub=document.getElementById('studyLibrary');if(hub)hub.classList.remove('on');let rs=document.getElementById('reminderSettings');if(rs)rs.classList.remove('on');let sp=document.getElementById('searchPanel');if(sp)sp.classList.remove('on')}
+function hideAllViews(){document.getElementById('list').classList.remove('on');document.getElementById('detail').classList.remove('on');document.getElementById('favoritesJournal').classList.remove('on');let v74=document.getElementById('v74RedesignedHome');if(v74)v74.classList.remove('on');let nt=document.getElementById('newTestamentPreview');if(nt)nt.classList.remove('on');let ot=document.getElementById('oldTestamentPreview');if(ot)ot.classList.remove('on');let libprep=document.getElementById('phase3StudyLibraryPrep');if(libprep)libprep.classList.remove('on');let v70=document.getElementById('v70CleanupMilestone');if(v70)v70.classList.remove('on');let stable=document.getElementById('stabilityReviewCenter');if(stable)stable.classList.remove('on');let flow=document.getElementById('userFlowReview');if(flow)flow.classList.remove('on');let release=document.getElementById('releaseNotesCenter');if(release)release.classList.remove('on');let cleanup=document.getElementById('betaCleanupCenter');if(cleanup)cleanup.classList.remove('on');let beta=document.getElementById('betaPrepCenter');if(beta)beta.classList.remove('on');let ga=document.getElementById('growthAnalytics');if(ga)ga.classList.remove('on');let read=document.getElementById('immersiveReadingMode');if(read)read.classList.remove('on');let v60=document.getElementById('v60StudyHome');if(v60)v60.classList.remove('on');let v56=document.getElementById('v56Dashboard');if(v56)v56.classList.remove('on');let ph=document.getElementById('phaseStudyHub');if(ph)ph.classList.remove('on');let refine=document.getElementById('refinementCenter');if(refine)refine.classList.remove('on');let insights=document.getElementById('insightsDashboard');if(insights)insights.classList.remove('on');let goal=document.getElementById('goalsActionPlan');if(goal)goal.classList.remove('on');let mile=document.getElementById('spiritualMilestones');if(mile)mile.classList.remove('on');let rev=document.getElementById('revelationJournal');if(rev)rev.classList.remove('on');let prayer=document.getElementById('prayerJournal');if(prayer)prayer.classList.remove('on');let uni=document.getElementById('universalSearch');if(uni)uni.classList.remove('on');let notes=document.getElementById('studyNotes');if(notes)notes.classList.remove('on');let dash=document.getElementById('studyDashboard');if(dash)dash.classList.remove('on');let conf=document.getElementById('generalConferenceStudy');if(conf)conf.classList.remove('on');let bom=document.getElementById('bookOfMormonDiscipleship');if(bom)bom.classList.remove('on');let ww=document.getElementById('walkWithChrist');if(ww)ww.classList.remove('on');let cs=document.getElementById('characterStudies');if(cs)cs.classList.remove('on');let hub=document.getElementById('studyLibrary');if(hub)hub.classList.remove('on');let rs=document.getElementById('reminderSettings');if(rs)rs.classList.remove('on');let sp=document.getElementById('searchPanel');if(sp)sp.classList.remove('on')}
 function showList(){hideAllViews();document.getElementById('list').classList.add('on');scrollTo(0,0)}
 function openWeek(n){current=n;renderDetail();hideAllViews();document.getElementById('detail').classList.add('on');save();scrollTo(0,0)}
 
@@ -1473,6 +1561,10 @@ function universalSearchData(){
     addUniversalResult(results,'notes','📖 New Testament Study Preview','Study Library','Birth of Christ, baptism, temptation, Sermon on the Mount, miracles, parables, Last Supper, Gethsemane, Crucifixion, Resurrection, apostles.','<button onclick="showNewTestamentPreview()">Open New Testament Preview</button>','new testament jesus christ birth baptism temptation sermon mount miracles parables gethsemane crucifixion resurrection apostles');
   }catch(e){}
 
+  try{
+    addUniversalResult(results,'notes','✨ New Design Home','Navigation','V74 redesigned home dashboard, Study Library, Personal Study, Tools, Continue, Reading, Search, Analytics.','<button onclick="showV74RedesignedHome()">Open New Design Home</button>','new design home dashboard study library personal study tools continue reading search analytics');
+  }catch(e){}
+
   return results;
 }
 function runUniversalSearch(){
@@ -2121,6 +2213,35 @@ function showV70CleanupMilestone(){hideAllViews();document.getElementById('v70Cl
 function showStudyLibraryExpansionPrep(){hideAllViews();document.getElementById('phase3StudyLibraryPrep').classList.add('on');scrollTo(0,0);}
 function showOldTestamentPreview(){hideAllViews();document.getElementById('oldTestamentPreview').classList.add('on');scrollTo(0,0);}
 function showNewTestamentPreview(){hideAllViews();document.getElementById('newTestamentPreview').classList.add('on');scrollTo(0,0);}
+
+function showV74RedesignedHome(){
+ hideAllViews();
+ renderV74RedesignedHome();
+ document.getElementById('v74RedesignedHome').classList.add('on');
+ scrollTo(0,0);
+}
+function renderV74RedesignedHome(){
+ let refs=0,checked=0,favs=0,currentTopic='Jesus Christ Study';
+ try{
+  weeks.forEach(w=>{let d=data(w.week);refs+=(d.refs||[]).length;checked+=(d.refs||[]).filter(r=>r&&r.done).length;favs+=(d.refs||[]).filter(r=>r&&r.fav).length;});
+  if(weeks[current-1])currentTopic='Week '+current+' • '+weeks[current-1].topic;
+ }catch(e){}
+ let pct=refs?Math.round(checked/refs*100):0;
+ let streak=(state._streak&&state._streak.current)||0;
+ let notes=(state._notes||[]).length;
+ let prayers=(state._prayers||[]).length, answered=(state._prayers||[]).filter(p=>(p.status||'')==='Answered').length;
+ let revs=(state._revelations||[]).length;
+ let goals=(state._goals||[]).length, doneGoals=(state._goals||[]).filter(g=>(g.status||'')==='Completed').length;
+ let hero=document.getElementById('v74HeroText');
+ if(hero)hero.innerHTML=esc(currentTopic)+' • '+checked+' of '+refs+' references studied';
+ let bar=document.getElementById('v74ProgressBar');
+ if(bar)bar.style.width=pct+'%';
+ let stats=document.getElementById('v74Stats');
+ if(stats)stats.innerHTML='<div class="v74Stat"><b>'+pct+'%</b><span>Study</span></div><div class="v74Stat"><b>🔥 '+streak+'</b><span>Streak</span></div><div class="v74Stat"><b>⭐ '+favs+'</b><span>Favorites</span></div><div class="v74Stat"><b>'+notes+'</b><span>Notes</span></div><div class="v74Stat"><b>'+answered+'/'+prayers+'</b><span>Prayers</span></div><div class="v74Stat"><b>'+doneGoals+'/'+goals+'</b><span>Goals</span></div>';
+ let today=document.getElementById('v74Today');
+ if(today)today.innerHTML='<div class="v74Today"><span class="v74Chip">Today</span><h3>Choose one faithful step</h3><p class="muted">Study, pray, record revelation, or act on a goal.</p><div class="v74Path"><button class="v74PathItem" onclick="continueStudying()"><b>Study</b><span>Continue your current reference</span></button><button class="v74PathItem" onclick="showRevelationJournal()"><b>Record</b><span>'+revs+' revelation entries saved</span></button><button class="v74PathItem" onclick="showGoalsActionPlan()"><b>Act</b><span>Review and complete spiritual goals</span></button></div></div>';
+}
+
 function stats(){let dw=0,dr=0,tr=0,fv=0,jd=0,jt=0;weeks.forEach(w=>{let d=data(w.week);if(d.done)dw++;dr+=d.refs.filter(r=>r.done).length;fv+=d.refs.filter(r=>r.fav).length;tr+=d.refs.length;jd+=(d.jtc||[]).filter(x=>x.done).length;jt+=(d.jtc||[]).length});document.getElementById('prog').style.width=Math.round(dw/78*100)+'%';document.getElementById('stats').textContent=`${dw}/78 weeks complete • ${dr}/${tr} references checked • ⭐ ${fv} favorites • 📖 ${jd}/${jt} JTC readings`}
 function exportData(){let blob=new Blob([JSON.stringify(state,null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='jesus-christ-study-backup.json';a.click()}
 function importData(e){let f=e.target.files[0];if(!f)return;let r=new FileReader();r.onload=()=>{try{state=JSON.parse(r.result);fixHebrewsBackupRefs();forceHebrewsVisibleText();forceWeek1HebrewsRefs();save();renderDetail();alert('Imported and Hebrews references fixed')}catch{alert('Could not import')}};r.readAsText(f)}

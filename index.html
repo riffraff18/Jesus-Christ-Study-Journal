@@ -528,7 +528,25 @@ body.v79-ui2 #v78DefaultHomeReplacement{display:none!important}
 .v82WhatsNew p{margin:8px 0}
 .v82VersionBadge{display:inline-block;background:#876b2f;color:white;border-radius:999px;padding:5px 11px;font-size:12px;font-weight:900;margin-bottom:8px}
 .v82BrandNote{border:1px solid #eee7d9;border-radius:18px;padding:13px;margin:10px 0;background:#fffdf9;color:#6b665d}
-</style></head><body><header><h1>Walk with Christ</h1><div class="sub">Walk with Christ • Study. Reflect. Apply.</div><div class="bar"><div id="prog"></div></div><div class="sub" id="stats"></div><div class="versionPill" id="appVersionLabel">Version 82</div><div class="backupNote" id="backupNote"></div><div class="streakPill" id="streakLabel" onclick="showStreakDetails()">🔥 0 day streak</div><div class="reminderPill" id="reminderLabel" onclick="showReminderSettings()">⏰ Reminder off</div></header>
+
+.v83LibraryDashboard{border:2px solid #876b2f;border-radius:30px;padding:18px;margin:14px 0;background:linear-gradient(135deg,#fffdf9,#ffffff);box-shadow:0 8px 26px rgba(0,0,0,.08)}
+.v83LibraryDashboard h2{font-size:26px;margin:0 0 8px;color:#222}
+.v83LibraryDashboard p{color:#6b665d;margin:7px 0}
+.v83StudyGrid{display:grid;grid-template-columns:1fr;gap:12px;margin:14px 0}
+.v83StudyRow{display:grid;grid-template-columns:56px 1fr;gap:12px;align-items:center;border:1px solid #ddd6ca;border-radius:24px;padding:13px;background:#fff;text-align:left;box-shadow:0 3px 14px rgba(0,0,0,.045)}
+.v83StudyIcon{width:54px;height:54px;border-radius:18px;display:flex;align-items:center;justify-content:center;font-size:27px;color:white;background:#0e2a3f}
+.v83StudyIcon.gold{background:#a47c28}.v83StudyIcon.blue{background:#3f78b7}.v83StudyIcon.green{background:#5e8a64}.v83StudyIcon.purple{background:#7b5ab6}.v83StudyIcon.red{background:#b9584d}.v83StudyIcon.teal{background:#4c9897}
+.v83StudyText b{display:block;font-size:18px;color:#222;margin-bottom:4px}
+.v83StudyText span{font-size:13px;color:#6b665d}
+.v83StudyMeta{font-size:12px;color:#876b2f;font-weight:900;margin-top:4px}
+.v83StatsStrip{display:grid;grid-template-columns:1fr 1fr 1fr;gap:9px;margin:12px 0}
+.v83StatsStrip div{border:1px solid #eee7d9;border-radius:18px;padding:10px;background:#fff;text-align:center}
+.v83StatsStrip b{display:block;font-size:19px;color:#222}
+.v83StatsStrip span{font-size:12px;color:#6b665d}
+.v83TopTools{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+.v83TopTools button{border-radius:18px;padding:13px;text-align:left}
+.v83MockupBadge{display:inline-block;background:#0e2a3f;color:white;border-radius:999px;padding:5px 11px;font-size:12px;font-weight:900;margin-bottom:8px}
+</style></head><body><header><h1>Walk with Christ</h1><div class="sub">Walk with Christ • Study Library Redesign.</div><div class="bar"><div id="prog"></div></div><div class="sub" id="stats"></div><div class="versionPill" id="appVersionLabel">Version 83</div><div class="backupNote" id="backupNote"></div><div class="streakPill" id="streakLabel" onclick="showStreakDetails()">🔥 0 day streak</div><div class="reminderPill" id="reminderLabel" onclick="showReminderSettings()">⏰ Reminder off</div></header>
 <main>
 <section id="v79UI2Home" class="view">
   <div class="v79AppShell">
@@ -540,7 +558,7 @@ body.v79-ui2 #v78DefaultHomeReplacement{display:none!important}
           <p>Study. Reflect. Apply.</p>
         </div>
       </div>
-      <div class="v79Pill">V82</div>
+      <div class="v79Pill">V83</div>
     </div>
 
     <div class="v79Hero">
@@ -554,7 +572,7 @@ body.v79-ui2 #v78DefaultHomeReplacement{display:none!important}
       </div>
     </div>
 
-    <div id="v80FeaturedStudy"></div><div id="v79Stats" class="v79Stats"></div><div id="v81JournalHub"></div>
+    <div id="v80FeaturedStudy"></div><div id="v79Stats" class="v79Stats"></div><div id="v83LibraryDashboard"></div><div id="v81JournalHub"></div>
     <div id="v79Today"></div>
 
     <div class="v79Section">
@@ -947,15 +965,15 @@ body.v79-ui2 #v78DefaultHomeReplacement{display:none!important}
           <p>Study. Reflect. Apply.</p>
         </div>
       </div>
-      <div class="v79Pill">V82</div>
+      <div class="v79Pill">V83</div>
     </div>
     <div class="v82AboutPanel">
       <span class="v82VersionBadge">About / Version</span>
       <h2>Walk with Christ</h2>
       <p>A daily discipleship companion for studying Jesus Christ, recording spiritual impressions, and turning revelation into action.</p>
       <div class="v82InfoGrid">
-        <div class="v82Info"><b>V82</b><span>Version</span></div>
-        <div class="v82Info"><b>82</b><span>Build</span></div>
+        <div class="v82Info"><b>V83</b><span>Version</span></div>
+        <div class="v82Info"><b>83</b><span>Build</span></div>
         <div class="v82Info"><b>UI 2.0</b><span>Interface</span></div>
         <div class="v82Info"><b>2026-06-28</b><span>Build date</span></div>
       </div>
@@ -1834,6 +1852,10 @@ function universalSearchData(){
     addUniversalResult(results,'notes','ℹ️ About / Version','Settings','Walk with Christ app version, build number, UI version, build date, and what is new.','<button onclick="showV82AboutVersion()">Open About</button>','about version build walk with christ settings what new v82');
   }catch(e){}
 
+  try{
+    addUniversalResult(results,'notes','📚 Mockup Study Library','Navigation','Polished Study Library dashboard inspired by the mockup with Jesus Christ, Old Testament, New Testament, Character Studies, General Conference, and Walk With Christ.','<button onclick="showV79UI2Home()">Open Study Library</button>','mockup study library dashboard jesus christ old testament new testament character studies general conference');
+  }catch(e){}
+
   return results;
 }
 function runUniversalSearch(){
@@ -2556,6 +2578,7 @@ function v78LaunchHome(){
 
 
 
+
 function showV79UI2Home(){
  document.body.classList.add('v79-ui2');
  hideAllViews();
@@ -2588,12 +2611,16 @@ function renderV79UI2Home(){
  let stats=document.getElementById('v79Stats');
  if(stats)stats.innerHTML='<div class="v79Stat"><b>'+pct+'%</b><span>Study</span></div><div class="v79Stat"><b>🔥 '+streak+'</b><span>Streak</span></div><div class="v79Stat"><b>⭐ '+favs+'</b><span>Favorites</span></div><div class="v79Stat"><b>'+notes+'</b><span>Notes</span></div><div class="v79Stat"><b>'+answered+'/'+prayers+'</b><span>Prayers</span></div><div class="v79Stat"><b>'+doneGoals+'/'+goals+'</b><span>Goals</span></div>';
 
+ let lib=document.getElementById('v83LibraryDashboard');
+ if(lib)lib.innerHTML='<div class="v83LibraryDashboard"><span class="v83MockupBadge">Study Library</span><h2>Choose a path to walk with Christ</h2><p>This section begins moving toward the polished library dashboard style from the mockup.</p><div class="v83StatsStrip"><div><b>78</b><span>Featured weeks</span></div><div><b>6</b><span>Study paths</span></div><div><b>'+pct+'%</b><span>Main progress</span></div></div><div class="v83TopTools"><button class="primary" onclick="showUniversalSearch()">🔎 Find a study</button><button onclick="showGrowthAnalytics()">📊 View progress</button></div><div class="v83StudyGrid"><button class="v83StudyRow" onclick="showList()"><div class="v83StudyIcon gold">📖</div><div class="v83StudyText"><b>Jesus Christ 78-Week Study</b><span>Flagship Topical Guide study centered on the Savior.</span><div class="v83StudyMeta">'+checked+'/'+refs+' references • '+pct+'% complete</div></div></button><button class="v83StudyRow" onclick="showOldTestamentPreview()"><div class="v83StudyIcon green">📜</div><div class="v83StudyText"><b>Old Testament</b><span>Covenants, prophets, temple symbols, and Christ.</span><div class="v83StudyMeta">Preview study path</div></div></button><button class="v83StudyRow" onclick="showNewTestamentPreview()"><div class="v83StudyIcon blue">📖</div><div class="v83StudyText"><b>New Testament</b><span>The Savior’s life, teachings, Atonement, and Resurrection.</span><div class="v83StudyMeta">Preview study path</div></div></button><button class="v83StudyRow" onclick="showCharacterStudies()"><div class="v83StudyIcon teal">👥</div><div class="v83StudyText"><b>Scripture Character Studies</b><span>Learn discipleship from prophets, witnesses, and followers.</span><div class="v83StudyMeta">Guided study</div></div></button><button class="v83StudyRow" onclick="showGeneralConferenceStudy()"><div class="v83StudyIcon red">🎤</div><div class="v83StudyText"><b>General Conference Study</b><span>Modern prophetic teachings by topic and invitation.</span><div class="v83StudyMeta">Topic links</div></div></button><button class="v83StudyRow" onclick="showWalkWithChrist()"><div class="v83StudyIcon purple">✝️</div><div class="v83StudyText"><b>Walk With Christ</b><span>Follow the Savior’s ministry and pattern of discipleship.</span><div class="v83StudyMeta">Guided study</div></div></button></div></div>';
+
  let journal=document.getElementById('v81JournalHub');
  if(journal)journal.innerHTML='<div class="v81JournalHub"><span class="v81Badge">Personal Study Hub</span><h2>Record what the Spirit teaches</h2><p>Your journals are now grouped into one cleaner personal study experience.</p><div class="v81MiniStats"><div><b>'+notes+'</b><span>Notes</span></div><div><b>'+prayers+'</b><span>Prayers</span></div><div><b>'+revs+'</b><span>Revelations</span></div></div><div class="v81JournalGrid"><button class="v81JournalCard main" onclick="showStudyNotes()"><b>📝 Study Notes</b><span>Capture doctrine, impressions, and scripture insights.</span></button><button class="v81JournalCard" onclick="showPrayerJournal()"><b>🙏 Prayer</b><span>'+answered+'/'+prayers+' prayers marked answered.</span></button><button class="v81JournalCard" onclick="showRevelationJournal()"><b>💡 Revelation</b><span>'+revDone+'/'+revs+' promptings acted on.</span></button><button class="v81JournalCard" onclick="showFavoritesJournal()"><b>⭐ Favorites</b><span>'+favs+' favorite scriptures.</span></button><button class="v81JournalCard" onclick="showSpiritualMilestones()"><b>🏔️ Milestones</b><span>'+milestones+' spiritual records.</span></button><button class="v81JournalCard" onclick="showGoalsActionPlan()"><b>🎯 Goals</b><span>'+doneGoals+'/'+goals+' goals complete.</span></button></div></div>';
 
  let today=document.getElementById('v79Today');
  if(today)today.innerHTML='<div class="v79Today"><span class="v74Chip">Today’s invitation</span><h3>Choose one faithful step</h3><p class="muted">Study, pray, record revelation, or act on a goal.</p><div class="v79TodayRow"><button class="primary" onclick="continueStudying()"><b>Study</b><br><span>Continue your current reference</span></button><button onclick="showRevelationJournal()"><b>Record</b><br><span>'+revs+' revelation entries saved</span></button><button onclick="showGoalsActionPlan()"><b>Act</b><br><span>Review and complete spiritual goals</span></button></div></div>';
 }
+
 
 
 

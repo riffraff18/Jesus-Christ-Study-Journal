@@ -454,8 +454,115 @@ label{font-weight:750;display:block;margin-top:16px;margin-bottom:6px}textarea{w
 .v78LaunchGrid button{border-radius:18px;padding:14px;text-align:left}
 .v78HideLegacy .legacyHomeBlock{display:none!important}
 .v78HomeNotice{display:inline-block;background:#876b2f;color:white;border-radius:999px;padding:5px 11px;font-size:12px;font-weight:900;margin-bottom:8px}
-</style></head><body><header><h1>Jesus Christ Topical Guide Study</h1><div class="sub">Scripture Study Platform V78 Main Study Home.</div><div class="bar"><div id="prog"></div></div><div class="sub" id="stats"></div><div class="versionPill" id="appVersionLabel">Version 78</div><div class="backupNote" id="backupNote"></div><div class="streakPill" id="streakLabel" onclick="showStreakDetails()">🔥 0 day streak</div><div class="reminderPill" id="reminderLabel" onclick="showReminderSettings()">⏰ Reminder off</div></header>
+
+body.v79-ui2 header{display:none!important}
+body.v79-ui2 main{padding-top:0!important}
+body.v79-ui2 #v78DefaultHomeReplacement{display:none!important}
+.v79AppShell{min-height:100vh;padding:18px 14px 30px;background:linear-gradient(180deg,#fbfaf7,#f5efe3)}
+.v79Top{display:flex;align-items:center;justify-content:space-between;margin:8px 0 16px}
+.v79Avatar{width:46px;height:46px;border-radius:50%;background:#0e2a3f;color:white;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:22px;box-shadow:0 4px 16px rgba(0,0,0,.12)}
+.v79TopText h1{font-size:25px;line-height:1.05;margin:0;color:#222}
+.v79TopText p{margin:3px 0 0;color:#6b665d;font-size:14px}
+.v79Pill{background:#fff;border:1px solid #ddd6ca;border-radius:999px;padding:7px 11px;font-size:12px;font-weight:900;color:#876b2f}
+.v79Hero{border:2px solid #876b2f;border-radius:30px;padding:20px;margin:12px 0;background:linear-gradient(135deg,#fffdf9,#fff);box-shadow:0 8px 26px rgba(0,0,0,.08)}
+.v79Hero h2{font-size:28px;line-height:1.05;margin:0 0 8px;color:#222}
+.v79Hero p{color:#6b665d;margin:8px 0}
+.v79Progress{height:14px;background:#e7ddca;border-radius:999px;overflow:hidden;margin:14px 0}
+.v79Progress div{height:100%;background:#876b2f;border-radius:999px}
+.v79Actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}
+.v79Actions button{border-radius:19px;padding:14px;text-align:left}
+.v79Stats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:9px;margin:14px 0}
+.v79Stat{background:#fff;border:1px solid #ddd6ca;border-radius:20px;padding:12px;text-align:center;box-shadow:0 3px 14px rgba(0,0,0,.045)}
+.v79Stat b{display:block;font-size:20px;color:#222}
+.v79Stat span{font-size:12px;color:#6b665d}
+.v79Section{margin-top:20px}
+.v79SectionHead{display:flex;justify-content:space-between;align-items:center;margin:0 0 10px}
+.v79SectionHead h3{margin:0;font-size:20px}
+.v79SectionHead span{font-size:12px;font-weight:900;color:#876b2f}
+.v79Grid{display:grid;grid-template-columns:1fr 1fr;gap:11px}
+.v79Card{background:#fff;border:1px solid #ddd6ca;border-radius:24px;padding:16px;text-align:left;box-shadow:0 3px 14px rgba(0,0,0,.05);min-height:86px}
+.v79Card.main{grid-column:1/-1;border:2px solid #876b2f;background:#fffdf9}
+.v79Card b{display:block;font-size:18px;margin-bottom:5px;color:#222}
+.v79Card span{font-size:13px;color:#6b665d}
+.v79Today{background:#fff;border:1px solid #ddd6ca;border-radius:26px;padding:16px;margin:14px 0;box-shadow:0 3px 14px rgba(0,0,0,.045)}
+.v79Today h3{margin:0 0 8px}
+.v79TodayRow{display:grid;grid-template-columns:1fr;gap:9px;margin-top:10px}
+.v79TodayRow button{border-radius:18px;padding:13px;text-align:left}
+.v79BottomNav{position:sticky;bottom:12px;z-index:20;display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:20px;background:rgba(255,253,249,.94);backdrop-filter:blur(12px);border:1px solid #ddd6ca;border-radius:24px;padding:9px;box-shadow:0 8px 24px rgba(0,0,0,.12)}
+.v79BottomNav button{border-radius:16px;padding:10px 5px;font-size:12px}
+.v79Card:active,.v79BottomNav button:active,.v79Actions button:active{transform:scale(.985)}
+</style></head><body><header><h1>Jesus Christ Topical Guide Study</h1><div class="sub">Scripture Study Platform UI 2.0.</div><div class="bar"><div id="prog"></div></div><div class="sub" id="stats"></div><div class="versionPill" id="appVersionLabel">Version 79</div><div class="backupNote" id="backupNote"></div><div class="streakPill" id="streakLabel" onclick="showStreakDetails()">🔥 0 day streak</div><div class="reminderPill" id="reminderLabel" onclick="showReminderSettings()">⏰ Reminder off</div></header>
 <main>
+<section id="v79UI2Home" class="view">
+  <div class="v79AppShell">
+    <div class="v79Top">
+      <div style="display:flex;gap:10px;align-items:center">
+        <div class="v79Avatar">☧</div>
+        <div class="v79TopText">
+          <h1>Come Unto Christ</h1>
+          <p>Study. Reflect. Apply.</p>
+        </div>
+      </div>
+      <div class="v79Pill">V79</div>
+    </div>
+
+    <div class="v79Hero">
+      <span class="v74Chip">Resume Your Journey</span>
+      <h2 id="v79HeroTitle">Walk with Christ today</h2>
+      <p id="v79HeroText">Continue your current study.</p>
+      <div class="v79Progress"><div id="v79ProgressBar" style="width:0%"></div></div>
+      <div class="v79Actions">
+        <button class="primary" onclick="continueStudying()">▶ Continue Studying</button>
+        <button onclick="showImmersiveReadingMode()">📖 Reading Mode</button>
+      </div>
+    </div>
+
+    <div id="v79Stats" class="v79Stats"></div>
+    <div id="v79Today"></div>
+
+    <div class="v79Section">
+      <div class="v79SectionHead"><h3>📚 Study Library</h3><span>Guided Studies</span></div>
+      <div class="v79Grid">
+        <button class="v79Card main" onclick="showList()"><b>📖 Jesus Christ</b><span>Main 78-week Topical Guide study</span></button>
+        <button class="v79Card" onclick="showOldTestamentPreview()"><b>📜 Old Testament</b><span>Covenants, prophets, and Christ</span></button>
+        <button class="v79Card" onclick="showNewTestamentPreview()"><b>📖 New Testament</b><span>Life and teachings of Christ</span></button>
+        <button class="v79Card" onclick="showCharacterStudies()"><b>👥 Characters</b><span>Disciples and witnesses</span></button>
+        <button class="v79Card" onclick="showWalkWithChrist()"><b>✝️ Walk With Christ</b><span>Follow His ministry</span></button>
+        <button class="v79Card" onclick="showGeneralConferenceStudy()"><b>🎤 Conference</b><span>Modern prophetic teachings</span></button>
+      </div>
+    </div>
+
+    <div class="v79Section">
+      <div class="v79SectionHead"><h3>🧭 Personal Study</h3><span>Record & Act</span></div>
+      <div class="v79Grid">
+        <button class="v79Card" onclick="showFavoritesJournal()"><b>⭐ Favorites</b><span>Favorite scriptures</span></button>
+        <button class="v79Card" onclick="showStudyNotes()"><b>📝 Notes</b><span>Study impressions</span></button>
+        <button class="v79Card" onclick="showPrayerJournal()"><b>🙏 Prayer</b><span>Prayers and answers</span></button>
+        <button class="v79Card" onclick="showRevelationJournal()"><b>💡 Revelation</b><span>Promptings and impressions</span></button>
+        <button class="v79Card" onclick="showSpiritualMilestones()"><b>🏔️ Milestones</b><span>Your spiritual timeline</span></button>
+        <button class="v79Card" onclick="showGoalsActionPlan()"><b>🎯 Goals</b><span>Action plans</span></button>
+      </div>
+    </div>
+
+    <div class="v79Section">
+      <div class="v79SectionHead"><h3>📊 Insights & Tools</h3><span>Support</span></div>
+      <div class="v79Grid">
+        <button class="v79Card" onclick="showGrowthAnalytics()"><b>📊 Growth</b><span>Spiritual analytics</span></button>
+        <button class="v79Card" onclick="showUniversalSearch()"><b>🔎 Search</b><span>Find anything</span></button>
+        <button class="v79Card" onclick="showReleaseNotesCenter()"><b>🗒️ Release</b><span>Beta plan</span></button>
+        <button class="v79Card" onclick="exportData()"><b>💾 Backup</b><span>Export your data</span></button>
+      </div>
+    </div>
+
+    <div class="v79BottomNav">
+      <button class="primary" onclick="continueStudying()">Study</button>
+      <button onclick="showUniversalSearch()">Search</button>
+      <button onclick="showStudyNotes()">Journal</button>
+      <button onclick="showGrowthAnalytics()">Growth</button>
+    </div>
+  </div>
+</section>
+
 <div id="v78DefaultHomeReplacement" class="v78DefaultBanner">
   <span class="v78HomeNotice">V78 Major Redesign</span>
   <h2>New Study Home is now the main app</h2>
@@ -821,7 +928,7 @@ function fixHebrewsBackupRefs(){
 fixHebrewsBackupRefs();
 function data(n){let w=weeks[n-1];if(!state[n])state[n]={done:false,refs:w.refs.map(x=>({text:x.text,url:x.url,done:false,fav:false,favWhy:'',favChrist:'',favImpression:''})),learned:'',attribute:'',scripture:'',impressions:''};if(w.refs.some(r=>r.text)&&(!state[n].refs||state[n].refs.length!==w.refs.length||state[n].refs.some((r,i)=>r.text!==w.refs[i].text||r.url!==w.refs[i].url))){let old=state[n].refs||[];state[n].refs=w.refs.map((x,i)=>({text:x.text,url:x.url,done:old[i]?.done||false,fav:old[i]?.fav||false,favWhy:old[i]?.favWhy||'',favChrist:old[i]?.favChrist||'',favImpression:old[i]?.favImpression||''}))}let j=jesusTheChristReadings[n]||[];if(!state[n].jtc||state[n].jtc.length!==j.length){let old=state[n].jtc||[];state[n].jtc=j.map((x,i)=>({title:x[0],url:x[1],done:old[i]?.done||false,date:old[i]?.date||''}))}return state[n]}
 function save(){localStorage.setItem('tgStudyState',JSON.stringify(state));localStorage.setItem('tgStudyCurrent',current);renderList();stats()}
-function hideAllViews(){document.getElementById('list').classList.remove('on');document.getElementById('detail').classList.remove('on');document.getElementById('favoritesJournal').classList.remove('on');let v74=document.getElementById('v74RedesignedHome');if(v74)v74.classList.remove('on');let nt=document.getElementById('newTestamentPreview');if(nt)nt.classList.remove('on');let ot=document.getElementById('oldTestamentPreview');if(ot)ot.classList.remove('on');let libprep=document.getElementById('phase3StudyLibraryPrep');if(libprep)libprep.classList.remove('on');let v70=document.getElementById('v70CleanupMilestone');if(v70)v70.classList.remove('on');let stable=document.getElementById('stabilityReviewCenter');if(stable)stable.classList.remove('on');let flow=document.getElementById('userFlowReview');if(flow)flow.classList.remove('on');let release=document.getElementById('releaseNotesCenter');if(release)release.classList.remove('on');let cleanup=document.getElementById('betaCleanupCenter');if(cleanup)cleanup.classList.remove('on');let beta=document.getElementById('betaPrepCenter');if(beta)beta.classList.remove('on');let ga=document.getElementById('growthAnalytics');if(ga)ga.classList.remove('on');let read=document.getElementById('immersiveReadingMode');if(read)read.classList.remove('on');let v60=document.getElementById('v60StudyHome');if(v60)v60.classList.remove('on');let v56=document.getElementById('v56Dashboard');if(v56)v56.classList.remove('on');let ph=document.getElementById('phaseStudyHub');if(ph)ph.classList.remove('on');let refine=document.getElementById('refinementCenter');if(refine)refine.classList.remove('on');let insights=document.getElementById('insightsDashboard');if(insights)insights.classList.remove('on');let goal=document.getElementById('goalsActionPlan');if(goal)goal.classList.remove('on');let mile=document.getElementById('spiritualMilestones');if(mile)mile.classList.remove('on');let rev=document.getElementById('revelationJournal');if(rev)rev.classList.remove('on');let prayer=document.getElementById('prayerJournal');if(prayer)prayer.classList.remove('on');let uni=document.getElementById('universalSearch');if(uni)uni.classList.remove('on');let notes=document.getElementById('studyNotes');if(notes)notes.classList.remove('on');let dash=document.getElementById('studyDashboard');if(dash)dash.classList.remove('on');let conf=document.getElementById('generalConferenceStudy');if(conf)conf.classList.remove('on');let bom=document.getElementById('bookOfMormonDiscipleship');if(bom)bom.classList.remove('on');let ww=document.getElementById('walkWithChrist');if(ww)ww.classList.remove('on');let cs=document.getElementById('characterStudies');if(cs)cs.classList.remove('on');let hub=document.getElementById('studyLibrary');if(hub)hub.classList.remove('on');let rs=document.getElementById('reminderSettings');if(rs)rs.classList.remove('on');let sp=document.getElementById('searchPanel');if(sp)sp.classList.remove('on')}
+function hideAllViews(){document.getElementById('list').classList.remove('on');document.getElementById('detail').classList.remove('on');document.getElementById('favoritesJournal').classList.remove('on');let v79=document.getElementById('v79UI2Home');if(v79)v79.classList.remove('on');let v74=document.getElementById('v74RedesignedHome');if(v74)v74.classList.remove('on');let nt=document.getElementById('newTestamentPreview');if(nt)nt.classList.remove('on');let ot=document.getElementById('oldTestamentPreview');if(ot)ot.classList.remove('on');let libprep=document.getElementById('phase3StudyLibraryPrep');if(libprep)libprep.classList.remove('on');let v70=document.getElementById('v70CleanupMilestone');if(v70)v70.classList.remove('on');let stable=document.getElementById('stabilityReviewCenter');if(stable)stable.classList.remove('on');let flow=document.getElementById('userFlowReview');if(flow)flow.classList.remove('on');let release=document.getElementById('releaseNotesCenter');if(release)release.classList.remove('on');let cleanup=document.getElementById('betaCleanupCenter');if(cleanup)cleanup.classList.remove('on');let beta=document.getElementById('betaPrepCenter');if(beta)beta.classList.remove('on');let ga=document.getElementById('growthAnalytics');if(ga)ga.classList.remove('on');let read=document.getElementById('immersiveReadingMode');if(read)read.classList.remove('on');let v60=document.getElementById('v60StudyHome');if(v60)v60.classList.remove('on');let v56=document.getElementById('v56Dashboard');if(v56)v56.classList.remove('on');let ph=document.getElementById('phaseStudyHub');if(ph)ph.classList.remove('on');let refine=document.getElementById('refinementCenter');if(refine)refine.classList.remove('on');let insights=document.getElementById('insightsDashboard');if(insights)insights.classList.remove('on');let goal=document.getElementById('goalsActionPlan');if(goal)goal.classList.remove('on');let mile=document.getElementById('spiritualMilestones');if(mile)mile.classList.remove('on');let rev=document.getElementById('revelationJournal');if(rev)rev.classList.remove('on');let prayer=document.getElementById('prayerJournal');if(prayer)prayer.classList.remove('on');let uni=document.getElementById('universalSearch');if(uni)uni.classList.remove('on');let notes=document.getElementById('studyNotes');if(notes)notes.classList.remove('on');let dash=document.getElementById('studyDashboard');if(dash)dash.classList.remove('on');let conf=document.getElementById('generalConferenceStudy');if(conf)conf.classList.remove('on');let bom=document.getElementById('bookOfMormonDiscipleship');if(bom)bom.classList.remove('on');let ww=document.getElementById('walkWithChrist');if(ww)ww.classList.remove('on');let cs=document.getElementById('characterStudies');if(cs)cs.classList.remove('on');let hub=document.getElementById('studyLibrary');if(hub)hub.classList.remove('on');let rs=document.getElementById('reminderSettings');if(rs)rs.classList.remove('on');let sp=document.getElementById('searchPanel');if(sp)sp.classList.remove('on')}
 function showList(){hideAllViews();document.getElementById('list').classList.add('on');scrollTo(0,0)}
 function openWeek(n){current=n;renderDetail();hideAllViews();document.getElementById('detail').classList.add('on');save();scrollTo(0,0)}
 
@@ -1637,6 +1744,10 @@ function universalSearchData(){
     addUniversalResult(results,'notes','✨ V78 Main Study Home','Navigation','The redesigned Study Home is now the primary app landing experience.','<button onclick="showV74RedesignedHome()">Open Main Study Home</button>','v78 main study home redesigned default landing page primary experience');
   }catch(e){}
 
+  try{
+    addUniversalResult(results,'notes','✨ UI 2.0 Home','Navigation','New architecture home shell with no old header, Study Library, Personal Study, Growth, Search, Backup.','<button onclick="showV79UI2Home()">Open UI 2.0 Home</button>','ui 2.0 home architecture redesign study library personal study growth search backup');
+  }catch(e){}
+
   return results;
 }
 function runUniversalSearch(){
@@ -2351,9 +2462,42 @@ function renderV74RedesignedHome(){
 function v78LaunchHome(){
   try{
     if(typeof showV74RedesignedHome==='function'){
-      showV74RedesignedHome();
+      showV79UI2Home();
     }
   }catch(e){}
+}
+
+
+function showV79UI2Home(){
+ document.body.classList.add('v79-ui2');
+ hideAllViews();
+ renderV79UI2Home();
+ document.getElementById('v79UI2Home').classList.add('on');
+ scrollTo(0,0);
+}
+function renderV79UI2Home(){
+ let refs=0,checked=0,favs=0,currentTopic='Jesus Christ Study';
+ try{
+  weeks.forEach(w=>{let d=data(w.week);refs+=(d.refs||[]).length;checked+=(d.refs||[]).filter(r=>r&&r.done).length;favs+=(d.refs||[]).filter(r=>r&&r.fav).length;});
+  if(weeks[current-1])currentTopic='Week '+current+' • '+weeks[current-1].topic;
+ }catch(e){}
+ let pct=refs?Math.round(checked/refs*100):0;
+ let streak=(state._streak&&state._streak.current)||0;
+ let notes=(state._notes||[]).length;
+ let prayers=(state._prayers||[]).length, answered=(state._prayers||[]).filter(p=>(p.status||'')==='Answered').length;
+ let revs=(state._revelations||[]).length;
+ let goals=(state._goals||[]).length, doneGoals=(state._goals||[]).filter(g=>(g.status||'')==='Completed').length;
+
+ let hero=document.getElementById('v79HeroText');
+ if(hero)hero.innerHTML=esc(currentTopic)+' • '+checked+' of '+refs+' references studied';
+ let bar=document.getElementById('v79ProgressBar');
+ if(bar)bar.style.width=pct+'%';
+
+ let stats=document.getElementById('v79Stats');
+ if(stats)stats.innerHTML='<div class="v79Stat"><b>'+pct+'%</b><span>Study</span></div><div class="v79Stat"><b>🔥 '+streak+'</b><span>Streak</span></div><div class="v79Stat"><b>⭐ '+favs+'</b><span>Favorites</span></div><div class="v79Stat"><b>'+notes+'</b><span>Notes</span></div><div class="v79Stat"><b>'+answered+'/'+prayers+'</b><span>Prayers</span></div><div class="v79Stat"><b>'+doneGoals+'/'+goals+'</b><span>Goals</span></div>';
+
+ let today=document.getElementById('v79Today');
+ if(today)today.innerHTML='<div class="v79Today"><span class="v74Chip">Today’s invitation</span><h3>Choose one faithful step</h3><p class="muted">Study, pray, record revelation, or act on a goal.</p><div class="v79TodayRow"><button class="primary" onclick="continueStudying()"><b>Study</b><br><span>Continue your current reference</span></button><button onclick="showRevelationJournal()"><b>Record</b><br><span>'+revs+' revelation entries saved</span></button><button onclick="showGoalsActionPlan()"><b>Act</b><br><span>Review and complete spiritual goals</span></button></div></div>';
 }
 
 function stats(){let dw=0,dr=0,tr=0,fv=0,jd=0,jt=0;weeks.forEach(w=>{let d=data(w.week);if(d.done)dw++;dr+=d.refs.filter(r=>r.done).length;fv+=d.refs.filter(r=>r.fav).length;tr+=d.refs.length;jd+=(d.jtc||[]).filter(x=>x.done).length;jt+=(d.jtc||[]).length});document.getElementById('prog').style.width=Math.round(dw/78*100)+'%';document.getElementById('stats').textContent=`${dw}/78 weeks complete • ${dr}/${tr} references checked • ⭐ ${fv} favorites • 📖 ${jd}/${jt} JTC readings`}
@@ -2414,5 +2558,5 @@ function openConferenceSection(id){
 })();
 
 
-setTimeout(v78LaunchHome, 250);
+setTimeout(showV79UI2Home, 250);
 </script></body></html>

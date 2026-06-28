@@ -491,7 +491,18 @@ body.v79-ui2 #v78DefaultHomeReplacement{display:none!important}
 .v79BottomNav{position:sticky;bottom:12px;z-index:20;display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:20px;background:rgba(255,253,249,.94);backdrop-filter:blur(12px);border:1px solid #ddd6ca;border-radius:24px;padding:9px;box-shadow:0 8px 24px rgba(0,0,0,.12)}
 .v79BottomNav button{border-radius:16px;padding:10px 5px;font-size:12px}
 .v79Card:active,.v79BottomNav button:active,.v79Actions button:active{transform:scale(.985)}
-</style></head><body><header><h1>Jesus Christ Topical Guide Study</h1><div class="sub">Scripture Study Platform UI 2.0.</div><div class="bar"><div id="prog"></div></div><div class="sub" id="stats"></div><div class="versionPill" id="appVersionLabel">Version 79</div><div class="backupNote" id="backupNote"></div><div class="streakPill" id="streakLabel" onclick="showStreakDetails()">🔥 0 day streak</div><div class="reminderPill" id="reminderLabel" onclick="showReminderSettings()">⏰ Reminder off</div></header>
+
+.v80Featured{border:2px solid #876b2f;border-radius:30px;padding:18px;margin:14px 0;background:linear-gradient(135deg,#fffdf9,#ffffff);box-shadow:0 8px 26px rgba(0,0,0,.08)}
+.v80Featured h2{font-size:26px;line-height:1.08;margin:0 0 8px;color:#222}
+.v80Featured p{color:#6b665d;margin:7px 0}
+.v80FeaturedMeta{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin:12px 0}
+.v80FeaturedMeta div{border:1px solid #eee7d9;border-radius:18px;padding:10px;background:#fff;text-align:center}
+.v80FeaturedMeta b{display:block;font-size:19px;color:#222}
+.v80FeaturedMeta span{font-size:12px;color:#6b665d}
+.v80FeaturedActions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+.v80FeaturedActions button{border-radius:18px;padding:14px;text-align:left}
+.v80StudyBadge{display:inline-block;background:#876b2f;color:white;border-radius:999px;padding:5px 11px;font-size:12px;font-weight:900;margin-bottom:8px}
+</style></head><body><header><h1>Jesus Christ Topical Guide Study</h1><div class="sub">Scripture Study Platform UI 2.0 Featured Study.</div><div class="bar"><div id="prog"></div></div><div class="sub" id="stats"></div><div class="versionPill" id="appVersionLabel">Version 80</div><div class="backupNote" id="backupNote"></div><div class="streakPill" id="streakLabel" onclick="showStreakDetails()">🔥 0 day streak</div><div class="reminderPill" id="reminderLabel" onclick="showReminderSettings()">⏰ Reminder off</div></header>
 <main>
 <section id="v79UI2Home" class="view">
   <div class="v79AppShell">
@@ -517,7 +528,7 @@ body.v79-ui2 #v78DefaultHomeReplacement{display:none!important}
       </div>
     </div>
 
-    <div id="v79Stats" class="v79Stats"></div>
+    <div id="v80FeaturedStudy"></div><div id="v79Stats" class="v79Stats"></div>
     <div id="v79Today"></div>
 
     <div class="v79Section">
@@ -1748,6 +1759,10 @@ function universalSearchData(){
     addUniversalResult(results,'notes','✨ UI 2.0 Home','Navigation','New architecture home shell with no old header, Study Library, Personal Study, Growth, Search, Backup.','<button onclick="showV79UI2Home()">Open UI 2.0 Home</button>','ui 2.0 home architecture redesign study library personal study growth search backup');
   }catch(e){}
 
+  try{
+    addUniversalResult(results,'notes','📖 Jesus Christ 78-Week Study','Featured Study','Complete 78-week Topical Guide study centered on Jesus Christ with progress, favorites, and week list.','<button onclick="showV79UI2Home()">Open Featured Study</button>','jesus christ 78 week study featured topical guide savior atonement resurrection week list');
+  }catch(e){}
+
   return results;
 }
 function runUniversalSearch(){
@@ -2468,6 +2483,7 @@ function v78LaunchHome(){
 }
 
 
+
 function showV79UI2Home(){
  document.body.classList.add('v79-ui2');
  hideAllViews();
@@ -2493,12 +2509,16 @@ function renderV79UI2Home(){
  let bar=document.getElementById('v79ProgressBar');
  if(bar)bar.style.width=pct+'%';
 
+ let featured=document.getElementById('v80FeaturedStudy');
+ if(featured)featured.innerHTML='<div class="v80Featured"><span class="v80StudyBadge">Featured Study</span><h2>📖 Jesus Christ 78-Week Study</h2><p>Complete Topical Guide study centered on the Savior — His names, mission, grace, mercy, Atonement, Resurrection, and invitations to come unto Him.</p><div class="v79Progress"><div style="width:'+pct+'%"></div></div><div class="v80FeaturedMeta"><div><b>'+checked+'/'+refs+'</b><span>References studied</span></div><div><b>'+pct+'%</b><span>Complete</span></div><div><b>78</b><span>Weeks</span></div><div><b>⭐ '+favs+'</b><span>Favorites</span></div></div><div class="v80FeaturedActions"><button class="primary" onclick="continueStudying()">▶ Continue 78-Week Study</button><button onclick="showList()">Open Week List</button></div></div>';
+
  let stats=document.getElementById('v79Stats');
  if(stats)stats.innerHTML='<div class="v79Stat"><b>'+pct+'%</b><span>Study</span></div><div class="v79Stat"><b>🔥 '+streak+'</b><span>Streak</span></div><div class="v79Stat"><b>⭐ '+favs+'</b><span>Favorites</span></div><div class="v79Stat"><b>'+notes+'</b><span>Notes</span></div><div class="v79Stat"><b>'+answered+'/'+prayers+'</b><span>Prayers</span></div><div class="v79Stat"><b>'+doneGoals+'/'+goals+'</b><span>Goals</span></div>';
 
  let today=document.getElementById('v79Today');
  if(today)today.innerHTML='<div class="v79Today"><span class="v74Chip">Today’s invitation</span><h3>Choose one faithful step</h3><p class="muted">Study, pray, record revelation, or act on a goal.</p><div class="v79TodayRow"><button class="primary" onclick="continueStudying()"><b>Study</b><br><span>Continue your current reference</span></button><button onclick="showRevelationJournal()"><b>Record</b><br><span>'+revs+' revelation entries saved</span></button><button onclick="showGoalsActionPlan()"><b>Act</b><br><span>Review and complete spiritual goals</span></button></div></div>';
 }
+
 
 function stats(){let dw=0,dr=0,tr=0,fv=0,jd=0,jt=0;weeks.forEach(w=>{let d=data(w.week);if(d.done)dw++;dr+=d.refs.filter(r=>r.done).length;fv+=d.refs.filter(r=>r.fav).length;tr+=d.refs.length;jd+=(d.jtc||[]).filter(x=>x.done).length;jt+=(d.jtc||[]).length});document.getElementById('prog').style.width=Math.round(dw/78*100)+'%';document.getElementById('stats').textContent=`${dw}/78 weeks complete • ${dr}/${tr} references checked • ⭐ ${fv} favorites • 📖 ${jd}/${jt} JTC readings`}
 function exportData(){let blob=new Blob([JSON.stringify(state,null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='jesus-christ-study-backup.json';a.click()}

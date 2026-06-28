@@ -672,7 +672,17 @@ body.v79-ui2 #v78DefaultHomeReplacement{display:none!important}
 .v90WeekListTitle{display:flex;align-items:center;justify-content:space-between;gap:10px}
 .v90VersionTag{background:#eef1f5;color:#4b5563;border-radius:999px;padding:6px 10px;font-size:12px;font-weight:900}
 .v90WorkspaceButton{border:2px solid #876b2f!important;background:#fffdf9!important}
-</style></head><body><header><h1>Walk with Christ</h1><div class="sub">Walk with Christ • Week List Polish.</div><div class="bar"><div id="prog"></div></div><div class="sub" id="stats"></div><div class="versionPill" id="appVersionLabel">Version 90</div><div class="backupNote" id="backupNote"></div><div class="streakPill" id="streakLabel" onclick="showStreakDetails()">🔥 0 day streak</div><div class="reminderPill" id="reminderLabel" onclick="showReminderSettings()">⏰ Reminder off</div></header>
+
+.v91HeroStats{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:14px 0}
+.v91HeroStat{border:1px solid #eee7d9;border-radius:18px;padding:12px;background:#fff;text-align:center}
+.v91HeroStat b{display:block;font-size:20px;color:#091427}
+.v91HeroStat span{font-size:12px;color:#5e6470}
+.v91HeroTools{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+.v91HeroTools button{border-radius:18px;padding:13px;text-align:left}
+.v91NoDuplicateProgress #v86ProgressPanel{display:none!important}
+.v91NoDuplicateProgress .v86ProgressPanel{display:none!important}
+.v91NoDuplicateProgress #v85Stats{margin-top:10px}
+</style></head><body><header><h1>Walk with Christ</h1><div class="sub">Walk with Christ • Single Study Card.</div><div class="bar"><div id="prog"></div></div><div class="sub" id="stats"></div><div class="versionPill" id="appVersionLabel">Version 91</div><div class="backupNote" id="backupNote"></div><div class="streakPill" id="streakLabel" onclick="showStreakDetails()">🔥 0 day streak</div><div class="reminderPill" id="reminderLabel" onclick="showReminderSettings()">⏰ Reminder off</div></header>
 <main>
 <div id="v87LegacyRedirectPanel" class="v87LegacyNotice" style="display:none">
   <h3>Jesus Christ Study Workspace</h3>
@@ -693,7 +703,7 @@ body.v79-ui2 #v78DefaultHomeReplacement{display:none!important}
           <p>Study. Reflect. Apply.</p>
         </div>
       </div>
-      <div class="v79Pill">V90</div>
+      <div class="v79Pill">V91</div>
     </div>
 
     <div class="v79Hero">
@@ -1100,15 +1110,15 @@ body.v79-ui2 #v78DefaultHomeReplacement{display:none!important}
           <p>Study. Reflect. Apply.</p>
         </div>
       </div>
-      <div class="v79Pill">V90</div>
+      <div class="v79Pill">V91</div>
     </div>
     <div class="v82AboutPanel">
       <span class="v82VersionBadge">About / Version</span>
       <h2>Walk with Christ</h2>
       <p>A daily discipleship companion for studying Jesus Christ, recording spiritual impressions, and turning revelation into action.</p>
       <div class="v82InfoGrid">
-        <div class="v82Info"><b>V90</b><span>Version</span></div>
-        <div class="v82Info"><b>90</b><span>Build</span></div>
+        <div class="v82Info"><b>V91</b><span>Version</span></div>
+        <div class="v82Info"><b>91</b><span>Build</span></div>
         <div class="v82Info"><b>UI 2.0</b><span>Interface</span></div>
         <div class="v82Info"><b>2026-06-28</b><span>Build date</span></div>
       </div>
@@ -1137,7 +1147,7 @@ body.v79-ui2 #v78DefaultHomeReplacement{display:none!important}
           <p>Study. Reflect. Apply.</p>
         </div>
       </div>
-      <div class="v84Version">V90</div>
+      <div class="v84Version">V91</div>
     </div>
 
     <div class="v84TopActions">
@@ -1180,7 +1190,7 @@ body.v79-ui2 #v78DefaultHomeReplacement{display:none!important}
           <p>Jesus Christ 78-Week Study</p>
         </div>
       </div>
-      <div class="v85Pill">V90</div>
+      <div class="v85Pill">V91</div>
     </div>
 
     <div class="v85Hero">
@@ -1190,7 +1200,7 @@ body.v79-ui2 #v78DefaultHomeReplacement{display:none!important}
       <div class="v85Progress"><div id="v85ProgressBar" style="width:0%"></div></div>
       <div class="v85HeroActions">
         <button class="primary" onclick="continueStudying()">▶ Continue Studying</button>
-        <button onclick="openV90CleanWeekList()">📖 Week List</button>
+        <button onclick="openV90CleanWeekList()">📚 Week List</button>
       </div>
     </div>
 
@@ -2138,6 +2148,10 @@ function universalSearchData(){
     addUniversalResult(results,'notes','📚 V90 Week List Polish','Study','Polished Jesus Christ Week List with clearer Continue, Workspace, Search, and Favorites actions.','<button onclick="openV90CleanWeekList()">Open Week List</button>','v90 week list polish continue workspace search favorites jesus christ');
   }catch(e){}
 
+  try{
+    addUniversalResult(results,'notes','📖 V91 Single Study Card','Study','Simplified Jesus Christ workspace with one combined hero/progress card instead of duplicate progress boxes.','<button onclick="showV85JesusStudyWorkspace()">Open Workspace</button>','v91 single study card duplicate progress hero workspace');
+  }catch(e){}
+
   return results;
 }
 function runUniversalSearch(){
@@ -2939,8 +2953,10 @@ function v84Path(title,desc,icon,onclick,pct,meta,cls){
 
 
 
+
 function showV85JesusStudyWorkspace(){
  document.body.classList.add('v79-ui2');
+ document.body.classList.add('v91NoDuplicateProgress');
  hideAllViews();
  renderV85JesusStudyWorkspace();
  document.getElementById('v85JesusStudyWorkspace').classList.add('on');
@@ -2961,16 +2977,17 @@ function renderV85JesusStudyWorkspace(){
  let doneGoals=(state._goals||[]).filter(g=>(g.status||'')==='Completed').length;
 
  let hero=document.getElementById('v85HeroText');
- if(hero)hero.innerHTML=esc(currentTopic)+' • '+checked+' of '+refs+' references studied';
+ if(hero)hero.innerHTML=esc(currentTopic)+' • '+checked+' of '+refs+' references studied<div class="v91HeroStats"><div class="v91HeroStat"><b>'+checked+'</b><span>References done</span></div><div class="v91HeroStat"><b>'+refs+'</b><span>Total references</span></div><div class="v91HeroStat"><b>'+pct+'%</b><span>Complete</span></div><div class="v91HeroStat"><b>⭐ '+favs+'</b><span>Favorites</span></div></div>';
  let bar=document.getElementById('v85ProgressBar');
  if(bar)bar.style.width=pct+'%';
 
  let progress=document.getElementById('v86ProgressPanel');
- if(progress)progress.innerHTML='<div class="v86ProgressPanel"><span class="v86Badge">Study Progress</span><h3>Your 78-week journey</h3><p class="v86SectionNote">Continue the flagship Jesus Christ study and track progress toward completing the full Topical Guide path.</p><div class="v86ProgressBig"><div style="width:'+pct+'%"></div></div><div class="v86ProgressGrid"><div class="v86ProgressTile"><b>'+checked+'</b><span>References done</span></div><div class="v86ProgressTile"><b>'+refs+'</b><span>Total references</span></div><div class="v86ProgressTile"><b>'+pct+'%</b><span>Complete</span></div><div class="v86ProgressTile"><b>⭐ '+favs+'</b><span>Favorites</span></div></div><div class="v86CompactActions"><button class="primary" onclick="continueStudying()">▶ Continue Study</button><button onclick="showList()">📚 Open Week List</button></div></div>';
+ if(progress)progress.innerHTML='';
 
  let stats=document.getElementById('v85Stats');
- if(stats)stats.innerHTML='<div class="v85Stat"><b>🔥 '+streak+'</b><span>Streak</span></div><div class="v85Stat"><b>'+notes+'</b><span>Notes</span></div><div class="v85Stat"><b>'+prayers+'</b><span>Prayers</span></div><div class="v85Stat"><b>'+revs+'</b><span>Revelations</span></div><div class="v85Stat"><b>'+doneGoals+'/'+goals+'</b><span>Goals</span></div><div class="v85Stat"><b>V86</b><span>Workspace</span></div>';
+ if(stats)stats.innerHTML='<div class="v85Stat"><b>🔥 '+streak+'</b><span>Streak</span></div><div class="v85Stat"><b>'+notes+'</b><span>Notes</span></div><div class="v85Stat"><b>'+prayers+'</b><span>Prayers</span></div><div class="v85Stat"><b>'+revs+'</b><span>Revelations</span></div><div class="v85Stat"><b>'+doneGoals+'/'+goals+'</b><span>Goals</span></div><div class="v85Stat"><b>V91</b><span>Workspace</span></div>';
 }
+
 
 
 

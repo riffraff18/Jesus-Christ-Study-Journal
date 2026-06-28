@@ -410,11 +410,23 @@ label{font-weight:750;display:block;margin-top:16px;margin-bottom:6px}textarea{w
 .v74PathItem{border:1px solid #eee7d9;border-radius:18px;padding:13px;background:#fffdf9}
 .v74BottomSpace{height:12px}
 .v74Card:active,.v74HeroActions button:active{transform:scale(.985)}
-</style></head><body><header><h1>Jesus Christ Topical Guide Study</h1><div class="sub">Scripture Study Platform Phase 2 App Home Polish.</div><div class="bar"><div id="prog"></div></div><div class="sub" id="stats"></div><div class="versionPill" id="appVersionLabel">Version 74</div><div class="backupNote" id="backupNote"></div><div class="streakPill" id="streakLabel" onclick="showStreakDetails()">🔥 0 day streak</div><div class="reminderPill" id="reminderLabel" onclick="showReminderSettings()">⏰ Reminder off</div></header>
+
+.v75TopNav{position:sticky;top:0;z-index:10;background:rgba(255,253,249,.96);backdrop-filter:blur(10px);border:1px solid #ddd6ca;border-radius:22px;padding:10px;margin:8px 0 14px;box-shadow:0 4px 16px rgba(0,0,0,.06)}
+.v75TopNavGrid{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:7px}
+.v75TopNavGrid button{font-size:12px;border-radius:14px;padding:9px 6px}
+.v75Welcome{border:1px solid #ddd6ca;border-radius:24px;padding:16px;margin:14px 0;background:#fff;box-shadow:0 3px 14px rgba(0,0,0,.05)}
+.v75Welcome h2{margin:0 0 6px;font-size:23px}
+.v75Recent{display:grid;grid-template-columns:1fr;gap:10px;margin:12px 0}
+.v75RecentCard{border:1px solid #eee7d9;border-radius:18px;padding:13px;background:#fffdf9;text-align:left}
+.v75RecentCard b{display:block;margin-bottom:4px}
+.v75RecentCard span{font-size:13px;color:#6b665d}
+.v75FooterNav{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:18px 0}
+.v75FooterNav button{border-radius:18px;padding:13px;text-align:left}
+</style></head><body><header><h1>Jesus Christ Topical Guide Study</h1><div class="sub">Scripture Study Platform Phase 2 App Home Polish.</div><div class="bar"><div id="prog"></div></div><div class="sub" id="stats"></div><div class="versionPill" id="appVersionLabel">Version 75</div><div class="backupNote" id="backupNote"></div><div class="streakPill" id="streakLabel" onclick="showStreakDetails()">🔥 0 day streak</div><div class="reminderPill" id="reminderLabel" onclick="showReminderSettings()">⏰ Reminder off</div></header>
 <main>
 <section id="v74RedesignedHome" class="view">
-  <div class="card v74Shell">
-    <div class="v74Hero">
+  <div class="card v74Shell"><div id="v75TopNav"></div>
+    <div id="v75Welcome"></div><div class="v74Hero">
       <div class="v74HeroTop">
         <span class="v74Chip">V74 New Design</span>
         <span class="v74Chip">Study Home</span>
@@ -431,7 +443,7 @@ label{font-weight:750;display:block;margin-top:16px;margin-bottom:6px}textarea{w
     </div>
 
     <div id="v74Stats" class="v74StatsRow"></div>
-    <div id="v74Today"></div>
+    <div id="v74Today"></div><div id="v75RecentActivity"></div>
 
     <div class="v74Section">
       <div class="v74SectionHead"><h3>📚 Study Library</h3><span>Guided Studies</span></div>
@@ -466,7 +478,7 @@ label{font-weight:750;display:block;margin-top:16px;margin-bottom:6px}textarea{w
         <button class="v74Card" onclick="exportData()"><b>💾 Backup</b><span>Export your progress and journals.</span></button>
       </div>
     </div>
-    <div class="v74BottomSpace"></div>
+    <div id="v75FooterNav"></div><div class="v74BottomSpace"></div>
   </div>
 </section>
 
@@ -1565,6 +1577,10 @@ function universalSearchData(){
     addUniversalResult(results,'notes','✨ New Design Home','Navigation','V74 redesigned home dashboard, Study Library, Personal Study, Tools, Continue, Reading, Search, Analytics.','<button onclick="showV74RedesignedHome()">Open New Design Home</button>','new design home dashboard study library personal study tools continue reading search analytics');
   }catch(e){}
 
+  try{
+    addUniversalResult(results,'notes','✨ V75 Redesigned Home','Navigation','Sticky quick navigation, welcome section, recent spiritual record, redesigned Study Home.','<button onclick="showV74RedesignedHome()">Open Redesigned Home</button>','v75 redesigned home sticky navigation welcome recent spiritual record study home');
+  }catch(e){}
+
   return results;
 }
 function runUniversalSearch(){
@@ -2214,6 +2230,7 @@ function showStudyLibraryExpansionPrep(){hideAllViews();document.getElementById(
 function showOldTestamentPreview(){hideAllViews();document.getElementById('oldTestamentPreview').classList.add('on');scrollTo(0,0);}
 function showNewTestamentPreview(){hideAllViews();document.getElementById('newTestamentPreview').classList.add('on');scrollTo(0,0);}
 
+
 function showV74RedesignedHome(){
  hideAllViews();
  renderV74RedesignedHome();
@@ -2232,6 +2249,13 @@ function renderV74RedesignedHome(){
  let prayers=(state._prayers||[]).length, answered=(state._prayers||[]).filter(p=>(p.status||'')==='Answered').length;
  let revs=(state._revelations||[]).length;
  let goals=(state._goals||[]).length, doneGoals=(state._goals||[]).filter(g=>(g.status||'')==='Completed').length;
+
+ let nav=document.getElementById('v75TopNav');
+ if(nav)nav.innerHTML='<div class="v75TopNav"><div class="v75TopNavGrid"><button class="primary" onclick="continueStudying()">Continue</button><button onclick="showUniversalSearch()">Search</button><button onclick="showStudyNotes()">Notes</button><button onclick="exportData()">Backup</button></div></div>';
+
+ let welcome=document.getElementById('v75Welcome');
+ if(welcome)welcome.innerHTML='<div class="v75Welcome"><span class="v74Chip">Welcome Back</span><h2>Your discipleship home</h2><p class="muted">Everything now begins from Study Home: continue, read, record, act, and review growth.</p></div>';
+
  let hero=document.getElementById('v74HeroText');
  if(hero)hero.innerHTML=esc(currentTopic)+' • '+checked+' of '+refs+' references studied';
  let bar=document.getElementById('v74ProgressBar');
@@ -2240,7 +2264,14 @@ function renderV74RedesignedHome(){
  if(stats)stats.innerHTML='<div class="v74Stat"><b>'+pct+'%</b><span>Study</span></div><div class="v74Stat"><b>🔥 '+streak+'</b><span>Streak</span></div><div class="v74Stat"><b>⭐ '+favs+'</b><span>Favorites</span></div><div class="v74Stat"><b>'+notes+'</b><span>Notes</span></div><div class="v74Stat"><b>'+answered+'/'+prayers+'</b><span>Prayers</span></div><div class="v74Stat"><b>'+doneGoals+'/'+goals+'</b><span>Goals</span></div>';
  let today=document.getElementById('v74Today');
  if(today)today.innerHTML='<div class="v74Today"><span class="v74Chip">Today</span><h3>Choose one faithful step</h3><p class="muted">Study, pray, record revelation, or act on a goal.</p><div class="v74Path"><button class="v74PathItem" onclick="continueStudying()"><b>Study</b><span>Continue your current reference</span></button><button class="v74PathItem" onclick="showRevelationJournal()"><b>Record</b><span>'+revs+' revelation entries saved</span></button><button class="v74PathItem" onclick="showGoalsActionPlan()"><b>Act</b><span>Review and complete spiritual goals</span></button></div></div>';
+
+ let recent=document.getElementById('v75RecentActivity');
+ if(recent)recent.innerHTML='<div class="v74Section"><div class="v74SectionHead"><h3>🕊️ Recent Spiritual Record</h3><span>Quick Access</span></div><div class="v75Recent"><button class="v75RecentCard" onclick="showStudyNotes()"><b>📝 Study Notes</b><span>'+notes+' saved notes</span></button><button class="v75RecentCard" onclick="showPrayerJournal()"><b>🙏 Prayer Journal</b><span>'+prayers+' prayers • '+answered+' answered</span></button><button class="v75RecentCard" onclick="showRevelationJournal()"><b>💡 Revelation Journal</b><span>'+revs+' impressions and promptings</span></button></div></div>';
+
+ let footer=document.getElementById('v75FooterNav');
+ if(footer)footer.innerHTML='<div class="v75FooterNav"><button class="primary" onclick="showImmersiveReadingMode()">📖 Open Reading Mode</button><button onclick="showGrowthAnalytics()">📊 View Growth</button><button onclick="showBetaPrepCenter()">🧪 Beta Prep</button><button onclick="showReleaseNotesCenter()">🗒️ Release Notes</button></div>';
 }
+
 
 function stats(){let dw=0,dr=0,tr=0,fv=0,jd=0,jt=0;weeks.forEach(w=>{let d=data(w.week);if(d.done)dw++;dr+=d.refs.filter(r=>r.done).length;fv+=d.refs.filter(r=>r.fav).length;tr+=d.refs.length;jd+=(d.jtc||[]).filter(x=>x.done).length;jt+=(d.jtc||[]).length});document.getElementById('prog').style.width=Math.round(dw/78*100)+'%';document.getElementById('stats').textContent=`${dw}/78 weeks complete • ${dr}/${tr} references checked • ⭐ ${fv} favorites • 📖 ${jd}/${jt} JTC readings`}
 function exportData(){let blob=new Blob([JSON.stringify(state,null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='jesus-christ-study-backup.json';a.click()}

@@ -619,7 +619,21 @@ body.v79-ui2 #v78DefaultHomeReplacement{display:none!important}
 .v85BottomNav{position:sticky;bottom:12px;z-index:20;display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-top:18px;background:rgba(255,255,255,.94);backdrop-filter:blur(12px);border:1px solid #e5e7eb;border-radius:24px;padding:9px;box-shadow:0 8px 24px rgba(15,23,42,.12)}
 .v85BottomNav button{border-radius:16px;padding:9px 4px;font-size:12px}
 .v85Back{border-radius:18px;padding:11px 13px;margin-bottom:10px}
-</style></head><body><header><h1>Walk with Christ</h1><div class="sub">Walk with Christ • Jesus Christ Study Workspace.</div><div class="bar"><div id="prog"></div></div><div class="sub" id="stats"></div><div class="versionPill" id="appVersionLabel">Version 85</div><div class="backupNote" id="backupNote"></div><div class="streakPill" id="streakLabel" onclick="showStreakDetails()">🔥 0 day streak</div><div class="reminderPill" id="reminderLabel" onclick="showReminderSettings()">⏰ Reminder off</div></header>
+
+.v86ProgressPanel{border:2px solid #d6a333;border-radius:28px;padding:16px;margin:14px 0;background:#fffdf9;box-shadow:0 6px 20px rgba(15,23,42,.06)}
+.v86ProgressPanel h3{margin:0 0 8px;font-size:22px;color:#091427}
+.v86ProgressBig{height:16px;background:#e5e7eb;border-radius:999px;overflow:hidden;margin:12px 0}
+.v86ProgressBig div{height:100%;background:#a47c28;border-radius:999px}
+.v86ProgressGrid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+.v86ProgressTile{border:1px solid #eee7d9;border-radius:18px;padding:11px;background:#fff;text-align:center}
+.v86ProgressTile b{display:block;font-size:20px;color:#091427}
+.v86ProgressTile span{font-size:12px;color:#5e6470}
+.v86PrimaryStudy{border:2px solid #876b2f!important;background:#fffdf9!important}
+.v86SectionNote{font-size:13px;color:#5e6470;margin:6px 0 12px}
+.v86CompactActions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px 0}
+.v86CompactActions button{border-radius:18px;padding:13px;text-align:left}
+.v86Badge{display:inline-block;background:#876b2f;color:white;border-radius:999px;padding:5px 11px;font-size:12px;font-weight:900;margin-bottom:8px}
+</style></head><body><header><h1>Walk with Christ</h1><div class="sub">Walk with Christ • Study Workspace Polish.</div><div class="bar"><div id="prog"></div></div><div class="sub" id="stats"></div><div class="versionPill" id="appVersionLabel">Version 86</div><div class="backupNote" id="backupNote"></div><div class="streakPill" id="streakLabel" onclick="showStreakDetails()">🔥 0 day streak</div><div class="reminderPill" id="reminderLabel" onclick="showReminderSettings()">⏰ Reminder off</div></header>
 <main>
 <section id="v79UI2Home" class="view">
   <div class="v79AppShell">
@@ -631,7 +645,7 @@ body.v79-ui2 #v78DefaultHomeReplacement{display:none!important}
           <p>Study. Reflect. Apply.</p>
         </div>
       </div>
-      <div class="v79Pill">V85</div>
+      <div class="v79Pill">V86</div>
     </div>
 
     <div class="v79Hero">
@@ -1038,15 +1052,15 @@ body.v79-ui2 #v78DefaultHomeReplacement{display:none!important}
           <p>Study. Reflect. Apply.</p>
         </div>
       </div>
-      <div class="v79Pill">V85</div>
+      <div class="v79Pill">V86</div>
     </div>
     <div class="v82AboutPanel">
       <span class="v82VersionBadge">About / Version</span>
       <h2>Walk with Christ</h2>
       <p>A daily discipleship companion for studying Jesus Christ, recording spiritual impressions, and turning revelation into action.</p>
       <div class="v82InfoGrid">
-        <div class="v82Info"><b>V85</b><span>Version</span></div>
-        <div class="v82Info"><b>85</b><span>Build</span></div>
+        <div class="v82Info"><b>V86</b><span>Version</span></div>
+        <div class="v82Info"><b>86</b><span>Build</span></div>
         <div class="v82Info"><b>UI 2.0</b><span>Interface</span></div>
         <div class="v82Info"><b>2026-06-28</b><span>Build date</span></div>
       </div>
@@ -1075,7 +1089,7 @@ body.v79-ui2 #v78DefaultHomeReplacement{display:none!important}
           <p>Study. Reflect. Apply.</p>
         </div>
       </div>
-      <div class="v84Version">V85</div>
+      <div class="v84Version">V86</div>
     </div>
 
     <div class="v84TopActions">
@@ -1118,7 +1132,7 @@ body.v79-ui2 #v78DefaultHomeReplacement{display:none!important}
           <p>Jesus Christ 78-Week Study</p>
         </div>
       </div>
-      <div class="v85Pill">V85</div>
+      <div class="v85Pill">V86</div>
     </div>
 
     <div class="v85Hero">
@@ -1132,12 +1146,12 @@ body.v79-ui2 #v78DefaultHomeReplacement{display:none!important}
       </div>
     </div>
 
-    <div id="v85Stats" class="v85Stats"></div>
+    <div id="v86ProgressPanel"></div><div id="v85Stats" class="v85Stats"></div>
 
     <div class="v85Section">
-      <div class="v85SectionHead"><h3>Study</h3><span>Read & Explore</span></div>
+      <div class="v85SectionHead"><h3>Study</h3><span>Read & Explore</span></div><p class="v86SectionNote">Start with Reading Mode or open the full week list.</p>
       <div class="v85Grid">
-        <button class="v85Card main" onclick="showImmersiveReadingMode()"><b>📖 Immersive Reading</b><span>Read, reflect, record, and act.</span></button>
+        <button class="v85Card main v86PrimaryStudy" onclick="showImmersiveReadingMode()"><b>📖 Immersive Reading</b><span>Read, reflect, record, and act.</span></button>
         <button class="v85Card" onclick="showList()"><b>📚 Week List</b><span>Open all 78 weeks.</span></button>
         <button class="v85Card" onclick="showUniversalSearch()"><b>🔎 Search References</b><span>Find topics, scriptures, and notes.</span></button>
         <button class="v85Card" onclick="showFavoritesJournal()"><b>⭐ Favorites</b><span>Review favorite scriptures.</span></button>
@@ -1145,7 +1159,7 @@ body.v79-ui2 #v78DefaultHomeReplacement{display:none!important}
     </div>
 
     <div class="v85Section">
-      <div class="v85SectionHead"><h3>Journal</h3><span>Record</span></div>
+      <div class="v85SectionHead"><h3>Journal</h3><span>Record</span></div><p class="v86SectionNote">Capture impressions and spiritual experiences as you study.</p>
       <div class="v85Grid">
         <button class="v85Card" onclick="showStudyNotes()"><b>📝 Study Notes</b><span>Doctrine and impressions.</span></button>
         <button class="v85Card" onclick="showPrayerJournal()"><b>🙏 Prayer Journal</b><span>Prayers and answers.</span></button>
@@ -1155,7 +1169,7 @@ body.v79-ui2 #v78DefaultHomeReplacement{display:none!important}
     </div>
 
     <div class="v85Section">
-      <div class="v85SectionHead"><h3>Growth</h3><span>Apply</span></div>
+      <div class="v85SectionHead"><h3>Growth</h3><span>Apply</span></div><p class="v86SectionNote">Turn learning into goals, action, and measurable growth.</p>
       <div class="v85Grid">
         <button class="v85Card" onclick="showGrowthAnalytics()"><b>📊 Growth Analytics</b><span>Study, prayer, revelation, and goals.</span></button>
         <button class="v85Card" onclick="showGoalsActionPlan()"><b>🎯 Goals & Action</b><span>Turn inspiration into action.</span></button>
@@ -2056,6 +2070,10 @@ function universalSearchData(){
     addUniversalResult(results,'notes','📖 Jesus Christ Study Workspace','Study','Clean workspace for the Jesus Christ 78-Week Study with Continue, Week List, Reading Mode, Journals, Growth, and Tools.','<button onclick="showV85JesusStudyWorkspace()">Open Workspace</button>','jesus christ study workspace 78 week continue week list reading mode journal growth tools');
   }catch(e){}
 
+  try{
+    addUniversalResult(results,'notes','📖 V86 Study Workspace Polish','Study','Polished Jesus Christ 78-Week Study workspace with progress panel, continue study, week list, journal, growth, and tools.','<button onclick="showV85JesusStudyWorkspace()">Open Study Workspace</button>','v86 study workspace polish progress panel continue week list journal growth');
+  }catch(e){}
+
   return results;
 }
 function runUniversalSearch(){
@@ -2856,6 +2874,7 @@ function v84Path(title,desc,icon,onclick,pct,meta,cls){
 }
 
 
+
 function showV85JesusStudyWorkspace(){
  document.body.classList.add('v79-ui2');
  hideAllViews();
@@ -2875,14 +2894,20 @@ function renderV85JesusStudyWorkspace(){
  let prayers=(state._prayers||[]).length;
  let revs=(state._revelations||[]).length;
  let goals=(state._goals||[]).length;
+ let doneGoals=(state._goals||[]).filter(g=>(g.status||'')==='Completed').length;
 
  let hero=document.getElementById('v85HeroText');
  if(hero)hero.innerHTML=esc(currentTopic)+' • '+checked+' of '+refs+' references studied';
  let bar=document.getElementById('v85ProgressBar');
  if(bar)bar.style.width=pct+'%';
+
+ let progress=document.getElementById('v86ProgressPanel');
+ if(progress)progress.innerHTML='<div class="v86ProgressPanel"><span class="v86Badge">Study Progress</span><h3>Your 78-week journey</h3><p class="v86SectionNote">Continue the flagship Jesus Christ study and track progress toward completing the full Topical Guide path.</p><div class="v86ProgressBig"><div style="width:'+pct+'%"></div></div><div class="v86ProgressGrid"><div class="v86ProgressTile"><b>'+checked+'</b><span>References done</span></div><div class="v86ProgressTile"><b>'+refs+'</b><span>Total references</span></div><div class="v86ProgressTile"><b>'+pct+'%</b><span>Complete</span></div><div class="v86ProgressTile"><b>⭐ '+favs+'</b><span>Favorites</span></div></div><div class="v86CompactActions"><button class="primary" onclick="continueStudying()">▶ Continue Study</button><button onclick="showList()">📚 Open Week List</button></div></div>';
+
  let stats=document.getElementById('v85Stats');
- if(stats)stats.innerHTML='<div class="v85Stat"><b>'+pct+'%</b><span>Complete</span></div><div class="v85Stat"><b>'+checked+'</b><span>References</span></div><div class="v85Stat"><b>⭐ '+favs+'</b><span>Favorites</span></div><div class="v85Stat"><b>🔥 '+streak+'</b><span>Streak</span></div><div class="v85Stat"><b>'+notes+'</b><span>Notes</span></div><div class="v85Stat"><b>'+goals+'</b><span>Goals</span></div>';
+ if(stats)stats.innerHTML='<div class="v85Stat"><b>🔥 '+streak+'</b><span>Streak</span></div><div class="v85Stat"><b>'+notes+'</b><span>Notes</span></div><div class="v85Stat"><b>'+prayers+'</b><span>Prayers</span></div><div class="v85Stat"><b>'+revs+'</b><span>Revelations</span></div><div class="v85Stat"><b>'+doneGoals+'/'+goals+'</b><span>Goals</span></div><div class="v85Stat"><b>V86</b><span>Workspace</span></div>';
 }
+
 
 function stats(){let dw=0,dr=0,tr=0,fv=0,jd=0,jt=0;weeks.forEach(w=>{let d=data(w.week);if(d.done)dw++;dr+=d.refs.filter(r=>r.done).length;fv+=d.refs.filter(r=>r.fav).length;tr+=d.refs.length;jd+=(d.jtc||[]).filter(x=>x.done).length;jt+=(d.jtc||[]).length});document.getElementById('prog').style.width=Math.round(dw/78*100)+'%';document.getElementById('stats').textContent=`${dw}/78 weeks complete • ${dr}/${tr} references checked • ⭐ ${fv} favorites • 📖 ${jd}/${jt} JTC readings`}
 function exportData(){let blob=new Blob([JSON.stringify(state,null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='jesus-christ-study-backup.json';a.click()}

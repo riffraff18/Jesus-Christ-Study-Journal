@@ -640,7 +640,18 @@ body.v79-ui2 #v78DefaultHomeReplacement{display:none!important}
 .v87LegacyActions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
 .v87LegacyActions button{border-radius:18px;padding:13px;text-align:left}
 .v87HiddenLegacy{display:none!important}
-</style></head><body><header><h1>Walk with Christ</h1><div class="sub">Walk with Christ • Workspace Replacement.</div><div class="bar"><div id="prog"></div></div><div class="sub" id="stats"></div><div class="versionPill" id="appVersionLabel">Version 87</div><div class="backupNote" id="backupNote"></div><div class="streakPill" id="streakLabel" onclick="showStreakDetails()">🔥 0 day streak</div><div class="reminderPill" id="reminderLabel" onclick="showReminderSettings()">⏰ Reminder off</div></header>
+
+.v88WeekListHeader{border:2px solid #d6a333;border-radius:28px;padding:16px;margin:14px 0;background:#fffdf9;box-shadow:0 6px 20px rgba(15,23,42,.06)}
+.v88WeekListHeader h2{font-size:26px;line-height:1.05;margin:0 0 8px;color:#091427}
+.v88WeekListHeader p{color:#5e6470;margin:7px 0}
+.v88WeekProgress{height:12px;background:#e5e7eb;border-radius:999px;overflow:hidden;margin:12px 0}
+.v88WeekProgress div{height:100%;background:#a47c28;border-radius:999px}
+.v88WeekActions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+.v88WeekActions button{border-radius:18px;padding:13px;text-align:left}
+.v88WeekBadge{display:inline-block;background:#fff2d5;color:#9a6b12;border-radius:999px;padding:5px 11px;font-size:12px;font-weight:900;margin-bottom:8px}
+.v88CleanWeeks .toolGrid,.v88CleanWeeks .phaseHubActions,.v88CleanWeeks .v56Stats,.v88CleanWeeks #v87LegacyRedirectPanel{display:none!important}
+.v88CleanWeeks .card>button:not(.v85Back):not(.primary){margin-bottom:8px}
+</style></head><body><header><h1>Walk with Christ</h1><div class="sub">Walk with Christ • Clean Week List.</div><div class="bar"><div id="prog"></div></div><div class="sub" id="stats"></div><div class="versionPill" id="appVersionLabel">Version 88</div><div class="backupNote" id="backupNote"></div><div class="streakPill" id="streakLabel" onclick="showStreakDetails()">🔥 0 day streak</div><div class="reminderPill" id="reminderLabel" onclick="showReminderSettings()">⏰ Reminder off</div></header>
 <main>
 <div id="v87LegacyRedirectPanel" class="v87LegacyNotice" style="display:none">
   <h3>Jesus Christ Study Workspace</h3>
@@ -661,7 +672,7 @@ body.v79-ui2 #v78DefaultHomeReplacement{display:none!important}
           <p>Study. Reflect. Apply.</p>
         </div>
       </div>
-      <div class="v79Pill">V87</div>
+      <div class="v79Pill">V88</div>
     </div>
 
     <div class="v79Hero">
@@ -1068,15 +1079,15 @@ body.v79-ui2 #v78DefaultHomeReplacement{display:none!important}
           <p>Study. Reflect. Apply.</p>
         </div>
       </div>
-      <div class="v79Pill">V87</div>
+      <div class="v79Pill">V88</div>
     </div>
     <div class="v82AboutPanel">
       <span class="v82VersionBadge">About / Version</span>
       <h2>Walk with Christ</h2>
       <p>A daily discipleship companion for studying Jesus Christ, recording spiritual impressions, and turning revelation into action.</p>
       <div class="v82InfoGrid">
-        <div class="v82Info"><b>V87</b><span>Version</span></div>
-        <div class="v82Info"><b>87</b><span>Build</span></div>
+        <div class="v82Info"><b>V88</b><span>Version</span></div>
+        <div class="v82Info"><b>88</b><span>Build</span></div>
         <div class="v82Info"><b>UI 2.0</b><span>Interface</span></div>
         <div class="v82Info"><b>2026-06-28</b><span>Build date</span></div>
       </div>
@@ -1105,7 +1116,7 @@ body.v79-ui2 #v78DefaultHomeReplacement{display:none!important}
           <p>Study. Reflect. Apply.</p>
         </div>
       </div>
-      <div class="v84Version">V87</div>
+      <div class="v84Version">V88</div>
     </div>
 
     <div class="v84TopActions">
@@ -1148,7 +1159,7 @@ body.v79-ui2 #v78DefaultHomeReplacement{display:none!important}
           <p>Jesus Christ 78-Week Study</p>
         </div>
       </div>
-      <div class="v85Pill">V87</div>
+      <div class="v85Pill">V88</div>
     </div>
 
     <div class="v85Hero">
@@ -1158,7 +1169,7 @@ body.v79-ui2 #v78DefaultHomeReplacement{display:none!important}
       <div class="v85Progress"><div id="v85ProgressBar" style="width:0%"></div></div>
       <div class="v85HeroActions">
         <button class="primary" onclick="continueStudying()">▶ Continue Studying</button>
-        <button onclick="openWeekListLegacy()">📖 Week List</button>
+        <button onclick="openV88CleanWeekList()">📖 Week List</button>
       </div>
     </div>
 
@@ -1168,7 +1179,7 @@ body.v79-ui2 #v78DefaultHomeReplacement{display:none!important}
       <div class="v85SectionHead"><h3>Study</h3><span>Read & Explore</span></div><p class="v86SectionNote">Start with Reading Mode or open the full week list.</p>
       <div class="v85Grid">
         <button class="v85Card main v86PrimaryStudy" onclick="showImmersiveReadingMode()"><b>📖 Immersive Reading</b><span>Read, reflect, record, and act.</span></button>
-        <button class="v85Card" onclick="openWeekListLegacy()"><b>📚 Week List</b><span>Open all 78 weeks.</span></button>
+        <button class="v85Card" onclick="openV88CleanWeekList()"><b>📚 Week List</b><span>Open all 78 weeks.</span></button>
         <button class="v85Card" onclick="showUniversalSearch()"><b>🔎 Search References</b><span>Find topics, scriptures, and notes.</span></button>
         <button class="v85Card" onclick="showFavoritesJournal()"><b>⭐ Favorites</b><span>Review favorite scriptures.</span></button>
       </div>
@@ -2094,6 +2105,10 @@ function universalSearchData(){
     addUniversalResult(results,'notes','🔁 V87 Legacy Replacement','Study','Jesus Christ study path now routes to the polished workspace instead of the old long button menu.','<button onclick="showV85JesusStudyWorkspace()">Open Workspace</button>','v87 legacy replacement workspace old button menu jesus christ study');
   }catch(e){}
 
+  try{
+    addUniversalResult(results,'notes','📚 V88 Clean Week List','Study','Clean Jesus Christ 78-week list without the old long tool button menu.','<button onclick="openV88CleanWeekList()">Open Week List</button>','v88 clean week list jesus christ 78 week no old menu');
+  }catch(e){}
+
   return results;
 }
 function runUniversalSearch(){
@@ -2844,7 +2859,7 @@ function renderV79UI2Home(){
  if(bar)bar.style.width=pct+'%';
 
  let featured=document.getElementById('v80FeaturedStudy');
- if(featured)featured.innerHTML='<div class="v80Featured"><span class="v80StudyBadge">Featured Study</span><h2>📖 Jesus Christ 78-Week Study</h2><p>Complete Topical Guide study centered on the Savior — His names, mission, grace, mercy, Atonement, Resurrection, and invitations to come unto Him.</p><div class="v79Progress"><div style="width:'+pct+'%"></div></div><div class="v80FeaturedMeta"><div><b>'+checked+'/'+refs+'</b><span>References studied</span></div><div><b>'+pct+'%</b><span>Complete</span></div><div><b>78</b><span>Weeks</span></div><div><b>⭐ '+favs+'</b><span>Favorites</span></div></div><div class="v80FeaturedActions"><button class="primary" onclick="continueStudying()">▶ Continue 78-Week Study</button><button onclick="openWeekListLegacy()">Open Week List</button></div></div>';
+ if(featured)featured.innerHTML='<div class="v80Featured"><span class="v80StudyBadge">Featured Study</span><h2>📖 Jesus Christ 78-Week Study</h2><p>Complete Topical Guide study centered on the Savior — His names, mission, grace, mercy, Atonement, Resurrection, and invitations to come unto Him.</p><div class="v79Progress"><div style="width:'+pct+'%"></div></div><div class="v80FeaturedMeta"><div><b>'+checked+'/'+refs+'</b><span>References studied</span></div><div><b>'+pct+'%</b><span>Complete</span></div><div><b>78</b><span>Weeks</span></div><div><b>⭐ '+favs+'</b><span>Favorites</span></div></div><div class="v80FeaturedActions"><button class="primary" onclick="continueStudying()">▶ Continue 78-Week Study</button><button onclick="openV88CleanWeekList()">Open Week List</button></div></div>';
 
  let stats=document.getElementById('v79Stats');
  if(stats)stats.innerHTML='<div class="v79Stat"><b>'+pct+'%</b><span>Study</span></div><div class="v79Stat"><b>🔥 '+streak+'</b><span>Streak</span></div><div class="v79Stat"><b>⭐ '+favs+'</b><span>Favorites</span></div><div class="v79Stat"><b>'+notes+'</b><span>Notes</span></div><div class="v79Stat"><b>'+answered+'/'+prayers+'</b><span>Prayers</span></div><div class="v79Stat"><b>'+doneGoals+'/'+goals+'</b><span>Goals</span></div>';
@@ -2937,6 +2952,34 @@ function openWeekListLegacy(){
 }
 function showJesusStudyWorkspace(){
   if(typeof showV85JesusStudyWorkspace === 'function'){ showV85JesusStudyWorkspace(); }
+}
+
+
+function openV88CleanWeekList(){
+ document.body.classList.add('v79-ui2');
+ if(typeof v87OriginalShowList==='function'){ v87OriginalShowList(); }
+ else if(typeof openWeekListLegacy==='function'){ openWeekListLegacy(); }
+ setTimeout(renderV88WeekListCleanup,60);
+}
+function renderV88WeekListCleanup(){
+ try{
+  document.body.classList.add('v88CleanWeeks');
+  let refs=0,checked=0,favs=0,currentTopic='Jesus Christ Study';
+  try{
+   weeks.forEach(w=>{let d=data(w.week);refs+=(d.refs||[]).length;checked+=(d.refs||[]).filter(r=>r&&r.done).length;favs+=(d.refs||[]).filter(r=>r&&r.fav).length;});
+   if(weeks[current-1])currentTopic='Week '+current+' • '+weeks[current-1].topic;
+  }catch(e){}
+  let pct=refs?Math.round(checked/refs*100):0;
+  let listCard=document.querySelector('main .view.on .card') || document.querySelector('main .card');
+  if(!listCard)return;
+  if(!document.getElementById('v88WeekListHeader')){
+    let header=document.createElement('div');
+    header.id='v88WeekListHeader';
+    header.className='v88WeekListHeader';
+    header.innerHTML='<span class="v88WeekBadge">Week List</span><h2>Jesus Christ 78-Week Study</h2><p>'+esc(currentTopic)+' • '+checked+' of '+refs+' references studied</p><div class="v88WeekProgress"><div style="width:'+pct+'%"></div></div><div class="v88WeekActions"><button class="primary" onclick="continueStudying()">▶ Continue</button><button onclick="showV85JesusStudyWorkspace()">← Workspace</button></div>';
+    listCard.insertBefore(header,listCard.firstChild);
+  }
+ }catch(e){}
 }
 
 function stats(){let dw=0,dr=0,tr=0,fv=0,jd=0,jt=0;weeks.forEach(w=>{let d=data(w.week);if(d.done)dw++;dr+=d.refs.filter(r=>r.done).length;fv+=d.refs.filter(r=>r.fav).length;tr+=d.refs.length;jd+=(d.jtc||[]).filter(x=>x.done).length;jt+=(d.jtc||[]).length});document.getElementById('prog').style.width=Math.round(dw/78*100)+'%';document.getElementById('stats').textContent=`${dw}/78 weeks complete • ${dr}/${tr} references checked • ⭐ ${fv} favorites • 📖 ${jd}/${jt} JTC readings`}
